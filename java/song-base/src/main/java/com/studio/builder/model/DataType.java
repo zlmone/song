@@ -1,0 +1,1 @@
+package com.studio.builder.model;/** * description: * author:          song * createDate:      2017/10/26 */public enum DataType {    Object,    String,    Binary,    Boolean,    DateTime,    Currency,    Xml,    Float,    Double,    Decimal,    Guid,    Byte,    SmallInt,    Int,    BigInt}

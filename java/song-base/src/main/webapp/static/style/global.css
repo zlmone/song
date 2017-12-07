@@ -1,0 +1,44 @@
+﻿body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, 
+dl, dt, dd, ul, ol, li,
+pre,
+form, fieldset, legend, button, input, textarea, 
+th, td  {margin: 0;padding: 0; }
+
+body, button, input, select, textarea  {font: 12px/1.5 tahoma, arial, simsun, sans-serif;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;}
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+ul, ol,li { list-style: none; }
+a { text-decoration: none; color:#000;cursor:pointer; outline:none;}/*防止ie滤镜对手型的影响*/
+sup { vertical-align: text-top; } /* 重置，减少对行高的影响 */
+sub { vertical-align: text-bottom; }
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* 链接里的 img 无边框 */
+button, input, textarea,select{ font-size: 100%; outline:none; } /* 使得表单元素在 ie 下能继承字体大小 */
+textarea{  height:80px;resize:none; overflow:auto;}
+select{ height:22px; line-height:22px; }
+/* 注：optgroup 无法扶正 */
+table { border-spacing: 0; border:0px; }
+
+/*项目通用样式*/
+.back-color{background-color:#DFE8F6;}
+.clear{ clear:both;}
+.clear-hide{ clear:both; overflow:hidden;font-size:0px; height:0px;} 
+.fix{*zoom:1;}
+.fix:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+.line{ font-size:0px; overflow:hidden; height:1px; line-height:1px;}
+.show{ display:block;} .hide{ display:none;}
+.vhide{ visibility:hidden;} .vshow{ visibility:visible;}
+.inline{ _display:inline;}
+.inline-block{display:inline-block;*zoom:1;*display:inline;} 
+.abs{ position:absolute;} .rel{ position:relative;}
+.left{ float:left;_display:inline;}
+.right{ float:right;_display:inline;}
+.center{ margin-left:auto; margin-right:auto;}
+
+
+.enabled{color:#666;cursor:default;opacity:0.6; filter:Alpha(opacity=60)}
+.enabled input,.enabled span{ cursor:default;}
+
+

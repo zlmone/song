@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><dbConfigs>    <dbConfig>        <property name="locations" value="config/db.properties"/>        <property name="dbType" value="mysql"/>        <property name="mapper" value="song/*.xml"/>    </dbConfig></dbConfigs>

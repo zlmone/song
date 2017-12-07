@@ -1,0 +1,1 @@
+package com.song.db;/** * description: * author:          song * createDate:      2017/10/25 */public enum  PrimaryKeyType {    IdEntity,UUID,Custom}

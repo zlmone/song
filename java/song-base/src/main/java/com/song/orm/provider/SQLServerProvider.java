@@ -1,0 +1,1 @@
+package com.song.orm.provider;import com.song.lang.StringHelper;/** * description: * author:          song * createDate:      2017/11/1 */public class SQLServerProvider extends DBProvider {    public String wrap(String name) {        return StringHelper.wrap(name,"[","]");    }    public String getIdEntity() {        return "select @@IDENTITY;";    }}
