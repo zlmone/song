@@ -1,1 +1,0 @@
-package com.song.toolkit.crawler;/** * description: * author:          song * createDate:      2017/11/12 */public class CrawlerProcessor {    private String domain;    public String getDomain() {        return domain;    }    public void setDomain(String domain) {        this.domain = domain;    }}
