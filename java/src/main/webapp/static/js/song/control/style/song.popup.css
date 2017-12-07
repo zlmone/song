@@ -1,0 +1,25 @@
+﻿.song-popup{ position:absolute; display:none;}
+
+.song-loading{ border:1px solid #99BCE8; background:#D5EAFF;}
+.song-loading-inner{ border:1px solid #99BCE8; margin:2px; padding:7px; padding-left:28px; padding-right:8px;
+                      background:#fff url(../images/icons/loading.gif) 7px center no-repeat;}
+                      
+.song-tip-close{ position:absolute;text-decoration:none;color:#000; right:2px;top:2px;
+         width:12px; height:12px; background:url(../images/popup/tipclose.gif); overflow:hidden;}
+.song-tip-loading{ background:url(../images/icons/loading.gif) no-repeat center center; height:18px; width:20px;}
+.song-tip-icon{background-position:0px center; background-repeat:no-repeat;padding:4px 0px; padding-left:33px;}
+.song-tip-icon-error{ background-image:url(../images/popup/error.gif);}
+.song-tip-icon-info{ background-image:url(../images/popup/info.gif); }
+.song-tip-icon-ok{ background-image:url(../images/popup/ok.gif); }
+                      
+/*三角形指向目标元素（居中父元素，可定制四边显示）*/
+.target,.target span{border:5px dashed transparent;zoom:1;width:0px;height:0px;position:absolute;}
+.target span{overflow:hidden; }
+.target-left{right:-10px; top:50%; margin-top:-5px; border-left:5px solid red;}
+.target-left span{ margin:-5px 0 0 -6px;border-left:5px solid #fff;}
+.target-right{left:-10px; top:50%; margin-top:-5px;border-right:5px solid red;}
+.target-right span{ margin:-5px 0 0 -4px;border-right:5px solid #fff;}
+.target-top{bottom:-10px; left:50%; margin-left:-5px;border-top:5px solid red;}
+.target-top span{ margin:-6px 0 0 -5px;border-top:5px solid #fff;}
+.target-bottom{top:-10px; left:50%; margin-left:-5px;border-bottom:5px solid red;}
+.target-bottom span{ margin:-4px 0 0 -5px;border-bottom:5px solid #fff;}

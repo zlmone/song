@@ -1,0 +1,1 @@
+package com.song.toolkit.crawler;import java.util.ArrayList;import java.util.List;/** * description: * author:          song * createDate:      2017/11/12 */public class CrawlerMovieProcessor extends CrawlerProcessor {    protected List<CrawlerMovie> movies = new ArrayList<CrawlerMovie>();    public List<CrawlerMovie> getMovies() {        return movies;    }}

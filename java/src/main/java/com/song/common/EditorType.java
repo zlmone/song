@@ -1,0 +1,1 @@
+package com.song.common;/** * description: * author:          song * createDate:      2017/10/25 */public enum  EditorType {    TextBox,TextBoxLine,TextArea,RichTextBox,    NumberBox,IntBox,    DateBox,    ComboBox,ComboTree,ComboGrid,ComboTreeGrid,    CheckBox,RadioButton,    SelectBox,TagBox,    FileUpload,    Label,    Template}

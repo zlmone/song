@@ -1,0 +1,1 @@
+package com.song.orm.provider;/** * description: * author:          song * createDate:      2017/11/1 */public abstract class DBProvider {    public abstract String wrap(String name);    public abstract String getIdEntity();}
