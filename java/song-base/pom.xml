@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.bingo</groupId>
-  <artifactId>bingo-base-dev</artifactId>
+  <groupId>com.song</groupId>
+  <artifactId>song-base</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>bingo-base-dev</name>
+  <name>song-base</name>
   <url>http://maven.apache.org</url>
   
   <properties>  
@@ -139,16 +139,16 @@
         <version>1.1.41</version>  
     </dependency>
 
-    <dependency>
-        <groupId>org.codehaus.jackson</groupId>
-        <artifactId>com.springsource.org.codehaus.jackson</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>org.codehaus.jackson</groupId>
-        <artifactId>com.springsource.org.codehaus.jackson.mapper</artifactId>
-        <version>1.0.0</version>
-    </dependency>
+      <dependency>
+          <groupId>org.codehaus.jackson</groupId>
+          <artifactId>com.springsource.org.codehaus.jackson</artifactId>
+          <version>1.0.0</version>
+      </dependency>
+      <dependency>
+          <groupId>org.codehaus.jackson</groupId>
+          <artifactId>com.springsource.org.codehaus.jackson.mapper</artifactId>
+          <version>1.0.0</version>
+      </dependency>
       <!-- 日志文件管理包 -->
       <dependency>
           <groupId>log4j</groupId>
