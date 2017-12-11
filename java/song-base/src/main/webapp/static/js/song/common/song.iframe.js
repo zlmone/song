@@ -2,8 +2,8 @@
  * Created by song on 2017/9/11.
  */
 //*******************************************iframe*******************************************
-(function (song,$) {
-    var dataName = '@SONG.DATANAME';
+(function (song, $) {
+    var frameName = 'SONG_COMMON_IFRAME';
     song.iframe = {
         //自适应高度和宽度
         auto: function (id, isWidth) {
@@ -17,7 +17,7 @@
         },
         data: function (name, value) {
             var top = window.top, cache = top[dataName] || {};
-            top[dataName] = cache;
+            top[frameName] = cache;
             if (value != undefined) {
                 cache[name] = value;
             } else {
@@ -26,12 +26,12 @@
             return cache;
         },
         removeData: function (name) {
-            var cache = window.top[dataName];
+            var cache = window.top[frameName];
             if (cache && cache[name]) delete cache[name];
         },
         clearData: function () {
-            if (window.top[dataName]) {
-                delete window.top[dataName];
+            if (window.top[frameName]) {
+                delete window.top[frameName];
             }
         },
         getContent: function (iframe) {
@@ -61,7 +61,30 @@
                 }
             }
 
+        },
+        download: function (url, params) {
+            var iframeName = frameName + "_DOWNLOAD",
+                formName = iframeName + "_FORM",
+                iframe = $("#" + iframeName),
+                form = $("#" + formName);
+            if (iframe.length <= 0) {
+                iframe = $("<iframe>").attr("id", iframeName).attr("name", iframeName);
+                iframe.css({display: 'none'}).appendTo('body');
+            }
+            if (form.length <= 0) {
+                form = $("<form>").attr("action", url).attr("target", iframeName).attr("id", formName);
+                form.appendTo('body');
+            }
+            //清空参数
+            form.empty();
+            if (params) {
+                //动态添加参数
+                for (var k in params) {
+                    form.append($("<input>").attr("name", k).val(params[k]).attr("type", "hidden"));
+                }
+            }
+            form[0].submit();
         }
     }
     $(window).bind("unload", song.clearData);
-})(window.song,window.jQuery)
+})(window.song, window.jQuery)
