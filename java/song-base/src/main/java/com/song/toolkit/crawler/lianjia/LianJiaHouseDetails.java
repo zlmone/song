@@ -1,0 +1,1 @@
+package com.song.toolkit.crawler.lianjia;/** * description: * author:          song * createDate:      2017/12/12 */public class LianJiaHouseDetails {    //详情地址    private String detailsUrl;}
