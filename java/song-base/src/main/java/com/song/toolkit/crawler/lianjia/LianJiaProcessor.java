@@ -52,8 +52,8 @@ public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor 
         if (url.startsWith(UrlHelper.combine(getDomain(), "ershoufang/pg"))) {
             Elements items = doc.select("ul.sellListContent > li");
             if (!ListHelper.isEmpty(items)) {
-                for (Element item : items) {
-                    houses.add(parseLianJiaHouse(item));
+                for (int i = 0; i < items.size(); i++) {
+                    houses.add(parseLianJiaHouse(items.get(i), i));
                 }
             }
         }
@@ -65,8 +65,9 @@ public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor 
      * @param item
      * @return
      */
-    private LianJiaHouse parseLianJiaHouse(Element item) {
+    private LianJiaHouse parseLianJiaHouse(Element item, int index) {
         LianJiaHouse house = new LianJiaHouse();
+        house.setSeqno(index);
         Element imgLink = item.select("a.img").first();
         house.setHouseCode(imgLink.attr("data-housecode"));
         house.setDetailsUrl(imgLink.attr("href"));
@@ -77,23 +78,25 @@ public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor 
 
         Element houseInfo = item.select("div.houseInfo").first();
         String[] houseInfoArray = LianJiaHelper.parseHouseInfo(houseInfo.text());
-        if (houseInfoArray != null && houseInfoArray.length >= 4) {
-            //小区名称
-            house.setHouseName(houseInfoArray[0].trim());
-            //户型大小
-            house.setHouseType(houseInfoArray[1].trim());
-            //面积
-            house.setHouseArea(houseInfoArray[2].trim().replace("平米",""));
-            //朝向
-            house.setOrientation(houseInfoArray[3].trim());
-        }
-        //装修情况
-        if (houseInfoArray != null && houseInfoArray.length >= 5) {
-            house.setDecoration(houseInfoArray[4].trim());
-        }
-        //是否有电梯
-        if (houseInfoArray != null && houseInfoArray.length >= 6) {
-            house.setIsElevator(houseInfoArray[5].trim());
+        if (houseInfoArray != null) {
+            if (houseInfoArray.length >= 4) {
+                //小区名称
+                house.setHouseName(houseInfoArray[0].trim());
+                //户型大小
+                house.setHouseType(houseInfoArray[1].trim());
+                //面积
+                house.setHouseArea(houseInfoArray[2].trim().replace("平米", ""));
+                //朝向
+                house.setOrientation(houseInfoArray[3].trim());
+            }
+            //装修情况
+            if (houseInfoArray.length >= 5) {
+                house.setDecoration(houseInfoArray[4].trim());
+            }
+            //是否有电梯
+            if (houseInfoArray.length >= 6) {
+                house.setIsElevator(houseInfoArray[5].trim());
+            }
         }
 
         //地铁线路，站名，距离
@@ -107,7 +110,7 @@ public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor 
             }
         }
         //楼层、建造信息、所属区域
-        String  buildContent=item.select("div.positionInfo").first().text();
+        String buildContent = item.select("div.positionInfo").first().text();
         String[] buildInfo = LianJiaHelper.parseBuildInfo(buildContent);
         if (buildInfo != null && buildInfo.length == 4) {
             house.setStorey(buildInfo[0]);
@@ -123,15 +126,15 @@ public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor 
             house.setReleaseTime(followInfo[2]);
         }
         //是否可以看房
-        Elements haskeySpan=item.select("span.haskey");
+        Elements haskeySpan = item.select("span.haskey");
         if (haskeySpan.size() > 0) {
             house.setHaskey(haskeySpan.first().text());
         }
         //房产证满的年数
         Elements five = item.select("span.five");
         Elements taxfree = item.select("span.taxfree");
-        if(five.size()>0 || taxfree.size()>0){
-            house.setFullYears(five.size()>0 ? 2 : 5);
+        if (five.size() > 0 || taxfree.size() > 0) {
+            house.setFullYears(five.size() > 0 ? 2 : 5);
         }
         return house;
     }
@@ -149,18 +152,15 @@ public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor 
         for (int i = 1; i <= 85; i++) {
             String url = UrlHelper.combine(domain, "ershoufang/pg" + i + "/");
             spider.addUrl(url);
-
         }
         spider.thread(1).run();
 
         List<LianJiaHouse> houses = processor.getHouses();
-        String json=SerializerFactory.getJSONInstance().toString(houses);
+        String json = SerializerFactory.getJSONInstance().toString(houses);
         try {
-            FileHelper.write(json,"D:\\cs2.json");
+            FileHelper.write(json, "D:\\cs2.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        //增加index判断总数
     }
 }
