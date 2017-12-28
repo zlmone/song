@@ -21,6 +21,4 @@
   <select id="selectDemoMapList" resultType="java.util.HashMap">
     select a.*,b.* from  demo a,t_demo b
   </select>
-
-
 </mapper>
