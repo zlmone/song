@@ -1,1 +1,1 @@
-package com.studio.api.dao;import com.studio.api.common.IDao;import com.studio.model.Project;/** * description: * author:          song * createDate:      2017/12/28 */public interface ProjectDao extends IDao<Project>{}
+package com.studio.api.dao;import com.studio.api.common.IDao;import com.studio.model.Project;import org.springframework.stereotype.Repository;/** * description: * author:          song * createDate:      2017/12/28 */public interface ProjectDao extends IDao<Project>{}

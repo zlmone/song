@@ -1,1 +1,1 @@
-package com.studio.api.common;import tk.mybatis.mapper.common.BaseMapper;/** * description: * author:          song * createDate:      2017/12/28 */public interface IDao<T> extends BaseMapper<T> {}
+package com.studio.api.common;import tk.mybatis.mapper.common.BaseMapper;import tk.mybatis.mapper.common.Marker;import tk.mybatis.mapper.common.RowBoundsMapper;/** * description: * author:          song * createDate:      2017/12/28 */public interface IDao<T> extends BaseMapper<T>,Marker,RowBoundsMapper<T> {}
