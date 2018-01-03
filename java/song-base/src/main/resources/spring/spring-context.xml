@@ -73,10 +73,10 @@
     <!-- 阿里 druid 数据库连接池 -->
     <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close" >
         &lt;!&ndash; 数据库基本信息配置 &ndash;&gt;
-        <property name="url" value="${jdbc.url}" />
-        <property name="username" value="${jdbc.username}" />
-        <property name="password" value="${jdbc.password}" />
-        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.mysql.url}" />
+        <property name="username" value="${jdbc.mysql.username}" />
+        <property name="password" value="${jdbc.mysql.password}" />
+        <property name="driverClassName" value="${jdbc.mysql.driver}" />
         <property name="filters" value="${filters}" />
         &lt;!&ndash; 最大并发连接数 &ndash;&gt;
         <property name="maxActive" value="${maxActive}" />
