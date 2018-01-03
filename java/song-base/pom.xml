@@ -229,7 +229,7 @@
   </dependencies>
 
   <build>
-    <finalName>bingo-base-dev</finalName>
+    <finalName>song-base</finalName>
     <resources>
       <resource>
           <directory>src/main/java</directory>
