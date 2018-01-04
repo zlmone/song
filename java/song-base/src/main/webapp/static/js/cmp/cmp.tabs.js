@@ -3,11 +3,11 @@
  */
 (function (cmp, $) {
     cmp.tabs = cmp.create({
-        init:function () {
-             this.el.tabs(this.options);
+        init: function () {
+            this.el.tabs(this.options);
         },
-        select:function (param) {
-            this.el.tabs("select",param);
+        select: function (param) {
+            this.el.tabs("select", param);
         },
         openTabs: function (options) {
             var title = options.title;
@@ -19,11 +19,11 @@
                 this.el.tabs('add', {
                     title: title,
                     content: cmp.template.iframe(options.url),
-                    closable:options.closable || true,
+                    closable: options.closable || true,
                     icon: options.icon
                 });
             }
         }
     });
-})(window.cmp,window.jQuery);
+})(window.cmp, window.jQuery);
 

@@ -1,39 +1,181 @@
 ﻿/*表格开始*/
- .song-grid-wrap{ border:0px solid #99BBE8;  position:relative; }
-.song-grid-separator{ width:1px; background:red; position:absolute; top:0px; left:0px; display:none;}
-.song-grid-header,.song-grid-body{border-width: 0 1px 0px 1px; border-style:solid; border-color:#99BBE8;}
-.song-grid-header{background:#fafafa url(../images/grid/easyui-head.gif) repeat-x left bottom;
-overflow:hidden;  position:relative;border-top-width:1px;border-bottom:1px solid #ccc; cursor:default;}
-.song-grid-headerBox{ left:0px; top:0px; position:relative; }
-.song-grid-column{overflow:hidden;border-right: 1px solid #ddd; }
-.song-grid-multicolumn{ border-bottom:1px solid #ddd; text-align:center; }
-.song-grid-column-inner{cursor:default;  overflow:hidden;white-space: nowrap; padding: 6px 6px;
-                         padding-right:0px; width:100%;}
-.song-grid-column-inner.sortasc{ background:url(../images/grid/sort_asc.gif) top center no-repeat;}
-.song-grid-column-inner.sortdesc{ background:url(../images/grid/sort_desc.gif) top center no-repeat;}
-.song-grid-body{ border-bottom-width:1px; background:#fff; overflow:auto; }
-.song-grid-bodyBox{ }
-.song-grid-emptyBox{  top:0px; left:0px; height:100%; width:100%;  padding:10px 0px;
-                     text-align:center; display:none; border-collapse:separate; border-spacing:0px; border:0px; }
-.song-grid-empty{padding:5px; padding-left:22px;  background:url(../images/applist_dot.png) left center no-repeat;}
-.song-grid-table{ table-layout:fixed; border-collapse: separate; width:100%; border:0px; border-spacing:0px;}
-.song-grid-row{cursor: default;}
-.song-grid-cell{background-color: white; border-color: #EDEDED;  padding:0px; margin:0px;
-border-style: solid;border-width: 1px 0;border-top-color: #FAFAFA;border-right-style:solid; border-right-color: #ddd;
- border-right-width:1px; vertical-align:middle;}
-.song-grid-row-even .song-grid-cell{ background:#fafafa; }
-.song-grid-row-hover .song-grid-cell{ background:#EBF7FF; border-color:#C6E5F8;}
-.song-grid-row-active .song-grid-cell{border-color:#91CDF2;
-                                        background-color:#D7EFFF; border-style:dotted;border-right:1px solid #ddd;}
-.song-grid-cell-inner{overflow: hidden;padding:3px 6px;white-space: nowrap;  }
-.song-grid-cell-inner.cellModify{ background:url(../images/grid/editor.gif) left top no-repeat;}
-.song-grid-showDetails{ background:url(../images/grid/row-expand-sprite.gif) no-repeat; display:inline-block;*zoom:1;*display:inline;
-                        width:10px; height:16px; cursor:pointer;}
-.song-grid-detailsshow{ background-position:-25px center;}
-.song-grid-detailshide{background-position:left center;}
-.song-grid-detailsloading{  margin:4px auto; background:url(../images/loading.gif) center center no-repeat; height:36px; max-width:36px;}
+.song-grid-wrap {
+    border: 0px solid #99BBE8;
+    position: relative;
+}
 
-.song-grid-cmd{   }
-.song-grid-cmdline{ margin:0px 3px;}
-.song-grid-cmd:hover{ text-decoration:underline; color:Red; }
+.song-grid-separator {
+    width: 1px;
+    background: red;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+.song-grid-header, .song-grid-body {
+    border-width: 0 1px 0px 1px;
+    border-style: solid;
+    border-color: #99BBE8;
+}
+
+.song-grid-header {
+    background: #fafafa url(../images/grid/easyui-head.gif) repeat-x left bottom;
+    overflow: hidden;
+    position: relative;
+    border-top-width: 1px;
+    border-bottom: 1px solid #ccc;
+    cursor: default;
+}
+
+.song-grid-headerBox {
+    left: 0px;
+    top: 0px;
+    position: relative;
+}
+
+.song-grid-column {
+    overflow: hidden;
+    border-right: 1px solid #ddd;
+}
+
+.song-grid-multicolumn {
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.song-grid-column-inner {
+    cursor: default;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 6px 6px;
+    padding-right: 0px;
+    width: 100%;
+}
+
+.song-grid-column-inner.sortasc {
+    background: url(../images/grid/sort_asc.gif) top center no-repeat;
+}
+
+.song-grid-column-inner.sortdesc {
+    background: url(../images/grid/sort_desc.gif) top center no-repeat;
+}
+
+.song-grid-body {
+    border-bottom-width: 1px;
+    background: #fff;
+    overflow: auto;
+}
+
+.song-grid-bodyBox {
+}
+
+.song-grid-emptyBox {
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    padding: 10px 0px;
+    text-align: center;
+    display: none;
+    border-collapse: separate;
+    border-spacing: 0px;
+    border: 0px;
+}
+
+.song-grid-empty {
+    padding: 5px;
+    padding-left: 22px;
+    background: url(../images/applist_dot.png) left center no-repeat;
+}
+
+.song-grid-table {
+    table-layout: fixed;
+    border-collapse: separate;
+    width: 100%;
+    border: 0px;
+    border-spacing: 0px;
+}
+
+.song-grid-row {
+    cursor: default;
+}
+
+.song-grid-cell {
+    background-color: white;
+    border-color: #EDEDED;
+    padding: 0px;
+    margin: 0px;
+    border-style: solid;
+    border-width: 1px 0;
+    border-top-color: #FAFAFA;
+    border-right-style: solid;
+    border-right-color: #ddd;
+    border-right-width: 1px;
+    vertical-align: middle;
+}
+
+.song-grid-row-even .song-grid-cell {
+    background: #fafafa;
+}
+
+.song-grid-row-hover .song-grid-cell {
+    background: #EBF7FF;
+    border-color: #C6E5F8;
+}
+
+.song-grid-row-active .song-grid-cell {
+    border-color: #91CDF2;
+    background-color: #D7EFFF;
+    border-style: dotted;
+    border-right: 1px solid #ddd;
+}
+
+.song-grid-cell-inner {
+    overflow: hidden;
+    padding: 3px 6px;
+    white-space: nowrap;
+}
+
+.song-grid-cell-inner.cellModify {
+    background: url(../images/grid/editor.gif) left top no-repeat;
+}
+
+.song-grid-showDetails {
+    background: url(../images/grid/row-expand-sprite.gif) no-repeat;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: 10px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.song-grid-detailsshow {
+    background-position: -25px center;
+}
+
+.song-grid-detailshide {
+    background-position: left center;
+}
+
+.song-grid-detailsloading {
+    margin: 4px auto;
+    background: url(../images/loading.gif) center center no-repeat;
+    height: 36px;
+    max-width: 36px;
+}
+
+.song-grid-cmd {
+}
+
+.song-grid-cmdline {
+    margin: 0px 3px;
+}
+
+.song-grid-cmd:hover {
+    text-decoration: underline;
+    color: Red;
+}
+
 /*表格结束*/

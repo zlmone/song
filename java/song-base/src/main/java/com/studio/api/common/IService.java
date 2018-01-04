@@ -1,1 +1,0 @@
-package com.studio.api.common;/** * description: * author:          song * createDate:      2018/1/3 */public interface IService {}

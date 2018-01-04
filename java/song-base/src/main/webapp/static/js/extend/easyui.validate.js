@@ -79,7 +79,7 @@
     },
     biggerOrEqualZero: {
         validator: function (value, param) {
-                return !isNaN(value)&&value >= 0;
+            return !isNaN(value) && value >= 0;
         },
         message: '请输入大于或等于0的数字'
     },

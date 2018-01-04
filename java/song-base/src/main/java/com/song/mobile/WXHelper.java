@@ -2,7 +2,7 @@ package com.song.mobile;
 
 public class WXHelper {
     /*//开发APPID
-	public final static String AppId ="wx795839736c0c3536";
+    public final static String AppId ="wx795839736c0c3536";
 	//开发密钥
 	public final static String AppSecret   ="c06024ae22168eace90b6f9421c6e996";
 	//auth_url

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
     http://www.springframework.org/schema/aop 
@@ -16,6 +16,7 @@
     <!-- 自动扫描dao和service包(自动注入) -->
     <context:component-scan base-package="com.studio.api.dao.*"/>
     <context:component-scan base-package="com.studio.api.service.*"/>
+    <context:component-scan base-package="com.studio.api.base.*"/>
 
     <!-- 启动AOP支持 -->
     <aop:aspectj-autoproxy/>
@@ -146,8 +147,8 @@
     </bean>
 
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.studio.api.dao"/>
-        <property name="markerInterface" value="com.studio.api.common.IDao"/> <!-- tk.mybatis.mapper.common.Mapper -->
+        <property name="basePackage" value="com.studio.api"/>
+        <property name="markerInterface" value="com.studio.api.base.IDao"/> <!-- tk.mybatis.mapper.common.Mapper -->
     </bean>
 
     <!-- 配置事务管理器 -->

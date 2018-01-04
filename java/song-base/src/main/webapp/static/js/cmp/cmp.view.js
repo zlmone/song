@@ -12,9 +12,9 @@
                 if (isie) {
                     //因里面有布局操作，ie下不延迟有高度差异。页面控件渲染完毕，则隐藏页面loading
                     //setTimeout(function () {
-                        that.ready.call(that);
-                        window.top.cmp.loading.hide();
-                   // }, 0);
+                    that.ready.call(that);
+                    window.top.cmp.loading.hide();
+                    // }, 0);
                 } else {
                     that.ready.call(that);
                     window.top.cmp.loading.hide();
@@ -45,15 +45,15 @@
         routeUrl: function (route, params) {
             return this.url(this.route[route], params);
         },
-        idRouteUrl:function (route,params_id) {
-            return this.routeUrl(route,cmp.param.id(params_id));
+        idRouteUrl: function (route, params_id) {
+            return this.routeUrl(route, cmp.param.id(params_id));
         },
         setConfig: function (opt) {
             this.setObject("config", opt);
         },
-        getConfig:function (key) {
+        getConfig: function (key) {
             return this.config[key];
-        } 
+        }
     });
     $.extend(cmp.view, {
         root: ""

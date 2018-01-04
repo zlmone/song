@@ -10,12 +10,12 @@ import java.util.HashMap;
 
 public class TagBuilder {
     private HashMap<String, String> attrs = new HashMap<String, String>();
+    private String tagName;
+    private String content;
 
     public TagBuilder(String tagName) {
         this.tagName = tagName;
     }
-
-    private String tagName;
 
     public String getContent() {
         return content;
@@ -24,8 +24,6 @@ public class TagBuilder {
     public void setContent(String content) {
         this.content = content;
     }
-
-    private String content;
 
     public TagBuilder attr(String key, Object value) {
         attrs.put(key, StringHelper.wrap(value.toString(), "\""));

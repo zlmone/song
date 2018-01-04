@@ -1,6 +1,6 @@
 package com.studio.api.service.impl;
 
-import com.studio.api.common.BaseService;
+import com.studio.api.base.BaseService;
 import com.studio.api.dao.ITableDao;
 import com.studio.api.service.ITableService;
 import com.studio.model.Table;
@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class TableService extends BaseService implements ITableService {
+public class TableService extends BaseService<Table> implements ITableService {
 
     @Resource
     private ITableDao tableDao;

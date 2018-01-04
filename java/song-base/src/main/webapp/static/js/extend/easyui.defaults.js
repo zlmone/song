@@ -2,16 +2,16 @@
  * Created by song on 2017/9/4.
  */
 //默认关闭easyui的自动解析，在ie下太耗性能
-$.parser.auto=false;
+$.parser.auto = false;
 //======================================dialog==============================================
 $.extend($.fn.dialog.defaults, {
     modal: true,
     closed: true
 });
 //======================================form==============================================
-$.extend($.fn.form.defaults,{
-    iframe:false,
-    ajax:true
+$.extend($.fn.form.defaults, {
+    iframe: false,
+    ajax: true
 });
 //======================================grid==============================================
 $.extend($.fn.datagrid.defaults, {
@@ -28,12 +28,12 @@ $.extend($.fn.datagrid.defaults, {
 $.extend($.fn.tabs.defaults, {
     fit: true
 });
-$.extend($.fn.tree.defaults,{
-    lines:true
+$.extend($.fn.tree.defaults, {
+    lines: true
 })
 //======================================panel==============================================
 //iframe回收内存
-$.fn.panel.defaults.onBeforeDestroy = function() {
+$.fn.panel.defaults.onBeforeDestroy = function () {
     var frames = $(this).find("iframe");
     song.iframe.destroy(frames);
 };

@@ -3,8 +3,8 @@ window.song = {
     debug: true
 }
 //===================================base===================================================
-$.extend(song,{
-    basePath:song.debug ? "http://wx.10085.cn/xizang/lucky/" : "http://wx.10086.cn/xizang/lucky/",
+$.extend(song, {
+    basePath: song.debug ? "http://wx.10085.cn/xizang/lucky/" : "http://wx.10086.cn/xizang/lucky/",
     msg: "服务器繁忙，请稍后重试",
     //编码
     encode: function (param) {

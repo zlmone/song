@@ -1,14 +1,14 @@
 package com.song.mobile;
 
-public class CORSFilter{
-		//implements Filter {
+public class CORSFilter {
+    //implements Filter {
 
-	public void destroy() {
+    public void destroy() {
 
-	}
+    }
 
 	/*public void doFilter(ServletRequest request, ServletResponse servletResponse,
-			FilterChain chain) throws IOException, ServletException {
+            FilterChain chain) throws IOException, ServletException {
 		 HttpServletResponse response = (HttpServletResponse) servletResponse;
          response.setHeader("Access-Control-Allow-Origin", "*");
          response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");

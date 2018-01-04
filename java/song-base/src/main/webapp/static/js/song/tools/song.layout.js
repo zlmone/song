@@ -1,54 +1,60 @@
-﻿; (function (j) {
-    var count=0;
+﻿;(function (j) {
+    var count = 0;
     //表单column布局
     j.fn.formPanel = function (opts) {
-        var panel = this, defaultLableWidth = 80,time=0;
+        var panel = this, defaultLableWidth = 80, time = 0;
         panel.append("<div class='clear-hide'>");
- 
-            opts = $.extend({formWidth:panel.innerWidth(), columns: 2, labelWidth: defaultLableWidth, minWidth: 20 }, opts || {});
-       
-            var itemWidth = parseInt(opts.formWidth / opts.columns - opts.labelWidth);
-            if (itemWidth < opts.minWidth) {
-                 return;
+
+        opts = $.extend({
+            formWidth: panel.innerWidth(),
+            columns: 2,
+            labelWidth: defaultLableWidth,
+            minWidth: 20
+        }, opts || {});
+
+        var itemWidth = parseInt(opts.formWidth / opts.columns - opts.labelWidth);
+        if (itemWidth < opts.minWidth) {
+            return;
+        }
+        if (opts.labelWidth != defaultLableWidth) {
+            panel.find("div.form-label").width(opts.labelWidth);
+        }
+        var items = panel.find(".form-control"), len = items.length, colIndex = 0;
+        for (var i = 0; i < len; i++) {
+            var item = $(items[i]), isSpace = false, isFull = (item.attr("fullColumn") == "true"),
+                isLast = (i == len - 1), w = itemWidth;
+            var cls = item.attr("class");
+            colIndex++;
+            //填充剩余列的宽度计算
+            if (isFull && opts.columns > 1) {
+                isSpace = true;
+                //剩余的列
+                var otherCount = opts.columns - colIndex;
+                w = (otherCount * itemWidth) + (otherCount * opts.labelWidth) + w;
+                colIndex = 0;
             }
-            if (opts.labelWidth != defaultLableWidth) {
-                panel.find("div.form-label").width(opts.labelWidth);
+            if (cls.indexOf("combox") > -1 || cls.indexOf("form-check") > -1) {
+                item.width(w);
+            } else {
+                item.width(w - 2);
+                item.bind("focus", function () {
+                    $(this).addClass("input-focus");
+                }).bind("blur", function () {
+                    $(this).removeClass("input-focus");
+                });
             }
-            var items = panel.find(".form-control"), len = items.length, colIndex = 0;
-            for (var i = 0; i < len; i++) {
-                var item = $(items[i]), isSpace = false, isFull = (item.attr("fullColumn") == "true"), isLast = (i == len - 1), w = itemWidth;
-                var cls = item.attr("class");
-                colIndex++;
-                //填充剩余列的宽度计算
-                if (isFull && opts.columns > 1) {
-                    isSpace = true;
-                    //剩余的列
-                    var otherCount = opts.columns - colIndex;
-                    w = (otherCount * itemWidth) + (otherCount * opts.labelWidth) + w;
-                    colIndex = 0;
-                }
-                if (cls.indexOf("combox") > -1 || cls.indexOf("form-check") > -1) {
-                    item.width(w);
-                } else {
-                    item.width(w - 2);
-                    item.bind("focus",function(){
-                        $(this).addClass("input-focus");
-                    }).bind("blur",function(){
-                        $(this).removeClass("input-focus");
-                    });
-                }
-                if (item.hasClass("form-check")) {
-                    //让check和radio元素居中
-                    item.append("<span class='inline-block'></span>");
-                }
-                if (colIndex == opts.columns) {
-                    isSpace = true;
-                    colIndex = 0;
-                }
-                if (isSpace && !isLast) {
-                    item.after("<div class='clear-hide form-space'>");
-                }
+            if (item.hasClass("form-check")) {
+                //让check和radio元素居中
+                item.append("<span class='inline-block'></span>");
             }
+            if (colIndex == opts.columns) {
+                isSpace = true;
+                colIndex = 0;
+            }
+            if (isSpace && !isLast) {
+                item.after("<div class='clear-hide form-space'>");
+            }
+        }
 //        }
 //        function delay(){
 //			time && clearTimeout(time);
@@ -63,7 +69,7 @@
     }
     //hbox布局
     j.fn.hbox = function (opts) {
-        opts = j.extend({ align: "center"}, opts || {});
+        opts = j.extend({align: "center"}, opts || {});
         var items = this.children(), isCenter = (opts.align == "center"), w = 0;
         for (var i = 0; i < items.length; i++) {
             var item = items.eq(i);
@@ -84,45 +90,48 @@
         this.append("<div class='clear-hide'></div>");
     }
     //dockPanel布局
-    j.fn.dockPanel=function(opts){
-         var time=false;
-        var me=this;
+    j.fn.dockPanel = function (opts) {
+        var time = false;
+        var me = this;
 //         function layout(){
-            if(this.get(0).tagName.toLowerCase()=="body"){
-                document.getElementsByTagName("html")[0].className="viewport";
-                this.addClass("viewport");
-            }
-            opts=j.extend({width:me.innerWidth(),height:me.innerHeight()},opts || {});
-           
-            var regions=["top","bottom","left","right","center"];
-            var centerW=opts.width,centerH=opts.height,centerL=0,centerT=0;
-            for (var i = 0; i < regions.length; i++) {
-                var dir=regions[i];
-                var item=me.find(">div[dock="+dir+"]");
-                if(item.length>0){
-                    item.addClass("dock-item");
-                    var itemH=item.outerHeight(true);
-                    var itemW=item.outerWidth(true);
-                    if(dir=="top" || dir=="bottom"){
-                        var pos=dir=="top" ? {left:0,top:0} : {right:0,bottom:0}
-                        item.css(pos).width(opts.width-(itemW-item.width()));
-                        centerH-=itemH;
-                        if(dir=="top"){
-                            centerT=itemH;
-                        }
-                    }else if(dir=="left" || dir=="right"){
-                        var pos=dir=="left" ? {left:0,top:centerT} : {right:0,top:centerT}
-                        item.css(pos).height(centerH-(itemH-item.height()));
-                        centerW-=itemW;
-                        if(dir=="left"){
-                            centerL=itemW;
-                        }
-                    }else{
-                        item.css({left:centerL,top:centerT}).width(centerW-(itemW-item.width())).height(centerH-(itemH-item.height()));
+        if (this.get(0).tagName.toLowerCase() == "body") {
+            document.getElementsByTagName("html")[0].className = "viewport";
+            this.addClass("viewport");
+        }
+        opts = j.extend({width: me.innerWidth(), height: me.innerHeight()}, opts || {});
+
+        var regions = ["top", "bottom", "left", "right", "center"];
+        var centerW = opts.width, centerH = opts.height, centerL = 0, centerT = 0;
+        for (var i = 0; i < regions.length; i++) {
+            var dir = regions[i];
+            var item = me.find(">div[dock=" + dir + "]");
+            if (item.length > 0) {
+                item.addClass("dock-item");
+                var itemH = item.outerHeight(true);
+                var itemW = item.outerWidth(true);
+                if (dir == "top" || dir == "bottom") {
+                    var pos = dir == "top" ? {left: 0, top: 0} : {right: 0, bottom: 0}
+                    item.css(pos).width(opts.width - (itemW - item.width()));
+                    centerH -= itemH;
+                    if (dir == "top") {
+                        centerT = itemH;
                     }
+                } else if (dir == "left" || dir == "right") {
+                    var pos = dir == "left" ? {left: 0, top: centerT} : {right: 0, top: centerT}
+                    item.css(pos).height(centerH - (itemH - item.height()));
+                    centerW -= itemW;
+                    if (dir == "left") {
+                        centerL = itemW;
+                    }
+                } else {
+                    item.css({
+                        left: centerL,
+                        top: centerT
+                    }).width(centerW - (itemW - item.width())).height(centerH - (itemH - item.height()));
                 }
             }
-            
+        }
+
 //        }
 //        function delay(){
 //			time && clearTimeout(time);
@@ -151,16 +160,16 @@
 //            });
 //      //  },0);
 //    });
-    j(function(){
-        j("div.dock-panel").each(function(){
+    j(function () {
+        j("div.dock-panel").each(function () {
             j(this).dockPanel();
         });
     });
-    j(window).resize(function(){
-        setTimeout(function(){
-            j("div.dock-panel").each(function(){
+    j(window).resize(function () {
+        setTimeout(function () {
+            j("div.dock-panel").each(function () {
                 j(this).dockPanel();
             });
-        },song.resizeDelay);
+        }, song.resizeDelay);
     });
 })(window.jQuery);

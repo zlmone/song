@@ -11,12 +11,12 @@ import java.util.List;
  * Created by song on 2017/9/21.
  */
 public class HtmlBuilder extends TagBuilder {
+    private HashMap<String, String> styles = new HashMap<String, String>();
+    private List classNames = new ArrayList<String>();
+
     public HtmlBuilder(String tagName) {
         super(tagName);
     }
-
-    private HashMap<String, String> styles = new HashMap<String, String>();
-    private List classNames = new ArrayList<String>();
 
     public TagBuilder css(String key, String value) {
         styles.put(key, value);

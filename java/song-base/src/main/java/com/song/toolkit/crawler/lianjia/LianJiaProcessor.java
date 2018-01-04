@@ -23,6 +23,7 @@ import java.util.List;
 
 public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor {
     private Site site;
+    private List<LianJiaHouse> houses = new ArrayList<LianJiaHouse>();
 
     public LianJiaProcessor() {
         site = Site.me().setRetryTimes(5).setSleepTime(2000);
@@ -31,11 +32,34 @@ public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor 
         site.addHeader("Content-Type", "application/x-www-form-urlencoded");
     }
 
+    /**
+     * 测试以及运行
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        String domain = "https://cs.lianjia.com";
+        LianJiaProcessor processor = new LianJiaProcessor();
+        processor.setDomain(domain);
+        Spider spider = Spider.create(processor);
+        for (int i = 1; i <= 85; i++) {
+            String url = UrlHelper.combine(domain, "ershoufang/pg" + i + "/");
+            spider.addUrl(url);
+        }
+        spider.thread(1).run();
+
+        List<LianJiaHouse> houses = processor.getHouses();
+        String json = SerializerFactory.getJSONInstance().toString(houses);
+        try {
+            FileHelper.write(json, "D:\\cs2.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Site getSite() {
         return site;
     }
-
-    private List<LianJiaHouse> houses = new ArrayList<LianJiaHouse>();
 
     public List<LianJiaHouse> getHouses() {
         return houses;
@@ -137,30 +161,5 @@ public class LianJiaProcessor extends CrawlerProcessor implements PageProcessor 
             house.setFullYears(five.size() > 0 ? 2 : 5);
         }
         return house;
-    }
-
-    /**
-     * 测试以及运行
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        String domain = "https://cs.lianjia.com";
-        LianJiaProcessor processor = new LianJiaProcessor();
-        processor.setDomain(domain);
-        Spider spider = Spider.create(processor);
-        for (int i = 1; i <= 85; i++) {
-            String url = UrlHelper.combine(domain, "ershoufang/pg" + i + "/");
-            spider.addUrl(url);
-        }
-        spider.thread(1).run();
-
-        List<LianJiaHouse> houses = processor.getHouses();
-        String json = SerializerFactory.getJSONInstance().toString(houses);
-        try {
-            FileHelper.write(json, "D:\\cs2.json");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

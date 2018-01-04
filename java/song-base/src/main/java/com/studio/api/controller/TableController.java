@@ -1,6 +1,6 @@
 package com.studio.api.controller;
 
-import com.studio.api.common.BaseController;
+import com.studio.api.base.BaseController;
 import com.studio.api.service.ITableService;
 import com.studio.model.Table;
 import org.springframework.beans.factory.annotation.Autowired;

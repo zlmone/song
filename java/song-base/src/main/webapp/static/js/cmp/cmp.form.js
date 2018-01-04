@@ -20,9 +20,9 @@
                     return result;
                 },
                 success: function (result) {
-                    var json=result;
+                    var json = result;
                     if (typeof(result) == "string") {
-                       json = result.toJson();
+                        json = result.toJson();
                     }
                     var isSuccess = cmp.isSuccess(json);
                     if (isSuccess) {
@@ -61,11 +61,11 @@
         reset: function () {
             this.el.form("reset");
             //调用form.reset是不会清空hidden标记，需要手动清除
-            var hiddens=this.el.find("input.cmp-hidden");
+            var hiddens = this.el.find("input.cmp-hidden");
             hiddens.each(function (i) {
-                var h=hiddens.eq(i),
-                    isreset=h.attr("data-reset");
-                if(!isreset || isreset!="none"){
+                var h = hiddens.eq(i),
+                    isreset = h.attr("data-reset");
+                if (!isreset || isreset != "none") {
                     h.val('');
                 }
             });
@@ -74,7 +74,7 @@
         valid: function () {
             return this.el.form("validate");
         },
-        getData:function () {
+        getData: function () {
             var data = this.el.serializeArray(),
                 params = this.options.queryParams;
             if (data && data.length > 0) {
@@ -91,8 +91,8 @@
                 result = this.options.onSubmit(this.options.queryParams);
             }
             if (result !== false) {
-                var params=this.getData();
-                cmp.postAjax(this.options.url, params,function (res) {
+                var params = this.getData();
+                cmp.postAjax(this.options.url, params, function (res) {
                     that.options.success(res);
                 });
             }

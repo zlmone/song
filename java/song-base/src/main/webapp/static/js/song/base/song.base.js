@@ -7,7 +7,8 @@
  dateUpdated:            2012-07-10
  */
 ;(function ($) {
-    var noop = function () {}, idflg = 0, index = 168888;
+    var noop = function () {
+    }, idflg = 0, index = 168888;
     window.song = {
         version: "V2.0.0",
         split: /[^, ]+/g,
@@ -223,16 +224,16 @@
         loaded: function (el, callback) {
             el = song.dom(el);
             document.addEventListener ? j(el).bind("load", function () {
-                    j(this).unbind("load");
+                j(this).unbind("load");
+                callback.call(this);
+                el = null;
+            }) : el.onreadystatechange = function () {
+                if (/loaded|complete/.test(this.readyState)) {
+                    el.onreadystatechange = null;
                     callback.call(this);
                     el = null;
-                }) : el.onreadystatechange = function () {
-                    if (/loaded|complete/.test(this.readyState)) {
-                        el.onreadystatechange = null;
-                        callback.call(this);
-                        el = null;
-                    }
                 }
+            }
         },
         slice: function (args, start) {
             return Array.prototype.slice.call(args).slice(start || 0);

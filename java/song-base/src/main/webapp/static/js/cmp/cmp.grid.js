@@ -26,18 +26,18 @@
             this.parseFrozenColumns();
             this.el.datagrid(this.options);
         },
-        parseFrozenColumns:function () {
-            var frozens=this.options.frozenColumns;
-            if(!frozens || frozens.length<=0){
-                this.options.frozenColumns=[[]];
+        parseFrozenColumns: function () {
+            var frozens = this.options.frozenColumns;
+            if (!frozens || frozens.length <= 0) {
+                this.options.frozenColumns = [[]];
             }
-            var operate=this.options.operateColumn,
-                datakey=this.options.datakey;
-            if(operate){
-                operate.field=datakey;
+            var operate = this.options.operateColumn,
+                datakey = this.options.datakey;
+            if (operate) {
+                operate.field = datakey;
                 this.options.frozenColumns[0].unshift(cmp.grid.column.operate(operate));
             }
-            if(this.options.checkColumn!==false){
+            if (this.options.checkColumn !== false) {
                 this.options.frozenColumns[0].unshift(cmp.grid.column.check());
             }
         },
@@ -57,30 +57,30 @@
                 this.options.toolbar = tbConfig;
             }
         },
-        getChecked:function (field) {
-            var checked= this.el.datagrid("getChecked") || [];
-            if(field){
-                var values=[];
-                for(var i=0;i<checked.length;i++){
+        getChecked: function (field) {
+            var checked = this.el.datagrid("getChecked") || [];
+            if (field) {
+                var values = [];
+                for (var i = 0; i < checked.length; i++) {
                     values.push(checked[i][field]);
                 }
                 return values;
             }
             return checked;
         },
-        getSelected:function () {
+        getSelected: function () {
             return this.el.datagrid("getSelected");
         },
-        load:function (params) {
-            this.el.datagrid("load",params);
+        load: function (params) {
+            this.el.datagrid("load", params);
         },
-        reload:function (params) {
-            this.el.datagrid("reload",params);
+        reload: function (params) {
+            this.el.datagrid("reload", params);
         },
-        removeRow:function (url,param_id,success) {
+        removeRow: function (url, param_id, success) {
             //删除行
-            var that=this;
-            cmp.confirm(cmp.text.confirmRemoveRecord,function () {
+            var that = this;
+            cmp.confirm(cmp.text.confirmRemoveRecord, function () {
                 cmp.postAjax(url, cmp.param.id(param_id), function (result) {
                     success && success(result);
                     if (cmp.isSuccess(result)) {
@@ -93,19 +93,19 @@
                 });
             });
         },
-        validRecord:function (record) {
+        validRecord: function (record) {
             //验证是否选择了记录
-            if(record && record.length>0){
+            if (record && record.length > 0) {
                 return true;
             }
             cmp.msg(cmp.text.nullRecord);
             return false;
         },
-        removeChecked:function (url,field,success) {
+        removeChecked: function (url, field, success) {
             //删除复选框选中的记录
-            var ids=this.getChecked(field || this.options.datakey);
-            if(this.validRecord(ids)){
-                this.removeRow(url,ids.join(','),success);
+            var ids = this.getChecked(field || this.options.datakey);
+            if (this.validRecord(ids)) {
+                this.removeRow(url, ids.join(','), success);
             }
         }
     });
@@ -113,7 +113,7 @@
         column: {
             operate: function (options) {
                 return {
-                    field:(options.field || "_operate_"), align: "center",
+                    field: (options.field || "_operate_"), align: "center",
                     title: (options.title || cmp.text.operate), width: (options.width || "80px"),
                     formatter: cmp.grid.render.operate({
                         text: options.text || cmp.text.operate,
@@ -150,11 +150,11 @@
                         for (var i = 0; i < opt.menu.length; i++) {
                             var m = opt.menu[i];
                             //采用闭包传参，避免循环总是赋值最后一个
-                            (function (memuitem,fieldValue, rowData, itemname) {
+                            (function (memuitem, fieldValue, rowData, itemname) {
                                 $("#" + m[itemname]).click(function () {
-                                    memuitem.onClick && memuitem.onClick(fieldValue,rowData);
+                                    memuitem.onClick && memuitem.onClick(fieldValue, rowData);
                                 })
-                            })(m,val, row, menuitemname)
+                            })(m, val, row, menuitemname)
                         }
                     }
                     return tpl;
@@ -173,7 +173,7 @@
             },
             truncate: function (len) {
                 return function (val, row) {
-                	 
+
                     return "<span title='{0}'>{1}</span>".format(val, val.truncate(len));
                 }
             },
@@ -190,17 +190,15 @@
                     return '<a href="{0}" class="grid-cmd" target="{1}">{2}</a>'.format(val, target, val);
                 }
             },
-            status:function(value,row){
-            	if(value="000"){
-            		return "有效";
-            	}else{
-            		return "无效";
-            	}
+            status: function (value, row) {
+                if (value = "000") {
+                    return "有效";
+                } else {
+                    return "无效";
+                }
             }
         },
-        action: {
-
-        }
+        action: {}
     });
 })(window.cmp, window.jQuery);
 

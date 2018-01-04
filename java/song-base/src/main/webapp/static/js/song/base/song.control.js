@@ -1,18 +1,23 @@
 /**
  * Created by song on 2017/9/11.
  */
-;(function (song,$) {
-    $.extend(song,{
+;(function (song, $) {
+    $.extend(song, {
         mgr: {},
         addCmp: function (cmp) {
-            if (!song.mgr[cmp.id]) { song.mgr[cmp.id] = cmp; };
+            if (!song.mgr[cmp.id]) {
+                song.mgr[cmp.id] = cmp;
+            }
+            ;
         },
         getCmp: function (id) {
             return song.mgr[id] || null;
         },
         deleteCmp: function (id) {
             var cmp = song.mgr[id];
-            if (cmp) { delete song.mgr[id]; }
+            if (cmp) {
+                delete song.mgr[id];
+            }
         },
         hideCmp: function (type) {
             for (var i in song.mgr) {
@@ -49,9 +54,9 @@
             $.extend(this, defaults, options);
         },
         fire: function (eventName) {
-            if(this[eventName]){
-                var args=song.slice(arguments,1);
-                this[eventName].apply(this,args)
+            if (this[eventName]) {
+                var args = song.slice(arguments, 1);
+                this[eventName].apply(this, args)
             }
         },
         destroy: function () {
@@ -59,7 +64,7 @@
     });
     //执行销毁
     $(window).bind("unload", song.destroy);
-    $.extend(song,{
+    $.extend(song, {
         getSpace: function (el, items) {
             var len = items.length, num = 0;
             for (var i = 0; i < len; i++) {
@@ -105,4 +110,4 @@
             return num;
         }
     });
-})(window.song,window.jQuery)
+})(window.song, window.jQuery)

@@ -1,0 +1,1 @@
+package com.studio.api.base;import com.studio.model.Project;import java.util.List;/** * description: * author:          song * createDate:      2018/1/3 */public interface IBaseService<T> {  /*  T getByPrimaryKey(Object primaryKey);    T selectOne(T t);    List<T> select(T t);    int selectCount(T t);*/    List<T> selectAll();}
