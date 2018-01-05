@@ -16,7 +16,6 @@
     <!-- 自动扫描dao和service包(自动注入) -->
     <context:component-scan base-package="com.studio.api.dao.*"/>
     <context:component-scan base-package="com.studio.api.service.*"/>
-    <context:component-scan base-package="com.studio.api.base.*"/>
 
     <!-- 启动AOP支持 -->
     <aop:aspectj-autoproxy/>
@@ -148,7 +147,8 @@
 
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.studio.api"/>
-        <property name="markerInterface" value="com.studio.api.base.IDao"/> <!-- tk.mybatis.mapper.common.Mapper -->
+        <property name="markerInterface" value="com.studio.api.base.IBaseDao"/>
+        <!-- tk.mybatis.mapper.common.Mapper -->
     </bean>
 
     <!-- 配置事务管理器 -->

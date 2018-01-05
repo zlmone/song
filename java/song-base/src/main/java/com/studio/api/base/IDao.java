@@ -1,1 +1,1 @@
-package com.studio.api.base;/** * description: * author:          song * createDate:      2018/1/4 */public interface IDao {}
+package com.studio.api.base;/** * description: * author:          song * createDate:      2018/1/4 */public interface IDao<T> {}
