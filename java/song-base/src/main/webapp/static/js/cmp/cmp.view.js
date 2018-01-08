@@ -13,11 +13,11 @@
                     //因里面有布局操作，ie下不延迟有高度差异。页面控件渲染完毕，则隐藏页面loading
                     //setTimeout(function () {
                     that.ready.call(that);
-                    window.top.cmp.loading.hide();
+                    //hideLoading();
                     // }, 0);
                 } else {
                     that.ready.call(that);
-                    window.top.cmp.loading.hide();
+                    //hideLoading();
                 }
             });
         },
@@ -55,6 +55,11 @@
             return this.config[key];
         }
     });
+    function hideLoading() {
+        if (window.top && window.top.cmp.loading) {
+            window.top.cmp.loading.hide();
+        }
+    }
     $.extend(cmp.view, {
         root: ""
     });
