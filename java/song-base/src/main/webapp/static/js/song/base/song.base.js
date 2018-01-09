@@ -223,8 +223,8 @@
         },
         loaded: function (el, callback) {
             el = song.dom(el);
-            document.addEventListener ? j(el).bind("load", function () {
-                j(this).unbind("load");
+            document.addEventListener ? $(el).bind("load", function () {
+                $(this).unbind("load");
                 callback.call(this);
                 el = null;
             }) : el.onreadystatechange = function () {
@@ -294,7 +294,7 @@
             return value;
         },
         setRegion: function (el, options) {
-            el = j(el);
+            el = $(el);
             options = $.extend({
                 left: "50%",
                 top: "50%"

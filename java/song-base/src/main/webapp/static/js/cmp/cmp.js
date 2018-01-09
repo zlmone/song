@@ -115,9 +115,13 @@
                     title: title || cmp.text.title,
                     msg: msg || cmp.text.loading
                 });
+                window.showLoading=true;
             },
             hide: function () {
-                $.messager.progress("close");
+                if (window.showLoading){
+                    $.messager.progress("close");
+                    window.showLoading=false;
+                }
             }
         },
         getActionMapper: function (attrName, actionValue, attrValue) {
