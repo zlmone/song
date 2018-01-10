@@ -42,11 +42,11 @@
             this.setObject("route", opt);
             return this;
         },
-        routeUrl: function (route, params) {
-            return this.url(this.route[route], params);
+        routeUrl: function (routeName, params) {
+            return this.url(this["route"][routeName], params);
         },
-        idRouteUrl: function (route, params_id) {
-            return this.routeUrl(route, cmp.param.id(params_id));
+        idRouteUrl: function (routeName, params_id) {
+            return this.routeUrl(routeName, cmp.param.id(params_id));
         },
         setConfig: function (opt) {
             this.setObject("config", opt);
