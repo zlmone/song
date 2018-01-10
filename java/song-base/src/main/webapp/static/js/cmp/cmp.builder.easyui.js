@@ -34,7 +34,7 @@
     $.extend(cmp.builder, {
         parseDataOptions: function (options) {
             var opts = [];
-            $.each(options, function (key, value) {
+            $.each(options || {}, function (key, value) {
                 if (value != undefined) {
                     var type = $.type(value);
                     if (type === "string") {
@@ -253,11 +253,13 @@
     });
     //输出控件
     $.extend(cmp.builder, {
-        panel: function (id) {
-            var content = song.slice(arguments, 1);
-            if (content && content.length > 0) {
-                cmp.builder.write(cmp.builder.getLayoutPanel(null, content.join('')));
-            }
+        panel: function (id,options,content) {
+            var opts = {};
+            $.extend(true, opts, {
+                isLayout: true,
+                layout: {region: "center", border: 0}
+            }, options);
+            cmp.builder.write(cmp.builder.isLayoutPanel(opts.isLayout, opts.layout, content));
             return this;
         },
         gridPanel: function (id, options) {

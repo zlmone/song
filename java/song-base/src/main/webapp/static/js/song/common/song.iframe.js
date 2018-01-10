@@ -5,12 +5,18 @@
 (function (song, $) {
     var frameName = 'SONG_COMMON_IFRAME';
     song.iframe = {
+        window: function (iframe) {
+            return iframe.contentWindow || iframe.window;
+        },
+        document: function (iframe) {
+            return iframe.contentDocument || song.iframe.window(iframe).document;
+        },
         //自适应高度和宽度
         auto: function (id, isWidth) {
             var frame = song.dom(id);
             frame.height = "10px";
             song.loaded(id, function () {
-                var pos = song.position.maxClient(this.contentWindow);
+                var pos = song.position.maxClient(song.iframe.document(frame));
                 this.height = pos.height + "px";
                 isWidth && (this.width = pos.width + "px")
             });
@@ -35,7 +41,7 @@
             }
         },
         getContent: function (iframe) {
-            var doc = iframe.contentDocument || iframe.contentWindow.document,
+            var doc = song.iframe.document(iframe),
                 html = doc.body.innerHTML;
             //纯文本响应可能会被包裹在<pre>标签
             if (html && html.match(/^<pre/i)) {
@@ -48,10 +54,14 @@
                 for (var i = 0; i < frames.length; i++) {
                     var frame = frames[i];
                     frame.src = "about:blank";
+                    var win = song.iframe.window(frame),
+                        doc = win.document;
                     try {
-                        frame.contentWindow.document.write('');
-                        frame.contentWindow.document.clear();
-                        frame.contentWindow.close();
+                        doc.write('');
+                        doc.clear();
+                        win.close();
+                        doc = null;
+                        win = null;
                     } catch (e) {
                     }
                 }

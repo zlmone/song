@@ -19,7 +19,7 @@
                 this.el.tabs('add', {
                     title: title,
                     content: cmp.template.iframe(options.url),
-                    closable: options.closable || true,
+                    closable: options.closable,
                     icon: options.icon
                 });
             }

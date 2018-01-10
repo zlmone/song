@@ -83,8 +83,9 @@
             el.layout(defaults);
         },
         template: {
-            iframe: function (src) {
-                var tpl = "<iframe style='width:100%;height:100%;border:0px;' frameborder='0' scrolling='auto' src='" + src + "'></iframe>";
+            iframe: function (src,id) {
+                var idAttr = id ? (" id='" + id + "'") : "";
+                var tpl = "<iframe"+idAttr+" style='width:100%;height:100%;border:0px;' frameborder='0' scrolling='auto' src='" + src + "'></iframe>";
                 return tpl;
             },
             link: function (text, href) {
@@ -111,11 +112,11 @@
         },
         loading: {
             show: function (msg, title) {
+                window.showLoading=true;
                 $.messager.progress({
                     title: title || cmp.text.title,
                     msg: msg || cmp.text.loading
                 });
-                window.showLoading=true;
             },
             hide: function () {
                 if (window.showLoading){
