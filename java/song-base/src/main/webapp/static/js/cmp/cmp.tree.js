@@ -111,7 +111,7 @@
                 node = this.getRoot();
             }
             if (this.validNode(node)) {
-                this.el.tree("reload");
+                this.el.tree("reload",node.target);
             }
         },
         select: function (node) {

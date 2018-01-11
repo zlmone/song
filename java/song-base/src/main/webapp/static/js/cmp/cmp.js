@@ -40,9 +40,11 @@
         create: function (options) {
             var fn = function () {
                 var arg = arguments;
+                var opt=arg[1];
+                this.isOptions=opt ? true : false;
                 $.extend(this, {
                     el: $(arg[0]),
-                    options: arg[1] || {}
+                    options:opt  || {}
                 });
                 this.cloneOptions = function () {
                     var opts = {};

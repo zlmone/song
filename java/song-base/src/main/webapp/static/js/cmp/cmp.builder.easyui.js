@@ -7,7 +7,7 @@
         controlType: {
             native: ["label", "checkbox", "radio", "text"],
             input: ["text", "radio", "checkbox", "button", "file"],
-            query: ["textbox", "combobox", "datebox", "datetimebox"],
+            query: ["textbox", "combobox", "datebox", "datetimebox","text"],
             form: ["validatebox", "textbox", "passwordbox", "combogrid", "combotree", "combotreegrid",
                 "tagbox", "numberbox", "combobox", "datebox", "datetimebox", "filebox",
                 "label", "text", "checkbox", "radio"]

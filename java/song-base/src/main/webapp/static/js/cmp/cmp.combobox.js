@@ -4,7 +4,9 @@
 (function (cmp, $) {
     cmp.combobox = cmp.create({
         init: function () {
-            this.el.combobox(this.options);
+            if (this.isOptions) {
+                this.el.combobox(this.options);
+            }
         },
         loadData: function (data) {
             this.el.combobox("loadData", data);

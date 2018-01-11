@@ -45,6 +45,9 @@
                 });
             }
         },
+        get:function (field) {
+            return $("#query-"+field);
+        },
         getValues: function (isEncode) {
             var values = {};
             this.eachControl(function (control, ctype, field) {
