@@ -61,6 +61,6 @@
         }
     }
     $.extend(cmp.view, {
-        root: ""
+        root: "/"
     });
 })(window.cmp, window.jQuery, window.song)

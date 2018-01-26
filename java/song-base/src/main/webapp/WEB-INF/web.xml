@@ -47,11 +47,13 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/spring-context.xml</param-value>
     </context-param>
+<!--
 
 
     <listener>
         <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
     </listener>
+-->
 
 
     <!-- spring框架提供的字符集过滤器 -->
