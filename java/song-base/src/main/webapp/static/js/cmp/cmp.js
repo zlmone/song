@@ -40,15 +40,17 @@
         create: function (options) {
             var fn = function () {
                 var arg = arguments;
-                var opt=arg[1];
+                var defaults=fn.defaults || {};
+                var opt=arg[1] || {};
+                $.extend(defaults,opt);
                 this.isOptions=opt ? true : false;
                 $.extend(this, {
                     el: $(arg[0]),
-                    options:opt  || {}
+                    options:defaults  || {}
                 });
                 this.cloneOptions = function () {
                     var opts = {};
-                    $.extend(opts, this.options);
+                    $.extend(defaults, this.options);
                     return opts;
                 }
                 this.set = function (key, value) {

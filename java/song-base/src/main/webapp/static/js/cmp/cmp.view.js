@@ -61,6 +61,9 @@
         }
     }
     $.extend(cmp.view, {
-        root: "/"
+        root: "/",
+        rootUrl:function (url) {
+            return cmp.view.root+url;
+        }
     });
 })(window.cmp, window.jQuery, window.song)
