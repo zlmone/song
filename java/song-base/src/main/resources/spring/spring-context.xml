@@ -37,71 +37,72 @@
     -->
 
     <!-- c3p0 connection pool configuration -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-        <!-- 数据库驱动 -->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        &lt;!&ndash; 数据库驱动 &ndash;&gt;
         <property name="driverClass" value="${jdbc.mysql.driver}"/>
-        <!-- 连接URL串 -->
+        &lt;!&ndash; 连接URL串 &ndash;&gt;
         <property name="jdbcUrl" value="${jdbc.mysql.url}"/>
-        <!-- 连接用户名 -->
+        &lt;!&ndash; 连接用户名 &ndash;&gt;
         <property name="user" value="${jdbc.mysql.username}"/>
-        <!-- 连接密码 -->
+        &lt;!&ndash; 连接密码 &ndash;&gt;
         <property name="password" value="${jdbc.mysql.password}"/>
-        <!-- 初始化连接池时连接数量为5个 -->
+        &lt;!&ndash; 初始化连接池时连接数量为5个 &ndash;&gt;
         <property name="initialPoolSize" value="5"/>
-        <!-- 允许最小连接数量为5个 -->
+        &lt;!&ndash; 允许最小连接数量为5个 &ndash;&gt;
         <property name="minPoolSize" value="5"/>
-        <!-- 允许最大连接数量为20个 -->
+        &lt;!&ndash; 允许最大连接数量为20个 &ndash;&gt;
         <property name="maxPoolSize" value="20"/>
-        <!-- 允许连接池最大生成100个PreparedStatement对象 -->
+        &lt;!&ndash; 允许连接池最大生成100个PreparedStatement对象 &ndash;&gt;
         <property name="maxStatements" value="100"/>
-        <!-- 连接有效时间，连接超过3600秒未使用，则该连接丢弃 -->
+        &lt;!&ndash; 连接有效时间，连接超过3600秒未使用，则该连接丢弃 &ndash;&gt;
         <property name="maxIdleTime" value="3600"/>
-        <!-- 连接用完时，一次产生的新连接步进值为2 -->
+        &lt;!&ndash; 连接用完时，一次产生的新连接步进值为2 &ndash;&gt;
         <property name="acquireIncrement" value="2"/>
-        <!-- 获取连接失败后再尝试10次，再失败则返回DAOException异常 -->
+        &lt;!&ndash; 获取连接失败后再尝试10次，再失败则返回DAOException异常 &ndash;&gt;
         <property name="acquireRetryAttempts" value="10"/>
-        <!-- 获取下一次连接时最短间隔600毫秒，有助于提高性能 -->
+        &lt;!&ndash; 获取下一次连接时最短间隔600毫秒，有助于提高性能 &ndash;&gt;
         <property name="acquireRetryDelay" value="600"/>
-        <!-- 检查连接的有效性 -->
+        &lt;!&ndash; 检查连接的有效性 &ndash;&gt;
         <property name="testConnectionOnCheckin" value="true"/>
-        <!-- 每个1200秒检查连接对象状态 -->
+        &lt;!&ndash; 每个1200秒检查连接对象状态 &ndash;&gt;
         <property name="idleConnectionTestPeriod" value="1200"/>
-        <!-- 获取新连接的超时时间为10000毫秒 -->
+        &lt;!&ndash; 获取新连接的超时时间为10000毫秒 &ndash;&gt;
         <property name="checkoutTimeout" value="10000"/>
-    </bean>
+    </bean>-->
+
 
     <!-- 阿里 druid 数据库连接池 -->
-    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close" >
-        &lt;!&ndash; 数据库基本信息配置 &ndash;&gt;
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close" >
+        <!-- 数据库基本信息配置 -->
         <property name="url" value="${jdbc.mysql.url}" />
         <property name="username" value="${jdbc.mysql.username}" />
         <property name="password" value="${jdbc.mysql.password}" />
         <property name="driverClassName" value="${jdbc.mysql.driver}" />
         <property name="filters" value="${filters}" />
-        &lt;!&ndash; 最大并发连接数 &ndash;&gt;
+        <!-- 最大并发连接数 -->
         <property name="maxActive" value="${maxActive}" />
-        &lt;!&ndash; 初始化连接数量 &ndash;&gt;
+        <!-- 初始化连接数量 -->
         <property name="initialSize" value="${initialSize}" />
-        &lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;
+        <!-- 配置获取连接等待超时的时间 -->
         <property name="maxWait" value="${maxWait}" />
-        &lt;!&ndash; 最小空闲连接数 &ndash;&gt;
+        <!-- 最小空闲连接数 -->
         <property name="minIdle" value="${minIdle}" />
-        &lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
         <property name="timeBetweenEvictionRunsMillis" value ="${timeBetweenEvictionRunsMillis}" />
-        &lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
         <property name="minEvictableIdleTimeMillis" value ="${minEvictableIdleTimeMillis}" />
         <property name="validationQuery" value="${validationQuery}" />
         <property name="testWhileIdle" value="${testWhileIdle}" />
         <property name="testOnBorrow" value="${testOnBorrow}" />
         <property name="testOnReturn" value="${testOnReturn}" />
         <property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}" />
-        &lt;!&ndash; 打开 removeAbandoned 功能 &ndash;&gt;
+        <!-- 打开 removeAbandoned 功能 -->
         <property name="removeAbandoned" value="${removeAbandoned}" />
-        &lt;!&ndash; 1800 秒，也就是 30 分钟 &ndash;&gt;
+        <!-- 1800 秒，也就是 30 分钟 -->
         <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
-        &lt;!&ndash; 关闭 abanded 连接时输出错误日志 &ndash;&gt;
+        <!-- 关闭 abanded 连接时输出错误日志 -->
         <property name="logAbandoned" value="${logAbandoned}" />
-    </bean>-->
+    </bean>
 
     <!-- 配置Mybatis Session工厂 -->
     <bean id="sqlSessionFactory"
