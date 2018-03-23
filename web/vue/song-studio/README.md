@@ -22,7 +22,7 @@ npm run unit
 
 # run e2e tests
 npm run e2e
-
+  
 # run all tests
 npm test
 ```
