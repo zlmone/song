@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigurationState>
+    <add key="HistoryProjectID" value="5" />
+    <add key="ReadPdmPath" value="F:\WSH.Project\UML" />
+    <add key="DbDocumentPath" value="C:\Users\shwang\Desktop" />
+    <add key="CodeBuilderPath" value="C:\Users\shwang\Desktop\代码生成" />
+    <add key="ProjectReleaseFilePath" value="C:\Users\shwang\Desktop\autoUpdater" />
+    <add key="ProjectReleaseFilterFile" value="pdb,old,config,xml" />
+</ConfigurationState>

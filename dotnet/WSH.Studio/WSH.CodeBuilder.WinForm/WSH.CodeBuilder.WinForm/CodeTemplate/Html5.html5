@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+	   <title>Html5</title>
+	   <style type="text/css"></style>
+	   <script type="text/javascript">
+		   window.onload = function () { 
+		   
+		   }
+	   </script>
+    </head>
+    <body>
+		<div id="wrap"></div>
+    </body>
+</html>

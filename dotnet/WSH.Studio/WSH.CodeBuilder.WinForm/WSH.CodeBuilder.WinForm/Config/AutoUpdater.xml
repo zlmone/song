@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Enabled>true</Enabled>
+  <ServerUrl>http://localhost:8080/AutoUpdateService.xml</ServerUrl>
+  <UpdateFileList> 
+          <LocalFile path="ICSharpCode.TextEditor.dll"  modifyTime="2014-11-11 15:41:33" lastver="2.0.0.922" />
+          <LocalFile path="NPOI.dll" modifyTime="2014-11-11 15:45:24" size="1454592" lastver="2.0.0.0" />
+          <LocalFile path="NPOI.OOXML.dll"   modifyTime="2014-11-11 15:45:24" size="348672" lastver="2.0.0.0" />
+          <LocalFile path="NPOI.OpenXml4Net.dll"   modifyTime="2014-11-11 15:45:24" size="78336"   lastver="2.0.0.0" />
+          <LocalFile path="WeifenLuo.WinFormsUI.Docking.dll"   modifyTime="2014-11-11 15:45:24" size="412672"  lastver="3.0.10065.33" />
+          <LocalFile path="WSH.CodeBuilder.Common.dll"   modifyTime="2014-11-11 15:45:24" size="37888"   lastver="1.0.0.0" />
+          <LocalFile path="WSH.CodeBuilder.Entity.dll"   modifyTime="2014-11-11 15:45:24" size="11264"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.CodeBuilder.Manager.dll"   modifyTime="2014-11-11 15:45:25" size="20992"   lastver="1.0.0.0" />
+          <LocalFile path="WSH.CodeBuilder.WinForm.exe"  modifyTime="2014-11-11 15:41:12" size="288256"   lastver="1.0.0.1" />
+          <LocalFile path="WSH.CodeBuilder.WinForm.vshost.exe"   modifyTime="2014-11-11 15:45:25" size="11608"  lastver="10.0.30319.1" />
+          <LocalFile path="WSH.CodeBuilder.WinForm.vshost.exe.manifest"   modifyTime="2014-11-11 15:45:25" size="490"  lastver="" />
+          <LocalFile path="WSH.Common.dll"  modifyTime="2014-11-11 15:45:25" size="100352"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.Options.Common.dll"  modifyTime="2014-11-11 15:45:25" size="12800"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.Pdm.Common.dll"   modifyTime="2014-11-11 15:45:25" size="13824"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.Tools.AutoUpdater.dll"   modifyTime="2014-11-11 15:45:25" size="33280"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.Tools.Connection.exe"   modifyTime="2014-11-11 15:45:25" size="60928"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.Tools.Release.exe"  modifyTime="2014-11-11 15:45:25" size="43520"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.Tools.Widgets.exe"   modifyTime="2014-11-11 15:45:25" size="52736"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.TransferData.dll"  modifyTime="2014-11-11 15:45:25" size="10752"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.Windows.Common.dll"   modifyTime="2014-11-11 15:45:25" size="12288"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.WinForm.Common.dll"  modifyTime="2014-11-11 15:45:25" size="11776"  lastver="1.0.0.0" />
+          <LocalFile path="WSH.WinForm.Controls.dll"  modifyTime="2014-11-11 15:45:25" size="83456"  lastver="1.0.0.0" />
+  </UpdateFileList>
+</Config>

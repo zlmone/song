@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigurationData>
+    <Data Name="FormatString">
+        <Item Value="0">yyyy-MM-dd</Item>
+        <Item Value="1">yyyy-MM-dd HH:mm</Item>
+        <Item Value="2">yyyy-MM-dd HH:mm:ss</Item>
+        <Item Value="3">yyyy-MM</Item>
+        <Item Value="4">yyyy</Item>
+        <Item Value="5">0.00</Item>
+        <Item Value="6">0.0</Item>
+    </Data>
+    <Data Name="CodeFileType">
+        <Item Value="0">cs</Item>
+        <Item Value="1">htm</Item>
+        <Item Value="2">html</Item>
+        <Item Value="3">aspx</Item>
+        <Item Value="4">cshtml</Item>
+        <Item Value="6">js</Item>
+        <Item Value="7">xaml</Item>
+        <Item Value="8">as</Item>
+        <Item Value="9">txt</Item>
+        <Item Value="10">sql</Item>
+        <Item Value="10">xml</Item>
+        <Item Value="10">java</Item>
+        <Item Value="10">jsp</Item>
+    </Data>
+</ConfigurationData>

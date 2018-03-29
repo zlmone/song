@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mail>
+    <!--qq邮箱需要进入邮箱开启stmp-->
+    <smtps default="ewaytec">
+        <add name="ewaytec"
+             sendname="WSH.Studio"
+             encrypt="true"
+             server="mail.ewaytec.cn"
+             username="wpQ85vLoLygZq477g34ATzSC9NfnJ0vU"
+             password="fus75C3UeCADrJ95i8AZTA=="
+             port="25"/>
+    </smtps>
+</mail>

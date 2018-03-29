@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugins>
+    <pluginGroup groupCode="Widgets" groupText="小工具" groupName="WSH.Tools.Widgets" groupUrl="" icon="">
+        <plugin code="AddressBook" text="解析通讯录" name="AddressBook" url="" icon=""/>
+        <plugin code="Cryption" text="加解密" name="Cryption" url="" icon=""/>
+        <plugin code="ObjectBuilder" text="对象生成器" name="ObjectBuilder" url="" icon=""/>
+        <plugin code="FormatCode" text="代码格式化" name="FormatCode" url="" icon=""/>
+        <plugin code="DataGrab" text="数据抓取" name="DataGrab" url="" icon=""/>
+        <plugin code="SystemIcon" text="获取系统图标" name="SystemIcon" url="" icon=""/>
+        <plugin code="DownFiles" text="下载网络文件" name="DownFiles" url="" icon=""/>
+    </pluginGroup>
+    <pluginGroup groupCode="Release" groupText="发布" groupName="WSH.Tools.Release" groupUrl="" icon="">
+        <plugin code="ProjectRelease" text="项目发布" name="ProjectRelease" url="" icon=""/>
+    </pluginGroup>
+</plugins>

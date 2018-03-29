@@ -1,0 +1,9 @@
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\bin\Release\WSH.CodeBuilder.Entity.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\bin\Release\WSH.CodeBuilder.Entity.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\bin\Release\WSH.Common.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\bin\Release\WSH.Options.Common.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\bin\Release\WSH.Common.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\bin\Release\WSH.Options.Common.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\obj\Release\WSH.CodeBuilder.Entity.csprojResolveAssemblyReference.cache
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\obj\Release\WSH.CodeBuilder.Entity.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Entity\obj\Release\WSH.CodeBuilder.Entity.pdb

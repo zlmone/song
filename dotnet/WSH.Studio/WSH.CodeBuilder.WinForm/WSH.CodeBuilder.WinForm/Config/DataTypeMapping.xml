@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--请勿删除以下节点，可增加节点mapping值-->
+<!--
+WSH.Studio自定义数据类型
+String           
+Binary           
+Boolean          
+DateTime         
+Currency         
+Xml              
+Float            
+Decimal          
+Guid             
+Byte             
+SmallInt         
+Int              
+BigInt           
+-->
+<!--SELECT * FROM msdb.dbo.MSdatatype_mappings  sqlserver查询mapping-->
+<dataTypeMappings>
+    <dataTypeMapping type="String">
+        <sqlserver>char,nchar,varchar,nvarchar,text,ntext</sqlserver>
+        <oracle>char,varchar2,clob,nchar,nvarchar2,nclob,rowid</oracle>
+        <mysql>char,tinytext,mediumtext,text,varchar,longtext</mysql>
+        <access>130</access>
+        <sqlite>char,clob,varchar,varchar2,nchar,ntext,text,nvarchar,datetext,nvarchar2</sqlite>
+        <csharp>string</csharp>
+        <ado>String</ado>
+        <java>String</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Binary">
+        <sqlserver>image,varbinary,binary,sql_variant</sqlserver>
+        <oracle>blob,bfile,raw</oracle>
+        <mysql>binary,varbinary</mysql>
+        <access>128</access>
+        <sqlite>binary,blob,blob_text,memo,graphic,image,photo,picture,raw,varbinary</sqlite>
+        <csharp>byte[]</csharp>
+        <ado>Binary</ado>
+        <java>byte[]</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Boolean">
+        <sqlserver>bit</sqlserver>
+        <oracle replace="number"></oracle>
+        <mysql>bit,bool</mysql>
+        <access>11</access>
+        <sqlite>bool,boolean</sqlite>
+        <csharp>bool</csharp>
+        <ado>Boolean</ado>
+        <java>boolean</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="DateTime">
+        <sqlserver>datetime,smalldatetime,datetime2,timestamp</sqlserver>
+        <oracle>date,timestamp</oracle>
+        <mysql>datetime,timestamp,date,year,time</mysql>
+        <access>7</access>
+        <sqlite>datetime,timestamp,date,time</sqlite>
+        <csharp>DateTime</csharp>
+        <ado>DateTime</ado>
+        <java>Date</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Currency">
+        <sqlserver>money,smallmoney</sqlserver>
+        <oracle replace="number"></oracle>
+        <mysql replace="numeric"></mysql>
+        <access>6</access>
+        <sqlite>currency,money,smallmoney</sqlite>
+        <csharp>decimal</csharp>
+        <ado>Currency</ado>
+        <java>BigDecimal</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Xml">
+        <sqlserver>xml</sqlserver>
+        <oracle replace="nclob"></oracle>
+        <mysql replace="text"></mysql>
+        <access replace="130"></access>
+        <sqlite>xml</sqlite>
+        <csharp>string</csharp>
+        <ado>Xml</ado>
+        <java>String</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Float">
+        <sqlserver>float</sqlserver>
+        <oracle replace="number">binary_float,float</oracle>
+        <mysql>float,real</mysql>
+        <access>4,5</access>
+        <sqlite>float,real</sqlite>
+        <csharp>float</csharp>
+        <ado>Float</ado>
+        <java>float</java>
+    </dataTypeMapping>
+  <dataTypeMapping type="Double">
+        <sqlserver>double</sqlserver>
+        <oracle replace="number">binary_double,double</oracle>
+        <mysql>double</mysql>
+        <access>131</access>
+        <sqlite>double</sqlite>
+        <csharp>double</csharp>
+        <ado>Double</ado>
+        <java>double</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Decimal">
+        <sqlserver>decimal,numeric</sqlserver>
+        <oracle>number,decimal</oracle>
+        <mysql>decimal,numeric</mysql>
+        <access>131</access>
+        <sqlite>decimal,numeric,precision,dec,number</sqlite>
+        <csharp>decimal</csharp>
+        <ado>Decimal</ado>
+        <java>BigDecimal</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Guid">
+        <sqlserver>uniqueidentifier</sqlserver>
+        <oracle replace="nvarchar2"></oracle>
+        <mysql replace="varchar"></mysql>
+        <access>72</access>
+        <sqlite>guid</sqlite>
+        <csharp>string</csharp>
+        <ado>Guid</ado>
+        <java>String</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Byte">
+        <sqlserver>tinyint</sqlserver>
+        <oracle replace="number"></oracle>
+        <mysql>tinyint</mysql>
+        <access>17</access>
+        <sqlite>tinyint</sqlite>
+        <csharp>byte</csharp>
+        <ado>Byte</ado>
+        <java>Byte</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="SmallInt">
+        <sqlserver>smallint</sqlserver>
+        <oracle replace="number"></oracle>
+        <mysql>smallint</mysql>
+        <access>2</access>
+        <sqlite>smallint</sqlite>
+        <csharp>Int16</csharp>
+        <ado>Int16</ado>
+        <java>Integer</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Int">
+        <sqlserver>int</sqlserver>
+        <oracle replace="number">integer</oracle>
+        <mysql>int,mediumint</mysql>
+        <access>3</access>
+        <sqlite>int,integer,autoinc</sqlite>
+        <csharp>int</csharp>
+        <ado>Int32</ado>
+        <java>Integer</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="BigInt">
+        <sqlserver>bigint</sqlserver>
+        <oracle>long</oracle>
+        <mysql>bigint</mysql>
+        <access replace="130"></access>
+        <sqlite>bigint,int64,largeint,word</sqlite>
+        <csharp>long</csharp>
+        <ado>Int64</ado>
+        <java>long</java>
+    </dataTypeMapping>
+    <dataTypeMapping type="Object">
+        <sqlserver replace="object"></sqlserver>
+        <oracle  replace="object"></oracle>
+        <mysql  replace="object"></mysql>
+        <access  replace="object"></access>
+        <sqlite  replace="object"></sqlite>
+        <csharp>object</csharp>
+        <ado>Object</ado>
+        <java>Object</java>
+    </dataTypeMapping>
+</dataTypeMappings>
