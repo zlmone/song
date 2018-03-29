@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Styles/global.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/extend.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/layout.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/song/song.popup.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Scripts/easyui/themes/icon.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/easyui/themes/default/easyui.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/Scripts/jquery/jquery-1.8.0.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/json/jquery.json-2.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery/jquery.extend.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/easyui/jquery.easyui.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/easyui/easyui-lang-zh_CN.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/song/song.base.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        song.root = "@Url.Content("~/")";
+    </script>
+    @*<script src="@Url.Content("~/Scripts/song/song.mvc.js")" type="text/javascript"></script>*@
+    <script src="@Url.Content("~/Scripts/song/song.popup.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/easyuiextend/easyui.extend.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/easyuiextend/easyui.view.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/song/song.cmp.js")" type="text/javascript"></script>
+</head>
+
+<body>
+    @RenderBody()
+</body>
+</html>

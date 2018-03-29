@@ -1,0 +1,24 @@
+﻿<div style="padding-top:25px; padding-left:10px; color:#fff;">
+    <a href="#" data-options="menu:'#menuInformation'" class="easyui-menubutton">信息管理</a>
+    <div id="menuInformation">
+        <div class="jsMenuItem" data-url="@Url.Content("~/Menu/Menu")">菜单管理</div>
+        <div class="jsMenuItem" data-url="">用户管理</div>
+        <div class="jsMenuItem" data-url="">权限管理</div>
+        <div class="jsMenuItem" data-url="@Url.Content("~/Diary/Diary")">日记</div>
+    </div>
+    <a href="#" data-options="menu:'#menuTypeGroup'" class="easyui-menubutton">分类管理</a>
+    <div id="menuTypeGroup">
+        <div class="jsMenuItem" data-url="@Url.Content("~/Author/Author")">作者</div>
+        <div class="jsMenuItem" data-url="@Url.Content("~/Group/Group")">类型</div>
+    </div>
+    <a href="#" data-options="menu:'#menuDocument'" class="easyui-menubutton">文档管理</a>
+    <div id="menuDocument">
+        <div class="jsMenuItem" data-url="@Url.Content("~/Document/Document?typeCode=1")">知识面</div>
+    </div>
+    <a href="#" data-options="menu:'#menuLiteratrue'" class="easyui-menubutton">文学</a>
+    <div id="menuLiteratrue"> 
+        <div class="jsMenuItem" data-url="">诗歌</div>
+        <div class="jsMenuItem" data-url="">散文</div>
+        <div class="jsMenuItem" data-url="">语录</div>
+    </div>
+</div>

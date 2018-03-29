@@ -1,0 +1,30 @@
+<form id="form" name="form" method="post"> 
+    <input type="hidden" id="Id" name="Id" />
+    <input type="hidden" id="Encoding" name="Encoding" />
+    <input type="hidden" id="IconName" name="IconName" />
+    <input type="hidden" id="Hits" name="Hits" />
+    <table class="form-table">    
+		<tr>
+			<th><span class="required">*</span>网页地址:</th>
+			<td><textarea id="Url" name="Url" class="easyui-validatebox textbox" data-options="required:true" onchange="page.com.loadPageInfo()"></textarea></td>
+		</tr>
+        <tr>
+			<th><span class="required">*</span>标题:</th>
+			<td><input type="text" id="Title" name="Title" class="easyui-validatebox textbox" data-options="required:true"/></td>
+		</tr>
+		<tr>
+			<th>图标地址:</th>
+			<td><input type="text" id="IconUrl" name="IconUrl" class="easyui-validatebox textbox"/></td>
+		</tr>
+        <tr>
+            <th></th>
+            <td>
+                <a class="easyui-linkbutton" href="javascript:page.com.loadIcon()">加载图标信息</a>&nbsp;<img style="vertical-align:middle" width="32px" height="32px" id="imgIcon" src="@Url.Content("~/Images/s.gif")" />
+            </td>
+        </tr>
+		<tr>
+			<th>备注说明:</th>
+			<td><textarea id="Remark" name="Remark" class="easyui-validatebox textbox"></textarea></td>
+		</tr>
+    </table>
+</form>  

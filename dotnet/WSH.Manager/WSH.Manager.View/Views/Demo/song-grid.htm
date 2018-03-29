@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../../Styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../../Styles/song.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jquery/jquery-1.8.0.min.js" type="text/javascript"></script>
+ 
+    <script src="../../Scripts/song/song.jqueryextend.js" type="text/javascript"></script>
+    <script src="../../Scripts/song/song.base.js" type="text/javascript"></script>
+    <script src="../../Scripts/song/song.project.js" type="text/javascript"></script>
+    <script src="../../Scripts/song/song.drag.js" type="text/javascript"></script>
+    <script src="../../Scripts/song/song.popup.js" type="text/javascript"></script>
+    <script src="../../Scripts/song/song.toolbar.js" type="text/javascript"></script>
+    <script src="../../Scripts/song/song.grid.js" type="text/javascript"></script>
+    <style type="text/css">
+        .song-dd-proxy
+        {
+            background: #99BBE8;
+            position: absolute;
+            z-index: 20000;
+            filter: alpha(opacity=50);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!--<div id="drag" style="width:200px; height:200px; border:1px solid #ccc; background:#ddd; position :absolute; z-index:10000;"></div>-->
+    <div id="grid">
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            // var drag = new song.drag("#drag", {});
+            var grid = new song.grid({
+                renderTo: "#grid",
+                width: "50%",
+                height:song.position.client().height,
+                selectionMode: "single",
+                modelType: "local",
+                expandColumn: "address",
+                pagination: true,
+                dataKey: "id",
+                showDetails: function (detailsWrap, rowIndex) {
+                    //setTimeout(function () {
+                    $.get(location.href, null, function () {
+                        detailsWrap.html("<div style=' margin:10px; border:1px solid #ccc; padding:40px 0px;text-align:center;'>模拟ajax返回的内容</div>");
+                    });
+                    //},1000);
+                },
+                columns: [
+                    { checkbox: true },
+                    { field: "id", header: "ID", width: 50, sortable: true, dataType: "int", editor: false},
+                    { field: "name", header: "名称", width: 200, resizable: true, sortable: true, editor: { type: "textbox"} },
+                    { field: "address", header: "地址", width: 300, resizable: false, sortable: true, editor: {type:"textbox"} }
+                ]
+                , localData: view.getLocalData()
+                , toolbar: [{ text: "删除", iconClass: "icon-last", onClick: function () {
+                    var selectedRow = grid.getSelectedRow();
+                    if (selectedRow) {
+                        song.tip.msg(selectedRow.data.id.toString());
+                        //grid.deleteRow(selectedRow.rowIndex);
+                    }
+                }
+                }, "-", { text: "保存", iconClass: "icon-first", onClick: function () {
+                    var changes = $.toJSON(grid.getChanges());
+                    song.tip.msg(changes, "info", { time: 5 });
+                }
+                }
+                ]
+                 , emptyMsg:"暂无成员数据，你可以<a>新增</a>成员，或者选择成员"
+            });
+        });
+        var view = {
+            getLocalData: function () {
+                var arr = [];
+                for (var i = 1; i <= 100; i++) {
+                    arr.push({ id: i, name: "name" + i, address: "address" + i });
+                }
+                return arr;
+            }
+        };
+    </script>
+</body>
+</html>

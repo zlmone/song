@@ -1,0 +1,27 @@
+@{
+    ViewBag.Title = "²Ëµ¥";
+    Layout = "~/Views/Shared/MainMaster.cshtml";
+}
+<div data-options="region:'north',border:false" class="query-wrap">
+    <table class="query-table" id="query">    
+		<tr>
+			<th>²Ëµ¥Ãû³Æ:</th>
+			<td><input id="query-MenuName" type="text" class="textbox"/></td>
+			<th>&nbsp;</th>
+			<td>&nbsp;</td>
+		</tr>
+    </table>
+</div>
+<div data-options="region:'center',border:false">
+    <table id="grid">
+	    
+    </table>
+</div>
+<div id="dialog">
+    @Html.Action("MenuEdit")
+</div>
+<script type="text/javascript">
+    var page = new song.page({
+        controller: "Menu",
+    });
+</script>

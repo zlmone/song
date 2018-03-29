@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "项目主页";
+    Layout = "~/Views/Shared/MainMaster.cshtml";
+}
+@Html.Resource("~/Scripts/easyuiextend/easyui.view.tab.js")
+<div data-options="region:'north',border:false" style="" class="top">
+    @Html.Action("_Top")
+</div>
+@*<div data-options="region:'west',split:true" style="width:200px;">
+    
+</div>*@
+<div data-options="region:'center',border:false" class="center-wrap">
+    <div class="easyui-tabs" id="mainTabs" data-options="fit:true">
+        <div title="主页" style=" overflow:hidden;">
+            <iframe height="100%" width="100%" src="@Url.Action("DictList","Dict")" frameborder="0"></iframe>
+        </div>
+    </div>
+</div>
+@*<div data-options="region:'south',border:false" style="height:50px;">
+    
+</div>*@
+<script type="text/javascript">
+    $(function () {
+        $('body').layout();
+    });
+    var tabs = new song.tabs({
+        el: $("#mainTabs"),
+        max: 10
+    });
+    $("div.jsMenuItem").click(function (e) {
+        var el = $(e.currentTarget),
+                url = el.attr("data-url"),
+                title = el.html();
+        tabs.add({
+            closable: true,
+            url: url,
+            title: title
+        });
+    });
+</script>

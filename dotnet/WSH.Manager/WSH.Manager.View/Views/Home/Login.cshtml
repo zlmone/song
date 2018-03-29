@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="loginhtml">
+<head>
+    <title>WSH管理平台-登录</title>
+    @Html.Resource("~/Styles/views/login.css")
+    @Html.Resource("~/Styles/song/song.popup.css")
+    @Html.Resource("~/Scripts/jquery/jquery-1.8.0.min.js")
+    @Html.Resource("~/Scripts/song/song.base.js")
+    @Html.Resource("~/Scripts/song/song.popup.js")
+
+    <script type="text/javascript">
+        window.view = {
+            login: function () {
+                var loading = new song.loading({ msg: "校验用户信息..." }).show();
+                setTimeout(function () {
+                    loading.setMsg("登录成功，正在跳转...");
+                    location.href="@Url.Action("Index")";
+                }, 500);
+            }
+        };
+    </script>
+</head>
+<body class="loginview">
+    <div class="logintop">
+        <span>欢迎登录WSH管理平台</span>
+        <ul>
+            <li><a href="javascript:;">帮助</a></li>
+            <li><a href="javascript:;">关于</a></li>
+        </ul>
+    </div>
+    <div class="loginbody">
+        @*<span class="systemlogo"></span>*@
+        <div class="loginbox" id="loginbox">
+            <ul>
+                <li>
+                    <input type="text" class="loginuser" value="songhuaxiaobao"/>
+                </li>
+                <li>
+                    <input type="password" class="loginpwd" value="songhuaxiaobao"/>
+                </li>
+                <li>
+                    <input type="button" class="loginbtn" id="login" value="登陆" onclick="view.login()"/>
+                    <label>
+                        <input type="checkbox" checked="checked" />记住密码
+                    </label>
+                    <label>
+                        <a href="javascript:;">忘记密码？</a>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="loginbm">
+        版权所有 2015 <a href="javascript:;">WSH</a>
+    </div>
+</body>
+</html>

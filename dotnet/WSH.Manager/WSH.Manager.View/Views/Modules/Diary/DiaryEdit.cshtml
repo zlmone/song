@@ -1,0 +1,27 @@
+<form id="form" name="form" method="post"> 
+    <input type="hidden" id="Id" name="Id" />
+    <table class="form-table">    
+        <tr>
+			<th>标题:</th>
+			<td colspan="5">
+                <input id="Title" name="Title" type="text" class="easyui-validatebox textbox"/>
+            </td>
+		</tr>
+		<tr>
+			<th>天气:</th>
+			<td><input id="Weather" name="Weather" type="text" class="easyui-validatebox textbox"/></td>
+            <th>温度:</th>
+			<td><input id="Temperature" name="Temperature" type="text" class="easyui-validatebox textbox"/></td>
+            <th>心情:</th>
+			<td><input id="Mood" name="Mood" type="text" class="easyui-validatebox textbox"/></td>
+		</tr>
+		<tr>
+			<th><span class="required">*</span>内容:</th>
+			<td colspan="5">
+                @Html.HtmlEditor("Content", new EditorOptions() { 
+                    Height="400px"
+                })
+            </td>
+		</tr>
+    </table>
+</form>  

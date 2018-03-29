@@ -1,0 +1,47 @@
+﻿.filetype{background:none; background-image:url(../../images/icons/fileTypes.png); width:16px; height:16px;
+        background-repeat:no-repeat; border:0px;}
+
+.file-xls,.file-xlsx{background-position:-32px 0px;}
+.file-doc,.file-docx{background-position:-64px 0px;}
+.file-ppt,.file-pptx{background-position:-96px 0px;}
+.file-7z{background-position:-128px 0px;}
+.file-rar{background-position:-160px 0px;}
+.file-zip{background-position:-192px 0px;}
+.file-iso,.file-dat{background-position:-224px 0px;}
+.file-email,.file-eml{background-position:-256px 0px;}
+.file-html,.file-htm,.file-shtml,.file-asp,.file-aspx,.file-jsp,.file-php{background-position:-288px 0px;}
+.file-js,.file-css{background-position:-320px 0px;}
+.file-config,.file-cfg,.file-xml,.file-sitemap{background-position:-352px 0px;}
+.file-chm,.file-help{background-position:-384px 0px;}
+.file-console,.file-exe{background-position:-416px 0px;}
+.file-bat{background-position:-448px 0px;}
+.file-otf,.file-ttf,.file-ttc,.file-fon,.file-ttc{background-position:-480px 0px;}
+.file-pdf{background-position:-512px 0px;}
+.file-psd{background-position:-544px 0px;}
+.file-ai{background-position:-576px 0px;}
+.file-fla{background-position:-608px 0px;}
+.file-swf,.file-as{background-position:-640px 0px;}
+.file-txt{background-position:-672px 0px;}
+.file-rtf{background-position:-704px 0px;}
+.file-reg{background-position:-736px 0px;}
+.file-rmvb,.file-rm{background-position:-768px 0px;}
+.file-avi{background-position:-800px 0px;}
+.file-mp4,.file-mp5{background-position:-832px 0px;}
+.file-wmv,.file-mpe{background-position:-864px 0px;}
+.file-mp3,.file-wma,.file-wav{background-position:-896px 0px;}
+.file-jpg,.file-jpeg{background-position:0px -32px;}
+.file-gif{background-position:-32px -32px;}
+.file-png{background-position:-64px -32px;}
+.file-bmp{background-position:-96px -32px;}
+.file-tif{background-position:-128px -32px;}
+.file-emf{background-position:-160px -32px;}
+.file-wmf{background-position:-192px -32px;}
+.file-ico{background-position:-224px -32px;}
+.file-raw{background-position:-256px -32px;}
+/*CorelDRAW文件*/
+.file-cdr,.file-pat,.file-cdt,.file-cmx,.file-wpg,.file-wmf,.file-emf,.file-cgm{background-position:-288px -32px;}
+.file-dll{background-position:-320px -32px;}
+.file-bt,.file-torrent{background-position:-352px -32px;}
+.file-folder{background-position:-384px -32px;}
+ 
+ 

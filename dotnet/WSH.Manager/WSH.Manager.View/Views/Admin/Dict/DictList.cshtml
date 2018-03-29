@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "字典";
+    Layout = "~/Views/Shared/ListMaster.cshtml";
+}
+@Html.Resource("~/Styles/icons/icons.css")
+@Html.Resource("~/Styles/icons/fileType-16.16.css")
+@Html.Resource("~/Styles/song/song.grid.css")
+@Html.Resource("~/Styles/song/song.menu.css")
+@Html.Resource("~/Styles/song/song.toolbar.css")
+@Html.Resource("~/Scripts/song/song.toolbar.js")
+@Html.Resource("~/Scripts/song/song.dd.js")
+@Html.Resource("~/Scripts/song/song.grid.js")
+@Html.Resource("~/Scripts/song/song.menu.js")
+@Html.Resource("~/Scripts/data/song.areas.js")
+<script type="text/javascript" src="../../../Scripts/json/jquery.json-2.4.min.js"></script>
+@*<div data-options="region:'west',border:false" style="width: 200px;">
+  
+</div>*@
+<div data-options="region:'center',border:false" class="center-wrap">
+    <div id="listWrap">
+        <div data-options="region:'north',border:false" class="query-wrap">
+            <table class="query-table" id="query">
+                <tr>
+                    <th>
+                        名称：
+                    </th>
+                    <td>
+                        <input id="query-DictName" type="text" class="textbox" />
+                    </td>
+                    <th>
+                        年龄：
+                    </th>
+                    <td>
+                        <input id="query-DictCode" type="text" class="textbox" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div data-options="region:'center',border:true" class="center-wrap">
+          @*  <div id="toolbar" class="toolbar-box">
+                <form enctype="multipart/form-data" action="@Url.Action("DownloadFile")" method="post">
+                    <input type="file" name="file"/>
+                    <input type="submit" value="上传" />
+                </form>
+                @Html.ToolbarButton("查询", "view.query()", "search")
+                @Html.ToolbarButton("新增", "view.add()", "add")
+                @Html.ToolbarButton("批量删除", "view.remove()", "remove")
+            </div>*@
+            @*<table id="grid">
+            </table>*@
+            <div id="grid" style="height:100%">
+            </div>
+        </div>
+    </div>
+</div>
+@*<div id="dialog">
+     
+</div>*@
+<script type="text/javascript">
+    window.view = new song.view({
+        controller: "Dict",
+        ready: function () {
+            //布局
+            this.layout('body');
+            this.layout('#listWrap');
+            var menu = new song.menu({
+                items: [{ text: "编辑", iconClass: "icon-edit" }, { text: "删除", iconClass: "icon-deleterow" }, "-",
+                { text: "导出", items: [
+                    { text: "Excel", iconClass: "  file-xls" }, { text: "Pdf", iconClass: "  file-pdf" }
+                ]
+                }]
+            });
+            //列表
+            //            this.grid = new song.view.grid({
+            //                el: "#grid",
+            //                options: {
+            //                    toolbar: "#toolbar",
+            //                    columns: [[
+            //                                    { field: "DictCode", title: "字典编码", align: "left", width: 100 },
+            //                                    { field: "DictName", title: "字典名称", align: "left", width: 200 }
+            //                                ]]
+            //                }
+            //            });
+            //            song.areas.init({ defaultProvince: "19", city: "#city", county: "#county" });
+            var grid = new song.grid({
+                renderTo: "#grid",
+                width: "100%",
+                height: "auto",
+                selectionMode: "single",
+                showDetails: function (wrap) {
+                    setTimeout(function () {
+                        wrap.css("padding", 20).load("/Menu/MenuEdit", function () { });
+                    }, 500);
+                },
+                dataKey: "name",
+                modelType: "local",
+                expandColumn: "address",
+                pageSize: 60,
+                toolbar: [
+                    { text: "查询", iconClass: "icon-query" }, "-",
+                    { text: "新增", iconClass: "icon-add" }, "-",
+                    { text: "删除", iconClass: "icon-delete", onClick: function () {
+                        song.tip.msg("请选择一条记录进行操作");
+                    }
+                    }, "-",
+                    { text: "保存", iconClass: "icon-save", onClick: function () {
+                        var data = grid.getChanges();
+                        song.tip.msg($.toJSON(data));
+                    }
+                    },
+                ],
+                columns: [
+                    { showDetails: true },
+                    { checkbox: true },
+                    {   field: "name", header: "名称", width: 200, sortable: true, resizable: true, editor: {}
+                    render:function(val,data){
+                        return val+"自定义渲染";
+                    }},
+                    { field: "age", header: "年龄", width: 100, sortable: true, resizable: true, editor: {} },
+                    { field: "address", header: "地址", width: 300, sortable: true, resizable: true, editor: {} }
+                ],
+                localData: view.getLocalData(),
+                onRowContextmenu: function (e, row) {
+                    grid.setSelectedRow(row.rowIndex);
+                    menu.showAt({ left: e.pageX, top: e.pageY });
+                }
+            });
+        },
+        getLocalData: function () {
+            var arr = [];
+            for (var i = 1; i <= 100; i++) {
+                arr.push({ name: "name" + i, age: 18 + i, address: "address" + i });
+            }
+            return arr;
+        },
+        query: function () {
+            location.href = this.url("DownloadFile");
+        },
+        add: function () {
+
+        },
+        edit: function () {
+
+        },
+        remove: function () {
+
+        }
+    });
+</script>

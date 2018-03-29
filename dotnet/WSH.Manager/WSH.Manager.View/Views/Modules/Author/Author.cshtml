@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "作者";
+    Layout = "~/Views/Shared/MainMaster.cshtml";
+}
+<div data-options="region:'north',border:false" class="query-wrap">
+    <table class="query-table" id="query">
+        <tr>
+            <th>姓名：</th>
+            <td><input type="text" id="query-Name" name="query-Name" class="textbox"/></td>
+            <th>简介：</th>
+            <td><input type="text" id="query-Intro" name="query-Intro" class="textbox"/></td>
+        </tr>
+    </table>
+</div>
+<div data-options="region:'center',border:false">
+    <table id="grid">
+	    
+    </table>
+</div>
+<div id="dialog">
+    @Html.Action("AuthorEdit")
+</div>
+<script type="text/javascript">
+    var page = new song.page({
+        controller: "Author",
+        grid: {
+            gridid: "grid",
+            idField: "Id",
+            loadAction: "GetAuthorList",
+            options: {
+                columns: [[
+                    { field: "Name", title: "姓名", width: 100, align: "center", sortable: true },
+                    { field: "Intro", title: "简介", width: 100, align: "center", sortable: true },
+                    { field: "Remark", title: "备注", width: 100, align: "center", sortable: true }
+                ]],
+                frozenColumns: [[
+                    song.column.check(),
+                    song.column.edit({ field: "Id"})
+                ]]
+            }
+        },
+        query: {
+            queryid: "query"
+        },
+        dialog: {
+            dialogid: "dialog",
+            title: "作者"
+        },
+        form: {
+            formid: "form",
+            loadType: "gridrow", //gridrow,remote,local
+            //loadUrl: "",
+            loadAction: "",
+            submitAction: "SaveAuthor",
+            getLoadData: function () {
+                return { Name: "王松华", Age: 18, Address: "songhuaxiaobao@163.com" }
+            }
+        },
+        tree: {
+
+        }
+    });
+</script>
+

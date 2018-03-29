@@ -1,0 +1,67 @@
+@{
+    ViewBag.Title = "日记";
+    Layout = "~/Views/Shared/MainMaster.cshtml";
+}
+
+@Html.Resource(ResourceType.HtmlEditor)
+ 
+<div data-options="region:'north',border:false" class="query-wrap">
+    <table style="width:100%" id="query">    
+         
+    </table>
+</div>
+<div data-options="region:'center',border:false">
+    <table id="grid">
+	    
+    </table>
+</div>
+<div id="dialog">
+    
+    @Html.Action("DiaryEdit")
+</div>
+<script type="text/javascript">
+    var page = new song.page({
+        controller: "Diary",
+        grid: {
+            gridid: "grid",
+            idField: "Id",
+            loadAction: "GetDiaryList",
+            options: {
+                columns: [[
+					{ field: "CreateTime", title: "日期", align: "left", width: 100,formatter:song.column.format.date()},
+                    { field: "Title", title: "标题", align: "left", width: 200 },
+					{ field: "Weather", title: "天气", align: "left", width: 100 },
+					{ field: "Temperature", title: "温度", align: "left", width: 100 },
+					{ field: "Mood", title: "心情", align: "left", width: 150 }
+                ]],
+                frozenColumns: [[
+                    song.column.check(),
+                    song.column.edit({ field: "Id" })
+                ]]
+            }
+        },
+        query: {
+            queryid: "query"
+        },
+        dialog: {
+            dialogid: "dialog",
+            title: "日记",
+            options: {
+                width:1000
+            }
+        },
+        form: {
+            formid: "form",
+            loadType: "remote",
+            loadAction: "GetDiary",
+            submitAction: "SaveDiary"
+        },
+        tree: {
+
+        },
+        com: {
+            //自定义业务逻辑
+
+        }
+    });
+</script>

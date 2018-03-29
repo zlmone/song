@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Document";
+    Layout = "~/Views/Shared/MainMaster.cshtml";
+}
+<div data-options="region:'west',split:true" style="width:200px;">
+    <ul id="treeType"></ul>
+</div>
+<div data-options="region:'center'" style="overflow:hidden">
+    
+</div>
+<script type="text/javascript">
+    $('body').layout();
+    $('#treeType').tree({
+        lines: true,
+        animate:true,
+        url: "/Document/GetTypeTree?typeCode=document"
+    });
+</script>

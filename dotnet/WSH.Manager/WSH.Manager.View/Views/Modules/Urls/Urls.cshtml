@@ -1,0 +1,176 @@
+@{
+    ViewBag.Title = "网页地址";
+    Layout = "~/Views/Shared/MainMaster.cshtml";
+}
+@Html.Resource(ResourceType.Uploadify)
+
+<div data-options="region:'north',border:false" class="query-wrap">
+    <table class="query-table" id="query">
+        <tr>
+            <th>
+                标题:
+            </th>
+            <td>
+                <input id="query-Title" class="textbox" type="text" />
+            </td>
+            <th>
+                备注说明:
+            </th>
+            <td>
+                <input id="query-Remark" class="textbox" type="text" />
+            </td>
+        </tr>
+    </table>
+</div>
+<div data-options="region:'center',border:false">
+    <table id="grid">
+    </table>
+</div>
+<div id="dialog">
+    @Html.Action("UrlsEdit")
+</div>
+<div id="importDialog" class="easyui-dialog" data-options="closed:true,title:'导入收藏夹',width:600"
+    style="padding: 3px;">
+    <table class="query-table">
+        <tr>
+            <th>
+                HTML文件:
+            </th>
+            <td>
+                @Html.Upload("uploaderImport", new UploadOptions() { 
+                    FileExtensions=".html;.htm",
+                    UploadPath="Upload/Urls"
+                })   
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding: 10px; text-align: center;">
+                <a class="easyui-linkbutton" href="javascript:page.com.importBookmarks()">导入</a>&nbsp;
+                <a class="easyui-linkbutton" href="javascript:page.com.closeImport();">取消</a>
+            </td>
+        </tr>
+    </table>
+</div>
+@*<script src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy-min.js" charset="utf-8"></script>*@
+<script type="text/javascript">
+    var page = new song.page({
+        controller: "Urls",
+        grid: {
+            gridid: "grid",
+            idField: "Id",
+            loadAction: "GetUrlsList",
+            options: {
+                columns: [[
+                    { field: "IconUrl", title: "图标", align: "center", width: 30,
+                        formatter: song.column.format.img(16, 16)
+                    },
+					{ field: "Title", title: "标题", align: "left", width: 200 },
+                    { field: "Url", title: "地址", align: "left", width: 300,
+                        formatter: function (val, row) {
+                            return '<a href="javascript:page.com.updateHits({0},\'{1}\')" class="grid-cmd">{2}</a>'.format(row.Id, val, val);
+                        }
+                    },
+                    { field: "Encoding", title: "编码", align: "left", width: 40 },
+					{ field: "Remark", title: "备注说明", align: "left", width: 400 }
+                ]],
+                frozenColumns: [[
+                    song.column.check(),
+                    song.column.edit({ field: "Id" })
+                ]],
+                toolbar: [
+                    { id: "importBookmarks", text: "导入收藏夹", iconCls: "", handler: function () {
+                        $("#importDialog").dialog("open");
+                    }
+                    },
+                    { id: "exportBookmarks", text: "导出收藏夹", iconCls: "", handler: function () {
+                        location.href = page.url("ExportBookmarks");
+                    } 
+                    }
+                ]
+            }
+        },
+        query: {
+            queryid: "query"
+        },
+        dialog: {
+            dialogid: "dialog",
+            title: "网页地址"
+        },
+        form: {
+            formid: "form",
+            loadType: "remote",
+            loadAction: "GetUrls",
+            submitAction: "SaveUrls"
+        },
+        tree: {
+
+        },
+        com: {
+            //自定义业务逻辑
+            loadPageInfo: function (el) {
+                //根据网页地址获取网页logo地址
+                var val = song.dom("Url").value.trim();
+                if (val != "") {
+                    var pathInfo = song.path.parse(val),
+                        hostname = pathInfo.hostname;
+                    song.dom("IconName").value = hostname;
+                    song.dom("IconUrl").value = "http://{0}/favicon.ico".format(hostname);
+                    //获取网页标题
+                    //                    song.get(val, null, function (data) {
+                    //                        song.dom("Title").value = data.match(/<title>(.+)<\/title>/)[1];
+                    //                    }, {dataType:"text"});
+                    song.get(page.url("GetPageTitle"), { url: val }, function (data) {
+                        page.com.loadIcon();
+                        if (data.isSuccess) {
+                            song.dom("Title").value = data.title;
+                            song.dom("Encoding").value = data.encoding;
+                        } else {
+                            song.dom("Title").value = "";
+                            song.alert(data.msg || "获取网页标题失败");
+                        }
+                    });
+                }
+            },
+            loadIcon: function () {
+                //加载图标
+                var logoUrl = song.dom("IconUrl").value.trim();
+                if (logoUrl == "") {
+                    song.alert("请输入网页图标地址");
+                } else {
+                    var hostname = song.path.parse(logoUrl).hostname;
+                    song.dom("IconName").value = hostname;
+                    song.get(page.url("LoadUrlIcon"), { iconUrl: logoUrl, hostname: hostname }, function (data) {
+                        if (data.isSuccess) {
+                            song.dom("imgIcon").src = data.iconUrl;
+                        } else {
+                            song.alert(data.msg || "加载网页图标失败");
+                        }
+                    });
+                }
+            },
+            updateHits: function (id, url) {
+                //更新点击量
+                song.get(page.url("UpdateHits"), { id: id }, function (data) {
+                    if (!data.isSuccess) {
+                        song.tip.msg(data.msg || "更新点击量失败");
+                    }
+                });
+                window.open(url, "_blank");
+            },
+            importBookmarks: function () {
+                //导入收藏夹文件
+                var files = song.getCmp("uploaderImport").getUploadedFile();
+                if (files.length > 0) {
+                    song.get(page.url("ImportBookmarks"), { files: files }, function (data) {
+                        if (!data.isSuccess) {
+                            song.tip.msg(data.msg || "导入收藏夹失败");
+                        }
+                    });
+                }
+            },
+            closeImport: function () {
+                $('#importDialog').dialog('close');
+            }
+        }
+    });
+</script>

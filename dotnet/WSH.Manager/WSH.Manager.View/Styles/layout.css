@@ -1,0 +1,58 @@
+﻿.form-panel,.stack-panel,.hbox{ overflow:hidden; }
+
+.top{  color:#fff; height:89px;}
+
+/*Div表单布局*/
+.form-panel{  width:100%; margin:8px 0px; overflow:auto; }
+.form-label,.form-control,.form-check{ float:left; vertical-align:middle;}
+.form-label{width:80px; height:22px; line-height:22px;text-align:right;  display:block; overflow:hidden; }
+.form-label span{ margin-right:4px; }
+.form-control{ width:200px; }
+.form-space{ height:8px;}
+.form-check input{ vertical-align:middle; }
+.form-check span{ vertical-align:middle;height:22px;}
+.form-required{ color:Red; }
+
+/*表格表单布局*/
+.query-wrap{ padding:3px 0px; padding-bottom:3px;}
+.center-wrap{ overflow:hidden;}
+.toolbar-box{ text-align:right;}
+
+.tree-panel{ margin:3px; margin-left:0px; margin-bottom:0px; border-width:1px; border-style:solid; border-color:#99BBE8;}
+.form-table,.query-table{  margin:0px;width:100%;  border-collapse: collapse;}
+.form-table{ table-layout:fixed;}
+.form-table th,.form-table td{ border:0px solid #99BBE8;}
+.query-table th,.query-table td{ border:1px solid #99BBE8;}
+.form-table th,.query-table th{ width:80px;vertical-align:top; padding-top:5px; text-align:right; font-weight:normal;}
+.query-table th{ width:15%; background:#DFE8F6; }
+.query-table td{width:35%;}
+.form-table td,.query-table td{ padding:3px 5px; padding-right:7px; vertical-align:top; text-align:left;  }
+.form-table td input,.form-table td select,.form-table td textarea{ width:100%;}
+.query-table td input,.query-table td select,.query-table td textarea{ width:200px;}
+.form-table td textarea,.query-table td textarea{ height:60px;}
+.query-table td span.small input,.form-table td span.small input{width:18px;}
+
+.textbox,.textarea,.combox{ padding-left:3px; border:1px solid #B5B8C8;background:#fff url(../Images/form/text-bg.gif) left top repeat-x;}
+.textbox{ height:20px; line-height:20px;}
+.input-focus{border-color:#7eadd9;}
+.input-error{background:#FFE3E1 url(../Images/form/invalid_line.gif) repeat-x left bottom; border:1px solid #DD7870;}
+.required{color:Red; margin-right:3px; vertical-align:middle;}
+
+.button-wrap{ text-align:right; padding:5px; background:#EDF5F8; border-top:1px solid #B6BEC5;
+               position:fixed; _position:absolute; bottom:0px;right:0px;width:100%;}
+/*stackPanel布局*/
+.stack-panel{ padding:15px 0px;}
+.hbox{text-align:left;}
+.vbox{}
+
+/*dockPanel布局*/
+html{ height:100%;}
+.viewport,form{ height:100%; overflow:hidden; }
+ 
+.dock-panel{ position:relative; overflow:hidden; height:100%;}
+.dock-item{ position:absolute; overflow:auto;}
+
+.grid-cmd{ color:#333;}
+.grid-cmd:hover{ color:red; text-decoration:underline;}
+
+.datagrid-nonedata{ background:url(../Images/page/nonedata.png) center center no-repeat;}
