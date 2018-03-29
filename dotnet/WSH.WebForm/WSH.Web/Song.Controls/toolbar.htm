@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Toolbar</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.menu.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.toolbar.css" rel="stylesheet" type="text/css" />
+    <link href="../css/icons.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.menu.js" type="text/javascript"></script>
+    <script src="../js/song/song.toolbar.js" type="text/javascript"></script>
+    <script src="../js/song/song.test.js" type="text/javascript"></script>
+</head>
+<body>
+    <div style=" position:absolute; bottom:0px; right:0px; width:100%;" id="buttom-tb">
+               
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    
+    // toolbar
+    var test = new song.test();
+    var m = new song.menu({
+        items: [{ text: "菜单对象", iconClass: "icon-deleterow"}]
+    });
+    var mm = new song.menu({
+        items: [{ text: "文件" }, { text: "文件夹", iconClass: "icon-folder"}]
+    });
+    var tb = new song.toolbar({renderTo:"#buttom-tb"});
+    tb.add({ text: "新建", menu: mm}).add("-",
+    { text: "修改", iconClass: "icon-edit",id:"tb-edit",
+        onClick: function (item) {
+            tb.setEnabled("tb-add", !tb.getEnabled("tb-add"));
+        }
+    }, "-",
+    { text: "添加", iconClass: "icon-addrow", menu: m,enabled:false,id:"tb-add"});
+
+
+    var mmm = new song.menu({
+        items: [{ text: "菜单对象", iconClass: "icon-deleterow"}]
+    });
+    var mmmm = new song.menu({
+        items: [{ text: "文件" }, { text: "文件夹", iconClass: "icon-folder"}]
+    });
+    var btb = new song.toolbar();
+    btb.addButton({ text: "新建", menu: mmmm });
+    btb.add("-",
+    { text: "修改", iconClass: "icon-edit", id: "btb-edit"
+        
+    }, "-",
+    { text: "添加", iconClass: "icon-addrow", menu: mmm, enabled: false, id: "btb-add" });
+
+
+    //pagingToolbar
+    var paging = new song.pagingToolbar({
+        url:"project.ashx"
+    });
+</script>

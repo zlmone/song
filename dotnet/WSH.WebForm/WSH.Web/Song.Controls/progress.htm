@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Progress</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/extend.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.progress.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.progress.js" type="text/javascript"></script>
+</head>
+<body>
+    <div style=" margin:100px; width:200px;" id="p"></div>
+</body>
+</html>
+<script type="text/javascript">
+    var pb = new song.progress({ value: 0, renderTo: $("#p") });
+    var timer = setInterval(function () {
+        if (pb.value< pb.max) {
+            pb.value ++;
+            pb.setValue(pb.value);
+        } else {
+            clearInterval(timer);
+        }
+    }, 50);
+    
+    
+</script>

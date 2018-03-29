@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> </title>
+
+    <script src="../js/jquery1.4.js" type="text/javascript"></script>
+
+  
+<style type="text/css">
+        body,html{ margin:0px; padding:0px; overflow-x:hidden;}
+        .simg{ width:80px; height:60px;}
+        .j-boximg-mask{ position:absolute; background:#333; left:0px; top:0px; display:none; }
+        .j-boximg{ background:transparent; position:absolute; z-index:100;  display:none; 
+        border:5px solid #fff; }
+        .j-boximg img{ position:absolute;  z-index:101;  }
+        .j-boximg-prev,.j-boximg-next,.j-boximg-first,.j-boximg-last{  position:absolute; height:100%; width:50%;
+        color:#000;  top:0px; cursor:pointer;zoom:1;display:block; z-index:102;
+        background:url(../images/WSHBox/blank.gif); outline:none 0;}
+        .j-boximg-prev,.j-boximg-first{ left:0px;  }
+       .j-boximg-prev:hover{ background:transparent url(../images/WSHBox/boximg-prev.gif) no-repeat left center;}
+        .j-boximg-next,.j-boximg-last{ right:0px;    }
+        .j-boximg-next:hover{ background:transparent url(../images/WSHBox/boximg-next.gif) no-repeat right center;}
+        .j-boximg-close{ display:block; width:23px; height:22px;  position:absolute;
+         right:0px; top:0px;
+        background:#fff url(../images/WSHBox/boximg-close.gif) no-repeat center center; z-index:103;}
+        
+</style>
+<script type="text/javascript">
+    $.fn.imgBox = function(opts) {
+        var doc = $(document.body), win = $(window);
+        var opts = $.extend({
+            minWidth: 400,
+            minHeight:350,
+            maxWidth: 700,
+            maxHeight:450,
+            index: -1
+        }, opts || {});
+        //设置imgs的容器
+        opts.imgList = this;
+        opts.imgLen = this.length;
+        var pageX = win.width();
+        var pageY = win.height();
+        //创建遮罩
+        var mask = $("<div>").css("opacity", 0.8).width(pageX).height(pageY);
+        mask.appendTo(doc).attr("class", "j-boximg-mask");
+        //创建imgbox
+        var w = opts.minWidth, h = opts.minHeight;
+        var box = $("<div>").attr("class", "j-boximg").appendTo(doc);
+        box.width(w).height(h);
+        var l = (pageX - w) / 2;
+        var t = (pageY - h) / 2;
+        box.css({ left: l + "px", top: t + "px" });
+        //创建左右查看按钮
+        function createMove() {
+            return $("<a>").height(h).attr("href", "javascript:").attr("hideFocus",true);
+        }
+        //创建关闭按钮
+        var close = $("<a>").attr("href", "javascript:").addClass("j-boximg-close").appendTo(box);
+        function prevImg(e) {
+            if (opts.index >= 1) {
+                opts.index--;
+                moveImg(opts.imgList.eq(opts.index), true);
+            }
+        }
+        function nextImg(e) {
+            if (opts.index < opts.imgLen - 1) {
+                opts.index++;
+                moveImg(opts.imgList.eq(opts.index), true);
+            }
+        }
+        function moveImg(curr, isMove) {
+            //判断是否可以点击上一页和下一页
+            var prev = box.find("a.j-boximg-prev").unbind("click", prevImg).remove();
+            var next = box.find("a.j-boximg-next").unbind("click", nextImg).remove();
+            if (opts.index < opts.imgLen - 1) {
+                next = createMove().addClass("j-boximg-next").bind("click", nextImg).appendTo(box);
+            }
+            if (opts.index > 0) {
+                prev = createMove().addClass("j-boximg-prev").bind("click", prevImg).appendTo(box);
+            }
+            //保存点击图片的位置，用以退出浏览时的动画
+            if (isMove != true) {
+                var off = curr.offset();
+                var oldw = curr.width(), oldh = curr.height(), oldl = off.left, oldt = off.top;
+                box.css({ left: oldl + "px", top: oldt + "px" }).height(oldh).width(oldw);
+                close.show();
+                box.css("border","5px solid #fff");
+                close.bind("click", function(e) {
+                    mask.hide();
+                    box.css("border","0px");
+                    close.unbind("click").hide();
+                    prev.unbind("click", prevImg).remove();
+                        next.unbind("click", nextImg).remove();
+                    box.stop().animate({ top: oldt, left: oldl, width: oldw, height: oldh }, 700, function() {
+                        $(this).hide();
+                        
+                        
+                    });
+                    $("html").css("overflow-y", "auto");
+                    e.stopPropagation();
+                });
+                mask.show();
+                box.show();
+            }
+            box.find("img").remove();
+            //创建图片
+            var src = curr.attr("src");
+            var img = $("<img>").attr("src", src).appendTo(box);
+            var imgX = img.width(), imgY = img.height();
+
+            if (imgX > w) {
+                w = imgX;
+            }
+            if (imgY > h) {
+                h = imgY;
+            }
+            w = imgX, h = imgY;
+            var l = (pageX - w) / 2;
+            var t = (pageY - h) / 2;
+            img.height(box.height()).width(box.width());
+            //图片居中
+            var imgLeft = (w - imgX) / 2;
+            var imgTop = (h - imgY) / 2;
+
+            img.stop().animate({ left: imgLeft, top: imgTop, width: w, height: h });
+            box.stop().animate({ left: l, top: t, width: w, height: h});
+            //  img.css({ left: imgLeft + "px", top: imgTop + "px" });
+            // box.css({ left: l + "px", top: t + "px" });
+           // prev.stop().animate({ height: h });
+            //next.stop().animate({ height: h });
+             prev.height(h); next.height(h);
+        }
+        this.each(function(i) {
+            var curr = $(this);
+            curr.click(function() {
+                $("html").css("overflow-y", "hidden");
+                opts.index = i;
+                moveImg(curr);
+            });
+        });
+
+    }
+    $(function() {
+        $("img").imgBox();
+    });
+</script>
+</head>
+<body style="margin-top:70px; margin-left:0px; ">
+    <img src="../images/temp/image1.jpg" class="simg"/>
+    <img src="../images/temp/image2.jpg" class="simg"/>
+    <img src="../images/temp/image3.jpg" class="simg"/>
+    <img src="../images/temp/image1.jpg" class="simg"/>
+    <img src="../images/temp/image2.jpg" class="simg"/>
+    <img src="../images/temp/image3.jpg" class="simg"/>
+ 
+    <div style=" height:1000px; width:20px;"></div>
+</body>
+</html>
+ 

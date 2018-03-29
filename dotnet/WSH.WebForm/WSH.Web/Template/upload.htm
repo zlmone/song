@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>无标题页</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery1.4.js" type="text/javascript"></script>
+    <script src="../A/j.js" type="text/javascript"></script>
+    <link href="../css/buttons.css" rel="stylesheet" type="text/css" />
+    <script src="../js/j-ui/upload.js" type="text/javascript"></script>
+    <link href="../css/Grid.css" rel="stylesheet" type="text/css" />
+    <script src="../js/j-ui/columnResize.js" type="text/javascript"></script>
+    <link href="../css/panel.css" rel="stylesheet" type="text/css" />
+    <link href="../css/toolbar.css" rel="stylesheet" type="text/css" />
+    <script src="../js/j-ui/toolbar.js" type="text/javascript"></script>
+    <style type="text/css">
+        body{ font-size:12px;}
+        .j-upload{ cursor:pointer; width:75px;  overflow:hidden; position:relative;  height:21px; }
+        .j-upload-list{ overflow:auto;}
+         .j-upload-link, .j-upload-file{ cursor:pointer;height:21px; line-height:21px;}
+        .j-upload-link{ font-family:Arial;  }
+        .j-upload-file{background-color:#ccc; top:0px;left:-155px;
+         position:absolute; filter:alpha(opacity=0);opacity:0;   }
+        .j-upload-limit{font-family:Arial;color:green; font-weight:bold;}
+        .j-upload-item{ height:24px;  line-height:24px; border:0px solid #fff;text-align:left; font-size:12px; display:block;}  
+        .j-upload-item:Hover{ background:#eee; border:0px dashed #ccc;}
+        .j-upload-item span,.j-upload-item lable{ height:100%; display:inline-block; }
+        .j-upload-remove{   width:16px;   cursor:pointer; vertical-align:top;
+            background-position:0px center; background-repeat:no-repeat; margin-left:10px;}
+    </style>
+    <script type="text/javascript">
+        j.upload = j.getClass();
+        j.upload.prototype = {
+            init: function (opts) {
+                j.extend(this, opts, {
+                    id: j.guid(),
+                    size: 2,
+                    count: 4,
+                    height: 200,
+                    type: ["jpg", "jpeg", "bmp", "ico", "gif", "png", "doc", "docx", "txt", "dll"],
+                    renderTo: j.getBody()
+                });
+                this.createPanel();
+            },
+            createPanel: function () {
+                var id = "j-upload-list" + this.id, obj = this;
+                var wrap = j("<div>").setClass("panel-ext");
+                this.width && wrap.width(this.width);
+                var list = this.list = j("<div>").attr({ id: id }).setClass("j-upload-list").height(this.height - 27).appendTo(wrap);
+                wrap.appendTo(this.renderTo);
+                var tb = this.tb = new j.toolbar({ renderTo: wrap.get() });
+                //创建选择按钮
+                var filewrap = j("<div>").setClass("j-upload");
+                var fake = j("<a>").setClass("j-upload-link btn-ext").attr({ "href": j.nullUrl });
+                fake.html('<span class="btn-ext-right"><span class="btn-ext-center">选择附件</span></span>');
+                var file = j("<input>").setClass("j-upload-file").attr({ type: "file" }).bind("change", function () {
+                    var fname = this.value;
+                    var l = j(id);
+                    //检测文件重名
+                    var items = l.tag("lable");
+                    for (var i = 0; i < items.length; i++) {
+                        if (items[i].innerHTML.has(fname)) { return; }
+                    }
+                    //检测文件个数
+                    var count = obj.count;
+                    if (items.length >= count) {
+                        alert("最多只能同时上传{0}个文件!".format(count)); return;
+                    }
+                    //检测文件类型
+                    var type = obj.type;
+                    if (type != "*") {
+                        var ftype = fname.substring(fname.lastIndexOf(".") + 1);
+                        if (Array.indexOf(type, ftype) == -1) {
+                            alert("只能上传{0}格式的文件！".format(type.toString())); return;
+                        }
+                    }
+                    //检测文件大小
+                    var size;
+                    if (this.files == null) {
+                        try {
+                            var fso = new ActiveXObject('Scripting.FileSystemObject');
+                            size = fso.GetFile(fname);
+                        } catch (e) {
+                            var img = new Image();
+                            img.dynsrc = fname;
+                            size = img.fileSize;
+                        }
+                    } else {
+                        size = this.files[0].fileSize;
+                    }
+                    var mb = Math.round(size / (1024 * 1024));
+                    if (mb > obj.size) {
+                        alert("最大只能上传{0}MB大小的文件！".format(obj.size)); return;
+                    }
+                    var row = j("<a>").setClass("j-upload-item").attr("href", j.nullUrl);
+                    var name = j("<lable>").html(fname);
+                    var del = j("<span>").attr("title", "删除").setClass('j-upload-remove icon-delete').bind("click", function () {
+                        var p = this.parentNode;
+                        j(this).unbind("click").remove();
+                        j(p).remove();
+                    });
+                    row.append(name).append(del).appendTo(l);
+                });
+                filewrap.append(fake).append(file);
+                tb.add("-");
+                tb.add(filewrap.get());
+                var t = obj.type;
+                if (t != "*") {
+                    tb.add("-");
+                    tb.add("&nbsp;格式：");
+                    tb.add("<span class='j-upload-limit' title='{0}'>{1}...&nbsp;</span>".format(t.toString(), t[0].toString()));
+                }
+                tb.add("-");
+                tb.add("&nbsp;大小：");
+                tb.add("<span class='j-upload-limit'>{0}MB</span>&nbsp;".format(this.size));
+                tb.add("-");
+                tb.add("&nbsp;最多：");
+                tb.add("<span class='j-upload-limit'>{0}</span>&nbsp;".format(this.count));
+                tb.add("-");
+                tb.add({ text: "清空", icon: "reload", handler: function () {
+                    if (confirm("确定清空文件列表？")) {
+                        var items = dom(id).childNodes;
+                        for (var i = 0; i < items.length; i++) {
+                            var nodes = items[i].childNodes;
+                            for (var k = 0; k < nodes.length; k++) {
+                                var node = j(nodes[k]);
+                                if (node.hasClass("j-upload-remove")) { node.unbind("click"); } node.remove(); k--;
+                            }; j(items[i]).remove(); i--;
+                        }
+                    }
+                }
+                });
+                tb.add({ text: "上传 ", icon: "save" });
+            }
+        }
+        $(function () {
+            new j.upload({width:699});
+            $("#upload").hover(function () {
+                $(this).prev().addClass("btn-ext-hover");
+            }, function () {
+                $(this).prev().removeClass("btn-ext-hover");
+            }).change(function () {
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div id="j-upload">
+
+</div>
+<div class="j-upload" style="display:none">
+    <a href="javascript:void(0)" class="btn-ext" >
+        <span class="btn-ext-right">
+            <span class="btn-ext-center">选择附件</span>
+        </span>
+    </a>
+    <input type="file" id="upload" hidefocus/>
+</div>
+<div style="width:600px;   padding:1px; display:none;" class="panel-ext">
+        <div style="height:200px;overflow:auto; width:100%;" id="uploadList"> 
+     
+ </div>
+       <div  id="tb"> 
+            
+       </div>
+</div>
+</body>
+</html>

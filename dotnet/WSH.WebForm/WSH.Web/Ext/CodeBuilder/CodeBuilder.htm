@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>王松华-代码生成工具</title>
+    <script type="text/javascript">
+        function copyToClipboard(txt) {
+            if (window.clipboardData) {
+                window.clipboardData.clearData(); window.clipboardData.setData("Text", txt);
+            } else if (navigator.userAgent.indexOf("Opera") != -1) {
+                window.location = txt;
+            } else if (window.netscape) {
+                try {
+                    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+                } catch (e) {
+                    alert("您的firefox安全限制限制您进行剪贴板操作，请打开’about:config’将signed.applets.codebase_principal_support’设置为true’之后重试，相对路径为firefox根目录/greprefs/all.js"); return false;
+                }
+                var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard); if (!clip)
+                    return; var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable); if (!trans) return; trans.addDataFlavor('text/unicode');
+                var str = new Object();
+                var len = new Object();
+                var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+                var copytext = txt; str.data = copytext; trans.setTransferData("text/unicode", str, copytext.length * 2);
+                var clipid = Components.interfaces.nsIClipboard; if (!clip) return false; clip.setData(trans, null, clipid.kGlobalClipboard);
+            }
+        } 
+    </script>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/adapter/ext/ext-base.js" type="text/javascript"></script>
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script src="../extjs/ext-lang-cn.js" type="text/javascript"></script>
+    <script src="../extjs/extCommon.js" type="text/javascript"></script>
+    <script src="../extjs/examples/examples.js" type="text/javascript"></script>
+    <link href="../extjs/examples/examples.css" rel="stylesheet" type="text/css" />
+    <!--<link href="extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="extjs/adapter/ext/ext-base.js" type="text/javascript"></script>
+    <script src="extjs/ext-all.js" type="text/javascript"></script>
+    <script src="extjs/extCommon.js" type="text/javascript"></script>-->
+    <!--代码生成模板引入-->
+    <script src="js/code.js" type="text/javascript"></script>
+    <script src="js/code-tree-data.js" type="text/javascript"></script>
+    <script src="js/code-control.js" type="text/javascript"></script>
+    <script src="js/code-entity.js" type="text/javascript"></script>
+    <script src="js/code-winform.js" type="text/javascript"></script>
+    <script src="js/code-aspnet.js" type="text/javascript"></script>
+    <script src="js/code-controller.js" type="text/javascript"></script>
+    <script src="js/code-ext.js" type="text/javascript"></script>
+    <!--代码生成配置引入-->
+    <script src="js/join.js" type="text/javascript"></script>
+    <script src="js/options.js" type="text/javascript"></script>
+    <!--代码生成主界面引入-->
+    <script src="js/codeBuilder-main.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        
+    </script>
+    
+</head>
+<body>
+
+</body>
+</html>

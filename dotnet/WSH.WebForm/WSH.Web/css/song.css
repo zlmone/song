@@ -1,0 +1,12 @@
+﻿ /****************************************drag-drop-resize****************************************/
+ .song-dd-proxy{opacity:0.3;  filter:Alpha(opacity=30);background-color:#599CEE;
+                  position:absolute; z-index:10000; display:none;}
+                  
+ /****************************************suggest****************************************/
+ .song-suggest-loading{ height:20px; line-height:20px; background:url(../img/icons/loading.gif) 2px center no-repeat;
+                         padding-left:20px;}
+ .song-suggest-dropdown{ border:1px solid #B5B8C8; background:#fff; position:absolute; display:none;border-top:0px; }
+ .song-suggest-dropdown a{ padding:3px 2px; background:#fff; display:block;}
+ .song-suggest-dropdown a:hover, .song-suggest-active{background:#CCEBFF }
+
+

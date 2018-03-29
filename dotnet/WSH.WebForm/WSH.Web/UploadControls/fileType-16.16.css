@@ -1,0 +1,46 @@
+﻿.file{ background-image:url(img/fileTypes.png); width:16px; height:16px;
+        background-repeat:no-repeat;}
+
+ .xls,.xlsx{background-position:-32px 0px;}
+.doc,.docx{background-position:-64px 0px;}
+.ppt,.pptx{background-position:-96px 0px;}
+.qz{background-position:-128px 0px;}
+.rar{background-position:-160px 0px;}
+.zip{background-position:-192px 0px;}
+.iso,.dat{background-position:-224px 0px;}
+.email{background-position:-256px 0px;}
+.html,.htm,.shtml,.asp,.aspx,.jsp,.php{background-position:-288px 0px;}
+.unnamed_10{background-position:-320px 0px;}
+.config{background-position:-352px 0px;}
+.chm{background-position:-384px 0px;}
+.console{background-position:-416px 0px;}
+.bat{background-position:-448px 0px;}
+.css,.otf,.ttf,.ttc,.fon,.ttc{background-position:-480px 0px;}
+.pdf{background-position:-512px 0px;}
+.psd{background-position:-544px 0px;}
+.ai{background-position:-576px 0px;}
+.fla{background-position:-608px 0px;}
+.swf{background-position:-640px 0px;}
+.txt{background-position:-672px 0px;}
+.rtf{background-position:-704px 0px;}
+.reg{background-position:-736px 0px;}
+.rmvb,.rm{background-position:-768px 0px;}
+.avi{background-position:-800px 0px;}
+.mp4,.mp5{background-position:-832px 0px;}
+.wmv,.mpe{background-position:-864px 0px;}
+.mp3,.wma,.wav{background-position:-896px 0px;}
+.jpg,.jpeg{background-position:0px -32px;}
+.gif{background-position:-32px -32px;}
+.png{background-position:-64px -32px;}
+.bmp{background-position:-96px -32px;}
+.tif{background-position:-128px -32px;}
+.emf{background-position:-160px -32px;}
+.wmf{background-position:-192px -32px;}
+.ico{background-position:-224px -32px;}
+.raw{background-position:-256px -32px;}
+.unnamed_10{background-position:-288px -32px;}
+.unnamed_11{background-position:-320px -32px;}
+.bt{background-position:-352px -32px;}
+.folder{background-position:-384px -32px;}
+ 
+ 

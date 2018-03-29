@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Song.Project</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.project.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var combox = new song.select("combox");
+            combox.addItem("全部", "全部");
+            combox.addItem("王松华");
+            combox.addItem("王松华");
+            combox.addItem("王松华");
+
+            //            combox.remoteBind({
+            //                url: "project.ashx", clearIndex: 1
+            //            });
+            $("#btnFirst").click(function () {
+                combox.moveFirst();
+            });
+            $("#btnPrev").click(function () {
+                combox.movePrev();
+            });
+            $("#btnNext").click(function () {
+                combox.moveNext();
+            });
+            $("#btnLast").click(function () {
+                combox.moveLast();
+            });
+        });
+      
+    </script>
+</head>
+<body>
+    <select id="combox" size="14" style="width:200px; height:200px;">
+    
+    </select>
+    <a href="#" id="btnFirst">置顶</a>
+    <a href="#" id="btnPrev">上移</a>
+    <a href="#" id="btnNext">下移</a>
+    <a href="#" id="btnLast">置底</a>
+
+
+</body>
+</html>

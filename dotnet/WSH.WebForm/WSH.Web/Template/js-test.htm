@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JS-实验</title>
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.path.js" type="text/javascript"></script>
+    <script src="../js/song/song.lazy.js" type="text/javascript"></script>
+</head>
+<body>
+    <div style="width:100px; height:100px; border:1px solid red;">
+       
+        <img src="../login/simpleblue/bg.jpg" id="img" />
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    song.lazy.require({
+        jsPath: "../js/song/song.",
+        files: ["project.js", "fmt.js"]
+        //files: ["../js/song/song.project.js", "../js/song/song.fmt.js"]
+        , success: function () {
+            var img = jQuery("#img");
+            var center = song.position.scale(img, 100, 100);
+            
+            img.css({ marginTop: center.top, marginLeft: center.left });
+        }
+    });
+ 
+</script>

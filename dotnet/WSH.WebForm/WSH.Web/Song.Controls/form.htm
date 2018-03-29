@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Form</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/extend.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.numberbox.js" type="text/javascript"></script>
+</head>
+<body>
+    <input type="text" id="numberbox" class="textbox"/>
+    <div style=" background:#ccc; height:10px;"></div>
+
+    <input type="checkbox" value="0" id="sale0" name="sale" />
+    <input type="checkbox" value="1" id="sale1" name="sale" />
+    <input type="button" onclick="getValue()" value="选中"/>
+</body>
+</html>
+<script type="text/javascript">
+    var num = new song.numberbox($("#numberbox"), {
+        allowNegative:false,maxValue:100
+    });
+    function getValue() {
+        alert($("input:checkbox[name=sale]:checked").val());
+    }
+    
+</script>

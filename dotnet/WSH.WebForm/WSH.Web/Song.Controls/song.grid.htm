@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Song.Control</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/extend.css" rel="stylesheet" type="text/css" />
+    <link href="../css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.grid.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.toolbar.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.menu.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.popup.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.trigger.css" rel="stylesheet" type="text/css" />
+    <link href="../js/zTree/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/zTree/jquery.ztree.core-3.0.min.js" type="text/javascript"></script>
+    <script src="../js/zTree/jquery.ztree.excheck-3.0.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.project.js" type="text/javascript"></script>
+    <script src="../js/song/song.cmp.js" type="text/javascript"></script>
+    <script src="../js/song/song.toolbar.js" type="text/javascript"></script>
+     <script src="../js/song/song.popup.js" type="text/javascript"></script>
+    <script src="../js/song/song.menu.js" type="text/javascript"></script>
+    <script src="../js/song/song.dd.js" type="text/javascript"></script>
+    <script src="../js/song/song.grid.js" type="text/javascript"></script>
+    <script src="../js/song/song.trigger.js" type="text/javascript"></script>
+    <style type="text/css">
+       
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            var cols = [
+        { checkbox: true, rowspan: 2 },
+        { field: "name", rowspan: 2, header: "姓名", width: 100, hidden: false, sortable: true, resizable: true,
+            renderer: function (val) {
+                return val;
+            }
+        },
+
+            { field: "man", header: "男", align: "right", resizable: true },
+            { field: "woman", header: "女", resizable: true },
+
+        { field: "address", header: "地址", rowspan: 2, width: 100 },
+        { rowspan: 2, header: "操作", align: "center", renderer: function (val, row) {
+            return "<a href='###' class='inline-block song-grid-cmd'>编辑</a><span class='song-grid-cmdline'>|</span><a href='###' class='inline-block song-grid-cmd'>删除</a>";
+        }
+        }
+    ];
+//            var combo = new song.comboGrid({
+//                enabled: false,
+//                renderTo:"#dropDown",
+//                textField: "name"
+//            }, {
+//                columns: cols,
+//                url: "grid.ashx",
+//                expandColumn: "address"
+//            });
+            var node = [
+                { name: "根节点", isParent: true, open: true, childs: [
+                    { name: "子节点1" },
+                    { name: "子节点2" },
+                    { name: "子节点3" }
+                ]
+                }
+            ];
+
+            var comboTree = new song.comboTree({
+            renderTo:"#search"
+        }, {
+            callback: {
+                onClick: function (e, id, node) {
+                    node && comboTree.setText(node.name);
+                    comboTree.collapse();
+                }
+            }
+        }, node);
+       // new song.search();
+    });
+    </script>
+</head>
+<body class="layout">
+    <input type="text" class="textbox hide" style=" position:absolute; left:400px;  " id="txt"/>
+    <div id="dropDown" style=" padding-left:000px; height:100%">
+        
+    </div>
+    <div id="search">
+    
+    </div>
+    <input type="button" value="重新加载" onclick="reload();" class="hide" />
+    <div class="song-grid-wrap  hide ">
+        <div class="song-grid-separator"></div>
+        <div class="song-grid-header">
+            <div class="song-grid-headerBox">
+                <table>
+                    <thead>
+                        <tr>
+                            <td style="width:400px; " class="song-grid-column" rowspan="2">
+                                <div class="song-grid-column-inner">姓名</div>
+                            </td>
+                            <td class="song-grid-column song-grid-multicolumn" style="width:200px;" colspan="2">
+                                <div class="song-grid-column-inner">姓名</div>
+                            </td>
+                            <td class="song-grid-column" rowspan="2">
+                                <div class="song-grid-column-inner">姓名</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="song-grid-column ">
+                                <div class="song-grid-column-inner">地址</div>
+                            </td>
+                            <td class="song-grid-column ">
+                                <div class="song-grid-column-inner">地址</div>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="song-grid-body">
+            <div class="song-grid-bodyBox">
+                <table border="0" cellpadding="0" cellspacing="0" class="song-grid-table">
+                    <tbody>
+                        <tr class="song-grid-row">
+                            <td class="song-grid-cell" style="width:400px;"><div class="song-grid-cell-inner">王松华</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">9999-10-10</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">99</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">湖南株洲攸县</div></td>
+                        </tr>
+                        <tr class="song-grid-row song-grid-row-even" >
+                            <td class="song-grid-cell" style="width:200px;"><div class="song-grid-cell-inner">王松华</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">9999-10-10</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">99</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">湖南株洲攸县</div></td>
+                        </tr>
+                        <tr class="song-grid-row">
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">王松华</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">9999-10-10</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">99</div></td>
+                            <td class="song-grid-cell"><div class="song-grid-cell-inner">湖南株洲攸县</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  
+</body>
+</html>
+ 
+<script type="text/javascript">
+    var cols = [
+        { checkbox: true, rowspan: 2 },
+        { field: "name", rowspan: 2, header: "姓名",width:100, hidden: false, sortable: true, resizable: true,
+            renderer: function (val) {
+                return val;
+            }
+        },
+        { field: "sex", header: "性别", columns: [
+            { field: "man", header: "男", align: "right", resizable: true },
+            { field: "woman", header: "女", resizable: true }
+        ]
+        },
+        { field: "address", header: "地址", rowspan: 2, width: 100 },
+        { rowspan: 2, header: "操作", align: "center", renderer: function (val, row) {
+            return "<a href='###' class='inline-block song-grid-cmd'>编辑</a><span class='song-grid-cmdline'>|</span><a href='###' class='inline-block song-grid-cmd'>删除</a>";
+        }
+        }
+    ];
+        var data = { totalRecord: 1, root: [
+            { name: "王松华", man: true, woman: false, address: "湖南株洲攸县" }
+        ]
+        };
+        var m = new song.menu({
+            items: [
+                { text: "添加", iconClass: "icon-addrow" },
+                { text: "修改", iconClass: "icon-edit" },
+                { text: "删除", iconClass: "icon-deleterow" }
+            ]
+        });
+        var ttb = [
+                { text: "设置选择19", onClick: function () {
+                    grid.selectRow(19, true);
+                }
+                }, { text: "设置选择1", onClick: function () {
+                    grid.selectRow(0, true);
+                }
+                }, "-",
+                { text: "清除选择", onClick: function () {
+                    grid.clearSelection();
+                }
+                }, "-",
+                { text: "添加", iconClass: "icon-addrow", onClick: function () {
+                    alert(grid.getSelectedRow());
+                }
+                }, '-',
+                { text: "修改", iconClass: "icon-edit", onClick: function () {
+                    var row = grid.getSelectedRow();
+                    if (row == null) {
+                        song.tip.msg("请选择一条记录进行操作！");
+                    } else {
+                        song.tip.msg(row.data.name);
+                    }
+                }
+                }, '-',
+                { text: "删除", iconClass: "icon-deleterow", onClick: function () {
+                    var row = grid.getSelectedRow();
+                    if (row == null) {
+                        song.tip.msg("请选择一条记录进行操作！");
+                    } else {
+                        song.tip.msg(row.data.name);
+                    }
+                }
+                }
+            ];
+        var grid = new song.grid({
+            toolbar:ttb,
+            renderTo:"#dropDown",
+            stripe: true,
+            columns: cols,
+            pageSimple: false,
+            url: "grid.ashx",
+            expandColumn: "address",
+            singleSelect: false,
+            margin: 0,
+            width: "100%",
+            height: "100%",
+            onRowClick: function (row) {
+                var srow = this.getSelectedRow();
+                //var row = this.getRow(rowIndex);
+                //if (row.dom==srow.dom) {
+                // song.tip.msg(row.rowIndex + row.data.name, "", { time: 0.5 });
+                //}
+            },
+            onRowContextmenu: function (e, row) {
+                m.showEvent(e);
+                this.setSelectedRow(row.rowIndex,false);
+            },
+            onRowDblclick: function (row) {
+                alert(row.data.name);
+            },
+            onLoad: function () {
+
+            }
+        });
+        
+       // grid.hide();
+        function reload() {
+            grid.load();
+        }
+       
+</script>

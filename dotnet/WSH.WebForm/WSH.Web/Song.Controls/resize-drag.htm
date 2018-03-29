@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Resize-Drag</title>
+        <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/extend.css" rel="stylesheet" type="text/css" />
+    
+    <link href="../css/song.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.dd.js" type="text/javascript"></script>
+</head>
+<body>
+<div style=" position:absolute; left:100px; top:100px; height:500px; width:900px; background:#eee;"></div>
+    <div id="resize" style="  top:100px; left:100px;height:200px; width:200px; border:1px solid #ccc; background:#fff; position:relative;">
+        <span id="handler" style=" background:blue; height:10px; width:10px; zoom:1; position:absolute; right:0px; bottom:0px;">&nbsp;</span>
+    </div>
+    
+    <table border="1">
+        <tr>
+            <td id="col"><div style=" float:left;">姓名</div> <div style=" width:2px; background:blue; float:right; height:20px;" id="colHanlder"></div class="clear-hide"> <div></div></td>
+        </tr>
+        <tr>
+            <td>王松华</td>
+        </tr>
+        <tr>
+            <td>王松华</td>
+        </tr>
+        <tr>
+            <td>王松华</td>
+        </tr>
+        <tr>
+            <td>王松华</td>
+        </tr>
+        <tr>
+            <td>王松华</td>
+        </tr>
+        <tr>
+            <td>王松华</td>
+        </tr>
+    </table>
+</body>
+</html>
+<script type="text/javascript">
+ 
+    var resize = new song.resize($("#resize"), {
+        handler:$("#handler"),proxy:true
+    });
+    var drag = new song.drag($("#resize"), {
+        maxRight:1000,minLeft:100,maxBottom:600,minTop:100
+    });
+    var colResize = new song.resize($("#col"), {
+        lockY:true,proxy:false,cursor:"col-resize",handler:$("#colHanlder")
+    });
+ 
+</script>

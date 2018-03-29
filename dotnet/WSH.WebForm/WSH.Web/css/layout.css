@@ -1,0 +1,23 @@
+﻿.form-panel,.stack-panel,.hbox{ overflow:hidden; }
+
+/*表单布局*/
+.form-panel{  width:100%; margin:8px 0px; overflow:auto; }
+.form-label,.form-control,.form-check{ float:left; vertical-align:middle;}
+.form-label{width:80px; height:22px; line-height:22px;text-align:right;  display:block; overflow:hidden; }
+.form-label span{ margin-right:4px; }
+.form-control{ width:200px; }
+.form-space{ height:8px;}
+.form-check input{ vertical-align:middle; }
+.form-check span{ vertical-align:middle;height:22px;}
+.form-required{ color:Red; }
+
+/*stackPanel布局*/
+.stack-panel{ padding:15px 0px;}
+.hbox{text-align:left;}
+.vbox{}
+
+/*dockPanel布局*/
+html,body,.viewport,form{ height:100%; overflow:hidden; }
+.viewport{ overflow:auto; }
+.dock-panel{ position:relative; overflow:hidden; height:100%;}
+.dock-item{ position:absolute; overflow:auto;  }

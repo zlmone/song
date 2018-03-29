@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Popup</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/extend.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+        <link href="../css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.popup.css" rel="stylesheet" type="text/css" />
+    <script src="../js/song/song.popup.js" type="text/javascript"></script>
+</head>
+<body>
+ <button onmouseover="show();" onmouseout="hide()" style="position:absolute; top:200px; left:200px;" id="el">Show</button>
+ <div style=" width:200px; height:200px;  margin:300px; border:1px solid red;" id="l">
+    Loading...
+ </div>
+</body>
+</html>
+<script type="text/javascript">
+    var tip = new song.tip({
+        target: true
+ 
+        , follow: "#el", dir: "right",
+        closable: true,closeAction:"hide",eventType:"hover"
+    });
+    var loading = new song.loading({ el: jQuery("#l") }).show();
+    song.tip.msg("请选择一条记录进行操作");
+    function show() {
+//        var tip = new song.tip({timeout:false});
+//        tip.show();
+      
+        // song.tip.msg("请选择一条记录进行操作");
+     //tip.show();
+        var url = "project.ashx";
+        tip.load(url, "json", function (data) {
+            var str = ["<div style='background:#fff'>", data.name, "</div>"];
+            this.setContent(str.join(''));
+             });
+        
+    }
+    function hide() {
+        //tip.hide();
+    }
+</script>

@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{671C7CA9-C013-4B18-ABB6-46CD387E328E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.Web</RootNamespace>
+    <AssemblyName>WSH.Web</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Area.xml" />
+    <Content Include="CommonPage\ChinaArea.xml" />
+    <Content Include="App_Data\City.xml" />
+    <Content Include="App_Data\Province.xml" />
+    <Content Include="Cmp\Button.aspx" />
+    <Content Include="Cmp\DataGrid.aspx" />
+    <Content Include="Cmp\DateBox.aspx" />
+    <Content Include="Cmp\Dialog.aspx" />
+    <Content Include="Cmp\File.aspx" />
+    <Content Include="Cmp\FlexGrid.aspx" />
+    <Content Include="Cmp\FormPanel.aspx" />
+    <Content Include="Cmp\Menu.aspx" />
+    <Content Include="Cmp\Toolbar.aspx" />
+    <Content Include="Cmp\ZTree.aspx" />
+    <Content Include="CommonPage\CheckCode.aspx" />
+    <Content Include="CommonPage\China.aspx" />
+    <Content Include="CommonPage\DownloadFile.aspx" />
+    <Content Include="CommonPage\error.aspx" />
+    <Content Include="CommonPage\Global.asax" />
+    <Content Include="css\buttons.css" />
+    <Content Include="css\layout.css" />
+    <Content Include="css\global.css" />
+    <Content Include="css\icons.css" />
+    <Content Include="css\extend.css" />
+    <Content Include="css\old\dataGrid.css" />
+    <Content Include="css\old\panel.css" />
+    <Content Include="css\old\web.css" />
+    <Content Include="css\song.css" />
+    <Content Include="css\song.grid.css" />
+    <Content Include="css\song.menu.css" />
+    <Content Include="css\song.popup.css" />
+    <Content Include="css\song.progress.css" />
+    <Content Include="css\song.toolbar.css" />
+    <Content Include="css\song.trigger.css" />
+    <Content Include="frameset\images\ccc.gif" />
+    <Content Include="frameset\images\pic23.gif" />
+    <Content Include="frameset\images\pic24.gif" />
+    <Content Include="frameset\Index.aspx" />
+    <Content Include="frameset\swich.html" />
+    <Content Include="frameset\Top.aspx" />
+    <Content Include="img\form\btn-2.gif" />
+    <Content Include="img\form\btns.png" />
+    <Content Include="img\form\default-button.png" />
+    <Content Include="img\form\button_a_bg.gif" />
+    <Content Include="img\form\button_span_bg.gif" />
+    <Content Include="img\form\invalid_line.gif" />
+    <Content Include="img\form\search-trigger.gif" />
+    <Content Include="img\form\text-bg.gif" />
+    <Content Include="img\form\title.gif" />
+    <Content Include="img\grid\downarrow.gif" />
+    <Content Include="img\grid\easyui-head.gif" />
+    <Content Include="img\grid\editor.gif" />
+    <Content Include="img\grid\editored.gif" />
+    <Content Include="img\grid\ext-head-hover.gif" />
+    <Content Include="img\grid\ext-head.gif" />
+    <Content Include="img\grid\sort_asc.gif" />
+    <Content Include="img\grid\sort_desc.gif" />
+    <Content Include="img\grid\uparrow.gif" />
+    <Content Include="img\login\btn.png" />
+    <Content Include="img\login\input.png" />
+    <Content Include="img\popup\back.gif" />
+    <Content Include="img\popup\error.gif" />
+    <Content Include="img\popup\icons.png" />
+    <Content Include="img\popup\info.gif" />
+    <Content Include="img\popup\MessageAlert.gif" />
+    <Content Include="img\popup\MessageBody.gif" />
+    <Content Include="img\popup\MessageEnd.gif" />
+    <Content Include="img\popup\MessageError.gif" />
+    <Content Include="img\popup\MessageHead.gif" />
+    <Content Include="img\popup\MessageOk.gif" />
+    <Content Include="img\popup\ok.gif" />
+    <Content Include="img\popup\tipclose.gif" />
+    <Content Include="img\popup\why.gif" />
+    <Content Include="img\progress\bg.gif" />
+    <Content Include="img\progress\progress.gif" />
+    <Content Include="img\tab\light-hd.gif" />
+    <Content Include="img\tab\tab-close.gif" />
+    <Content Include="img\tab\tab-strip-bg.gif" />
+    <Content Include="img\tab\tabs-sprite.gif" />
+    <Content Include="img\tab\title.gif" />
+    <Content Include="img\tab\tool-sprites.gif" />
+    <Content Include="img\toolbar\toolbar-bg.gif" />
+    <Content Include="img\toolbar\toolbar-btn.gif" />
+    <Content Include="img\toolbar\toolbar-split.gif" />
+    <Content Include="img\form\trigger.gif" />
+    <Content Include="img\icons\add-row.gif" />
+    <Content Include="img\icons\add.gif" />
+    <Content Include="img\icons\all.gif" />
+    <Content Include="img\icons\apply.png" />
+    <Content Include="img\icons\back.png" />
+    <Content Include="img\icons\cancel.png" />
+    <Content Include="img\icons\check.png" />
+    <Content Include="img\icons\checked.gif" />
+    <Content Include="img\icons\class.gif" />
+    <Content Include="img\icons\close.gif" />
+    <Content Include="img\icons\cmp.gif" />
+    <Content Include="img\icons\collapse-all.gif" />
+    <Content Include="img\icons\config.gif" />
+    <Content Include="img\icons\copy.png" />
+    <Content Include="img\icons\delete-row.gif" />
+    <Content Include="img\icons\delete.gif" />
+    <Content Include="img\icons\docs.gif" />
+    <Content Include="img\icons\drop-yes.gif" />
+    <Content Include="img\icons\edit.png" />
+    <Content Include="img\icons\error.gif" />
+    <Content Include="img\icons\event.gif" />
+    <Content Include="img\icons\example.gif" />
+    <Content Include="img\icons\excel.gif" />
+    <Content Include="img\icons\expand-all.gif" />
+    <Content Include="img\icons\expand-members.gif" />
+    <Content Include="img\icons\fav.gif" />
+    <Content Include="img\icons\firstPageDisabled.gif" />
+    <Content Include="img\icons\folder.gif" />
+    <Content Include="img\icons\folder_open.gif" />
+    <Content Include="img\icons\forum.gif" />
+    <Content Include="img\icons\goto.gif" />
+    <Content Include="img\icons\grid.gif" />
+    <Content Include="img\icons\help.png" />
+    <Content Include="img\icons\hide-inherited.gif" />
+    <Content Include="img\icons\info.gif" />
+    <Content Include="img\icons\lastPageDisabled.gif" />
+    <Content Include="img\icons\linked.gif" />
+    <Content Include="img\icons\method.gif" />
+    <Content Include="img\icons\nextPageDisabled.gif" />
+    <Content Include="img\icons\offset.png" />
+    <Content Include="img\icons\org.gif" />
+    <Content Include="img\icons\pager_first.gif" />
+    <Content Include="img\icons\pager_last.gif" />
+    <Content Include="img\icons\pager_next.gif" />
+    <Content Include="img\icons\pager_prev.gif" />
+    <Content Include="img\icons\pdf.gif" />
+    <Content Include="img\icons\pick-button.gif" />
+    <Content Include="img\icons\pkg.gif" />
+    <Content Include="img\icons\prevPageDisabled.gif" />
+    <Content Include="img\icons\pre_print.gif" />
+    <Content Include="img\icons\print.gif" />
+    <Content Include="img\icons\prop.gif" />
+    <Content Include="img\icons\query.gif" />
+    <Content Include="img\icons\read-n.gif" />
+    <Content Include="img\icons\read-y.gif" />
+    <Content Include="img\icons\reload.png" />
+    <Content Include="img\icons\retry.png" />
+    <Content Include="img\icons\role-setup.gif" />
+    <Content Include="img\icons\save-back.png" />
+    <Content Include="img\icons\save.gif" />
+    <Content Include="img\icons\search-row.png" />
+    <Content Include="img\icons\search.png" />
+    <Content Include="img\icons\send-now.gif" />
+    <Content Include="img\icons\send-receive.gif" />
+    <Content Include="img\icons\send.gif" />
+    <Content Include="img\icons\sended.gif" />
+    <Content Include="img\icons\static.gif" />
+    <Content Include="img\icons\success.gif" />
+    <Content Include="img\icons\tabs.gif" />
+    <Content Include="img\icons\unchecked.gif" />
+    <Content Include="img\icons\warning.gif" />
+    <Content Include="img\icons\word.gif" />
+    <Content Include="img\loading.gif" />
+    <Content Include="img\menu\item-over.gif" />
+    <Content Include="img\menu\menu-parent.gif" />
+    <Content Include="img\menu\menu.gif" />
+    <Content Include="img\menu\menuline.gif" />
+    <Content Include="img\s.gif" />
+    <Content Include="js\artDilog\iframeTools.js" />
+    <Content Include="js\artDilog\iframeTools.source.js" />
+    <Content Include="js\artDilog\jquery.artDialog.js" />
+    <Content Include="js\artDilog\jquery.artDialog.source.js" />
+    <Content Include="js\artDilog\skins\blue.css" />
+    <Content Include="js\artDilog\skins\blue\bg.png" />
+    <Content Include="js\artDilog\skins\blue\bg2.png" />
+    <Content Include="js\artDilog\skins\blue\bg_css3.png" />
+    <Content Include="js\artDilog\skins\blue\bg_css3_2.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\close.hover.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\close.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\e.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\n.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\ne.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\nw.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\s.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\se.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\sw.png" />
+    <Content Include="js\artDilog\skins\blue\ie6\w.png" />
+    <Content Include="js\artDilog\skins\default.css" />
+    <Content Include="js\common\cmp.js" />
+    <Content Include="js\datePicker\calendar.js" />
+    <Content Include="js\datePicker\lang\en.js" />
+    <Content Include="js\datePicker\lang\zh-cn.js" />
+    <Content Include="js\datePicker\lang\zh-tw.js" />
+    <Content Include="js\datePicker\skin\datePicker.gif" />
+    <Content Include="js\datePicker\skin\default\datepicker.css" />
+    <Content Include="js\datePicker\skin\default\img.gif" />
+    <Content Include="js\datePicker\skin\WdatePicker.css" />
+    <Content Include="js\datePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="js\datePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="js\datePicker\skin\whyGreen\img.gif" />
+    <Content Include="js\datePicker\WdatePicker.js" />
+    <Content Include="js\common\date.js" />
+    <Content Include="js\ewaytec.adc\SetupAddress.js" />
+    <Content Include="js\ewaytec.adc\song.adc.temp.js" />
+    <Content Include="js\ewaytec.adc\song.apply.js" />
+    <Content Include="js\ewaytec.adc\song.apply.validTariff.js" />
+    <Content Include="js\ewaytec.adc\song.dialog.js" />
+    <Content Include="js\ewaytec.adc\song.jqueryextend.js" />
+    <Content Include="js\ewaytec.adc\song.project.js" />
+    <Content Include="js\ewaytec.adc\song.upload.js" />
+    <Content Include="js\flexiGrid\flexigrid-trace.css" />
+    <Content Include="js\flexiGrid\flexigrid.css" />
+    <Content Include="js\flexiGrid\flexigrid.js" />
+    <Content Include="js\flexiGrid\image\bg.gif" />
+    <Content Include="js\flexiGrid\image\btn-sprite.gif" />
+    <Content Include="js\flexiGrid\image\ch.gif" />
+    <Content Include="js\flexiGrid\image\chtd-bg.gif" />
+    <Content Include="js\flexiGrid\image\ddn.png" />
+    <Content Include="js\flexiGrid\image\dn.png" />
+    <Content Include="js\flexiGrid\image\fhbg.gif" />
+    <Content Include="js\flexiGrid\image\fhbg.png" />
+    <Content Include="js\flexiGrid\image\first.gif" />
+    <Content Include="js\flexiGrid\image\grid.png" />
+    <Content Include="js\flexiGrid\image\grid3-special-col-bg.gif" />
+    <Content Include="js\flexiGrid\image\grid3-special-col-sel-bg.gif" />
+    <Content Include="js\flexiGrid\image\gridth.gif" />
+    <Content Include="js\flexiGrid\image\headbg.gif" />
+    <Content Include="js\flexiGrid\image\hl.png" />
+    <Content Include="js\flexiGrid\image\indicator_waitanim.gif" />
+    <Content Include="js\flexiGrid\image\indicator_web20_working.gif" />
+    <Content Include="js\flexiGrid\image\last.gif" />
+    <Content Include="js\flexiGrid\image\line.gif" />
+    <Content Include="js\flexiGrid\image\load-bg.png" />
+    <Content Include="js\flexiGrid\image\load.gif" />
+    <Content Include="js\flexiGrid\image\load.png" />
+    <Content Include="js\flexiGrid\image\magnifier.png" />
+    <Content Include="js\flexiGrid\image\next.gif" />
+    <Content Include="js\flexiGrid\image\page-bg.gif" />
+    <Content Include="js\flexiGrid\image\page-first.png" />
+    <Content Include="js\flexiGrid\image\page-last.png" />
+    <Content Include="js\flexiGrid\image\page-next.png" />
+    <Content Include="js\flexiGrid\image\page-prev.png" />
+    <Content Include="js\flexiGrid\image\prev.gif" />
+    <Content Include="js\flexiGrid\image\sort_asc.gif" />
+    <Content Include="js\flexiGrid\image\sort_desc.gif" />
+    <Content Include="js\flexiGrid\image\tbg.gif" />
+    <Content Include="js\flexiGrid\image\up.png" />
+    <Content Include="js\flexiGrid\image\uup.png" />
+    <Content Include="js\flexiGrid\image\wbg.gif" />
+    <Content Include="js\flexiGrid\jquery.flexigrid.trace.js" />
+    <Content Include="js\j.js" />
+    <Content Include="js\jquery-1.7.1.min.js" />
+    <Content Include="js\common\layout.js" />
+    <Content Include="js\js惯用法.js" />
+    <Content Include="js\lhgDialog\lhgdialog.min.js" />
+    <Content Include="js\lhgDialog\skins\blue.css" />
+    <Content Include="js\lhgDialog\skins\blue\blue_s.png" />
+    <Content Include="js\lhgDialog\skins\blue\blue_s2.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\blue_titbtn.gif" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_b.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_l.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_lb.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_lt.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_lt2.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_r.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_rb.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_rt.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_rt2.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_t.png" />
+    <Content Include="js\lhgDialog\skins\blue\ie6\ui_t2.png" />
+    <Content Include="js\lhgDialog\skins\default.css" />
+    <Content Include="js\lhgDialog\skins\icons\32X32\fail.png" />
+    <Content Include="js\lhgDialog\skins\icons\32X32\hits.png" />
+    <Content Include="js\lhgDialog\skins\icons\32X32\i.png" />
+    <Content Include="js\lhgDialog\skins\icons\32X32\succ.png" />
+    <Content Include="js\lhgDialog\skins\icons\alert.gif" />
+    <Content Include="js\lhgDialog\skins\icons\confirm.gif" />
+    <Content Include="js\lhgDialog\skins\icons\discuz_bg.gif" />
+    <Content Include="js\lhgDialog\skins\icons\error.gif" />
+    <Content Include="js\lhgDialog\skins\icons\face-sad.png" />
+    <Content Include="js\lhgDialog\skins\icons\face-smile.png" />
+    <Content Include="js\lhgDialog\skins\icons\gb_tip_layer.png" />
+    <Content Include="js\lhgDialog\skins\icons\gb_tip_layer_ie6.png" />
+    <Content Include="js\lhgDialog\skins\icons\lhgcore.gif" />
+    <Content Include="js\lhgDialog\skins\icons\loading.gif" />
+    <Content Include="js\lhgDialog\skins\icons\prompt.gif" />
+    <Content Include="js\lhgDialog\skins\icons\success.gif" />
+    <Content Include="js\lhgDialog\skins\icons\tips.gif" />
+    <Content Include="js\common\valid.js" />
+    <Content Include="js\old\combo.js" />
+    <Content Include="js\old\dataGrid.js" />
+    <Content Include="js\old\jQueryExtend.js" />
+    <Content Include="js\old\toolbar.js" />
+    <Content Include="js\ewaytec.adc\song.adc.base.js" />
+    <Content Include="js\song\song.fmt.js" />
+    <Content Include="js\song\song.lazy.js" />
+    <Content Include="js\song\song.web.js" />
+    <Content Include="js\song\song.grid.js" />
+    <Content Include="js\song\song.numberbox.js" />
+    <Content Include="js\song\song.popup.js" />
+    <Content Include="js\song\song.menu.js" />
+    <Content Include="js\song.base.js" />
+    <Content Include="js\song\song.progress.js" />
+    <Content Include="js\song\song.project.js" />
+    <Content Include="js\song\song.suggest.js" />
+    <Content Include="js\song\song.test.js" />
+    <Content Include="js\song\song.toolbar.js" />
+    <Content Include="js\song\song.trigger.js" />
+    <Content Include="js\song\song.dd.js" />
+    <Content Include="js\song\song.validate.js" />
+    <Content Include="js\zTree\jquery.ztree.core-3.0.min.js" />
+    <Content Include="js\zTree\jquery.ztree.excheck-3.0.min.js" />
+    <Content Include="js\zTree\jquery.ztree.exedit-3.0.min.js" />
+    <Content Include="js\zTree\zTree.API.js" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\1_close.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\1_open.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\2.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\3.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\4.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\5.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\6.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\7.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\8.png" />
+    <Content Include="js\zTree\zTreeStyle\img\diy\9.png" />
+    <Content Include="js\zTree\zTreeStyle\img\line_conn.gif" />
+    <Content Include="js\zTree\zTreeStyle\img\loading.gif" />
+    <Content Include="js\zTree\zTreeStyle\img\zTreeStandard.gif" />
+    <Content Include="js\zTree\zTreeStyle\img\zTreeStandard.png" />
+    <Content Include="js\zTree\zTreeStyle\zTreeStyle.css" />
+    <Content Include="img\login\flax.png" />
+    <Content Include="login\login-qq.htm" />
+    <Content Include="login\login-simple.htm" />
+    <Content Include="login\simpleblue\arrow.gif" />
+    <Content Include="login\simpleblue\arrow.png" />
+    <Content Include="login\simpleblue\bg.jpg" />
+    <Content Include="login\simpleblue\key.png" />
+    <Content Include="login\simpleblue\login.htm" />
+    <Content Include="Song.Controls\form.htm" />
+    <Content Include="js\ewaytec.adc\liger.ext.test.htm" />
+    <Content Include="Song.Controls\HTMLPage1.htm" />
+    <Content Include="Song.Controls\menu.htm" />
+    <Content Include="Song.Controls\popup.htm" />
+    <Content Include="Song.Controls\progress.htm" />
+    <Content Include="Song.Controls\project.htm" />
+    <Content Include="Song.Controls\resize-drag.htm" />
+    <Content Include="Song.Controls\song.tab.htm" />
+    <Content Include="Song.Controls\suggest.htm" />
+    <Content Include="Song.Controls\toolbar.htm" />
+    <Content Include="Song.Controls\trigger.htm" />
+    <Content Include="Template\imgbox.htm" />
+    <Content Include="Template\js-test.htm" />
+    <Content Include="Template\Layout.htm" />
+    <Content Include="Template\song.tmpl.js" />
+    <Content Include="Template\song.tmpl.htm" />
+    <Content Include="Song.Controls\song.grid.htm" />
+    <Content Include="Template\upload.htm" />
+    <Content Include="Template\web.htm" />
+    <Content Include="test.xml" />
+    <Content Include="UploadControls\fileType-16.16.css" />
+    <Content Include="UploadControls\fileType-32.32.css" />
+    <Content Include="UploadControls\img\fileTypes.png" />
+    <Content Include="UploadControls\img\loading.gif" />
+    <Content Include="UploadControls\img\s.gif" />
+    <Content Include="UploadControls\UploadFile.aspx" />
+    <Content Include="UploadControls\UploadFolder.aspx" />
+    <Content Include="UploadControls\UploadIndex.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="WebForm1.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cmp\Button.aspx.cs">
+      <DependentUpon>Button.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\Button.aspx.designer.cs">
+      <DependentUpon>Button.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\DataGrid.aspx.cs">
+      <DependentUpon>DataGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\DataGrid.aspx.designer.cs">
+      <DependentUpon>DataGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\DateBox.aspx.cs">
+      <DependentUpon>DateBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\DateBox.aspx.designer.cs">
+      <DependentUpon>DateBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\Dialog.aspx.cs">
+      <DependentUpon>Dialog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\Dialog.aspx.designer.cs">
+      <DependentUpon>Dialog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\File.aspx.cs">
+      <DependentUpon>File.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\File.aspx.designer.cs">
+      <DependentUpon>File.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\FlexGrid.aspx.cs">
+      <DependentUpon>FlexGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\FlexGrid.aspx.designer.cs">
+      <DependentUpon>FlexGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\FormPanel.aspx.cs">
+      <DependentUpon>FormPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\FormPanel.aspx.designer.cs">
+      <DependentUpon>FormPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\Toolbar.aspx.cs">
+      <DependentUpon>Toolbar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\Toolbar.aspx.designer.cs">
+      <DependentUpon>Toolbar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\ZTree.aspx.cs">
+      <DependentUpon>ZTree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cmp\ZTree.aspx.designer.cs">
+      <DependentUpon>ZTree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cmp\zTreeAsync.ashx.cs">
+      <DependentUpon>zTreeAsync.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonPage\CheckCode.aspx.cs">
+      <DependentUpon>CheckCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommonPage\China.aspx.cs">
+      <DependentUpon>China.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommonPage\China.aspx.designer.cs">
+      <DependentUpon>China.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonPage\DownloadFile.aspx.cs">
+      <DependentUpon>DownloadFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommonPage\DownloadFile.aspx.designer.cs">
+      <DependentUpon>DownloadFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonPage\error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frameset\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frameset\Top.aspx.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Song.Controls\grid.ashx.cs">
+      <DependentUpon>grid.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Song.Controls\project.ashx.cs">
+      <DependentUpon>project.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Song.Controls\suggest.ashx.cs">
+      <DependentUpon>suggest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadControls\UploadFile.aspx.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadControls\UploadFile.aspx.designer.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadControls\UploadFolder.aspx.cs">
+      <DependentUpon>UploadFolder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadControls\UploadFolder.aspx.designer.cs">
+      <DependentUpon>UploadFolder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Common\WSH.Common.csproj">
+      <Project>{43DA8E8B-A699-4157-9061-9E8728B41793}</Project>
+      <Name>WSH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Web.Common\WSH.Web.Common.csproj">
+      <Project>{5AFB4292-84D1-4863-88CA-0B9DF143CE39}</Project>
+      <Name>WSH.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Controls\WSH.WebForm.Controls\WSH.WebForm.Controls.csproj">
+      <Project>{80894770-B939-431C-BAFE-097F30B4D55E}</Project>
+      <Name>WSH.WebForm.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cmp\zTreeAsync.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CommonPage\京东滚动加载图片.doc" />
+    <None Include="frameset\images\Thumbs.db" />
+    <None Include="js\artDilog\skins\blue\ie6\Thumbs.db" />
+    <Content Include="Song.Controls\project.ashx" />
+    <Content Include="Song.Controls\suggest.ashx" />
+    <Content Include="Song.Controls\grid.ashx" />
+    <Content Include="js\ewaytec.adc\song.adc.rule.js" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>18396</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

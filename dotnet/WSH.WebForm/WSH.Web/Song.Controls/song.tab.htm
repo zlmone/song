@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Song.Control</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/extend.css" rel="stylesheet" type="text/css" />
+    <link href="../css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="../css/old/panel.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/old/jQueryExtend.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="tab" class="tab-ext" style="width:500px;">
+        <div class="tab-header">
+        <div class=" tab-header-warp"> 
+            <ul class="tab-header-ul">
+                <li><a href="#" class="tab-left"><span class="tab-right"><span class="tab-center">王松华</span></span></a></li>
+                <li><a href="#" class="tab-left"><span class="tab-right"><span class="tab-center">王松华</span></span></a></li>
+            </ul>
+            <div class="tab-bottom"></div>
+        </div>
+        </div>
+        <div class="tab-body">aaa</div>
+        <div class="tab-body">bbb</div>
+    </div>
+    <div id="ac" class="accordion-ext">
+        <div class="accordion-title"><a href="#" class="accordion-hide"></a>菜单1</div>
+        <div class="accordion-body">啊三打三防</div>
+        <div class="accordion-title"><a href="#" class="accordion-hide"></a>菜单1</div>
+        <div class="accordion-body">发生大所得法</div>
+        <div class="accordion-title"><a href="#" class="accordion-hide"></a>菜单1</div>
+        <div class="accordion-body">发生大所得法</div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    jQuery("#tab").extTab({
+        //height:jQuery(window).height()
+});
+jQuery("#ac").accordion({
+    height:400,width:500
+});
+</script>

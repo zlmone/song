@@ -1,0 +1,35 @@
+﻿.song-toolbar{ position:relative; height:26px; line-height:26px;  border:1px solid #99BBE8;  
+ background:#CEDDEF url(../img/toolbar/toolbar-bg.gif) repeat-x left top; padding:0px 5px;}
+.song-toolbar-table{ height:100%; }
+.song-toolbar-title{ position:absolute; top:0px; left:5px; font-weight:bold; color:#333; }
+.song-toolbar-split div{ font-size:0px; border-left:1px solid #9AC6FF; border-right:1px solid #fff;
+ height:14px; width:0px; overflow:hidden; margin:0px 2px;}
+.song-toolbar-btn{ margin:0px 0px; text-decoration:none;}
+.song-toolbar-btn,.song-toolbar-btn span{ 
+display:inline-block;zoom:1;*display:inline;cursor:pointer;text-decoration:none;outline:none;
+ height:21px; line-height:21px; overflow:hidden;}
+.song-toolbar-btnright{ margin-left:3px;}
+.song-toolbar-btncenter{ margin-right:3px; }
+.song-toolbar-btntext{ padding:0px 1px; padding-top:1px;font-size:12px; color:#000;  font-family:宋体;}
+.song-toolbar-btnicon{ padding-left:18px; background-position:left 3px; background-repeat:no-repeat;}
+.song-toobar-notext{ padding-left:14px;}
+.song-toolbar-btn-hover{
+background:url(../img/toolbar/toolbar-btn.gif) 0px 0px no-repeat;}
+.song-toolbar-btn-hover span.song-toolbar-btnright{ 
+background:url(../img/toolbar/toolbar-btn.gif) right -21px no-repeat;}
+.song-toolbar-btn-hover span.song-toolbar-btncenter{ 
+background:url(../img/toolbar/toolbar-btn.gif) left -42px repeat-x;}
+.song-toolbar-btn-active{
+background:url(../img/toolbar/toolbar-btn.gif) 0px -63px no-repeat;}
+.song-toolbar-btn-active span.song-toolbar-btnright{ 
+background:url(../img/toolbar/toolbar-btn.gif) right -84px no-repeat;}
+.song-toolbar-btn-active span.song-toolbar-btncenter{ 
+background:url(../img/toolbar/toolbar-btn.gif) left -105px repeat-x;}
+ /*
+.song-toolbar-btn:hover span.song-toolbar-btnsplit{ 
+ background-position:right -48px; padding-right:11px;
+}
+ */
+.song-toolbar-btnsplit{ background:url(../img/toolbar/toolbar-split.gif) right 2px no-repeat; padding-right:8px;}
+.song-toolbar-btn-enabled{ cursor:default; }
+.song-toolbar-btn-enabled .song-toolbar-btntext{ color:#666;cursor:default;opacity:0.5; filter:Alpha(opacity=50)}

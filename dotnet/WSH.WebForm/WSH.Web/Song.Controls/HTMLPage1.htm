@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../js/datePicker/WdatePicker.js" type="text/javascript"></script>
+</head>
+<body>
+    开始时间：
+    
+    <input type="text" id="weekBegin" onfocus="WdatePicker({
+        dateFmt:'yyyy-MM-dd',
+        isShowWeek:true,
+        disabledDays:[1,2,3,4,5,6],
+        onpicking:setWeekEndDate
+        })
+        " />
+    结束时间：
+    <input type="text" id="weekEnd"  disabled="disabled"/>
+    <span style=" color:red;" id="weekInfo"></span>
+    <input type="button"   value="检查" onclick="return checkDate()"/>
+    <script type="text/javascript">
+        function setWeekEndDate(dp) {
+            var next = $dp.$DV(dp.cal.getNewDateStr(), { d: +6 });
+            $dp.$('<%=weekEnd.ClientID %>').value = next.y + "-" + next.M + "-" + next.d;
+        }
+        function checkDate() {
+            var val = $dp.$('<%=weekBegin.ClientID %>').value;
+            if (val == "") {
+                alert("请选择时间范围");return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
+

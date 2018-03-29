@@ -1,0 +1,33 @@
+﻿.btn-lightblue{ color:#516F83; border:1px solid #80B1D3; padding:0px 10px;
+    height:22px; line-height:22px;
+    background: #B9D4E7 url(../img/form/default-button.png) repeat-x 0 -73px;
+  }
+.btn-lightblue:hover{ background-position:0px -35px; color:#2B4856;}
+
+.btn-easyui{height:24px;  line-height:24px;  
+background:url(../img/form/button_a_bg.gif) right 0px no-repeat;}
+.btn-easyui span{ margin-right:18px;
+ background:url(../img/form/button_span_bg.gif) left 0px; 
+  padding-left:18px;}
+.btn-easyui:hover{background-position: right -24px;}
+.btn-easyui:hover span{ background-position:left -24px;}
+ 
+.btn-qq{ background:url(../img/form/btns.png) left -42px no-repeat;}
+.btn-qq span{margin-left:7px; padding-right:17px; padding-left:12px;
+ background:url(../img/form/btns.png) right 0px no-repeat; line-height:21px;height:21px; }
+.btn-qq:hover{ background-position:left -63px;}
+.btn-qq:hover span{ background-position:right -21px;}
+
+.btn-ext,.btn-ext span{ background:url(../img/form/btn-2.gif) no-repeat left 0px;}
+.btn-ext{height:21px;line-height:21px;}
+.btn-ext span.btn-ext-right{ margin-left:3px; background-position:right -21px;}
+.btn-ext span.btn-ext-center{ padding:0px 10px; margin-right:3px; background-position:left -42px; background-repeat:repeat-x;}
+.btn-ext:hover,.btn-ext-hover{ background-position:left -63px;}
+.btn-ext:hover span.btn-ext-right,.btn-ext-hover span.btn-ext-right{ background-position:right -84px;}
+.btn-ext:hover span.btn-ext-center,.btn-ext-hover span.btn-ext-center{ background-position:left -105px;}
+
+/*
+.btn-ext:hover{ background-position:left -147px;}
+.btn-ext:hover span.btn-ext-right{ background-position:right -168px;}
+.btn-ext:hover span.btn-ext-center{ background-position:left -189px;} 
+*/

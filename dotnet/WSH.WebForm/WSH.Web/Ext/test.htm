@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>无标题页</title>
+    <link href="extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="extjs/adapter/ext/ext-base.js" type="text/javascript"></script>
+    <script src="extjs/ext-all.js" type="text/javascript"></script>
+    <script src="extjs/extCommon.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.QuickTips.init();
+            var dataUrl="../Services/TestService.asmx/";
+            var parseDate=function(v){
+                return new Date(v).format("Y-m-d");
+            }
+            var jsonFields=[
+                {name:'oid',mapping:'oid'},
+                {name:'sqeno',mapping:'sqeno'},
+                {name:'nowdate',mapping:'nowdate',convert:parseDate},
+                {name:'address',mapping:'address'},
+                {name:'sex',mapping:'sex'},
+                {name:'age',mapping:'age'},
+                {name:'yearmoney',mapping:'yearmoney'},
+                {name:'isfamily',mapping:'isfamily'}
+            ]
+             var form=k.form({
+                reader:new Ext.data.XmlReader({record:'test'},jsonFields),
+                items:[
+                    k.controlType('text',{fieldLabel:'流水号',name:'sqeno'}),
+                    k.controlType('date',{fieldLabel:'时间',name:'nowdate'}),
+                    k.controlType('text',{fieldLabel:'地址',name:'address'}),
+                    k.controlType('combox',{fieldLabel:'性别',name:'sex',editable:false,store:k.sexStore()}),
+                    k.controlType('combox',{fieldLabel:'是否婚育',name:'isfamily',editable:false,store:k.ynStore()}),
+                    k.controlType('int',{fieldLabel:'年龄',name:'age'}),
+                    k.controlType('float',{fieldLabel:'年收入',name:'yearmoney'})
+                  
+                ]
+            });
+            var winTitle='Test';
+            var win=k.window({
+                title:winTitle+'-编辑',
+                animateTarget:Ext.getBody(),
+                items:form,
+                buttons:[
+                    {text:"保存",handler:function(){
+                        
+                    }},
+                    {text:"取消",handler:function(){
+                        win.hide();
+                    }}
+                ]
+            });
+            var sm=new Ext.grid.CheckboxSelectionModel();
+            var cm=new Ext.grid.ColumnModel([
+                sm,
+                {dataIndex:'oid',header:'主键ID',hidden:true,width:100,editor:k.editor('int',{})},
+                {dataIndex:'sqeno',header:'流水号',hidden:false,width:50,editor:k.editor('text',{})},
+                {dataIndex:'nowdate',header:'时间',hidden:false,width:100,editor:k.editor('date',{}),
+                    renderer:Ext.util.Format.dateRenderer("Y-m-d")
+                },
+                {dataIndex:'address',header:'地址',hidden:false,width:100,editor:k.editor('text',{})},
+                {dataIndex:'sex',header:'性别',hidden:false,width:100,editor:k.editor('combox',{})},
+                {dataIndex:'age',header:'年龄',hidden:false,width:100,editor:k.editor('int',{})},
+                {dataIndex:'yearmoney',header:'年收入',hidden:false,width:100,align:"right",editor:k.editor('float',{})},
+                {dataIndex:'isfamily',header:'是否婚育',hidden:false,width:100,editor:k.editor('combox',{})}
+            ]);
+            var pageSize=20;
+            var store=new Ext.data.JsonStore({
+                url:'../HttpProxy/grid.ashx',
+                pruneModifiedRecords:true,
+                fields:jsonFields,
+                totalProperty:'totalProperty',
+                root:'root'
+            });
+            
+            var tbar=new Ext.Toolbar([
+                //'->',
+                '   时间：',k.controlType('date'),
+                ' 性别：',k.controlType('combox'),
+                ' 是否婚育：',k.controlType('combox'),
+                {text:' 查询',handler:function(){store.reload();}},'-',
+                {text:' 添加',handler:function(){            
+                    win.setTitle(winTitle+'-添加');
+                   form.form.reset();
+                    win.show();
+                }},
+                {text:' 修改',handler:function(){
+                    var id=k.getGridId(grid,"oid");
+                    if(id!=""){
+                        win.setTitle(winTitle+'-修改');
+                        form.form.load({
+                            url:dataUrl+"GetTestById",
+                            params:{idField:"oid",id:id},
+                            waitMsgTitle:"提示",
+                            waitMsg:'正在载入数据...',
+                            failure:function(form,action){
+                                k.alert("加载数据失败！");
+                            }
+                        });
+                        win.show();
+                    }
+                }},
+                {text:' 删除',handler:function(){
+                    var delUrl='';
+                    k.multiDelete('Test',grid,'oid',delUrl,function(){
+                        store.reload();
+                    });
+                }}
+            ]);
+            var bbar=k.paging({
+                pageSize:pageSize,
+                store:store
+            });
+            var grid=k.editGrid({
+                height:Ext.getBody().getViewSize().height,
+                renderTo:Ext.getBody(),
+                cm:cm,store:store,sm:sm,
+                tbar:tbar,
+                bbar:bbar
+            });
+            store.load({params:{start:0,limit:pageSize}});
+        });
+    </script>
+</head>
+<body>
+    <div id="grid"></div>
+</body>
+</html>

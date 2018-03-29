@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="../css/global.css" />
+    <link rel="stylesheet" type="text/css" href="../css/extend.css" />
+    <style type="text/css">
+        html,body{ height:100%; text-align:center; overflow:hidden;}
+        body{ background:#F6F8F9;}
+        .container,.pillar{ height:100%;}
+        .pillar,.box{ vertical-align:middle;}
+        .pillar{ width:0px; overflow:hidden;   }
+        .box{border:1px solid #D5DDE2; padding:10px 30px; background:#F8FBFC; }
+        .title{ text-align:center; padding:10px; font:bold 24px Tahoma;   }
+        .text{background:url(../img/login/input.png) no-repeat;  height:32px; line-height:32px; padding:6px 8px;  padding-top:10px;
+              border:0px; color:#ccc; width:260px;}
+        .text-active{ color:#333; background-position:0px bottom;}
+        .item{}
+        .item span{ float:left; padding-right:8px; padding-top:17px; width:55px; text-align:right; clear:both;}
+        .btn{ background:url(../img/login/btn.png) no-repeat; width:120px; height:42px; line-height:42px; border:0px;
+               font-size:20px; color:#fff; font-weight:bold; margin:20px 0px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box inline-block radius box-shadow">
+             <div class="title">系统登录</div>
+                <ul>
+                    <li class="item  ">
+                        <span>用户名：</span>
+                        <input type="text" class="text text-active" value="<请输入用户名>" />
+                    </li>
+                    <li class="item  ">
+                        <span>密码：</span>
+                        <input type="text" class="text" value="<请输入密码>" />
+                    </li>
+                </ul>
+                <div>
+                    <input type="submit" class="btn" value="登录" />
+                </div>
+        </div>
+        <div class="pillar inline-block"></div>
+    </div>
+</body>
+</html>

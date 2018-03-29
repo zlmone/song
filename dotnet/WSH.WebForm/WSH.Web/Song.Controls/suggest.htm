@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Song.Control</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/extend.css" rel="stylesheet" type="text/css" />
+    <link href="../css/icons.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <link href="../css/song.css" rel="stylesheet" type="text/css" />
+    <script src="../js/song/song.suggest.js" type="text/javascript"></script>
+</head>
+<body>
+    <input type="text" id="suggest" class="textbox" style=" margin:100px;" />
+</body>
+</html>
+<script type="text/javascript">
+    var suggest = new song.suggest($("#suggest"), {
+        url:"suggest.ashx?"
+    });
+</script>

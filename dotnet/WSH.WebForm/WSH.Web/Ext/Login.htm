@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>王松华-应用系统登陆平台</title>
+    <link href="extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="extjs/adapter/ext/ext-base.js" type="text/javascript"></script>
+    <script src="extjs/ext-all.js" type="text/javascript"></script>
+    <script src="extjs/extCommon.js" type="text/javascript"></script>
+    <style type="text/css">
+        body{ background:#eee;}
+        .showEl{ width:100%;}
+        .showEl td{text-align:center;}
+    </style>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            Ext.QuickTips.init();
+            var data=[{text:"代码生成",value:"CodeBuilder"},{text:"资料管理",value:"DocManager"},{text:"家庭系统",value:"FamilyMoney"}]
+            var ds=new Ext.data.Store({
+                proxy:new Ext.data.MemoryProxy(data),
+                reader:new Ext.data.JsonReader({},[{name:"text"},{name:"value"}])
+            });
+            var projectList=new Ext.form.ComboBox({
+                fieldLabel:"系统",
+                displayField:"text",
+                store:ds,
+                triggerAction:"all",
+                selectOnFocus:true,
+                mode:"local",
+                editable:false,
+                valueField:"value",
+                name:"projectList"
+            });
+            ds.on("load",function(store,record){
+                var first=record[0].data.value;
+                projectList.setValue(first);
+            });
+            ds.load();
+            var loginForm=new Ext.form.FormPanel({
+                layout:"form",
+                baseCls:"x-plain",
+                labelAlign:"left",
+                labelWidth:37,
+                defaultType:"textfield",
+                defaults:{allowBlank:false,anchor:"100%"},
+                items:[{
+                    fieldLabel:"账号",
+                    blankText:"账号不能为空！"
+                },{
+                    inputType:"password",
+                    blankText:"密码不能为空！",
+                    fieldLabel:"密码"
+                },projectList]
+            })
+            var loginWin=new Ext.Window({
+                el:"loginWin",
+                closable:false,
+                title:"王松华-应用系统登陆平台",
+                layout:"fit",
+                frame:true,
+                buttonAlign:"center",
+                //renderTo:Ext.getBody(),
+                plain:true,
+                constrain:true,
+                resizable:false,
+                //modal:true,
+                bodyStyle:"padding:20px;",
+                width:300,
+                height:184,
+               // autoHeight:true,
+                animateTarget:Ext.getBody(),
+                items:[
+                    loginForm
+                ],
+                buttons:[{
+                    text:"确定",handler:function(){
+                        var proj=projectList.getValue();
+                        k.loading("loginWin","正在进入系统...").show();
+                        var url="";
+                        if(proj=="CodeBuilder"){
+                            url="../CodeBuilder/CodeBuilder.htm";
+                        }else  if(proj=="DocManager"){
+                            url="../Doc/Doc.htm";
+                        }else if(proj=="FamilyMoney"){
+                            url="http://localhost/old/Main/Logon.aspx";
+                        }
+                        setTimeout(function(){location.href=url},200);
+                    }
+                },{
+                    text:"重置",type:"reset"
+                    ,handler:function(){loginForm.getForm().reset();}
+                }]
+            });
+            loginWin.show();
+        });
+    </script>
+</head>
+<body>
+    <div id="loginWin"></div>
+    <!--<table class="showEl">
+        <tr>
+            <td>
+                <span id="animateEl">&nbsp;</span>
+            </td>
+        </tr>
+    </table>-->
+</body>
+</html>

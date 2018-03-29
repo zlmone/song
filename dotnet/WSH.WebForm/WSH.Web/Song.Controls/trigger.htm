@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>trigger</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.trigger.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.trigger.js" type="text/javascript"></script>
+    <script src="../js/artDilog/jquery.artDialog.js" type="text/javascript"></script>
+    <link href="../js/artDilog/skins/default.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+            var s = new song.search("#text", {
+                enabled: false,
+
+                width: 200,
+                onTrigger: function () {
+                    this.setText("wang");
+                }, 
+                onSearch: function () {
+                    art.dialog({ lock: false, content: "选择部门员工" + this.type});
+                }
+            });
+            var follow = new song.follow("#follow", { follow: "#text1",align:"center"});
+            
+        });
+    </script>
+
+</head>
+<body>
+<div style="  ">
+    <input type="text" id="text" class="textbox " value="aaa"/>
+    </div>
+   <div style="margin:100px; margin-top:500px; margin-bottom:0px;  ">
+        <input type="text" id="text1" class="textbox " value="aaa"/>
+ </div>
+ 
+    <div style="width:100px; height:100px; border:1px solid red;" id="follow">
+    
+    </div>
+</body>
+</html>

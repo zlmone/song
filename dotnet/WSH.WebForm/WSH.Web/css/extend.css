@@ -1,0 +1,33 @@
+﻿/*静止定位*/
+.fixed{ position:fixed; _position:absolute;}
+.fixed-html{ background-attachment:fixed; background-image:url(about:blank);}
+.fixed-rb{right:0px;bottom:0px;_top:0;_left:0;}
+
+/*横向偏移3像素，纵向偏移3像素，模糊4像素，颜色为纯黑。*/
+.box-shadow {
+-moz-box-shadow: 2px 2px 3px #bbb;
+-webkit-box-shadow: 2px 2px 3px #bbb;
+-o-box-shadow:2px 2px 3px #bbb;
+box-shadow:2px 2px 3px #bbb;
+}
+
+.radius{-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+-o-border-radius: 3px;
+-ms-border-radius: 3px;
+-khtml-border-radius: 3px;
+border-radius: 3px;}
+
+.textdot{overflow:hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;white-space:nowrap;}
+
+.separator{ height:15px; width:0px; font-size:0px; overflow:hidden; 
+border-left:1px solid #93BFE4; border-right:1px solid #fff;}
+
+.noselect{-moz-user-select: none;-khtml-user-select: none;-webkit-user-select: none;}
+
+.fixed-html{ _background-attachment:fixed;_background-image:url(about:blank)}
+.fixed{position:fixed;_position:absolute;}
+.fixed-rb{right:0px;bottom:0px;
+_left:expression(documentElement.scrollLeft+documentElement.clientWidth-this.offsetWidth);
+_top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight);}
+

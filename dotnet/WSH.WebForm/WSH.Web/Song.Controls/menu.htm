@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Song.Controls.Menu</title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../css/extend.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.menu.js" type="text/javascript"></script>
+    <link href="../css/song.menu.css" rel="stylesheet" type="text/css" />
+    <link href="../css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="../css/song.popup.css" rel="stylesheet" type="text/css" />
+    <script src="../js/song/song.popup.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var menuItems = [{ id: "menu", text: "菜单一", iconClass: "icon-addrow", click: function (item) {
+                alert(item.text);
+            }
+            },
+                { id: "menu1", text: "菜单二", iconClass: "icon-addrow", enabled: true },
+                { id: "menu2", text: "菜单三", icon: "../img/icons/edit.png", items: [
+                    { text: "子菜单一", items: [
+                        { text: "孙子菜单1" },
+                        { text: "孙子菜单2", items: [
+                            {text:"曾孙子"}
+                        ]
+                        }
+                    ]
+                    }, { text: "子菜单一" }, { text: "子菜单一" }, { text: "子菜单一" }, { text: "子菜单一" }
+                    ]
+                },
+                , "-",
+                { id: "menu3", text: "菜单二", iconClass: "icon-addrow", click: function (item) {
+                    alert(item.text);
+                }
+                }
+            ];
+            var menu = new song.contextmenu({ id: "cmenu", items: menuItems });
+            //menu.removeItem("menu3");
+            var menuPanel = menu.getChildMenu("menu2");
+            menu.addItem({ id: "m", text: "新增的菜单", iconClass: "icon-edit" });
+            //menu.showEl("#el");
+            //var mask = new song.mask({ el: "mask" });
+            //mask.position({left:200});
+            // song.position.setRegion("#el", "50%", "50%");
+
+        });
+
+        function setEnabled() {
+            var tip = new song.tip({});
+            tip.show();
+        }
+    </script>
+</head>
+<body>
+     
+        <button onclick="setEnabled();" style="position:absolute; top:200px;" id="el">设置Enabled</button>
+        <div style="height:1000px;  border:1px solid red;">aaa</div>
+        <div style=" position:absolute; left:100px; top:100px; width:50px; border:1px solid red; height:100px;" id="mask">
+            <button>我被遮住了</button>
+            <select></select>
+        </div>
+    <div class="song-menu-panel" style=" width:120px;">
+        <ul>
+            <li class="song-menu-hover">
+                <a href="#" class="song-menu-link song-menu-arrow"><span class="song-menu-icontext icon-addrow">菜单一</span></a>
+                    <div class="song-menu-panel"  >
+                        <ul>
+                            <li class="song-menu-hover"><a href="#" class="song-menu-link song-menu-arrow"><span class="song-menu-icontext">菜单一</span></a></li>
+                            <li><a href="#" class="song-menu-link"><span class="song-menu-icontext">菜单一</span></a></li>
+                            <li><a href="#" class="song-menu-link"><span class="song-menu-icontext">菜单一</span></a></li>
+                        </ul>
+                    </div>
+            </li>
+            <li><a href="#" class="song-menu-link"><span class="song-menu-icontext icon-deleterow">菜单一</span></a></li>
+            <li class="song-menu-separator"></li>
+            <li><a href="#" class="song-menu-link"><span class="song-menu-icontext icon-edit">菜单一</span></a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>
