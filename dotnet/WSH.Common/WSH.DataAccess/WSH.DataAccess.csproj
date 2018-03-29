@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{829D1A4D-939F-4A88-9C58-EBBD1B10AED6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.DataAccess</RootNamespace>
+    <AssemblyName>WSH.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Express\ResolveExpress.cs" />
+    <Compile Include="Dapper\DapperExtend\Attributes\BaseAttribute.cs" />
+    <Compile Include="Dapper\DapperExtend\Attributes\ColumnAttribute.cs" />
+    <Compile Include="Dapper\DapperExtend\Attributes\IdAttribute.cs" />
+    <Compile Include="Dapper\DapperExtend\Attributes\IgnoreAttribute.cs" />
+    <Compile Include="Dapper\DapperExtend\Attributes\TableAttribute.cs" />
+    <Compile Include="Dapper\DapperExtend\Common.cs" />
+    <Compile Include="Dapper\DapperExtend\CustomDynamicBuilder.cs" />
+    <Compile Include="Dapper\DapperExtend\DapperDbFactory.cs" />
+    <Compile Include="Dapper\DapperExtend\DapperExtend.cs" />
+    <Compile Include="Dapper\DapperExtend\DapperDb.cs" />
+    <Compile Include="Dapper\DapperExtend\DynamicPropertyModel.cs" />
+    <Compile Include="Dapper\DapperExtend\ModelDes.cs" />
+    <Compile Include="Dapper\DapperExtend\ParamColumnModel.cs" />
+    <Compile Include="Dapper\DapperExtend\SQL\OperationMethod.cs" />
+    <Compile Include="Dapper\DapperExtend\SQL\QueryOrder.cs" />
+    <Compile Include="Dapper\DapperExtend\SQL\SqlQuery.cs" />
+    <Compile Include="Dapper\SqlMapper.cs" />
+    <Compile Include="SongData\Config\DbConnectionConfig.cs" />
+    <Compile Include="SongData\DbClient\Access\AccessProvider.cs" />
+    <Compile Include="SongData\DbClient\Base\BaseDbProvider.cs" />
+    <Compile Include="SongData\DbClient\MySql\MySqlProvider.cs" />
+    <Compile Include="SongData\DbClient\Oracle\OracleProvider.cs" />
+    <Compile Include="SongData\DbClient\SqLite\SqLiteProvider.cs" />
+    <Compile Include="SongData\DbClient\SqlServer\SqlServer2000\SqlServer2000Provider.cs" />
+    <Compile Include="SongData\DbClient\SqlServer\SqlServerProvider.cs" />
+    <Compile Include="SongData\DbHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongData\DbFactory.cs" />
+    <Compile Include="SongData\Mapping\FieldAttribute.cs" />
+    <Compile Include="SongData\Model\Entity.cs" />
+    <Compile Include="SongData\Model\IEntity.cs" />
+    <Compile Include="SongData\Interface\ISqlBuilder.cs" />
+    <Compile Include="SongData\Interface\ISqlInfo.cs" />
+    <Compile Include="SqlClient\SqlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WSH.Common\WSH.Common.csproj">
+      <Project>{43DA8E8B-A699-4157-9061-9E8728B41793}</Project>
+      <Name>WSH.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

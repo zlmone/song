@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{43DA8E8B-A699-4157-9061-9E8728B41793}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.Common</RootNamespace>
+    <AssemblyName>WSH.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Cache\MemoryCache.cs" />
+    <Compile Include="Common\ObjectId.cs" />
+    <Compile Include="Common\TimingMode.cs" />
+    <Compile Include="Configuration\MapConfig.cs" />
+    <Compile Include="Configuration\ConfigHelper.cs" />
+    <Compile Include="Ftp\FtpConfig.cs" />
+    <Compile Include="Helper\ToolsHelper\ChineseCalendarHelper.cs" />
+    <Compile Include="Helper\ToolsHelper\EditorHelper.cs" />
+    <Compile Include="Common\TagBuilder.cs" />
+    <Compile Include="Ftp\FtpClient.cs" />
+    <Compile Include="Ftp\FtpConfigManager.cs" />
+    <Compile Include="Ftp\FtpResult.cs" />
+    <Compile Include="Helper\TypeHelper\UriHelper.cs" />
+    <Compile Include="Helper\UtilsHelper\CheckHelper.cs" />
+    <Compile Include="Helper\UtilsHelper\FormatHelper.cs" />
+    <Compile Include="Helper\IOHelper\PathHelper.cs" />
+    <Compile Include="Helper\UtilsHelper\RandomHelper.cs" />
+    <Compile Include="Helper\UtilsHelper\TagHelper.cs" />
+    <Compile Include="Helper\DataHelper\OleDbHelper.cs" />
+    <Compile Include="Http\HttpSimpleRequest.cs" />
+    <Compile Include="Log\Log.cs" />
+    <Compile Include="Mail\MailAttachments.cs" />
+    <Compile Include="Mail\MailMessage.cs" />
+    <Compile Include="Mail\SmtpClient.cs" />
+    <Compile Include="Mail\SmtpConfig.cs" />
+    <Compile Include="Mail\SmtpConfigManager.cs" />
+    <Compile Include="Mail\SmtpMail.cs" />
+    <Compile Include="Mail\SmtpServerHelper.cs" />
+    <Compile Include="Helper\TypeHelper\EnumHelper.cs" />
+    <Compile Include="Helper\XmlHelper\XmlSerializeHelper.cs" />
+    <Compile Include="Helper\XmlHelper\XmlValidator.cs" />
+    <Compile Include="Http\HttpDownload.cs" />
+    <Compile Include="Http\HttpHepler.cs" />
+    <Compile Include="Http\HttpFileRequest.cs" />
+    <Compile Include="Plugins\PluginGroupInfo.cs" />
+    <Compile Include="Plugins\PluginInfo.cs" />
+    <Compile Include="Configuration\AppSetting.cs" />
+    <Compile Include="Helper\DataHelper\DataMiningHelper.cs" />
+    <Compile Include="Configuration\BaseConfig.cs" />
+    <Compile Include="Configuration\ConfigurationData.cs" />
+    <Compile Include="Helper\IOHelper\TxtHelper.cs" />
+    <Compile Include="Plugins\PluginsManager.cs" />
+    <Compile Include="Common\VerificationCode.cs" />
+    <Compile Include="Common\CustomException.cs" />
+    <Compile Include="Helper\DataHelper\DataBaseHelper.cs" />
+    <Compile Include="Helper\TypeHelper\DataTypeHelper.cs" />
+    <Compile Include="Configuration\ConfigurationState.cs" />
+    <Compile Include="Helper\TypeHelper\DataTableHelper.cs" />
+    <Compile Include="Helper\TypeHelper\DateTimeHelper.cs" />
+    <Compile Include="Helper\TypeHelper\DictHelper.cs" />
+    <Compile Include="Helper\IOHelper\ImgHelper.cs" />
+    <Compile Include="Helper\ToolsHelper\ChineseSpellHelper.cs" />
+    <Compile Include="Helper\IOHelper\FileHelper.cs" />
+    <Compile Include="Helper\UtilsHelper\RegexHelper.cs" />
+    <Compile Include="Helper\ToolsHelper\ProbabilityHelper.cs" />
+    <Compile Include="Helper\TypeHelper\StringHelper.cs" />
+    <Compile Include="Helper\TypeHelper\ConvertHelper.cs" />
+    <Compile Include="Helper\ToolsHelper\CryptHelper.cs" />
+    <Compile Include="Common\Emums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helper\XmlHelper\XmlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WSH.Options.Common\WSH.Options.Common.csproj">
+      <Project>{2183CCBB-CA08-4FF0-8D9E-548438F73107}</Project>
+      <Name>WSH.Options.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

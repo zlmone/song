@@ -1,0 +1,7 @@
+F:\WSH.Project\WSH\WSH.Common\WSH.Common\bin\Release\WSH.Common.dll
+F:\WSH.Project\WSH\WSH.Common\WSH.Common\bin\Release\WSH.Common.pdb
+F:\WSH.Project\WSH\WSH.Common\WSH.Common\bin\Release\WSH.Options.Common.dll
+F:\WSH.Project\WSH\WSH.Common\WSH.Common\bin\Release\WSH.Options.Common.pdb
+F:\WSH.Project\WSH\WSH.Common\WSH.Common\obj\Release\WSH.Common.csprojResolveAssemblyReference.cache
+F:\WSH.Project\WSH\WSH.Common\WSH.Common\obj\Release\WSH.Common.dll
+F:\WSH.Project\WSH\WSH.Common\WSH.Common\obj\Release\WSH.Common.pdb

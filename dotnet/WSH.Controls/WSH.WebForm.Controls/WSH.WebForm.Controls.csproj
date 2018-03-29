@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{80894770-B939-431C-BAFE-097F30B4D55E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.WebForm.Controls</RootNamespace>
+    <AssemblyName>WSH.WebForm.Controls</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Nonshipping>true</Nonshipping>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Button\Button.cs" />
+    <Compile Include="Common\ClientResourceUrl.cs" />
+    <Compile Include="DataGrid\FlexGrid.cs" />
+    <Compile Include="DataGrid\DataGrid.cs" />
+    <Compile Include="DataGrid\GridColumn.cs" />
+    <Compile Include="Dialog\Dialog.cs" />
+    <Compile Include="Form\CheckBox.cs" />
+    <Compile Include="Form\ComboBox.cs" />
+    <Compile Include="Form\DateBox.cs" />
+    <Compile Include="Form\FormLabel.cs" />
+    <Compile Include="Form\IFormControl.cs" />
+    <Compile Include="Form\NumberBox.cs" />
+    <Compile Include="HtmlEditor\HtmlEditor.cs" />
+    <Compile Include="Layout\DockItem.cs" />
+    <Compile Include="Layout\DockPanel.cs" />
+    <Compile Include="Layout\FormPanel.cs" />
+    <Compile Include="Form\InputBox.cs" />
+    <Compile Include="Form\RadioButton.cs" />
+    <Compile Include="Form\SearchBox.cs" />
+    <Compile Include="Layout\HBox.cs" />
+    <Compile Include="Menu\ContextMenu.cs" />
+    <Compile Include="Menu\Menu.cs" />
+    <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Menu\MenuMgr.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ResourceConfig.cs" />
+    <Compile Include="Resources\ScriptBase.cs" />
+    <Compile Include="Resources\Scripts.cs" />
+    <Compile Include="Resources\StyleBase.cs" />
+    <Compile Include="Resources\Styles.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="Toolbar\Separator.cs" />
+    <Compile Include="Toolbar\Toolbar.cs" />
+    <Compile Include="Toolbar\ToolbarButton.cs" />
+    <Compile Include="Toolbar\ToolbarItem.cs" />
+    <Compile Include="Toolbar\ToolbarText.cs" />
+    <Compile Include="ZTree\ZTree.cs" />
+    <Compile Include="ZTree\ZTreeAsync.cs" />
+    <Compile Include="ZTree\ZTreeCheck.cs" />
+    <Compile Include="ZTree\ZTreeDrag.cs" />
+    <Compile Include="ZTree\ZTreeEdit.cs" />
+    <Compile Include="ZTree\ZTreeMgr.cs" />
+    <Compile Include="ZTree\TreeItem.cs" />
+    <Compile Include="ZTree\ZTreeSimpleData.cs" />
+    <Compile Include="ZTree\ZTreeView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Common\WSH.Common.csproj">
+      <Project>{43DA8E8B-A699-4157-9061-9E8728B41793}</Project>
+      <Name>WSH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Web.Common\WSH.Web.Common.csproj">
+      <Project>{5AFB4292-84D1-4863-88CA-0B9DF143CE39}</Project>
+      <Name>WSH.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.WebForm.Common\WSH.WebForm.Common.csproj">
+      <Project>{11E4CFA8-D467-42D0-AA52-FCBF0FAE72E0}</Project>
+      <Name>WSH.WebForm.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

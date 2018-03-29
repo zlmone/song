@@ -1,0 +1,15 @@
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\obj\Debug\ResolveAssemblyReference.cache
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\WSH.NPOI.Excel.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\WSH.NPOI.Excel.pdb
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\NPOI.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\NPOI.OOXML.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\NPOI.OpenXml4Net.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\WSH.Common.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\WSH.Options.Common.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\NPOI.OpenXmlFormats.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\WSH.Common.pdb
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\NPOI.xml
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\bin\Debug\WSH.Options.Common.pdb
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\obj\Debug\WSH.NPOI.Excel.dll
+F:\WSH.Project\WSH\WSH.Office\WSH.NPOI.Excel\obj\Debug\WSH.NPOI.Excel.pdb

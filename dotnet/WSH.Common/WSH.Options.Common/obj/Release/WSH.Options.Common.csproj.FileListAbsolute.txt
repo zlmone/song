@@ -1,0 +1,4 @@
+F:\WSH.Project\WSH\WSH.Common\WSH.Options.Common\bin\Release\WSH.Options.Common.dll
+F:\WSH.Project\WSH\WSH.Common\WSH.Options.Common\bin\Release\WSH.Options.Common.pdb
+F:\WSH.Project\WSH\WSH.Common\WSH.Options.Common\obj\Release\WSH.Options.Common.dll
+F:\WSH.Project\WSH\WSH.Common\WSH.Options.Common\obj\Release\WSH.Options.Common.pdb

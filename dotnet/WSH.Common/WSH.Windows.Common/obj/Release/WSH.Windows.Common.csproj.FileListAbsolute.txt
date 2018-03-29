@@ -1,0 +1,4 @@
+F:\WSH.Project\WSH\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Windows.Common.dll
+F:\WSH.Project\WSH\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Windows.Common.pdb
+F:\WSH.Project\WSH\WSH.Common\WSH.Windows.Common\obj\Release\WSH.Windows.Common.dll
+F:\WSH.Project\WSH\WSH.Common\WSH.Windows.Common\obj\Release\WSH.Windows.Common.pdb
