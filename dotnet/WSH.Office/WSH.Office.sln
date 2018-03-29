@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSH.Office.Word", "WSH.Office.Word\WSH.Office.Word.csproj", "{134F444B-BA73-4C70-A068-10002FD0D066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSH.Office.Excel", "WSH.Office.Excel\WSH.Office.Excel.csproj", "{99039341-4A4E-4D4E-88D0-BA630AD6CDC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{134F444B-BA73-4C70-A068-10002FD0D066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134F444B-BA73-4C70-A068-10002FD0D066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134F444B-BA73-4C70-A068-10002FD0D066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134F444B-BA73-4C70-A068-10002FD0D066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99039341-4A4E-4D4E-88D0-BA630AD6CDC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99039341-4A4E-4D4E-88D0-BA630AD6CDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99039341-4A4E-4D4E-88D0-BA630AD6CDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99039341-4A4E-4D4E-88D0-BA630AD6CDC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
