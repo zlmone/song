@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\WSH.IISFile\CodeBuilderServices" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="07/11/2017 15:03:33" />
+    <file relUrl="bin/WSH.CodeBuilder.Entity.pdb" publishTime="07/11/2017 15:03:32" />
+    <file relUrl="bin/WSH.CodeBuilder.Manager.pdb" publishTime="07/11/2017 15:03:33" />
+    <file relUrl="bin/WSH.CodeBuilder.Manager.dll" publishTime="07/11/2017 15:03:33" />
+    <file relUrl="bin/WSH.Options.Common.dll" publishTime="07/11/2017 15:03:32" />
+    <file relUrl="Template/instruction.htm" publishTime="02/03/2015 20:14:41" />
+    <file relUrl="bin/WSH.CodeBuilder.Services.dll" publishTime="07/11/2017 15:03:33" />
+    <file relUrl="bin/WSH.Common.dll" publishTime="07/11/2017 15:03:32" />
+    <file relUrl="bin/WSH.CodeBuilder.Entity.dll" publishTime="07/11/2017 15:03:32" />
+    <file relUrl="CodeBuilderService.svc" publishTime="11/14/2014 15:00:29" />
+    <file relUrl="bin/WSH.Options.Common.pdb" publishTime="07/11/2017 15:03:32" />
+    <file relUrl="bin/WSH.CodeBuilder.Services.pdb" publishTime="07/11/2017 15:03:33" />
+    <file relUrl="bin/WSH.Common.pdb" publishTime="07/11/2017 15:03:32" />
+  </publishProfile>
+</publishData>

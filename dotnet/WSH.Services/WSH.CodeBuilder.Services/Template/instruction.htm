@@ -1,0 +1,66 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+        <style type="text/css">
+            body,html{padding:0px; margin:0px;}
+            
+            h1{  text-align:center; font-size:25px; }
+            h2{ padding-left:20px; font-size:20px; }
+            h3{ padding-left:40px; font-size:15px;}
+            .content,.introduction{ line-height:23px; font-size:13px;}
+            .introduction{ padding:0px 10px;}    
+            .content{ padding-left:60px;}        
+        </style>
+	</head>
+	<body>
+	    <h1>
+            简介
+        </h1>
+        <div class="introduction">
+            <b>WSH.Sdutio</b>是一个提高开发效率的工具，主要功能包括：数据模型，代码生成，数据导入导出，小工具等，下面主要介绍代码生成功能。
+            <br />
+            我们项目中有很多重复的工作项，比如NHibernate的映射实体、DTO、ViewModel、包括增删改查（数据层，Controller层，View层）都是重复而耗时的工作。
+            其实这些工作完全可以交给代码生成器去做，而我们开发人员只需要专注于业务代码即可。
+            由于代码生成器的丰富的需求，目前市面上也出现了很多好用的代码生成器，但都不够全面，用起来也不能得心应手。
+            <br /> 
+            <b>WSH.Studio</b>：综合了市面上的生成器的优点，可自定义数据模型，可读取Pdm文件和各种主流数据库的数据模型，可自定义代码模板，可批量生成。通常需要半天或一天才能实现的增删改查功能，用此工具，十分钟就可搞定，并且不需要修改代码即可运行。
+        </div>
+        <h2>开发前的配置（一般由管理员在项目启动前配置好）</h2>
+        <h3>1.配置数据连接</h3>
+        <div class="content">
+            1.新建项目需要用到的数据连接，选择项目对应的数据库类型（支持SqlServer,Oracle,MySql,Access,Sqlite），配置好连接字符串。
+        </div>
+         <h3>2.新建代码模板</h3>
+        <div class="content">
+             1.新建项目需要用到的代码模板，一个项目可对应一个模板分类，每个分类下面包含多个模板。代码模板基于T4模板引擎（后续需要改成Razor引擎）。
+        </div>
+         <h3>3.新建项目</h3>
+         <div class="content">
+            1.新建项目，在文件=>新建项目，添加项目名称，命名空间，描述。 
+        </div>
+        <div class="content">
+            2.选择项目对应的数据库连接 
+        </div>
+        <div class="content">
+            3.选择项目对应的代码模板分类
+        </div>
+        <h2>生成代码</h2>
+        <h3>1.读取数据模型</h3>
+        <div class="content">
+            
+        </div>
+        <h3>2.配置表信息</h3>
+        <div class="content">
+            
+        </div>
+        <h3>3.配置字段信息</h3>
+        <div class="content">
+            
+        </div>
+        <h3>4.生成代码</h3>
+        <div class="content">
+            
+        </div>
+	</body>
+</html>
