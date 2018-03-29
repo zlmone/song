@@ -1,0 +1,36 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string tableName=table.TableName;
+#>
+using System;
+using System.Collections.Generic;
+using System.Web;
+using WSH.Web.Common;
+using WSH.Options.Common;
+using Song.WebSite.Manager;
+
+namespace Song.WebSite.View.admin.pages.<#=tableName#>
+{
+    public partial class <#=tableName#>List : BaseListPage
+    {
+        /// <summary>
+        /// LoadGrid
+        /// </summary>
+        public override PageData GetGridSource(PageOptions options)
+        {
+            string name = Param.GetParam("cmpName");
+            return <#=tableName#>Manager.GetPageDataTable(options,name);
+        }
+        /// <summary>
+        /// Delete
+        /// </summary>
+        public override bool Delete(string[] id, Result result)
+        {
+            return <#=tableName#>Manager.DeleteBatch(id);
+        }
+    }
+}

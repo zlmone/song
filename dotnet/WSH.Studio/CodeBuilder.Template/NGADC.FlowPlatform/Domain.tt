@@ -1,0 +1,58 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+#>
+using System;
+using System.Collections.Generic;
+using System.Text;
+using SharpArch.Core.DomainModel;
+using NHibernate.Validator.Constraints;
+using NGADC.Domain.FlowPlatform.Enums;
+
+namespace NGADC.Domain.FlowPlatform
+{
+    public class <#=GetEntityName(name)#> : Entity
+    {
+        public <#=GetEntityName(name)#>()
+        {
+            
+        }
+<#foreach(ColumnEntity col in columns){
+if(!CodeDataType.IsDataKey(table,col.Field)){
+#>
+        /// <summary>
+        /// <#=col.Display#>
+        /// </summary>
+        <#=GetLengthMessage(col)#>
+        <#=GetRequred(col)#>
+        public virtual <#=DataTypes.Get(col.DataType).DotNet#> <#=col.Field#> { get; set; }
+<#}}#>
+    }
+}
+
+<#+
+public static string GetEntityName(string name){
+	return name.Replace("_","");
+}
+public static string GetRequred(ColumnEntity col){
+	bool isString=DataTypes.HasString(col.DataType);
+	if(isString || col.Required){
+		string result="[NotNull]";
+		return result;
+	}
+	return "";
+}
+public static string GetLengthMessage(ColumnEntity col){
+	string len="";
+	bool isString=DataTypes.HasString(col.DataType);
+	if(isString && col.Length>0){
+		len=col.Length.ToString()+",";			
+	}
+	string result=string.Format("[Length({0}Message = \"{1}\")]",len,col.Display);
+	return result;
+}
+#>

@@ -1,0 +1,67 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string tableName=table.TableName;
+#>
+<%@ Page Title="" Language="C#" MasterPageFile="~/admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="<#=tableName#>List.aspx.cs" Inherits="Song.WebSite.View.admin.pages.<#=tableName#>.<#=tableName#>List" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<script type="text/javascript">
+    //
+    var page = {
+        title: "<#=table.Attr#>",
+        editUrl: "/admin/pages/<#=tableName#>/<#=tableName#>Edit.aspx",
+        gridID: "datagrid",
+        queryID:"query",
+        auth:<%=BindClientAuth() %>
+    };
+    //
+    song.option.dialog = { width:600,height:300};
+    $(function () {
+        song.using.cmp("grid,toolbar", function () {
+            var grid = new song.grid({
+                id: page.gridID,
+                url: song.page.gridUrl(),
+                renderTo: "#grid",
+                expandColumn: "<#=columns[0].Field#>",
+                onRowDblclick: function (row) {
+                    var id = row.data[this.dataKey];
+                    //
+                    page.auth.edit && song.page.edit(id, page);
+                },
+                beforeLoad: function () {
+                    //
+                    this.setParams($("#" + page.queryID).toParams());
+                },
+                columns: [
+                    { checkbox: true },
+                    song.option.column.edit(page),
+<#=CodeDataType.GetGridColumn(columns,ControlType.Song,5)#>
+                ],
+                toolbar: [
+                    song.option.button.add(page),
+                    song.option.button.deleteBatch(page),
+                    song.option.button.query(page),"-"
+                ]
+            });
+            //
+            song.page.enterQuery(page);
+        });
+    });
+</script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form id="form" runat="server">
+        <song:DockPanel runat="server" ID="dockPanel">
+            <song:DockItem Dock="Top">
+                <table class="query-table" id="query">
+<#=CodeDataType.GetFormRow(columns,2,ControlType.Song,5,true)#>
+                </table>
+            </song:DockItem>
+            <song:DockItem Dock="Center" ID="grid" />
+        </song:DockPanel>
+    </form>
+</asp:Content>
+

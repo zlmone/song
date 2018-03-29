@@ -1,0 +1,40 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string tableName=table.TableName;
+#>
+using System;
+using System.Collections.Generic;
+using System.Web;
+using Song.WebSite.Entity;
+using Song.WebSite.Manager;
+
+namespace Song.WebSite.View.admin.pages.<#=tableName#>
+{
+    public partial class <#=tableName#>Edit : BaseEditPage
+    {
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+        }
+        #region BindData
+        protected override void BindData()
+        {
+<#=CodeDataType.GetSaveBindData(columns,"bind",3)#>
+        }
+        #endregion
+
+        #region SaveData
+        protected override bool SaveData()
+        {
+            <#=tableName#>Entity entity = new <#=tableName#>Entity();
+            entity.ID=this.RecordID;
+<#=CodeDataType.GetSaveBindData(columns,"save",3)#>
+            return <#=tableName#>Manager.AddOrUpdate(entity);
+        }
+        #endregion
+    }
+}

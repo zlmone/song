@@ -1,0 +1,49 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace NGADC.Dtos.FlowPlatform
+{
+    public class <#=GetEntityName(name)#>Dto
+    {
+<#foreach(ColumnEntity col in columns){#>
+        /// <summary>
+        /// <#=col.Display#>
+        /// </summary>
+        public <#=DataTypes.Get(col.DataType).DotNet#> <#=col.Field#> { set; get; }
+<#}#>
+    }
+}
+
+<#+
+public static string GetEntityName(string name){
+	return name.Replace("_","");
+}
+public static string GetRequred(ColumnEntity col){
+	bool isString=DataTypes.HasString(col.DataType);
+	if(isString || col.Required){
+		string result="[NotNull]";
+		return result;
+	}
+	return "";
+}
+public static string GetLengthMessage(ColumnEntity col){
+	string len="";
+	bool isString=DataTypes.HasString(col.DataType);
+	if(isString && col.Length>0){
+		len=col.Length.ToString()+",";			
+	}
+	string result=string.Format("[Length({0}Message = \"{1}\")]",len,col.Display);
+	return result;
+}
+#>

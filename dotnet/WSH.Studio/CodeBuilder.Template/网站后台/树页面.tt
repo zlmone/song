@@ -1,0 +1,113 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string tableName=table.TableName;
+#>
+<%@ Page Title="" Language="C#" MasterPageFile="~/admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="<#=tableName#>TreeList.aspx.cs" Inherits="Song.WebSite.View.admin.pages.user.<#=tableName#>TreeList" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<song:Styles runat="server">
+    <song:StyleZTree />
+</song:Styles>
+<song:Scripts runat="server">
+    <song:ScriptZTreeCore />
+    <song:ScriptSongMenu />
+</song:Scripts>
+<script type="text/javascript">
+    //页面配置
+    var page = {
+        auth:<%=BindClientAuth() %>,
+        grid:{
+            title: "导航栏",
+            editUrl: "/admin/pages/user/<#=tableName#>Edit.aspx",
+            gridID: "datagrid",
+            queryID:"query"
+        },
+        tree:{
+            title:"导航树",
+            editUrl:"/admin/pages/user/<#=tableName#>Edit.aspx",
+            treeID:"tree",
+            contextmenu:function(e,treeid,node){
+                song.ztree.showMenu(e,treeid,node,"menuTree");
+            },
+            click:function(e,treeid,node){
+                if(node){
+                    song.page.grid.load(page.grid.gridID,true);
+                }
+            }
+        },
+        menu:{ 
+            addChild:function(){
+                song.page.tree.addChild(page.tree,false);
+            },
+            edit:function(){
+                song.page.tree.edit(page.tree,true);
+            },
+            remove:function(){
+                song.page.tree.remove(page.tree);
+            }   
+        }
+    };
+    //弹出框的配置
+    song.option.dialog = { width:400,height:180};
+    $(function () {
+        song.using.cmp("grid,toolbar", function () {
+            var grid = new song.grid({
+                id: page.grid.gridID,
+                url: song.page.grid.url(),
+                renderTo: "#grid",
+                expandColumn: "<#=columns[0].Field#>",
+                onRowDblclick: function (row) {
+                    var id = row.data[this.dataKey];
+                    //双击行进行编辑
+                    page.auth.edit && song.page.grid.edit(id, page.grid);
+                },
+                beforeLoad: function () {
+                    //查询参数
+                    this.setParams($("#" + page.grid.queryID).toParams());
+                },
+                columns: [
+                    { checkbox: true },
+                    song.option.column.edit(page.grid,page.auth),
+<#=CodeDataType.GetGridColumn(columns,ControlType.Song,5)#>
+                ],
+                toolbar: [
+                    song.option.button.add(page.grid,page.auth),
+                    song.option.button.deleteBatch(page.grid,page.auth),
+                    song.option.button.query(page.grid,page.auth),"-"
+                ]
+            });
+            //回车查询
+            song.page.grid.enterQuery(page.grid);
+        });
+    });
+</script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form id="form" runat="server">
+        <song:DockPanel runat="server">
+            <song:DockItem Dock="Left" ID="treePanel" Width="200" CssClass="tree-panel">
+                <song:ZTree ID="tree" runat="server" OnRightClick="page.tree.contextmenu" OnClick="page.tree.click">
+                </song:ZTree>
+                <song:Menu ID="menuTree" runat="server">
+                    <song:MenuItem Icon="AddRow" Text="新增下级" OnClientClick="page.menu.addChild"/>
+                    <song:MenuItem Icon="Edit" Text="编辑" OnClientClick="page.menu.edit"/>
+                    <song:MenuItem Icon="DeleteRow" Text="删除" OnClientClick="page.menu.remove"/>
+                </song:Menu>
+            </song:DockItem>
+            <song:DockItem Dock="Center">
+                <song:DockPanel runat="server" ID="dockPanel">
+                    <song:DockItem Dock="Top">
+                        <table class="query-table" id="query">
+<#=CodeDataType.GetFormRow(columns,2,ControlType.Song,7,true)#>
+                        </table>
+                    </song:DockItem>
+                    <song:DockItem Dock="Center" ID="grid" />
+                </song:DockPanel>
+            </song:DockItem>
+        </song:DockPanel>
+    </form>
+</asp:Content>
+

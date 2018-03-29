@@ -1,0 +1,99 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web.Mvc;
+using WSH.Options.Common;
+using WSH.Manager.Models;
+using WSH.Web.Mvc.Common;
+using WSH.Manager.Applications;
+
+namespace WSH.Manager.Controllers
+{
+    public class <#=upperName#>Controller : BaseController
+    {
+        #region 初始化服务类
+        public readonly <#=upperName#>Repository <#=lowerName#>Repository;
+        public <#=upperName#>Controller()
+        {
+            <#=lowerName#>Repository = new <#=upperName#>Repository();
+        }
+        #endregion
+
+        /// <summary>
+        /// 主页面
+        /// </summary>
+        public ActionResult <#=upperName#>()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 获取列表数据
+        /// </summary>
+        /// <param name="<#=lowerName#>">查询条件的实体</param>
+        /// <param name="sort">排序列</param>
+        /// <param name="order">排序方向</param>
+        /// <param name="page">页码</param>
+        /// <param name="rows">页大小</param>
+        public ContentResult Get<#=upperName#>List(<#=upperName#>Entity entity, string sort, string order, int page = 1, int rows = 20)
+        {
+            var query = <#=lowerName#>Repository.FindAll();
+           	//查询条件设置
+<#=CodeDataType.GetQueryItem(columns,3)#>
+            var list = query.OrderByDescending(o => o.Id).ToPagingList<<#=upperName#>Entity>(page, rows);
+            return GridResult<<#=upperName#>Entity>(list);
+        }
+        
+        /// <summary>
+        /// 根据id获取数据
+        /// </summary>
+        /// <param name="id">主键id</param>
+        public ContentResult Get<#=upperName#>(int id) {
+            var entity = <#=lowerName#>Repository.Get(id);
+            return Content(JsonHelper.ToJson(entity));
+        }
+
+        /// <summary>
+        /// 编辑页面
+        /// </summary>
+        public ActionResult <#=upperName#>Edit()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 保存数据
+        /// </summary>
+        /// <param name="<#=lowerName#>">保存数据的实体</param>
+        public ContentResult Save<#=upperName#>(<#=upperName#>Entity entity)
+        {
+            Result result = TrySaveAction(r =>
+            {
+                entity = <#=lowerName#>Repository.SaveOrUpdate(entity);
+                return entity.Id;
+            });
+            return Content(result.GetJsonString());
+        }
+
+        /// <summary>
+        /// 删除列表数据
+        /// </summary>
+        /// <param name="ids">删除id集合</param>
+        /// <param name="result">返回信息</param>
+        protected override void RemoveGridRows(string[] ids, Result result)
+        {
+            <#=lowerName#>Repository.BatchDelete(ids);
+        }
+    }
+}

@@ -1,0 +1,98 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using com.gmccadc.DataModel;
+using com.gmccadc.BLL.SystemManagement;
+using com.gmccadc.BLL.SIManagement;
+
+public partial class <#=upperName#>Edit : AdminPortalPage
+{
+    #region 页面属性
+    private int Id
+    {
+        get { return Convert.ToInt32(HttpContext.Current.Request.Params["id"]); }
+    }
+    #endregion
+
+    #region 加载事件
+    private <#=upperName#>BLL _<#=lowerName#>;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        _<#=lowerName#> = new <#=upperName#>BLL(User.Identity.UserInfo);
+        if (!IsPostBack)
+        {
+            BindData();
+        }
+    }
+    #endregion
+
+    #region 绑定数据
+    private void BindData() 
+    {
+    	if(Id>0)
+    	{
+			<#=upperName#> entity=_<#=lowerName#>.GetInfo(Id);
+<#=CodeDataType.GetSaveBindData(columns,"bind",3)#>
+		}
+    }
+    #endregion
+
+    #region 保存数据
+    protected void Save_Click(object sender, EventArgs e)
+    {
+        <#=upperName#> entity = new <#=upperName#>();
+        if (Id > 0)
+        {
+            entity = _agentBlackWhiteList.GetInfo(Id);
+        }
+<#=CodeDataType.GetSaveBindData(columns,"save",2)#>
+		bool result = true;
+        string msg = string.Empty;
+        try
+        {
+            if (Id > 0)
+            {
+                result = _agentBlackWhiteList.Update(entity);
+            }
+            else
+            {
+                result = _agentBlackWhiteList.Add(entity) > 0;
+            }
+        }
+        catch (Exception ex)
+        {
+            result = false;
+            msg = ex.Message;
+        }
+        Script("page.saveAfter(" + result.ToString().ToLower() + ",'" + msg + "');");
+    }
+    #endregion
+
+    #region 权限检查相关
+    /// <summary>
+    /// 页面的权限编码
+    /// </summary>
+    public override string PageRightCode
+    {
+        get
+        {
+            return "<#=upperName#>";
+        }
+    }
+    #endregion
+
+}

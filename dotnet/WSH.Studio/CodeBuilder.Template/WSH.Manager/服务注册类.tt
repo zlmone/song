@@ -1,0 +1,28 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using WSH.Manager.Models;
+
+namespace WSH.Manager.Applications
+{
+    public class <#=upperName#>Repository : Repository<<#=upperName#>Entity>
+    {
+        public <#=upperName#>Repository()
+            : base(new ManagerContext())
+        { 
+            
+        }
+    }
+}
+

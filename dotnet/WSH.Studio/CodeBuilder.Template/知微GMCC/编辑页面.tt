@@ -1,0 +1,52 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+<%@ Page Title="<#=table.Attr#>编辑" Language="C#" MasterPageFile="~/GmccPage.master" AutoEventWireup="true"
+    CodeFile="<#=upperName#>Edit.aspx.cs" Inherits="<#=upperName#>Edit" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script language="javascript" type="text/javascript">
+        window.page = {
+            com: {},
+            saveAfter: function (result, msg) {
+                //保存数据之后执行
+                if (result) {
+                    window.opener.location.reload();
+                    page.cancel();
+                } else {
+                    alert(msg || "保存失败");
+                }
+            },
+            saveBefore: function () {
+                //保存数据之前执行
+                return true;
+            },
+            cancel: function () {
+                //关闭页面
+                window.close();
+            }
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <table width="100%" class="table_input">
+<#=CodeDataType.GetFormRow(columns,2,ControlType.AspNet,4,false)#>
+            </table>
+            <div class="blank_8">
+            </div>
+            <div class="fC">
+                <asp:Button ID="btnSave" runat="server" OnClientClick="return page.saveBefore()" Text="保存" OnClick="Save_Click" CssClass="btn" />
+                <input type="button" value="取消" class="btn" onclick="page.cancel()" />
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>

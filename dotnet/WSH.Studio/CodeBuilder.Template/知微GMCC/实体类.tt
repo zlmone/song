@@ -1,0 +1,32 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+using System;
+using System.Collections.Generic;
+
+namespace com.gmccadc.DataModel
+{
+    /// <summary>
+    /// <#=table.Attr#>ΚµΜε
+    /// </summary>
+    public class <#=upperName#>
+    {
+        public <#=upperName#>()
+        {
+             
+        }
+<#foreach(ColumnEntity col in columns){#>
+    	/// <summary>
+        /// <#=col.Display#>
+        /// </summary>
+        public <#=DataTypes.Get(col.DataType).DotNet#> <#=col.Field#> { get; set; }
+<#}#>
+    }
+}

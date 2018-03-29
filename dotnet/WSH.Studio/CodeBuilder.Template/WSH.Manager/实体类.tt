@@ -1,0 +1,49 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+#>
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WSH.Manager.Models
+{
+	[Table("<#=upperName#>")]
+    public class <#=upperName#>Entity : Entity
+    {
+<#foreach(ColumnEntity col in columns){
+if(!CodeDataType.IsDataKey(table,col.Field)){
+#>
+    	/// <summary>
+        /// <#=col.Display#>
+        /// </summary>
+        <#=GetAttr(col)#>
+        public virtual <#=DataTypes.Get(col.DataType).DotNet#> <#=col.Field#> { get; set; }
+<#}}#>
+    }
+}
+
+<#+
+public static string GetAttr(ColumnEntity col){
+	bool isString=DataTypes.HasString(col.DataType);
+	if(isString || col.Required){
+		string result="[";
+		if(col.Required){
+			result+="Required";
+		}
+		if(isString){
+			result+=",StringLength("+col.Length+")";
+		}
+		result+="]";
+		return result.Replace("[,","[");
+	}
+	return "";
+}
+#>

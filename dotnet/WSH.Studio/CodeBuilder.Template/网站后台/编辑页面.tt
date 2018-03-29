@@ -1,0 +1,23 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+#>
+<%@ Page Title="" Language="C#" MasterPageFile="~/admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="<#=name#>Edit.aspx.cs" Inherits="<#=project.NameSpace#>.View.<#=name#>Edit" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form runat="server" id="form">
+        <table class="form-table">
+<#=CodeDataType.GetFormRow(columns,2,ControlType.Song,3,false)#>
+        </table>
+        <div class="button-wrap">
+            <song:Button runat="server" ID="btnSave" CmdType="Save" Text="Save" OnClick="btnSave_Click" OnClientClick="return song.page.validate();"/>
+            <song:Button runat="server" ID="btnSaveAdd" CmdType="SaveAdd" Text="SaveAdd" OnClick="btnSaveAdd_Click" OnClientClick="return song.page.validate();"/>
+            <song:Button runat="server" ID="btnCancel" CmdType="Cancel" Text="Cancel" OnClientClick="return song.page.cancel();"/>
+        </div>
+    </form>
+</asp:Content>

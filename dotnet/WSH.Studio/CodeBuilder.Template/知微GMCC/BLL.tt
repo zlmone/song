@@ -1,0 +1,190 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+//-------------------------------------------------------------------
+//版权所有：版权所有(C) 2009，Microsoft(China) Co.,LTD
+//系统名称：GMCC-ADC
+//文件名称：<#=upperName#>BLL
+//模块名称：
+//模块编号：
+//作　　者：wangsonghua
+//完成日期：<#=DateTime.Now.ToString("yyyy-MM-dd HH:mm")#>
+//功能说明：
+//-----------------------------------------------------------------
+//修改记录：
+//修改人：  
+//修改时间：
+//修改内容：
+//-----------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using com.gmccadc.BLL.Common;
+using com.gmccadc.DataModel;
+using com.gmccadc.Utility;
+using com.gmccadc.DAL.SIManagement;
+
+namespace com.gmccadc.BLL.SIManagement
+{
+    /// <summary>
+    /// <#=upperName#>BLL摘要说明
+    /// </summary>
+    public partial class <#=upperName#>BLL : BaseBLL
+    {
+        #region 权限和错误编码
+
+        //权限编码 (默认为空,使用者需要自己修改为相应的正确编码)
+        private const string MODULE_CODE = ""; 		    //模块编码
+        private const string RIGHT_CODE_ADD = "";       //增加权限编码
+        private const string RIGHT_CODE_UPDATE = "";    //修改权限编码
+        private const string RIGHT_CODE_DELETE = "";    //删除权限编码
+
+        //错误编码 (默认为不知原因的异常,使用者需要自己修改为相应的正确编码)
+        private const string GET_INFO_ERROR_CODE = "9999";
+        private const string GET_LIST_ERROR_CODE = "9999";
+        private const string ADD_ERROR_CODE = "9999";
+        private const string UPDATE_ERROR_CODE = "9999";
+        private const string DELETE_ERROR_CODE = "9999";
+
+        //错误信息
+        private const string GET_INFO_ERROR_MESSAGE = "";
+        private const string GET_LIST_ERROR_MESSAGE = "";
+        private const string ADD_ERROR_MESSAGE = "";
+        private const string UPDATE_ERROR_MESSAGE = "";
+        private const string DELETE_ERROR_MESSAGE = "";
+
+        #endregion
+
+        /// <summary>
+        /// 创建BLL对象
+        /// </summary>
+        /// <param name="user">系统的登陆用户</param>
+        public <#=upperName#>BLL(IUserInfo user)
+            : base(user)
+        {
+        }
+
+        /// <summary>
+        /// 根据ID获取指定的<#=upperName#>
+        /// </summary>
+        /// <param name="ID"><#=upperName#>主键</param>
+        /// <returns><#=upperName#>实体</returns>
+        public <#=upperName#> GetInfo(Int32 ID)
+        {
+            try
+            {
+                return <#=upperName#>DAL.GetInfo(ID);
+            }
+            catch (Exception e)
+            {
+                Logger.LogError("<#=upperName#>BLL", "GetInfo", AppError.EROR, GET_INFO_ERROR_CODE, e, GET_INFO_ERROR_MESSAGE, null);
+                throw new ADCSystemException("E_" + GET_INFO_ERROR_CODE, e);
+            }
+        }
+
+        /// <summary>
+        /// 添加新的<#=upperName#>
+        /// </summary>
+        /// <param name="<#=lowerName#>"><#=upperName#>实体</param>
+        /// <returns></returns>
+        public int Add(<#=upperName#> <#=lowerName#>)
+        {
+            //如果需要检查重复值，请再下面添加代码，并要抛出业务异常
+            try
+            {
+                int val = <#=upperName#>DAL.Add(<#=lowerName#>);
+
+                //记录操作日志, 具体需要使用哪种记录日志的方法，请使用者自己判断
+                ActionLogBLL.LogCommon(ActionLogType.Add, User, MODULE_CODE, RIGHT_CODE_ADD, "AddLogMessage");
+                //ActionLogBLL.LogSIAction(ActionLogType.Add, User, MODULE_CODE, RIGHT_CODE_ADD, -1, "AddLogMessage");
+                //ActionLogBLL.LogECAction(ActionLogType.Add, User, MODULE_CODE, RIGHT_CODE_ADD, -1, "AddLogMessage");
+                //ActionLogBLL.LogECAction(ActionLogType.Add, User, MODULE_CODE, RIGHT_CODE_ADD, User.UserID, "AddLogMessage");
+
+                return val;
+            }
+            catch (Exception e)
+            {
+                Logger.LogError("<#=upperName#>BLL", "Add", AppError.EROR, ADD_ERROR_CODE, e, ADD_ERROR_MESSAGE, null);
+                throw new ADCSystemException("E_" + ADD_ERROR_CODE, e);
+            }
+        }
+
+        /// <summary>
+        /// 修改<#=upperName#>
+        /// </summary>
+        /// <param name="<#=lowerName#>"><#=upperName#>实体</param>
+        /// <returns></returns>
+        public bool Update(<#=upperName#> <#=lowerName#>)
+        {
+            try
+            {
+                bool val = <#=upperName#>DAL.Update(<#=lowerName#>);
+
+                //记录操作日志, 具体需要使用哪种记录日志的方法，请使用者自己判断
+                ActionLogBLL.LogCommon(ActionLogType.Update, User, MODULE_CODE, RIGHT_CODE_UPDATE, "UpdateLogMessage");
+                //ActionLogBLL.LogSIAction(ActionLogType.Update, User, MODULE_CODE, RIGHT_CODE_UPDATE, -1, "UpdateLogMessage");
+                //ActionLogBLL.LogECAction(ActionLogType.Update, User, MODULE_CODE, RIGHT_CODE_UPDATE, -1, "UpdateLogMessage");
+                //ActionLogBLL.LogECAction(ActionLogType.Update, User, MODULE_CODE, RIGHT_CODE_UPDATE, User.UserID, "UpdateLogMessage");
+
+                return val;
+            }
+            catch (Exception e)
+            {
+                Logger.LogError("<#=upperName#>BLL", "Update", AppError.EROR, UPDATE_ERROR_CODE, e, UPDATE_ERROR_MESSAGE, null);
+                throw new ADCSystemException("E_" + UPDATE_ERROR_CODE, e);
+            }
+        }
+
+        /// <summary>
+        /// 删除<#=upperName#>
+        /// </summary>
+        /// <param name="ID"><#=upperName#>主键</param>
+        /// <returns></returns>
+        public bool Delete(Int32 ID)
+        {
+            try
+            {
+                bool val = <#=upperName#>DAL.Delete(ID);
+
+                //记录操作日志, 具体需要使用哪种记录日志的方法，请使用者自己判断
+                ActionLogBLL.LogCommon(ActionLogType.Delete, User, MODULE_CODE, RIGHT_CODE_DELETE, "DeleteLogMessage");
+                //ActionLogBLL.LogSIAction(ActionLogType.Delete, User, MODULE_CODE, RIGHT_CODE_DELETE, -1, "DeleteLogMessage");
+                //ActionLogBLL.LogECAction(ActionLogType.Delete, User, MODULE_CODE, RIGHT_CODE_DELETE, -1, "DeleteLogMessage");
+                //ActionLogBLL.LogECAction(ActionLogType.Delete, User, MODULE_CODE, RIGHT_CODE_DELETE, User.UserID, "DeleteLogMessage");
+
+                return val;
+            }
+            catch (Exception e)
+            {
+                Logger.LogError("<#=upperName#>BLL", "Delete", AppError.EROR, DELETE_ERROR_CODE, e, DELETE_ERROR_MESSAGE, null);
+                throw new ADCSystemException("E_" + DELETE_ERROR_CODE, e);
+            }
+        }
+         /// <summary>
+        /// 根据<#=upperName#>列表 
+        /// </summary>
+        /// <returns></returns>
+        public DataTable Get<#=upperName#>List()
+        {
+            try
+            {
+                return <#=upperName#>DAL.Get<#=upperName#>List();  
+            }
+            catch (Exception e)
+            {
+                Logger.LogError("<#=upperName#>BLL", "Get<#=upperName#>List", AppError.EROR, DELETE_ERROR_CODE, e, DELETE_ERROR_MESSAGE, null);
+                throw new ADCSystemException("E_" + DELETE_ERROR_CODE, e);
+            }
+        }
+ 
+    }
+}

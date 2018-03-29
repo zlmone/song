@@ -1,0 +1,42 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using com.gmccadc.DataModel;
+using com.gmccadc.BLL.SystemManagement;
+using com.gmccadc.BLL.SIManagement;
+public partial class <#=upperName#>Query : AdminPortalPage
+{
+
+    private <#=upperName#>BLL _<#=lowerName#>;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        _<#=lowerName#> = new <#=upperName#>BLL(User.Identity.UserInfo);
+        if (!IsPostBack)
+        {
+            BindData();
+        }
+    }
+
+    #region 绑定数据
+    private void BindData()
+    {
+    	//绑定列表
+        this.cmpGrid.DataSource = _<#=lowerName#>.Get<#=upperName#>List();
+        this.cmpGrid.DataBind();
+    }
+    #endregion
+}

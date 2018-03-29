@@ -1,0 +1,72 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+<%@ Page Title="<#=table.Attr#>列表" Language="C#" MasterPageFile="~/GmccPage.master" AutoEventWireup="true"
+    CodeFile="<#=upperName#>Query.aspx.cs" Inherits="<#=upperName#>Query" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script type="text/javascript">
+        window.page = {
+            com: {
+                open:function(params){
+	            	//打开编辑页面
+	            	var url=new song.param(url || "<#=upperName#>Edit.aspx",params);
+	            	adc.open({url:url,width:800,height:500});
+	            }
+            },
+            add: function () {
+                //新增
+                page.com.open({action:"add"});
+            },
+            edit: function (id) {
+                //编辑
+                page.com.open({id:id,action:"edit"});
+            },
+            view: function (id) {
+                //查看详情
+                page.com.open({id:id,action:"view"});
+            },
+            remove:function(){
+            	//删除
+            	
+            }
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <table class="table_input">
+<#=CodeDataType.GetFormRow(columns,2,ControlType.AspNet,4,true)#>
+            </table>
+            <div>
+                <adc:ADCGridView ID="cmpGrid" runat="server" SkinID="defaultView" Width="100%" CellSpacing="0"
+                    CssClass="table_list" CellPadding="0" AllowPaging="true" PageSize="20" BorderWidth="0"
+                    AutoGenerateColumns="False">
+                    <EmptyDataTemplate>
+                        <center>暂无记录!</center>
+                    </EmptyDataTemplate>
+                    <Columns>
+<#=CodeDataType.GetGridColumn(columns,ControlType.AspNet,6).Replace(",","")#>
+                        <asp:TemplateField HeaderText="操作">
+                            <ItemTemplate>
+                                <a href="javascript:page.edit()">编辑</a>&nbsp;&nbsp;
+                                <a href="javascript:page.remove()">删除</a>&nbsp;&nbsp;
+                                <a href="javascript:page.view()">详情</a>
+                            </ItemTemplate>
+                            <ItemStyle Width="120" />
+                        </asp:TemplateField>
+                    </Columns>
+                    <PagerSettings FirstPageText="首页" LastPageText="尾页" NextPageText="下页" PreviousPageText="上页" />
+                </adc:ADCGridView>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>

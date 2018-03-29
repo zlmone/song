@@ -1,0 +1,177 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+#>
+//-------------------------------------------------------------------
+//版权所有：版权所有(C) 2009，Microsoft(China) Co.,LTD
+//系统名称：GMCC-ADC
+//文件名称：<#=upperName#>
+//模块名称：
+//模块编号：
+//作　　者：wangsonghua
+//完成日期：<#=DateTime.Now.ToString("yyyy-MM-dd HH:mm")#>
+//功能说明：
+//-----------------------------------------------------------------
+//修改记录：
+//修改人：  
+//修改时间：
+//修改内容：
+//-----------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using com.gmccadc.DataModel;
+using com.gmccadc.Utility;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using System.Data.Common;
+
+namespace com.gmccadc.DAL.SIManagement
+{
+	/// <summary>
+	/// <#=upperName#>DAL 摘要说明
+	/// </summary>
+    public partial class <#=upperName#>DAL
+	{
+		public  const string <#=upperName#>_FINDALL=@"select 
+<#for(int i=0;i<columns.Count;i++){#>
+		[<#=columns[i].Field#>]<#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+		from <#=name#> ";
+		
+		public  const string <#=upperName#>_FINDONE=@"select 
+<#for(int i=0;i<columns.Count;i++){#>
+		[<#=columns[i].Field#>]<#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+		from <#=name#> where [<#=table.DataKey#>]=@ID;";
+		
+		public  const string <#=upperName#>_DELETE=@"delete [<#=name#>] where [<#=table.DataKey#>]=@ID;";
+		
+		public  const string <#=upperName#>_UPDATE=@"update [<#=name#>] set
+<#for(int i=0;i<columns.Count;i++){#>
+<#if(columns[i].Field.ToLower()!=table.DataKey.ToLower()){#>
+		[<#=columns[i].Field#>]=@<#=columns[i].Field#><#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+<#}#>
+		where [<#=table.DataKey#>]=@ID;";
+		
+		public  const string <#=upperName#>_ADD=@"insert into [<#=name#>](
+<#for(int i=0;i<columns.Count;i++){#>
+<#if(columns[i].Field.ToLower()!=table.DataKey.ToLower()){#>
+		[<#=columns[i].Field#>]<#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+<#}#>
+		)values(
+<#for(int i=0;i<columns.Count;i++){#>
+<#if(columns[i].Field.ToLower()!=table.DataKey.ToLower()){#>
+		@<#=columns[i].Field#><#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+<#}#>
+		);select @ID = @@Identity;";
+
+		/// <summary>
+        /// 查询<#=table.Attr#>集合
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable Get<#=upperName#>List()
+        {
+            string sql = <#=upperName#>_FINDALL;
+            Database db = DatabaseFactory.CreateDatabase();
+            DbCommand dbCommand = db.GetSqlStringCommand(sql);
+            //db.AddInParameter(dbCommand, "@ID", DbType.String, "");
+            return db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+        
+		/// <summary>
+		/// 根据ID获取指定的<#=upperName#>
+		/// </summary>
+		/// <param name="ID"><#=upperName#>主键</param>
+		/// <returns></returns>
+		public static <#=upperName#> GetInfo(Int32 ID)
+		{
+			Database db = DatabaseFactory.CreateDatabase();
+            DbCommand dbCommand = db.GetSqlStringCommand(<#=upperName#>_FINDONE);
+			db.AddInParameter(dbCommand, "@ID",DbType.Int32,ID);
+			using (IDataReader dr = db.ExecuteReader(dbCommand))
+			{
+				if (dr.Read())
+				{
+					return Create<#=upperName#>(dr);
+				}
+				else{
+					return null;
+				}						
+			}
+		}
+	
+		/// <summary>
+		/// 添加新的<#=upperName#>
+		/// </summary>
+		/// <param name="agentBusinessOperateLog"><#=upperName#>实体</param>
+		/// <returns></returns>
+		public static int Add(<#=upperName#> <#=lowerName#>)
+		{
+			Database db = DatabaseFactory.CreateDatabase();
+			DbCommand dbCommand = db.GetSqlStringCommand(<#=upperName#>_ADD);
+			db.AddOutParameter(dbCommand, "@ID", DbType.Int32,7);
+<#for(int i=0;i<columns.Count;i++){#>
+		    db.AddInParameter(dbCommand, "@<#=columns[i].Field#>", DbType.<#=DataTypes.Get(columns[i].DataType).DbType#>, <#=lowerName#>.<#=columns[i].Field#>);
+<#}#>
+			int count = db.ExecuteNonQuery(dbCommand);
+            if (count > 0){
+                return (int)dbCommand.Parameters["@ID"].Value;
+            }
+            return -1;
+		}
+		
+		/// <summary>
+		/// 修改<#=upperName#>
+		/// </summary>
+		/// <param name="<#=lowerName#>"><#=upperName#>实体</param>
+		/// <returns></returns>
+		public static bool Update(<#=upperName#> <#=lowerName#>)
+		{
+			Database db = DatabaseFactory.CreateDatabase();
+			DbCommand dbCommand = db.GetSqlStringCommand(<#=upperName#>_UPDATE);
+			db.AddInParameter(dbCommand, "@ID", DbType.Int32, <#=lowerName#>.<#=table.DataKey#>);
+<#for(int i=0;i<columns.Count;i++){#>
+		    db.AddInParameter(dbCommand, "@<#=columns[i].Field#>", DbType.<#=DataTypes.Get(columns[i].DataType).DbType#>, <#=lowerName#>.<#=columns[i].Field#>);
+<#}#>
+			return db.ExecuteNonQuery(dbCommand) > 0;
+		}
+		
+		/// <summary>
+		/// 删除<#=upperName#>
+		/// </summary>
+		/// <param name="ID"><#=upperName#>主键</param>
+		/// <returns></returns>
+		public static bool Delete(Int32 ID)
+		{
+			Database db = DatabaseFactory.CreateDatabase();
+			DbCommand dbCommand = db.GetSqlStringCommand(<#=upperName#>_DELETE);
+			db.AddInParameter(dbCommand, "@ID", DbType.Int32,ID);
+			return db.ExecuteNonQuery(dbCommand) > 0;
+		}
+		
+		/// <summary>
+		/// 将数据映射到<#=upperName#>实体
+		/// </summary>
+		/// <param name="reader"></param>
+		/// <returns></returns>
+		private static <#=upperName#> Create<#=upperName#>(IDataReader reader)
+		{
+			<#=upperName#> <#=lowerName#> = new <#=upperName#>();
+<#for(int i=0;i<columns.Count;i++){#>
+			<#=lowerName#>.<#=columns[i].Field#>=(<#=DataTypes.Get(columns[i].DataType).DotNet#>)reader["<#=columns[i].Field#>"];
+<#}#>
+			return <#=lowerName#>;
+		}
+	}
+}

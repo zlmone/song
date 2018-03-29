@@ -1,0 +1,67 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+ProjectEntity project=host.Project;
+string name=table.TableName;
+string upperName=StringUtils.Capitalize(name);
+string lowerName=StringUtils.Capitalize(name,CaseType.Lower);
+string tableName=string.IsNullOrEmpty(table.Attr) ? name : StringUtils.DeleteEnd(table.Attr,"表");
+#>
+@{
+    ViewBag.Title = "<#=tableName#>";
+    Layout = "~/Views/Shared/MainMaster.cshtml";
+}
+<div data-options="region:'north',border:false" class="query-wrap">
+    <table class="query-table" id="query">    
+<#=CodeDataType.GetFormRow(columns,2,ControlType.EasyUI,2,true)#>
+    </table>
+</div>
+<div data-options="region:'center',border:false">
+    <table id="grid">
+	    
+    </table>
+</div>
+<div id="dialog">
+    @Html.Action("<#=upperName#>Edit")
+</div>
+<script type="text/javascript">
+    var page = new song.page({
+        controller: "<#=upperName#>",
+        grid: {
+            gridid: "grid",
+            idField: "Id",
+            loadAction: "Get<#=upperName#>List",
+            options: {
+                columns: [[
+<#=CodeDataType.GetGridColumn(columns,ControlType.EasyUI,5)#>
+                ]],
+                frozenColumns: [[
+                    song.column.check(),
+                    song.column.edit({ field: "Id"})
+                ]]
+            }
+        },
+        query: {
+            queryid: "query"
+        },
+        dialog: {
+            dialogid: "dialog",
+            title: "<#=tableName#>"
+        },
+        form: {
+            formid: "form",
+            loadType: "remote",
+            loadAction: "Get<#=upperName#>",
+            submitAction: "Save<#=upperName#>"
+        },
+        tree: {
+			
+        },
+        com: {
+            //自定义业务逻辑
+               
+        }
+    });
+</script>

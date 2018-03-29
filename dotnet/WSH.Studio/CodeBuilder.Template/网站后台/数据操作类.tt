@@ -1,0 +1,212 @@
+<#@ template language="C#" HostSpecific="true" #>
+<#
+CodeBuilderHost host = (CodeBuilderHost)(Host);
+ProjectEntity project=host.Project;
+List<ColumnEntity> columns=host.Columns;
+TableEntity table=host.Table;
+string tableName=table.TableName;
+string entityName=StringUtils.Capitalize(tableName)+"Entity";
+#>
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data;
+using System.Data.Common;
+using <#=project.NameSpace#>.Entity;
+using WSH.Options.Common;
+using WSH.Data.Common;
+
+namespace <#=project.NameSpace#>.Manager
+{
+    public class <#=tableName#>Manager
+    {        
+		#region SQL语句
+		public static readonly string SQL_Query = @"select 
+<#for(int i=0;i<columns.Count;i++){#>
+		[<#=columns[i].Field#>]<#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+		from <#=tableName#> ";
+		public static readonly string SQL_Add = @"insert into [<#=tableName#>](
+<#for(int i=0;i<columns.Count;i++){#>
+		[<#=columns[i].Field#>]<#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+		values(
+<#for(int i=0;i<columns.Count;i++){#>
+		@<#=columns[i].Field#><#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+		);";
+		public static readonly string SQL_Update = @"update [<#=tableName#>] set
+<#for(int i=0;i<columns.Count;i++){#>
+		[<#=columns[i].Field#>]=@<#=columns[i].Field#><#=(i<columns.Count-1 ? "," : "")#>
+<#}#>
+		where [<#=table.DataKey#>]=@<#=table.DataKey#>;";
+		public static readonly string SQL_Delete = @"delete [<#=tableName#>] where [<#=table.DataKey#>]=@<#=table.DataKey#>";
+		#endregion
+		
+		#region 查询
+		/// <summary>
+		/// 查询<#=tableName#>,返回DataTable
+		/// </summary>
+		public static DataTable GetDataTable()
+		{
+		    return MinManager.GetDataTable(SQL_Query);
+		}
+		/// <summary>
+		/// 查询<#=tableName#>,返回List
+		/// </summary>
+		/// <returns></returns>
+		public static IList<<#=entityName#>> GetList()
+		{
+		    IList<<#=entityName#>> list = new List<<#=entityName#>>();
+		    Database db = DatabaseFactory.CreateDatabase();
+		    DbCommand cmd = db.GetSqlStringCommand(SQL_Query);
+		    using (IDataReader reader = db.ExecuteReader(cmd))
+		    {
+		        while (reader.Read())
+		        {
+		            list.Add(ConvertToEntity(reader));
+		        }
+		    }
+		    return list;
+		}
+		/// <summary>
+		/// 分页查询,返回PageList
+		/// </summary>
+		/// <returns></returns>
+		public static PageList<<#=entityName#>> GetPageList(PageOptions options) {
+		    PageList<<#=entityName#>> list = new PageList<<#=entityName#>>();
+			options.TableName = "<#=tableName#>";
+            options.DataKey = "<#=table.DataKey#>";
+            int totalRecord, pageCount;
+            IDataReader reader = MinManager.GetPageListReader(options, out totalRecord, out pageCount);
+            using (reader)
+            {
+                while (reader.Read())
+                {
+                    list.Add(ConvertToEntity(reader));
+                }
+            }
+            list.TotalRecord = totalRecord;
+            list.PageCount = pageCount;
+		    return list;
+		}
+		/// <summary>
+        /// 分页查询，返回PageData
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static PageData GetPageDataTable(PageOptions options) {
+            options.TableName = "<#=tableName#>";
+            options.DataKey = "<#=table.DataKey#>";
+            return MinManager.GetPageDataTable(options);
+        }
+		/// <summary>
+		/// 根据主键查询<#=tableName#>,返回<#=entityName#>
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public static <#=entityName#> GetSingle(string id)
+		{
+		    <#=entityName#> entity = new <#=entityName#>();
+		    Database db = DatabaseFactory.CreateDatabase();
+		    string sql = SQL_Query + " where <#=table.DataKey#>=@<#=table.DataKey#>;";
+		    DbCommand cmd = db.GetSqlStringCommand(sql);
+		    db.AddInParameter(cmd, "@<#=table.DataKey#>", DbType.String, id);
+		    using (IDataReader reader = db.ExecuteReader(cmd))
+		    {
+		        while (reader.Read())
+		        {
+		            entity = ConvertToEntity(reader);
+		        }
+		    }
+		    return entity;
+		}
+		#endregion
+		
+		#region 新增
+		/// <summary>
+		/// 新增<#=tableName#>
+		/// </summary>
+		/// <param name="entity"></param>
+		/// <returns></returns>
+		public static bool Add(<#=entityName#> entity)
+		{
+		    Database db = DatabaseFactory.CreateDatabase();
+		    DbCommand cmd = db.GetSqlStringCommand(SQL_Add);
+		    AddParameter(db, cmd, entity);
+		    return db.ExecuteNonQuery(cmd) > 0;
+		}
+		#endregion
+		
+		#region 修改
+		/// <summary>
+		/// 修改<#=tableName#>
+		/// </summary>
+		/// <param name="entity"></param>
+		/// <returns></returns>
+		public static bool Update(<#=entityName#> entity)
+		{
+		    Database db = DatabaseFactory.CreateDatabase();
+		    DbCommand cmd = db.GetSqlStringCommand(SQL_Update);
+		    AddParameter(db, cmd, entity);
+		    db.AddInParameter(cmd, "@<#=table.DataKey#>", DbType.String, entity.<#=table.DataKey#>);
+		    return db.ExecuteNonQuery(cmd) > 0;
+		}
+		#endregion
+		
+		#region 删除
+		/// <summary>
+		/// 根据主键删除<#=tableName#>
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public static bool Delete(string id)
+		{
+		    Database db = DatabaseFactory.CreateDatabase();
+		    DbCommand cmd = db.GetSqlStringCommand(SQL_Delete);
+		    db.AddInParameter(cmd, "@<#=table.DataKey#>", DbType.String, id);
+		    return db.ExecuteNonQuery(cmd) > 0;
+		}
+		/// <summary>
+		/// 根据主键集合删除<#=tableName#>
+		/// </summary>
+		/// <param name="ids"></param>
+		/// <returns></returns>
+		public static void DeleteBatch(string[] ids)
+		{
+		    for (int i = 0; i < ids.Length; i++)
+            {
+                Delete(ids[i]);
+            }
+		}
+		#endregion
+		
+		#region 私有方法
+		/// <summary>
+		/// 根据实体对象，添加SQL参数
+		/// </summary>
+		private static void AddParameter(Database db, DbCommand cmd, <#=entityName#> entity)
+		{
+<#for(int i=0;i<columns.Count;i++){#>
+<#if(columns[i].Field.ToLower()!=table.DataKey.ToLower()){#>
+		    db.AddInParameter(cmd, "@<#=columns[i].Field#>", DbType.<#=DataTypes.Get(columns[i].DataType).DbType#>, entity.<#=columns[i].Field#>);
+<#}#>
+<#}#>
+		}
+		/// <summary>
+		/// 将数据映射到<#=entityName#>实体
+		/// </summary>
+		/// <param name="reader"></param>
+		/// <returns></returns>
+		private static <#=entityName#> ConvertToEntity(IDataReader reader)
+		{
+			<#=entityName#> entity = new <#=entityName#>();
+<#for(int i=0;i<columns.Count;i++){#>
+			entity.<#=columns[i].Field#>=(<#=DataTypes.Get(columns[i].DataType).DotNet#>)reader["<#=columns[i].Field#>"];
+<#}#>
+			return entity;
+		}
+		#endregion
+    }
+}
