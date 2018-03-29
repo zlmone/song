@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+     <meta charset="UTF-8">
+    <meta name="MobileOptimized" content="240" />
+    <meta name="apple-touch-fullscreen" content="YES" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0" />
+    <style type="text/css">
+        body{ margin:0px; font-size:12px; font-family:Tahoma;}
+        .query{ border-bottom:1px solid red; height:50px; line-height:50px; background:#ccc; 
+                padding:0px 20px; position:fixed; top:0px; left:0px; width:100%; }
+        .query input{ margin-top:15px;}
+        .listview{  margin-top:50px;  }
+        .listitem{ border-bottom:1px solid #ddd;}
+        .listitem a{ text-decoration:none; color:Gray;  display:block; padding:10px;}
+        .listitem a:hover{ background:#ddd;}
+        .info{ height:30px; line-height:30px; text-align:center;   border:1px solid #ccc; display:none;}
+        
+        .highlight{ color:Red;}
+    </style>
+    <script src="jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="scrollView.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化滚动加载视图对象
+            var scrollview = new window.scrollView({
+                //搜索后台地址
+                url: "getQueryData.ashx",
+                getKeyWord: function () {
+                    //获取搜索关键字
+                    return $.trim($("#query").val());
+                },
+                setParams: function () {
+                    //设置搜索参数，后台可接受该参数
+                    this.keyWord = this.getKeyWord();
+                    return { 
+                        keyword: this.keyWord,
+                        pageIndex:this.pageIndex,
+                        pageSize:this.pageSize
+                    };
+                },
+                highlight: function (value) {
+                    //高亮显示关键字
+                    return value.replace(this.keyWord, "<span class='highlight'>" + this.keyWord + "</span>");
+                },
+                render: function (data) {
+                    //列表渲染
+                    var i = 0,
+                        items = data.Items, //知识列表数据，字段名根据后台返回json来定义
+                        len = items.length;
+                    //循环列表数据，绑定页面元素
+                    for (; i < len; i++) {
+                        var item = items[i];
+                        //高亮显示符合关键字的知识标题
+                        var header = this.highlight(item.Header);
+                        //高亮显示符合关键字的知识标题
+                        var typeName = this.highlight(item.TypeName);
+                        //模板内容请替换相应的html
+                        var template =
+                            ['<div class="listitem">',
+                                '<a href="scrollView.htm?typeid=', item.TypeId, '&id=', item.Id, '">',
+                                    '<span>', header, '</span>',
+                                    '<br><span>', typeName, '</span>',
+                                '</a>',
+                            '</div>'];
+                         
+                        $("#listview").append(template.join(''));
+                    }
+                },
+                beforeLoad: function () {
+                    //加载数据前的事件,可以加上loading图标（addClass("loading")）
+                    $("#info").show().html("正在加载数据...");
+                },
+                afterLoad: function (isFinish) {
+                    //加载数据后的事件
+                    if (isFinish) {
+                        //如果没有数据了。 
+                        $("#info").html("没有更多数据");
+                    } else {
+                        //表示可以继续拖动加载，可以移除loading图标 （removeClass("loading")）
+                        $("#info").html("查看更多");
+                    }
+                }
+            });
+
+
+            $("#btnquery").click(function () {
+                //点击搜索按钮，调用查询方法
+                var keyword = scrollview.getKeyWord();
+                if (keyword == "") {
+                    alert("请输入搜索关键字");
+                } else {
+                    //查询之前，先清空列表
+                    $("#listview").empty();
+                    scrollview.query();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="query">
+        <input type="text" id="query" />
+        <input type="button" id="btnquery" value="搜索"/>
+    </div>
+    <div id="listview" class="listview">
+         
+    </div>
+    <div class="info" id="info">
+        查看更多
+    </div>
+</body>
+</html>

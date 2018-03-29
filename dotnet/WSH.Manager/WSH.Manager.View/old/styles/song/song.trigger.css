@@ -1,0 +1,11 @@
+﻿.song-trigger-wrap{  }
+.song-trigger-text{ vertical-align:middle;}
+.song-trigger-arrow{ vertical-align:middle;background:url(../Images/form/trigger.gif) no-repeat;
+                    border-bottom:1px solid #B5B8C8; height:21px; width:17px; cursor:pointer; }
+.song-trigger-dropdown{ position:absolute;border:1px solid #81AFDA;left:0px; top:22px;background:#fff;
+                         display:none;}
+
+.song-search{ background:url(../Images/form/search-trigger.gif) no-repeat;}
+
+.song-trigger-arrow-hover{ background-position:-17px 0px; border-bottom-color:#84B1DB;}
+.song-trigger-arrow-active{ background-position:-34px 0px;  border-bottom-color:#81AFDA;}

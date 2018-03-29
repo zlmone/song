@@ -1,0 +1,11 @@
+﻿.song-dialog-wrap{ position:absolute; border:1px solid #333; top:0px;left:0px;}
+.song-dialog-title{ height:20px; line-height:20px; background:#ccc;}
+.song-dialog-close{}
+.song-dialog-loading{}
+.song-dialog-content{}
+.song-dialog-buttons{ background:#ccc; padding:5px 10px; text-align:right;}
+.song-dialog-button{}
+
+.song-dialog-lt,.song-dialog-rt,.song-dialog-lb,.song-dialog-rb,.song-dialog-lc,.song-dialog-tc,.song-dialog-rc,.song-dialog-bc
+{ background:#333; filter:alpha(opacity=40);opacity:0.4}
+.song-dialog-lt,.song-dialog-rt,.song-dialog-lb,.song-dialog-rb{ width:8px; height:8px;}

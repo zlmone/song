@@ -1,0 +1,23 @@
+﻿html,body{ overflow:hidden;}
+.song-explorer-title{ border-bottom:1px solid #cccccc; padding:3px 5px;}
+.song-explorer-title table{width:100%;}
+.song-explorer-back{ width:100px; text-align:right;}
+.song-explorer-table{width:100%;border-collapse: separate;}
+.song-explorer-table td{ padding:3px 0px; text-align:left;}
+.song-explorer-title a:hover,.song-explorer-table td a:hover{ color:Red; text-decoration:underline;}
+.song-explorer-head{background:#fafafa url(../../../Images/grid/easyui-head.gif) repeat-x left bottom;
+overflow:hidden;  position:relative;border-top-width:1px;border-bottom:1px solid #ccc; cursor:default;}
+.song-explorer-table td.song-explorer-num{width:25px; text-align:center;}
+.song-explorer-table td.song-explorer-type{width:25px;}
+.song-explorer-table td.song-explorer-size{width:80px; text-align:left;}
+.song-explorer-filetype{ border:0px; height:16px; width:16px;}
+.song-explorer-body{overflow:auto; overflow-x:hidden;}
+.song-explorer-body td{ border-style: solid;border-width: 1px 0;}
+.song-explorer-odd td{ background:#ffffff; border-top-color:#ffffff;border-bottom-color:#eeeeee;}
+.song-explorer-even td{ background:#fafafa; border-bottom-color:#eeeeee; border-top-color:#fafafa;}
+.song-explorer-hover td{ background:#E8F6FD; border-color:#9AC6FF;}
+.song-explorer-empty{ color:Red; padding-left:5px;}
+.song-explorer-cmd{ display:none; margin-left:5px;}
+.song-explorer-table td.song-explorer-progress{ width:200px; text-align:center;}
+.song-explorer-progressbar{  margin:0px 10px; padding:0px 1px; padding-top:1px; background:#fff; border:1px solid #9BC9F6; height:8px; font-size:8px; overflow:hidden;}
+.song-explorer-progressbar div{width:0%; background:#D4E7F8; height:7px; font-size:7px; overflow:hidden; }

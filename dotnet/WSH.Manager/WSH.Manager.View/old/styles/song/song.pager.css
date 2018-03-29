@@ -1,0 +1,14 @@
+﻿.song-paging{ float:left;color:#2E6AB1; text-align:center;zoom:1; font-size:12px; margin-top:10px;
+                height:20px; line-height:20px; }
+.song-paging a,.song-paging span{ float:left;_display:inline; margin:0px 2px; padding:0px 5px;
+        background:#fff;  font-family:Tahoma;}
+.song-paging a{ text-decoration:none;color:#2E6AB1;border:1px solid #9AAFE5;outline:none;}
+.song-paging a:hover{ background:#eee;}
+.song-paging label{ }
+.song-paging span.active{ border:1px solid navy; background:#2E6AB1;color:#fff; font-weight:bold;}
+.song-paging span.dot{ margin:0px; padding:0px 1px;}
+.song-paging select,.song-paging input{ padding:0px; margin:0px;border:1px solid #9AAFE5;}
+.song-paging select{ padding:1px; float:left; margin:0px 3px;_display:inline;}
+.song-paging input{width:40px;height:20px; line-height:20px;}
+.song-clear{ overflow:hidden; font-size:0px; height:0px; width:0px; clear:both;}
+.song-paging div.nums{ float:left;}

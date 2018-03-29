@@ -1,0 +1,6 @@
+﻿.song-progress-wrap{border:1px solid #73A1E0;position:relative;  color:#396095; overflow:hidden;
+                     background:url(../Images/progress/bg.gif);}
+.song-progress-inner{position:absolute; width:0px; height:100%; overflow:hidden; 
+                        background:url(../Images/progress/progress.gif) center center; color:#fff;}
+.song-progress-wrap .song-progress-text{  position:absolute; text-align:center; width:100%; height:100%; }
+.song-progress-inner .song-progress-text{ position:absolute; text-align:center; color:#fff; height:100%; }
