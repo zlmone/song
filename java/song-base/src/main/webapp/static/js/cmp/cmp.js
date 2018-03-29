@@ -12,7 +12,8 @@
             loading: "正在加载，请稍后...",
             nullRecord: "请选择记录进行操作",
             confirmRemoveRecord: "确定删除记录吗？",
-            confirmRemoveNode: "确定删除节点以及子节点吗？"
+            confirmRemoveNode: "确定删除节点以及子节点吗？",
+            confirmUploadFile:"确定删除文件吗？"
         },
         param: {
             //封装的动态参数
@@ -153,7 +154,7 @@
         },
         isSuccess: function (result, attr) {
             //判断ajax业务处理是否成功，默认isSuccess属性
-            if (result && result[attr || "isSuccess"]) {
+            if (result && result[attr || "success"]) {
                 return true;
             }
             return false;

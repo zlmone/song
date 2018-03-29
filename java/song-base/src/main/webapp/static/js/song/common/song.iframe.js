@@ -5,18 +5,12 @@
 (function (song, $) {
     var frameName = 'SONG_COMMON_IFRAME';
     song.iframe = {
-        window: function (iframe) {
-            return iframe.contentWindow || iframe.window;
-        },
-        document: function (iframe) {
-            return iframe.contentDocument || song.iframe.window(iframe).document;
-        },
         //自适应高度和宽度
         auto: function (id, isWidth) {
             var frame = song.dom(id);
             frame.height = "10px";
             song.loaded(id, function () {
-                var pos = song.position.maxClient(song.iframe.document(frame));
+                var pos = song.position.maxClient(this.contentWindow);
                 this.height = pos.height + "px";
                 isWidth && (this.width = pos.width + "px")
             });
@@ -41,7 +35,7 @@
             }
         },
         getContent: function (iframe) {
-            var doc = song.iframe.document(iframe),
+            var doc = iframe.contentDocument || iframe.contentWindow.document,
                 html = doc.body.innerHTML;
             //纯文本响应可能会被包裹在<pre>标签
             if (html && html.match(/^<pre/i)) {
@@ -54,14 +48,10 @@
                 for (var i = 0; i < frames.length; i++) {
                     var frame = frames[i];
                     frame.src = "about:blank";
-                    var win = song.iframe.window(frame),
-                        doc = win.document;
                     try {
-                        doc.write('');
-                        doc.clear();
-                        win.close();
-                        doc = null;
-                        win = null;
+                        frame.contentWindow.document.write('');
+                        frame.contentWindow.document.clear();
+                        frame.contentWindow.close();
                     } catch (e) {
                     }
                 }
@@ -82,7 +72,7 @@
                 iframe.css({display: 'none'}).appendTo('body');
             }
             if (form.length <= 0) {
-                form = $("<form>").attr("action", url).attr("target", iframeName).attr("id", formName);
+                form = $("<form>").attr("action", url).attr("method","POST").attr("target", iframeName).attr("id", formName);
                 form.appendTo('body');
             }
             //清空参数

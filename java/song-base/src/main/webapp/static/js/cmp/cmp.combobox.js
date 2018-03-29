@@ -5,6 +5,10 @@
     cmp.combobox = cmp.create({
         init: function () {
             if (this.isOptions) {
+                var isWidth = this.el.attr("width");
+                if (this.options.width==null && isWidth){
+                    this.options.width=isWidth;
+                }
                 this.el.combobox(this.options);
             }
         },

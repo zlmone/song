@@ -26,9 +26,9 @@
                     }
                     var isSuccess = cmp.isSuccess(json);
                     if (isSuccess) {
-                        cmp.msg.success();
+                        cmp.msg.success(json.msg);
                     } else {
-                        cmp.msg.error();
+                        cmp.msg.error(json.msg);
                     }
                     that.options.onAfterSubmit && that.options.onAfterSubmit.call(that, isSuccess, json);
                 },
@@ -100,6 +100,9 @@
         load: function (url_data) {
             cmp.loading.show();
             this.el.form("load", url_data);
+        },
+        get:function (field) {
+            return $("#"+field);
         }
     });
 

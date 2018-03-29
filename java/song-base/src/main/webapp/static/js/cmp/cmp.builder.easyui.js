@@ -86,6 +86,7 @@
             var opts = {};
             $.extend(opts, {
                 value: item.value,
+                width:item.width || "100%",
                 type: item.type || "text",
                 id: id,
                 name: id,
