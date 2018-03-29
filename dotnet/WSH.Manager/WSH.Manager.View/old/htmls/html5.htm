@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+	   <title>Html5</title>
+	   <style type="text/css">
+	      body{ margin:0px; font-size:12px; font-family:宋体;}
+     .box{ border:1px solid #ccc; padding:10px; margin:15px;}
+     .title{ color:Red; font-weight:bold; font-size:14px;}
+	   </style>
+	   <script type="text/javascript">
+	       window.onload = function () {
+//	           var c = document.getElementById("canvas");
+//	           var cxt = c.getContext("2d");
+//	           cxt.fillStyle = "#596";
+//	           cxt.beginPath();
+//	           cxt.arc(150, 150, 150, 0, Math.PI * 2, true);
+//	           cxt.closePath();
+//	           cxt.fill();
+//	           cxt.beginPath();
+//	           for (var x = 0.5; x <1000; x += 10) {
+//	               cxt.moveTo(x, 0);
+//	               cxt.lineTo(x, 600);
+//	           }
+//	           for (var y = 0.5; y < 600; y += 10) {
+//	               cxt.moveTo(0, y);
+//	               cxt.lineTo(1000, y);
+//	           }
+//	           cxt.strokeStyle = "#ff0000";
+//	           cxt.stroke();
+	       }
+	   </script>
+    </head>
+    <body>
+    <form>
+    <div class="box">
+    <input type="submit" value="提交" />
+    </div>
+		<div id="wrap">
+ <div class="box">
+    <span class="title">进度条：</span>
+     <progress value="40" max="100" >40%</progress>
+ </div>
+        <div class="box">
+    <span class="title">DataList：</span>
+    Webpage: <input type="url" list="url_list" name="link" required="required"/>
+<datalist id="url_list">
+<option label="W3School" value="http://www.W3School.com.cn" />
+<option label="Google" value="http://www.google.com" />
+<option label="Microsoft" value="http://www.microsoft.com" />
+</datalist>
+    </div>
+            <div class="box">
+    <span class="title">DatePicker：</span>
+<input type="date" />(date, month, week, time, datetime, datetime-local)
+</div>
+            <div class="box">
+    <span class="title">Number：</span>
+<input type="number" max="10"/>
+    <span class="title">Email：</span>
+<input type="email" value="email" />
+    <span class="title">Url：</span>
+<input type="url" />
+    <span class="title">Range：</span>
+<input type="range" />
+<span class="title" >Search:</span>
+<input type="search" required="required"/>
+<span class="title">Color:</span>
+<input type="color" />
+</div>
+        </div>
+        </form>
+    </body>
+</html>

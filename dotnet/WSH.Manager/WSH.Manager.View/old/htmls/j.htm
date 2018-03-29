@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        body{ margin:0px; font-size:12px; font-family:宋体;}
+     .box{ border:1px solid #ccc; padding:10px; margin:15px;}
+     .title{ color:Red; font-weight:bold; font-size:14px;}
+     .drag{width:200px; height:200px; top:100px; line-height:100%; 
+           text-align:center; left:200px; background:#000; color:#fff; position:absolute; z-index:20; border:1px solid green;}
+    </style>
+    <link href="../../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/j.css" rel="stylesheet" type="text/css" />
+    <script src="scripts/j/j.js" type="text/javascript"></script>
+    <link href="../../css/grid.css" rel="stylesheet" type="text/css" />
+    <script src="../../js/toolbar.js" type="text/javascript"></script>
+    <link href="../../css/toolbar.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/icons.css" rel="stylesheet" type="text/css" />
+    <script src="../../js/j-tip.js" type="text/javascript"></script>
+    <script src="../../js/columnResize.js" type="text/javascript"></script>
+    <link href="../../css/popup.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        j(function () {
+            j("drag").setRegion("center", "center");
+            new j.drag("drag");
+            //            new j.editSelect("combox");
+
+            //            new j.numberbox("number");
+            //            new j.grid("grid", {
+            //                skin: "Ext"
+            //            });
+            //            var tb = new j.toolbar({ align: "left", renderTo: "tb" });
+            //            tb.add("-", { text: "添加", icon: "addrow" }, "-", { text: "编辑", icon: "edit" }, "-", "<input type='text' class='textbox'/>", '-', { text: "查询", icon: "query" });
+            //            new j.columnResize("colResizeName");
+            //            new j.tip({ target: true, el: "colResizeName", text: "该列可以拖动", dir: "top" });
+            //            new j.tip.msg("j实用功能演示界面", "info", 3, true, "top", "center");
+
+            //            var items = [{ text: "添加", icon: "addrow" }, { text: "修改", icon: "edit" }, { text: "删除", icon: "deleterow" }, "-", { text: "新建", icon: "add", items: [
+            //                { text: "文件夹", icon: "folder" },
+            //                { text: "txt文本文件", icon: "folder" }
+            //            ]
+            //            }];
+            //            new j.contextmenu(document, { items: items });
+            //            var m = new j.menu({ items: items, follow: "showMenu" });
+            //            j("showMenu").bind("click", function (e) {
+            //                m.show();
+            //                e.stop();
+            //            });
+            doMove();
+        });
+        function doMove() {
+            j("drag").animate({ left: 0, top: 0, width: 400, height: 400, opacity: 10 }, function () {
+                j(this).animate({ opacity: 100, left: 1150, top: 450, height: 200, width: 200 }, function () {
+                    j(this).animate({ opacity: 15, left: 1150, top: 10, height: 600, width:200 }, function () {
+                        j(this).animate({ opacity: 80, left: 10, top: 10, height:200, width: 200 }, function () {
+                            j(this).animate({ opacity: 100, left: 10, top: 450, height: 200, width: 200 }, function () {
+                                j(this).animate({ opacity: 40, left:600, top: 200, height: 200, width: 200 }, function () {
+
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        }
+        function submit(e){
+            var load=j.tip.loading("正在提交数据...点击关闭",true);
+            j(document).on("click",function(){
+                load.hide();
+            });
+            new j.event(e).stop();
+        }
+    </script>
+</head>
+<body>
+ <div id="drag" class="drag">点击拖动我</div>
+<div class="box">
+<span class="title">数字框</span>
+（可限制输入小数，负数，零，以及点和负号的位置和数量）：
+<input type="text" id="number" />
+<span>new j.numberbox("number");</span>
+</div>
+<div class="box" id="form-div">
+<span class="title">可编辑的下拉框</span>（支持IE6）：
+<select id="combox">
+    <option value="王松华">王松华</option>
+    <option value="fas">fads</option>
+</select>
+<span>new j.editSelect("combox");</span>
+<input type="button" onclick="submit();" value="提交" />
+</div>
+<div class="box">
+<span class="title">动画</span>（不支持动画队列）：
+ <button ">Move</button>
+ </div>
+ <div class="box">
+ <div id="tb"></div>
+ <table id="grid">
+ <tr><th>行号</th><th id="colResizeName">名称</th><th>地址</th></tr>
+    <script type="text/javascript">
+        for (var i = 1; i <=4; i++) {
+            document.write("<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>".format(i,"NAME"+i,"Address"+i));
+        }
+    </script>
+    </table>
+ </div>
+ <div class="box">
+    <span class="title">无限级菜单</span>（支持右键菜单，可自适应宽度）：
+    <input type="button" value="弹出菜单" id="showMenu"  />
+ </div>
+</body>
+</html>
+ 

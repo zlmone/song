@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        html,body{ height:100%; overflow-y:hidden; overflow-x:auto;}
+        body{ background:#DFE8F6; text-align:center; margin:0px; font-family:Arial,宋体; font-size:12px;}
+        .border{ border:1px solid #99BBE8;}
+        .bg{ background:#DFE8F6;}
+        .wrap{ height:80%; margin:0px auto; text-align:left; width:1000px; margin-top:10px;}
+        .nav{ height:100%; width:200px; float:left; background:#fff; overflow:auto; font-size:14px;}
+        .content{  float:left; height:100%; background:#fff; margin-left:10px; width:786px; overflow:auto;}
+        a{ text-decoration:none; color:#000;}
+        a:hover{ color:Red; text-decoration:underline;}
+        .nav a{ display:block; height:20px; line-height:20px;}
+        .nav a:hover{ background:#eee; }
+    </style>
+    <script type="text/javascript">
+        ; (function () {
+            window.j = function (el) {
+                return typeof el == "string" ? document.getElementById(el) : el;
+            };
+            j.getClient = function () {
+                return { width: document.documentElement.clientWidth, height: document.documentElement.clientHeight };
+            }
+            j.setHeight=function(){
+                var client = j.getClient();
+                var wrap = j("wrap").style.height = client.height -2- 20+"px";
+            }
+        })();
+        window.onresize=j.setHeight;
+        window.onload = function () {
+            j.setHeight();
+
+        };
+    </script>
+</head>
+<body>
+    <div class="wrap" id="wrap">
+        <div class="nav border">
+            <a href="#">MyTable</a>
+            <a href="#">测试</a>
+        </div>
+        <div class="content border"></div>
+    </div>
+</body>
+</html>

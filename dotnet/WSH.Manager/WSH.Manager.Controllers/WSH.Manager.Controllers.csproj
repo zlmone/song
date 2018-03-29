@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C82765B-BC17-422E-8962-AF354CF1EFB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.Manager.Controllers</RootNamespace>
+    <AssemblyName>WSH.Manager.Controllers</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\..\WSH.Lib\Razor\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\Dict\ViewModels\DictVM.cs" />
+    <Compile Include="Admin\Menu\MenuController.cs" />
+    <Compile Include="BaseController.cs" />
+    <Compile Include="Admin\Dict\DictController.cs" />
+    <Compile Include="Common\FileUploaderController.cs" />
+    <Compile Include="Home\HomeController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Modules\Url\UrlsController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Common\WSH.Common.csproj">
+      <Project>{43DA8E8B-A699-4157-9061-9E8728B41793}</Project>
+      <Name>WSH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Options.Common\WSH.Options.Common.csproj">
+      <Project>{2183CCBB-CA08-4FF0-8D9E-548438F73107}</Project>
+      <Name>WSH.Options.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.TransferData.Common\WSH.TransferData.Common.csproj">
+      <Project>{C36F97B2-C81C-4513-AA9D-A4027F32792A}</Project>
+      <Name>WSH.TransferData.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Web.Common\WSH.Web.Common.csproj">
+      <Project>{5AFB4292-84D1-4863-88CA-0B9DF143CE39}</Project>
+      <Name>WSH.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Web.Mvc.Common\WSH.Web.Mvc.Common.csproj">
+      <Project>{176D78B5-C35D-471A-8442-37106CBCE454}</Project>
+      <Name>WSH.Web.Mvc.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WSH.Manager.Application\WSH.Manager.Applications.csproj">
+      <Project>{868D4D12-D3D3-4A80-943A-3AB702B26CA8}</Project>
+      <Name>WSH.Manager.Applications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WSH.Manager.Models\WSH.Manager.Models.csproj">
+      <Project>{FA5839F4-B1B7-4B69-8A50-A362372D6387}</Project>
+      <Name>WSH.Manager.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\Url\ViewModels\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

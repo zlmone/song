@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../admin/css/song/default/song.css" rel="stylesheet" type="text/css" />
+    <link href="../admin/css/layout.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/song/song.base.js" type="text/javascript"></script>
+    <script src="../js/song/song.dd.js" type="text/javascript"></script>
+    <script src="../js/jquery/jquery.extend.js" type="text/javascript"></script>
+    <script src="../js/jquery/jquery.plugins.js" type="text/javascript"></script>
+    <style type="text/css">
+        .grid{ width:100%;}
+        .grid th,.grid td{ border:1px solid #ddd;}
+        .grid th{ height:24px; line-height:24px;}
+        .grid td{ height:20px; line-height:20px; padding-left:3px;}
+        .grid tr.selectedrow td{ background:#ccc;}
+        .grid tr.oddrow{ background:#fff;}
+        .grid tr.evenrow{ background:#fafafa;}
+        .grid tr.hoverrow{ background:#eee;}
+        
+        .tab{}
+        .tab-header{ background:#eee;}
+        .tab-header li{ float:left;}
+        .tab-header li a{ display:block; margin-left:4px; margin-top:4px; padding:4px 15px; background:#ccc;}
+        .tab-header li a.activetab{ background:#fff;}
+        .tab-content{ clear:both;}
+         
+        .mask{ position:absolute; top:0px;left:0px; opacity:0.4;filter:alpha(opacity=40); background:#000; display:none;}
+        .dialog{ background:#fff;  }
+        .dialog-wrap{position:absolute; left:50%; border:8px solid #ddd; display:none; }
+        .dialog-header{ background:#ccc; height:24px; line-height:24px; position:relative; width:100%;}
+        .dialog-title{ margin:0px 5px; width:100%;}
+        .dialog-close{ margin-right:5px; display:block; height:16px;width:16px; line-height:16px; position:absolute;
+                        text-align:center;top:0px; right:0px; }
+        .dialog-toolbar{ background:#eee; text-align:right; padding:5px 0px;}
+        .dialog-button{ margin-right:10px; padding:0px 5px;}
+        
+        .dialog-alert{ padding:15px 20px;}
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("table.grid").grid({
+                selectedRowClass: "selectedrow",
+                oddRowClass: "oddrow",
+                evenRowClass: "evenrow",
+                hoverRowClass: "hoverrow"
+            });
+            $("div.tab").tab({});
+            var dialog = $("div.dialog").dialog();
+            $("#btn").click(function () {
+                dialog.show();
+            });
+            $.alert("请输入姓名", function () {
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="btn">弹出框</button>
+<div class="dialog">
+    <div style=" width:500px; height:300px;">
+        dialog
+    </div>
+</div>
+<div class="tab">
+    <ul class="tab-header fix">
+        <li><a href="javascript:void(0)" >首页</a></li>
+        <li><a href="javascript:void(0)">尾页</a></li>
+    </ul>
+    <div class="tab-content">
+        <div style=" padding:10px;"><table class="grid">
+ <thead> 
+     <tr>
+         <th>name</th>
+         <th>age</th>
+         <th>shuai</th>
+         <th>address</th>
+     </tr>
+ </thead>
+ <tbody>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+     <tr>
+         <td>wsh0</td>
+         <td>181</td>
+         <td>true2</td>
+         <td>湖南攸县3</td>
+     </tr>
+ </tbody>
+</table></div>
+        <div class="show">尾页</div>
+    </div>
+</div>
+    
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Song网站后台管理</title>
+    <link href="../admin/js/artDialog/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="../css/global.css" rel="stylesheet" type="text/css" />
+    <link href="../admin/css/layout.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../admin/js/artDialog/jquery.artDialog.source.js" type="text/javascript"></script>
+    <script src="../admin/js/artDialog/iframeTools.js" type="text/javascript"></script>
+    <script src="../js/song/song.base.js" type="text/javascript"></script>
+    <style type="text/css">
+        .login-title{ height:150px; background:url(Images/login-title.jpg) -2px center no-repeat;
+                       margin-bottom:10px;}
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            art.dialog({
+                title: "Song网站后台管理",
+                init: function () {
+                    // this.DOM.close.hide();
+                },
+                lock: true, background: "#333", opacity: "0.4",
+                padding: "0px",
+                drag: true, resize: false,
+                content: song.dom("wrap"),
+                okVal: "登录",
+                ok: function () {
+                    if (validate()) {
+                        location.href = "index.aspx";
+                    }
+                    return false;
+                },
+                cancelVal: "忘记密码",
+                cancel: function () {
+                    return false;
+                }
+            });
+        });
+        function replaceCode() {
+            var ck = $('#checkCode').get(0); 
+            ck.src = ck.src + '?';
+        }
+        function validate() {
+            var uid = song.dom("uid").value.trim(),
+                pwd = song.dom("pwd").value.trim(),
+                code = song.dom("code").value.trim();
+            if (uid == "" || pwd == "") {
+                art.dialog.tips("用户名和密码不能为空！");
+                return false;
+            }
+            if (code == "") {
+                art.dialog.tips("验证码不能为空");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div  id="wrap" style="width:400px; ">
+        <div class="login-title">
+        
+        </div>
+        <table class="form-table" style="width:370px; margin-bottom:5px;">
+            <tr>
+                <th>用户名:</th>
+                <td><input type="text" class="textbox" id="uid" name="uid"/></td>
+            </tr>
+            <tr>
+                <th>密&nbsp;&nbsp;&nbsp;码:</th>
+                <td><input type="password" class="textbox" id="pwd" name="pwd"/></td>
+            </tr>
+            <tr>
+                <th>验证码:</th>
+                <td>
+                    <input type="text" class="textbox" style="width:80px; vertical-align:middle;" name="code" id="code"/>&nbsp;
+                    <img id="checkCode" style=" vertical-align:middle;" src="/common/CheckCode.aspx" onclick="this.src=this.src+'?'" title="看不清，点击换一张"/>&nbsp;
+                    <a href="javascript:replaceCode();">看不清，换一张</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
