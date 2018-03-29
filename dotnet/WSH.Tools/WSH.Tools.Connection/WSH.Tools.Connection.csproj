@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B422AE6C-6C8B-47D1-AD25-09E6238A99F4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.Tools.Connection</RootNamespace>
+    <AssemblyName>WSH.Tools.Connection</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>connection.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WSH.WinForm.Controls">
+      <HintPath>..\..\WSH.WinForm\WSH.WinForm.Controls\obj\Debug\WSH.WinForm.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DB\DbConnectionManager.cs" />
+    <Compile Include="DB\DbConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DB\DbConnection.Designer.cs">
+      <DependentUpon>DbConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB\OracleConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DB\OracleConnection.Designer.cs">
+      <DependentUpon>OracleConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB\MySqlConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DB\MySqlConnection.Designer.cs">
+      <DependentUpon>MySqlConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FTP\FTPConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTP\FTPConnection.Designer.cs">
+      <DependentUpon>FTPConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DB\AccessConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DB\AccessConnection.Designer.cs">
+      <DependentUpon>AccessConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB\SqlServerConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DB\SqlServerConnection.Designer.cs">
+      <DependentUpon>SqlServerConnection.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DB\DbConnection.resx">
+      <DependentUpon>DbConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DB\OracleConnection.resx">
+      <DependentUpon>OracleConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DB\MySqlConnection.resx">
+      <DependentUpon>MySqlConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTP\FTPConnection.resx">
+      <DependentUpon>FTPConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="DB\AccessConnection.resx">
+      <DependentUpon>AccessConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DB\SqlServerConnection.resx">
+      <DependentUpon>SqlServerConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Common\WSH.Common.csproj">
+      <Project>{43DA8E8B-A699-4157-9061-9E8728B41793}</Project>
+      <Name>WSH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Options.Common\WSH.Options.Common.csproj">
+      <Project>{2183CCBB-CA08-4FF0-8D9E-548438F73107}</Project>
+      <Name>WSH.Options.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Windows.Common\WSH.Windows.Common.csproj">
+      <Project>{359B3942-4AFA-466B-BEE9-518DCF39E27E}</Project>
+      <Name>WSH.Windows.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.WinForm.Common\WSH.WinForm.Common.csproj">
+      <Project>{B74EF7AB-DC35-4C60-AFB0-00ADEC0E1853}</Project>
+      <Name>WSH.WinForm.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="connection.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HTTP\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

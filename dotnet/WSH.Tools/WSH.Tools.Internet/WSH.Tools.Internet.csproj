@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{17094131-694A-4107-96BF-F7BEC0FB3C5C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.Tools.Internet</RootNamespace>
+    <AssemblyName>WSH.Tools.Internet</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\WSH.Lib\Serialization\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NSoup">
+      <HintPath>..\..\WSH.Lib\HtmlParser\NSoup.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FateUser\FateLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FateUser\FateLogin.Designer.cs">
+      <DependentUpon>FateLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FateUser\FateMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FateUser\FateMain.Designer.cs">
+      <DependentUpon>FateMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FateUser\FateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FateUser\FateUser.Designer.cs">
+      <DependentUpon>FateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FateUser\Manager\FateUserInfoManager.cs" />
+    <Compile Include="FateUser\Model\FateUserInfo.cs" />
+    <Compile Include="FateUser\Request\FateHomeRequest.cs" />
+    <Compile Include="FateUser\Request\FateSearchRequest.cs" />
+    <Compile Include="FateUser\Request\HttpFateRequest.cs" />
+    <Compile Include="InternetMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InternetMain.Designer.cs">
+      <DependentUpon>InternetMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movie365\Manager\LinkAddressInfoManager.cs" />
+    <Compile Include="Movie365\Model\LinkAddressInfo.cs" />
+    <Compile Include="Movie365\MovieMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movie365\MovieMain.Designer.cs">
+      <DependentUpon>MovieMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movie365\Request\Movie365Request.cs" />
+    <Compile Include="MovieJSK\JSK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovieJSK\JSK.Designer.cs">
+      <DependentUpon>JSK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovieJSK\JSKRequest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="FateUser\FateLogin.resx">
+      <DependentUpon>FateLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FateUser\FateMain.resx">
+      <DependentUpon>FateMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FateUser\FateUser.resx">
+      <DependentUpon>FateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InternetMain.resx">
+      <DependentUpon>InternetMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movie365\MovieMain.resx">
+      <DependentUpon>MovieMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovieJSK\JSK.resx">
+      <DependentUpon>JSK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Common\WSH.Common.csproj">
+      <Project>{43DA8E8B-A699-4157-9061-9E8728B41793}</Project>
+      <Name>WSH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.DataAccess\WSH.DataAccess.csproj">
+      <Project>{829D1A4D-939F-4A88-9C58-EBBD1B10AED6}</Project>
+      <Name>WSH.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Options.Common\WSH.Options.Common.csproj">
+      <Project>{2183CCBB-CA08-4FF0-8D9E-548438F73107}</Project>
+      <Name>WSH.Options.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Windows.Common\WSH.Windows.Common.csproj">
+      <Project>{359B3942-4AFA-466B-BEE9-518DCF39E27E}</Project>
+      <Name>WSH.Windows.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.WinForm.Common\WSH.WinForm.Common.csproj">
+      <Project>{B74EF7AB-DC35-4C60-AFB0-00ADEC0E1853}</Project>
+      <Name>WSH.WinForm.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Controls\WSH.WinForm.Controls\WSH.WinForm.Controls.csproj">
+      <Project>{C4D9613D-F8DA-48B0-8E11-37BEC9645484}</Project>
+      <Name>WSH.WinForm.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F54CBD3-D726-41A9-B7C2-D60D958961F3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.Tools.Release</RootNamespace>
+    <AssemblyName>WSH.Tools.Release</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>release.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.TextEditor, Version=2.0.0.922, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WSH.Lib\ICSharpCode\ICSharpCode.TextEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WSH.WinForm.Controls">
+      <HintPath>..\..\WSH.WinForm\WSH.WinForm.Controls\obj\Debug\WSH.WinForm.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\UpdateConfig.cs" />
+    <Compile Include="ProjectRelease\ProjectRelease.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectRelease\ProjectRelease.Designer.cs">
+      <DependentUpon>ProjectRelease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProjectRelease\ReleaseFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectRelease\ReleaseFile.Designer.cs">
+      <DependentUpon>ReleaseFile.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ProjectRelease\ProjectRelease.resx">
+      <DependentUpon>ProjectRelease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectRelease\ReleaseFile.resx">
+      <DependentUpon>ReleaseFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Common\WSH.Common.csproj">
+      <Project>{43DA8E8B-A699-4157-9061-9E8728B41793}</Project>
+      <Name>WSH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Windows.Common\WSH.Windows.Common.csproj">
+      <Project>{359B3942-4AFA-466B-BEE9-518DCF39E27E}</Project>
+      <Name>WSH.Windows.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.WinForm.Common\WSH.WinForm.Common.csproj">
+      <Project>{B74EF7AB-DC35-4C60-AFB0-00ADEC0E1853}</Project>
+      <Name>WSH.WinForm.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fileicon\7z.png" />
+    <Content Include="fileicon\accdb.png" />
+    <Content Include="fileicon\asax.png" />
+    <Content Include="fileicon\ashx.png" />
+    <Content Include="fileicon\asmx.png" />
+    <Content Include="fileicon\aspx.png" />
+    <Content Include="fileicon\avi.png" />
+    <Content Include="fileicon\bat.png" />
+    <Content Include="fileicon\bmp.png" />
+    <Content Include="fileicon\config.png" />
+    <Content Include="fileicon\cs.png" />
+    <Content Include="fileicon\cshtml.png" />
+    <Content Include="fileicon\css.png" />
+    <Content Include="fileicon\dll.png" />
+    <Content Include="fileicon\doc.png" />
+    <Content Include="fileicon\docx.png" />
+    <Content Include="fileicon\exe.png" />
+    <Content Include="fileicon\file.png" />
+    <Content Include="fileicon\folder.png" />
+    <Content Include="fileicon\gif.png" />
+    <Content Include="fileicon\html.png" />
+    <Content Include="fileicon\jpg.png" />
+    <Content Include="fileicon\js.png" />
+    <Content Include="fileicon\ldf.png" />
+    <Content Include="fileicon\master.png" />
+    <Content Include="fileicon\mdb.png" />
+    <Content Include="fileicon\mdf.png" />
+    <Content Include="fileicon\mp3.png" />
+    <Content Include="fileicon\mp4.png" />
+    <Content Include="fileicon\msi.png" />
+    <Content Include="fileicon\pdb.png" />
+    <Content Include="fileicon\png.png" />
+    <Content Include="fileicon\ppt.png" />
+    <Content Include="fileicon\pptx.png" />
+    <Content Include="fileicon\rar.png" />
+    <Content Include="fileicon\resx.png" />
+    <Content Include="fileicon\rmvb.png" />
+    <Content Include="fileicon\settings.png" />
+    <Content Include="fileicon\sitemap.png" />
+    <Content Include="fileicon\sql.png" />
+    <Content Include="fileicon\txt.png" />
+    <Content Include="fileicon\wav.png" />
+    <Content Include="fileicon\wma.png" />
+    <Content Include="fileicon\xaml.png" />
+    <Content Include="fileicon\xls.png" />
+    <Content Include="fileicon\xlsx.png" />
+    <Content Include="fileicon\xml.png" />
+    <Content Include="fileicon\xsd.png" />
+    <Content Include="fileicon\zip.png" />
+    <Content Include="release.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
