@@ -1,0 +1,15 @@
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.CodeBuilder.Common.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.CodeBuilder.Common.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.CodeBuilder.Entity.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.CodeBuilder.Manager.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.Common.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.Options.Common.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.Pdm.Common.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.Common.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.Options.Common.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.Pdm.Common.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.CodeBuilder.Entity.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\bin\Release\WSH.CodeBuilder.Manager.pdb
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\obj\Release\WSH.CodeBuilder.Common.csprojResolveAssemblyReference.cache
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\obj\Release\WSH.CodeBuilder.Common.dll
+F:\WSH.Project\WSH\WSH.CodeBuilder.WinForm\WSH.CodeBuilder.Common\obj\Release\WSH.CodeBuilder.Common.pdb

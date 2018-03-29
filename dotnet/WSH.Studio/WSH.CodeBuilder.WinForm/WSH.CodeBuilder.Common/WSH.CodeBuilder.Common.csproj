@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC093D9A-121F-4E44-A796-0A2667503B4F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSH.CodeBuilder.Common</RootNamespace>
+    <AssemblyName>WSH.CodeBuilder.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocX, Version=1.0.0.15, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\WSH.Lib\Office\DocX.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\Microsoft.VisualStudio.TextTemplating\9.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.TextTemplating.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeBuilderHost.cs" />
+    <Compile Include="CodeBuilderManager.cs" />
+    <Compile Include="CodeHelper\CodeColumnType.cs" />
+    <Compile Include="CodeHelper\CodeHelper.cs" />
+    <Compile Include="CodeHelper\CodeControlType.cs" />
+    <Compile Include="CodeHelper\CodeType\TyicdCodeHelper.cs" />
+    <Compile Include="CodeHelper\CodeUtils.cs" />
+    <Compile Include="CodeHelper\CodeType\EasywayCodeHelper.cs" />
+    <Compile Include="CodeHelper\CodeType\SongCodeHelper.cs" />
+    <Compile Include="DataTypeMapping\DataTypeManager.cs" />
+    <Compile Include="DataTypeMapping\DataTypeMapping.cs" />
+    <Compile Include="DbDocumentManager.cs" />
+    <Compile Include="DbHelper.cs" />
+    <Compile Include="DbModelData\OracleModelData.cs" />
+    <Compile Include="ModelReader\Adapter\ColumnInfo.cs" />
+    <Compile Include="DbModelData\DbModelData.cs" />
+    <Compile Include="DbModelData\DbModelDataFactory.cs" />
+    <Compile Include="DbModelData\SqlModelData.cs" />
+    <Compile Include="DbModelData\MySqlModelData.cs" />
+    <Compile Include="ModelReader\DbModelReader.cs" />
+    <Compile Include="ModelReader\ModelReader.cs" />
+    <Compile Include="ModelReader\ModelReaderHelper.cs" />
+    <Compile Include="ModelReader\PowerDesignerModelReader.cs" />
+    <Compile Include="ModelReader\Adapter\TableInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\WSH.Common\WSH.Common\WSH.Common.csproj">
+      <Project>{43DA8E8B-A699-4157-9061-9E8728B41793}</Project>
+      <Name>WSH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\WSH.Common\WSH.Options.Common\WSH.Options.Common.csproj">
+      <Project>{2183CCBB-CA08-4FF0-8D9E-548438F73107}</Project>
+      <Name>WSH.Options.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\WSH.Common\WSH.Pdm.Common\WSH.Pdm.Common.csproj">
+      <Project>{DD21C581-6397-4560-938D-94827CA9158A}</Project>
+      <Name>WSH.Pdm.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\WSH.Common\WSH.WinForm.Common\WSH.WinForm.Common.csproj">
+      <Project>{B74EF7AB-DC35-4C60-AFB0-00ADEC0E1853}</Project>
+      <Name>WSH.WinForm.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WSH.CodeBuilder.DispatchServers\WSH.CodeBuilder.DispatchServers.csproj">
+      <Project>{AB62CA8F-DD1D-4E5E-8CEE-5F3D24D65913}</Project>
+      <Name>WSH.CodeBuilder.DispatchServers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
