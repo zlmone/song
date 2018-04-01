@@ -156,3 +156,6 @@ D:\WSH.Net\WSH.Tools\WSH.Tools\obj\x86\Debug\WSH.Tools.pdb
 D:\WSH.Source\song\dotnet\WSH.Tools\WSH.Tools\bin\Debug\WSH.Tools.exe.config
 D:\WSH.Source\song\dotnet\WSH.Tools\WSH.Tools\obj\x86\Debug\WSH.Tools.exe
 D:\WSH.Source\song\dotnet\WSH.Tools\WSH.Tools\obj\x86\Debug\WSH.Tools.pdb
+D:\source\dotnet\WSH.Tools\WSH.Tools\bin\Debug\WSH.Tools.exe.config
+D:\source\dotnet\WSH.Tools\WSH.Tools\obj\x86\Debug\WSH.Tools.exe
+D:\source\dotnet\WSH.Tools\WSH.Tools\obj\x86\Debug\WSH.Tools.pdb

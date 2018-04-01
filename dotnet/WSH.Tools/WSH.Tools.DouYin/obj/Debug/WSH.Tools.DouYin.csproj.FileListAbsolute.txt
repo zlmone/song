@@ -1,0 +1,15 @@
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\WSH.Tools.DouYin.exe
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\WSH.Tools.DouYin.pdb
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\WSH.WinForm.Controls.dll
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\WSH.WinForm.Controls.pdb
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\obj\Debug\WSH.Tools.DouYin.csprojResolveAssemblyReference.cache
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\obj\Debug\WSH.Tools.DouYin.Main.resources
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\obj\Debug\WSH.Tools.DouYin.Properties.Resources.resources
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\obj\Debug\WSH.Tools.DouYin.csproj.GenerateResource.Cache
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\obj\Debug\WSH.Tools.DouYin.exe
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\obj\Debug\WSH.Tools.DouYin.pdb
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\WSH.Common.dll
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\WSH.Options.Common.dll
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\WSH.Common.pdb
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\WSH.Options.Common.pdb
+D:\source\dotnet\WSH.Tools\WSH.Tools.DouYin\bin\Debug\Newtonsoft.Json.dll
