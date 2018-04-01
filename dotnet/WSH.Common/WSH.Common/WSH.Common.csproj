@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Cache\MemoryCache.cs" />
-    <Compile Include="Common\ObjectId.cs" />
     <Compile Include="Common\TimingMode.cs" />
     <Compile Include="Configuration\MapConfig.cs" />
     <Compile Include="Configuration\ConfigHelper.cs" />

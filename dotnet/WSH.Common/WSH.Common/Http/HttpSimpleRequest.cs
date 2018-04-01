@@ -232,7 +232,8 @@ namespace WSH.Common.Http
 
             if (_reg.IsMatch(Url))
             {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+              //  ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
                 ServicePointManager.ServerCertificateValidationCallback =
                         new RemoteCertificateValidationCallback((object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors) =>
                         {
@@ -255,7 +256,7 @@ namespace WSH.Common.Http
             if (AutoEncoding && response != null)
             {
                 string chartset = response.CharacterSet;
-                if (chartset.ToLower() != "iso-8859-1")
+                if (!string.IsNullOrEmpty(chartset) && chartset.ToLower() != "iso-8859-1")
                 {
                     this.encoding = Encoding.GetEncoding(chartset);
                 }
