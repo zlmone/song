@@ -122,7 +122,7 @@ namespace WSH.Tools.DouYin
                     {
                         string value = match.Groups[1].Value;
                         JObject downloadObj = (JObject)JsonConvert.DeserializeObject(value);
-                        downloadUrls.Add(((JArray)downloadObj["video"]["play_addr"]["url_list"])[0].toString());
+                        downloadUrls.Add(((JArray)downloadObj["video"]["play_addr"]["url_list"])[0].toString().Replace("playwm","play"));
                     }
                 }
             }
