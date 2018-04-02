@@ -37,7 +37,7 @@ namespace WSH.Common.Helper
         /// <returns></returns>
         public static string GetNewFileName(string fileName)
         {
-            return StringHelper.GuidNonSplit + Path.GetExtension(fileName);
+            return GuidHelper.GuidNonSplit + Path.GetExtension(fileName);
         }
     }
 }

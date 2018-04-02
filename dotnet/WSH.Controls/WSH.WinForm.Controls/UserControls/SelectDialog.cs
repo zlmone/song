@@ -25,11 +25,7 @@ namespace WSH.WinForm.Controls
                         isExists = false;
                     }
                 }
-                if(type== DialogType.Folder){
-                    if(!Directory.Exists(value)){
-                        isExists = false;
-                    }
-                }
+                 
                 this.txtFile.Text = isExists ? value : string.Empty;
             }
         }

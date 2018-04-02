@@ -2,3 +2,9 @@ F:\WSH.Project\WSH\WSH.Common\WSH.WinForm.Common\bin\Release\WSH.WinForm.Common.
 F:\WSH.Project\WSH\WSH.Common\WSH.WinForm.Common\bin\Release\WSH.WinForm.Common.pdb
 F:\WSH.Project\WSH\WSH.Common\WSH.WinForm.Common\obj\Release\WSH.WinForm.Common.dll
 F:\WSH.Project\WSH\WSH.Common\WSH.WinForm.Common\obj\Release\WSH.WinForm.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\bin\Release\WSH.WinForm.Common.dll
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\bin\Release\WSH.WinForm.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\bin\Release\WSH.Options.Common.dll
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\bin\Release\WSH.Options.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\obj\Release\WSH.WinForm.Common.dll
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\obj\Release\WSH.WinForm.Common.pdb

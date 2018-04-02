@@ -55,7 +55,7 @@ namespace WSH.Common.Helper
         {
             if (!string.IsNullOrEmpty(line))
             {
-                line =StringHelper.DeleteEnd(StringHelper.DeleteEnd(line,"\n"),"\r");
+                line =line.TrimEnd('\n').TrimEnd('\r');
                 string[] row = line.Split(TxtHelper.TagColumn.ToCharArray(), StringSplitOptions.None);
                 if(row.Length<=0){
                     return;

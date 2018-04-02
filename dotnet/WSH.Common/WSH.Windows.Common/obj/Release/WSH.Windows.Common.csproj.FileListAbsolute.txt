@@ -2,3 +2,12 @@ F:\WSH.Project\WSH\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Windows.Common.
 F:\WSH.Project\WSH\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Windows.Common.pdb
 F:\WSH.Project\WSH\WSH.Common\WSH.Windows.Common\obj\Release\WSH.Windows.Common.dll
 F:\WSH.Project\WSH\WSH.Common\WSH.Windows.Common\obj\Release\WSH.Windows.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Windows.Common.dll
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Windows.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Common.dll
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Options.Common.dll
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\bin\Release\WSH.Options.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\obj\Release\WSH.Windows.Common.csprojResolveAssemblyReference.cache
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\obj\Release\WSH.Windows.Common.dll
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\obj\Release\WSH.Windows.Common.pdb

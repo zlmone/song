@@ -44,6 +44,8 @@
     <Compile Include="Common\TimingMode.cs" />
     <Compile Include="Configuration\MapConfig.cs" />
     <Compile Include="Configuration\ConfigHelper.cs" />
+    <Compile Include="Extend\ObjectExtend.cs" />
+    <Compile Include="Extend\StringExtend.cs" />
     <Compile Include="Ftp\FtpConfig.cs" />
     <Compile Include="Helper\ToolsHelper\ChineseCalendarHelper.cs" />
     <Compile Include="Helper\ToolsHelper\EditorHelper.cs" />
@@ -94,7 +96,7 @@
     <Compile Include="Helper\IOHelper\FileHelper.cs" />
     <Compile Include="Helper\UtilsHelper\RegexHelper.cs" />
     <Compile Include="Helper\ToolsHelper\ProbabilityHelper.cs" />
-    <Compile Include="Helper\TypeHelper\StringHelper.cs" />
+    <Compile Include="Helper\TypeHelper\GuidHelper.cs" />
     <Compile Include="Helper\TypeHelper\ConvertHelper.cs" />
     <Compile Include="Helper\ToolsHelper\CryptHelper.cs" />
     <Compile Include="Common\Emums.cs" />

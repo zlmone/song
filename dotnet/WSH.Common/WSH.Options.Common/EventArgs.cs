@@ -38,6 +38,10 @@ namespace WSH.Options.Common
         {
             get
             {
+                if (this.DownloadSize <= 0 || this.TotalSize<=0)
+                {
+                    return 0;
+                }
                 return Math.Round(((double)this.DownloadSize / (double)this.TotalSize) * 100, 1);
             }
         }

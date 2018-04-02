@@ -51,7 +51,7 @@ namespace WSH.Common.Helper
                 int i = 0;
                 foreach (string key in dict.Keys)
                 {
-                    string last = StringHelper.GetLast(dict.Count, i);
+                    string last = i<dict.Count-1 ? "," : "";
                     if (DataTypeHelper.IsBool(dict[key]) || DataTypeHelper.IsInt(dict[key]))
                     {
                         sb.AppendFormat("\"{0}\":{1}{2}", key, dict[key], last);
@@ -75,7 +75,7 @@ namespace WSH.Common.Helper
                 int i = 0;
                 foreach (string key in dict.Keys)
                 {
-                    string last = StringHelper.GetLast(dict.Count, i);
+                    string last = i < dict.Count - 1 ? "," : "";
                     bool isBool = DataTypeHelper.IsBool(dict[key]);
                     if (isBool || DataTypeHelper.IsInt(dict[key]))
                     {

@@ -49,7 +49,7 @@
             this.txtFile.Margin = new System.Windows.Forms.Padding(4);
             this.txtFile.Multiline = true;
             this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(555, 26);
+            this.txtFile.Size = new System.Drawing.Size(343, 26);
             this.txtFile.TabIndex = 0;
             this.txtFile.WordWrap = false;
             this.txtFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPath_DragDrop);
@@ -65,7 +65,7 @@
             this.buttonImage1.Location = new System.Drawing.Point(0, 0);
             this.buttonImage1.Margin = new System.Windows.Forms.Padding(0);
             this.buttonImage1.Name = "buttonImage1";
-            this.buttonImage1.Size = new System.Drawing.Size(72, 26);
+            this.buttonImage1.Size = new System.Drawing.Size(69, 26);
             this.buttonImage1.TabIndex = 1;
             this.buttonImage1.Text = "浏览...";
             this.buttonImage1.UseVisualStyleBackColor = true;
@@ -85,8 +85,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.buttonImage1);
-            this.splitContainer1.Size = new System.Drawing.Size(628, 26);
-            this.splitContainer1.SplitterDistance = 555;
+            this.splitContainer1.Size = new System.Drawing.Size(413, 26);
+            this.splitContainer1.SplitterDistance = 343;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -98,7 +98,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SelectDialog";
-            this.Size = new System.Drawing.Size(628, 26);
+            this.Size = new System.Drawing.Size(413, 26);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

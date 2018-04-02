@@ -36,6 +36,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NSoup, Version=0.7.1.0, Culture=neutral, PublicKeyToken=6d44e53f0a65e802, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\NSoup.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -90,9 +94,21 @@
       <Project>{2183ccbb-ca08-4ff0-8d9e-548438f73107}</Project>
       <Name>WSH.Options.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.Windows.Common\WSH.Windows.Common.csproj">
+      <Project>{359b3942-4afa-466b-bee9-518dcf39e27e}</Project>
+      <Name>WSH.Windows.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WSH.Common\WSH.WinForm.Common\WSH.WinForm.Common.csproj">
+      <Project>{b74ef7ab-dc35-4c60-afb0-00adec0e1853}</Project>
+      <Name>WSH.WinForm.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\Newtonsoft.Json.dll" />
+    <Content Include="lib\NSoup.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
