@@ -160,5 +160,21 @@ namespace WSH.Windows.Common
             //new Regex(@"ClientIP: \[([\d.]+?)\]").Match(new System.Net.WebClient().DownloadString("http://www.skyiv.com/info/")).Groups[1].Value;  
             return ip;
         }
+
+        public static string GetBIOS() {
+            try
+            {
+                ManagementClass mc = new ManagementClass("Win32_BIOS");
+                ManagementObjectCollection moc = mc.GetInstances();
+                string strID = null;
+                foreach (ManagementObject mo in moc)
+                {
+                    return mo.Properties["SerialNumber"].Value.ToString();
+                }
+            }
+            catch (Exception ex) {
+            }
+            return "";
+        }
     }
 }
