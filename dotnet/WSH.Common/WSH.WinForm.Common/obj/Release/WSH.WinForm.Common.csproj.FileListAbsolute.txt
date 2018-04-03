@@ -8,3 +8,4 @@ D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\bin\Release\WSH.Options.
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\bin\Release\WSH.Options.Common.pdb
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\obj\Release\WSH.WinForm.Common.dll
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\obj\Release\WSH.WinForm.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\obj\Release\WSH.WinForm.Common.csprojResolveAssemblyReference.cache
