@@ -74,17 +74,21 @@ namespace WSH.WinForm.Controls
             //float _isFloat = 0;
             //float.TryParse(this.Text, out _isFloat);
           //  this.Text = _isFloat.ToString();
-            this.Select(this.Text.Length, 0);
 
             base.OnLostFocus(e);
             string text = this.Text.Trim();
             //判断最大值和最小值
-            if(string.IsNullOrEmpty(text)){
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                this.Select(this.Text.Length, 0);
+
                 long value = Convert.ToInt64(text);
-                if(value>this.MaxValue){
+                if (value > this.MaxValue)
+                {
                     this.Text = this.MaxValue.ToString();
                 }
-                if(value<this.MinValue){
+                if (value < this.MinValue)
+                {
                     this.Text = this.MinValue.ToString();
                 }
             }
@@ -94,10 +98,11 @@ namespace WSH.WinForm.Controls
             int ch = (int)e.KeyChar;
             e.Handled = true;
             //不能输入负数
-            if(!this.AllowNegative && ch==45){
+            if (!this.AllowNegative && ch == 45)
+            {
                 return;
             }
-           
+
             int startBase = base.SelectionStart;
 
             /// 处理负号

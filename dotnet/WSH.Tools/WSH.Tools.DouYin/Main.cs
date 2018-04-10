@@ -23,16 +23,24 @@ namespace WSH.Tools.DouYin
     public partial class Main : Form
     {
         HttpSimpleRequest client;
+        bool isDownload = true;
 
         public Main()
         {
             InitializeComponent();
             this.selectDialog1.Text = "D:\\";
             client = getConnection();
+            this.dateTimePicker1.Value = DateTime.Now;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
+            if(this.txtNumber.Text.isEmpty()){
+                MsgBox.Alert("请输入抖音ID！");
+                return;
+            }
+            isDownload = true;
             this.button1.Enabled = false;
             string id = this.txtNumber.Text.Trim();
             string userInfo = getUserInfo(id);
@@ -47,7 +55,7 @@ namespace WSH.Tools.DouYin
                     string awemeCount = objUser["aweme_count"].toString("100");
                     string nickname = objUser["nickname"].toString(id);
                     //string uniqueid = objUser["unique_id"].toString();
-                    List<string> listUrls = getDownloadUrls(uid, awemeCount);
+                    List<DouYin> listUrls = getDownloadUrls(uid, awemeCount);
                     if (listUrls.Count > 0)
                     {
                         string path = Path.Combine(basePath, nickname);
@@ -56,10 +64,22 @@ namespace WSH.Tools.DouYin
                         Application.DoEvents();
                         for (int i = 0; i < listUrls.Count; i++)
                         {
-                            this.lbMsg.Text = "正在下载：{0}/{1}".format(i, listUrls.Count);
-                            download(listUrls[i], Path.Combine(path, (i + 1) + ".mp4"));
+                            if (isDownload)
+                            {
+                                DouYin dy = listUrls[i];
+                                this.lbMsg.Text = "正在下载：{0}/{1}".format(i, listUrls.Count);
+                                download(dy.DownloadUrl, Path.Combine(path, dy.Desc.replaceEmpty((i + 1) + "") + ".mp4"));
+                            }
+                            else
+                            {
+                                return;
+                            }
                         }
                         this.lbMsg.Text = "下载完毕：{0}/{1}".format(listUrls.Count, listUrls.Count);
+                        Application.DoEvents();
+                    }
+                    else {
+                        this.lbMsg.Text = "当前账号不存在或者没有发布视频";
                         Application.DoEvents();
                     }
                 }
@@ -80,7 +100,7 @@ namespace WSH.Tools.DouYin
             return request;
         }
         private string getUserInfo(string id) {
-             if (!string.IsNullOrEmpty(id))
+             if (!string.IsNullOrWhiteSpace(id))
              {
                  //获取用户信息
                  string getUserUrl = string.Format("https://api.amemv.com/aweme/v1/discover/search/?keyword={0}&count=10&type=1&aid=1128", id);
@@ -106,8 +126,9 @@ namespace WSH.Tools.DouYin
             }
             return urls;
         }
-        private List<string> getDownloadUrls(string uid,string awemeCount) {
-            List<string> downloadUrls = new List<string>();
+        private List<DouYin> getDownloadUrls(string uid, string awemeCount)
+        {
+            List<DouYin> downloadUrls = new List<DouYin>();
             List<string> listUrls = getVideos(uid, awemeCount);
             foreach (var url in listUrls)
             {
@@ -122,7 +143,30 @@ namespace WSH.Tools.DouYin
                     {
                         string value = match.Groups[1].Value;
                         JObject downloadObj = (JObject)JsonConvert.DeserializeObject(value);
-                        downloadUrls.Add(((JArray)downloadObj["video"]["play_addr"]["url_list"])[0].toString().Replace("playwm","play"));
+
+                        DateTime createTime=  new DateTime(1970, 1, 1).AddSeconds(downloadObj["create_time"].toString().toInt());
+                        string desc = downloadObj["desc"].toString();
+                        string downloadurl = ((JArray)downloadObj["video"]["play_addr"]["url_list"])[0].toString().Replace("playwm", "play");
+                        string vid = downloadObj["video"]["play_addr"]["uri"].toString();
+                        string nickname = downloadObj["author"]["nickname"].toString();
+                        DouYin douyin=new DouYin() { 
+                             VideoId=vid,
+                              CreateTime=createTime,
+                               DownloadUrl=downloadurl,
+                                Desc=desc,
+                                 Nickname=nickname
+                        };
+                        if (this.checkBox1.Checked)
+                        {
+                            DateTime date = this.dateTimePicker1.Value;
+                            if (createTime.CompareTo(date) >= 0)
+                            {
+                                downloadUrls.Add(douyin);
+                            }
+                        }
+                        else {
+                            downloadUrls.Add(douyin);                            
+                        }
                     }
                 }
             }
@@ -140,6 +184,12 @@ namespace WSH.Tools.DouYin
         {
             Application.DoEvents();
             this.progress.Value = (int)Math.Round(e.Rate,0);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            isDownload = false;
+            this.button1.Enabled = true;
         }
     }
 }

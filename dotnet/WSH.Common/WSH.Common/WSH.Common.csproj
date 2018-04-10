@@ -44,6 +44,7 @@
     <Compile Include="Common\TimingMode.cs" />
     <Compile Include="Configuration\MapConfig.cs" />
     <Compile Include="Configuration\ConfigHelper.cs" />
+    <Compile Include="Extend\DateTimeExtend.cs" />
     <Compile Include="Extend\ObjectExtend.cs" />
     <Compile Include="Extend\StringExtend.cs" />
     <Compile Include="Ftp\FtpConfig.cs" />

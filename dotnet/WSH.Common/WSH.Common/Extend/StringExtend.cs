@@ -26,6 +26,16 @@ namespace WSH.Common.Extend
             return string.IsNullOrWhiteSpace(str);
         }
         /// <summary>
+        /// 判断如果是空白或空字符串，则替换值
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public static string replaceEmpty(this string str, string replaceValue = "")
+        {
+            return str.isEmpty() ? replaceValue : str;
+        }
+        /// <summary>
         /// 判断字符串是否包含节点
         /// </summary>
         /// <param name="str"></param>
@@ -154,6 +164,32 @@ namespace WSH.Common.Extend
             }
             return list;
         }
+
+        #region 格式转换
+        public static int toInt(this string str, int defaultValue = 0) { 
+            int value=defaultValue;
+            int.TryParse(str,out value);
+            return value;
+        }
+        public static long toLong(this string str, long defaultValue = 0)
+        {
+            long value = defaultValue;
+            long.TryParse(str, out value);
+            return value;
+        }
+        public static double toDouble(this string str, double defaultValue = 0)
+        {
+            double value = defaultValue;
+            double.TryParse(str, out value);
+            return value;
+        }
+        public static float toDouble(this string str, float defaultValue = 0)
+        {
+            float value = defaultValue;
+            float.TryParse(str, out value);
+            return value;
+        }
+        #endregion
     }
    
 }

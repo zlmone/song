@@ -26,3 +26,4 @@ D:\WSH.Source\song\dotnet\WSH.Common\WSH.Options.Common\bin\Debug\WSH.Options.Co
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.Options.Common\bin\Debug\WSH.Options.Common.pdb
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.Options.Common\obj\Debug\WSH.Options.Common.dll
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.Options.Common\obj\Debug\WSH.Options.Common.pdb
+D:\WSH.Source\song\dotnet\WSH.Common\WSH.Options.Common\obj\Debug\WSH.Options.Common.csprojResolveAssemblyReference.cache
