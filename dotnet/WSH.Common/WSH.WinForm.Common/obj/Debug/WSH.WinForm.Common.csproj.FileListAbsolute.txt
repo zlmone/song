@@ -33,3 +33,10 @@ D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\bin\Debug\WSH.Options.Co
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\obj\Debug\WSH.WinForm.Common.csprojResolveAssemblyReference.cache
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\obj\Debug\WSH.WinForm.Common.dll
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.WinForm.Common\obj\Debug\WSH.WinForm.Common.pdb
+D:\source\dotnet\WSH.Common\WSH.WinForm.Common\bin\Debug\WSH.WinForm.Common.dll
+D:\source\dotnet\WSH.Common\WSH.WinForm.Common\bin\Debug\WSH.WinForm.Common.pdb
+D:\source\dotnet\WSH.Common\WSH.WinForm.Common\bin\Debug\WSH.Options.Common.dll
+D:\source\dotnet\WSH.Common\WSH.WinForm.Common\bin\Debug\WSH.Options.Common.pdb
+D:\source\dotnet\WSH.Common\WSH.WinForm.Common\obj\Debug\WSH.WinForm.Common.csprojResolveAssemblyReference.cache
+D:\source\dotnet\WSH.Common\WSH.WinForm.Common\obj\Debug\WSH.WinForm.Common.dll
+D:\source\dotnet\WSH.Common\WSH.WinForm.Common\obj\Debug\WSH.WinForm.Common.pdb

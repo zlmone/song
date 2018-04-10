@@ -20,7 +20,7 @@ using WSH.WinForm.Common;
 
 namespace WSH.Tools.DouYin
 {
-    public partial class Main : Form
+    public partial class Main : SpiderForm
     {
         HttpSimpleRequest client;
         bool isDownload = true;
@@ -117,7 +117,7 @@ namespace WSH.Tools.DouYin
             if (listResult.IsSuccess && !string.IsNullOrEmpty(listResult.Msg))
             {
                 string listJson = listResult.Msg;
-                JObject listObj = (JObject)JsonConvert.DeserializeObject(listJson);
+                JObject listObj = parseJObject(listJson);
                 JArray listArray = (JArray)listObj["aweme_list"];
                 foreach (JObject item in listArray)
                 {

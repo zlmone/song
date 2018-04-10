@@ -44,3 +44,12 @@ D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\bin\Debug\WSH.Options.Co
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\obj\Debug\WSH.Windows.Common.csprojResolveAssemblyReference.cache
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\obj\Debug\WSH.Windows.Common.dll
 D:\WSH.Source\song\dotnet\WSH.Common\WSH.Windows.Common\obj\Debug\WSH.Windows.Common.pdb
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\bin\Debug\WSH.Windows.Common.dll
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\bin\Debug\WSH.Windows.Common.pdb
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\bin\Debug\WSH.Common.dll
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\bin\Debug\WSH.Options.Common.dll
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\bin\Debug\WSH.Common.pdb
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\bin\Debug\WSH.Options.Common.pdb
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\obj\Debug\WSH.Windows.Common.csprojResolveAssemblyReference.cache
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\obj\Debug\WSH.Windows.Common.dll
+D:\source\dotnet\WSH.Common\WSH.Windows.Common\obj\Debug\WSH.Windows.Common.pdb

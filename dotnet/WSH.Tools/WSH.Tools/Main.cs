@@ -47,8 +47,7 @@ namespace WSH.Tools
 
         private void menuBackgroundSplit_Click(object sender, EventArgs e)
         {
-            FrmSplitBackgroundPosition position = new FrmSplitBackgroundPosition();
-            ShowChildForm(position);
+           
         }
 
         private void menuCrypt_Click(object sender, EventArgs e)
@@ -76,8 +75,7 @@ namespace WSH.Tools
 
         private void menuClearIIS_Click(object sender, EventArgs e)
         {
-            FrmClearFile c = new FrmClearFile();
-            ShowChildForm(c);
+            
         }
 
         private void menuDataMining_Click(object sender, EventArgs e)

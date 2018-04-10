@@ -10,6 +10,7 @@ using WSH.Windows.Common;
 using WSH.Common;
 using WSH.WinForm.Common;
 using WSH.Common.Helper;
+using WSH.Common.Extend;
 namespace WSH.Tools
 {
     public partial class FrmObjectBuilder : BaseForm
@@ -164,8 +165,8 @@ namespace WSH.Tools
                     {
                         if (item.Trim() == string.Empty) { continue; }
                         FieldLine line = FieldLines.GetFieldLine(item);
-                        string upper = StringHelper.Capitalize(line.Field.Replace("_", ""));
-                        string lower = StringHelper.Capitalize(line.Field, CaseType.Lower);
+                        string upper = line.Field.Replace("_", "").capitalize();
+                        string lower = line.Field.capitalize(false);
                         string dataType = line.DataType;
                         if (type == "framework2")
                         {
@@ -291,7 +292,7 @@ namespace WSH.Tools
             {
                 if (item.Trim() != string.Empty)
                 {
-                    sb.AppendLine(StringHelper.Capitalize(item));
+                    sb.AppendLine(item.capitalize());
                 }
             }
             SetCapText(sb.ToString());
@@ -304,7 +305,7 @@ namespace WSH.Tools
             {
                 if (item.Trim() != string.Empty)
                 {
-                    sb.AppendLine(StringHelper.Capitalize(item, CaseType.Lower));
+                    sb.AppendLine(item.capitalize(false));
                 }
             }
             SetCapText(sb.ToString());

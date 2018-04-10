@@ -148,19 +148,19 @@ namespace WSH.TransferData.Common
             object value = null;
             switch (cell.CellType)
             {
-                case CellType.BLANK:
+                case CellType.Blank:
                     break;
-                case CellType.BOOLEAN:
+                case CellType.Boolean:
                     value = cell.BooleanCellValue ? "1" : "0"; break;
-                case CellType.ERROR:
+                case CellType.Error:
                     value = cell.ErrorCellValue; break;
-                case CellType.FORMULA:
+                case CellType.Formula:
                     value = "=" + cell.CellFormula; break;
                     //cell.SetCellType(HSSFCell.CELL_TYPE_NUMERIC);
                     //value = cell.NumericCellValue.ToString();
-                case CellType.NUMERIC:
+                case CellType.Numeric:
                     value = cell.NumericCellValue.ToString(); break;
-                case CellType.STRING:
+                case CellType.String:
                     value = cell.StringCellValue; break;
                 case CellType.Unknown:
                     break;

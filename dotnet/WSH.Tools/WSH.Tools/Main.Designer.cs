@@ -32,14 +32,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuTools = new System.Windows.Forms.ToolStripMenuItem();
             this.menuObjectBuilder = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuBackgroundSplit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCrypt = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFmtCode = new System.Windows.Forms.ToolStripMenuItem();
             this.menuControl = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAddressBook = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDataMining = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAddressBook = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,11 +57,9 @@
             // 
             this.menuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuObjectBuilder,
-            this.menuBackgroundSplit,
             this.menuCrypt,
             this.menuFmtCode,
             this.menuControl,
-            this.menuClear,
             this.menuAddressBook});
             this.menuTools.Name = "menuTools";
             this.menuTools.Size = new System.Drawing.Size(56, 21);
@@ -72,44 +68,37 @@
             // menuObjectBuilder
             // 
             this.menuObjectBuilder.Name = "menuObjectBuilder";
-            this.menuObjectBuilder.Size = new System.Drawing.Size(172, 22);
+            this.menuObjectBuilder.Size = new System.Drawing.Size(152, 22);
             this.menuObjectBuilder.Text = "对象生成器";
             this.menuObjectBuilder.Click += new System.EventHandler(this.menuObjectBuilder_Click);
-            // 
-            // menuBackgroundSplit
-            // 
-            this.menuBackgroundSplit.Name = "menuBackgroundSplit";
-            this.menuBackgroundSplit.Size = new System.Drawing.Size(172, 22);
-            this.menuBackgroundSplit.Text = "背景图片位置分割";
-            this.menuBackgroundSplit.Click += new System.EventHandler(this.menuBackgroundSplit_Click);
             // 
             // menuCrypt
             // 
             this.menuCrypt.Name = "menuCrypt";
-            this.menuCrypt.Size = new System.Drawing.Size(172, 22);
+            this.menuCrypt.Size = new System.Drawing.Size(152, 22);
             this.menuCrypt.Text = "加密解密";
             this.menuCrypt.Click += new System.EventHandler(this.menuCrypt_Click);
             // 
             // menuFmtCode
             // 
             this.menuFmtCode.Name = "menuFmtCode";
-            this.menuFmtCode.Size = new System.Drawing.Size(172, 22);
+            this.menuFmtCode.Size = new System.Drawing.Size(152, 22);
             this.menuFmtCode.Text = "格式化代码";
             this.menuFmtCode.Click += new System.EventHandler(this.menuFmtCode_Click);
             // 
             // menuControl
             // 
             this.menuControl.Name = "menuControl";
-            this.menuControl.Size = new System.Drawing.Size(172, 22);
+            this.menuControl.Size = new System.Drawing.Size(152, 22);
             this.menuControl.Text = "控件生成";
             this.menuControl.Click += new System.EventHandler(this.menuControl_Click);
             // 
-            // menuClear
+            // menuAddressBook
             // 
-            this.menuClear.Name = "menuClear";
-            this.menuClear.Size = new System.Drawing.Size(172, 22);
-            this.menuClear.Text = "清理文件";
-            this.menuClear.Click += new System.EventHandler(this.menuClearIIS_Click);
+            this.menuAddressBook.Name = "menuAddressBook";
+            this.menuAddressBook.Size = new System.Drawing.Size(152, 22);
+            this.menuAddressBook.Text = "解析通讯录";
+            this.menuAddressBook.Click += new System.EventHandler(this.menuAddressBook_Click);
             // 
             // menuToExcel
             // 
@@ -124,13 +113,6 @@
             this.menuDataMining.Size = new System.Drawing.Size(68, 21);
             this.menuDataMining.Text = "数据挖掘";
             this.menuDataMining.Click += new System.EventHandler(this.menuDataMining_Click);
-            // 
-            // menuAddressBook
-            // 
-            this.menuAddressBook.Name = "menuAddressBook";
-            this.menuAddressBook.Size = new System.Drawing.Size(172, 22);
-            this.menuAddressBook.Text = "解析通讯录";
-            this.menuAddressBook.Click += new System.EventHandler(this.menuAddressBook_Click);
             // 
             // Main
             // 
@@ -156,12 +138,10 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuTools;
         private System.Windows.Forms.ToolStripMenuItem menuObjectBuilder;
-        private System.Windows.Forms.ToolStripMenuItem menuBackgroundSplit;
         private System.Windows.Forms.ToolStripMenuItem menuCrypt;
         private System.Windows.Forms.ToolStripMenuItem menuFmtCode;
         private System.Windows.Forms.ToolStripMenuItem menuToExcel;
         private System.Windows.Forms.ToolStripMenuItem menuControl;
-        private System.Windows.Forms.ToolStripMenuItem menuClear;
         private System.Windows.Forms.ToolStripMenuItem menuDataMining;
         private System.Windows.Forms.ToolStripMenuItem menuAddressBook;
 

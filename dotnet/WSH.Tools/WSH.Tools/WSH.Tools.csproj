@@ -62,12 +62,6 @@
     <Compile Include="Forms\FrmAddressBook.Designer.cs">
       <DependentUpon>FrmAddressBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmClearFile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmClearFile.Designer.cs">
-      <DependentUpon>FrmClearFile.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmControlBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,12 +86,6 @@
     <Compile Include="Forms\FrmObjectBuilder.Designer.cs">
       <DependentUpon>FrmObjectBuilder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmSplitBackgroundPosition.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmSplitBackgroundPosition.Designer.cs">
-      <DependentUpon>FrmSplitBackgroundPosition.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,9 +106,6 @@
     <EmbeddedResource Include="Forms\FrmAddressBook.resx">
       <DependentUpon>FrmAddressBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmClearFile.resx">
-      <DependentUpon>FrmClearFile.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmControlBuilder.resx">
       <DependentUpon>FrmControlBuilder.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,9 +117,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmObjectBuilder.resx">
       <DependentUpon>FrmObjectBuilder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmSplitBackgroundPosition.resx">
-      <DependentUpon>FrmSplitBackgroundPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
