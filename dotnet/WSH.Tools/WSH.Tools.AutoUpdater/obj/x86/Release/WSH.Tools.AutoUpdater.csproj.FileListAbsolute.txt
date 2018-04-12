@@ -1,8 +1,0 @@
-F:\WSH.Project\WSH\WSH.Tools\WSH.Tools.AutoUpdater\bin\Release\WSH.Tools.AutoUpdater.dll
-F:\WSH.Project\WSH\WSH.Tools\WSH.Tools.AutoUpdater\bin\Release\WSH.Tools.AutoUpdater.pdb
-F:\WSH.Project\WSH\WSH.Tools\WSH.Tools.AutoUpdater\obj\x86\Release\WSH.Tools.AutoUpdater.DownloadConfirm.resources
-F:\WSH.Project\WSH\WSH.Tools\WSH.Tools.AutoUpdater\obj\x86\Release\WSH.Tools.AutoUpdater.DownloadProgress.resources
-F:\WSH.Project\WSH\WSH.Tools\WSH.Tools.AutoUpdater\obj\x86\Release\WSH.Tools.AutoUpdater.Properties.Resources.resources
-F:\WSH.Project\WSH\WSH.Tools\WSH.Tools.AutoUpdater\obj\x86\Release\WSH.Tools.AutoUpdater.csproj.GenerateResource.Cache
-F:\WSH.Project\WSH\WSH.Tools\WSH.Tools.AutoUpdater\obj\x86\Release\WSH.Tools.AutoUpdater.dll
-F:\WSH.Project\WSH\WSH.Tools\WSH.Tools.AutoUpdater\obj\x86\Release\WSH.Tools.AutoUpdater.pdb
