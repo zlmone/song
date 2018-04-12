@@ -1,5 +1,0 @@
-D:\MyProject\Common.Net\Winform.Common\bin\Debug\Common.Winform.dll
-D:\MyProject\Common.Net\Winform.Common\bin\Debug\Common.Winform.pdb
-D:\MyProject\Common.Net\Winform.Common\obj\Debug\ResolveAssemblyReference.cache
-D:\MyProject\Common.Net\Winform.Common\obj\Debug\Common.Winform.dll
-D:\MyProject\Common.Net\Winform.Common\obj\Debug\Common.Winform.pdb

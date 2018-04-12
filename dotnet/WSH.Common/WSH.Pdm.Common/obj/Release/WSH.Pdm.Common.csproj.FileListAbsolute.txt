@@ -1,4 +1,0 @@
-F:\WSH.Project\WSH\WSH.Common\WSH.Pdm.Common\bin\Release\WSH.Pdm.Common.dll
-F:\WSH.Project\WSH\WSH.Common\WSH.Pdm.Common\bin\Release\WSH.Pdm.Common.pdb
-F:\WSH.Project\WSH\WSH.Common\WSH.Pdm.Common\obj\Release\WSH.Pdm.Common.dll
-F:\WSH.Project\WSH\WSH.Common\WSH.Pdm.Common\obj\Release\WSH.Pdm.Common.pdb
