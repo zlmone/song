@@ -1,9 +1,0 @@
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\bin\Debug\WSH.Services.Common.dll
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\bin\Debug\WSH.Services.Common.pdb
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\bin\Debug\WSH.Common.dll
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\bin\Debug\WSH.Options.Common.dll
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\bin\Debug\WSH.Common.pdb
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\bin\Debug\WSH.Options.Common.pdb
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\obj\Debug\WSH.Services.Common.csprojResolveAssemblyReference.cache
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\obj\Debug\WSH.Services.Common.dll
-F:\WSH.Project\WSH.Net\WSH.Services\WSH.Services.Common\obj\Debug\WSH.Services.Common.pdb

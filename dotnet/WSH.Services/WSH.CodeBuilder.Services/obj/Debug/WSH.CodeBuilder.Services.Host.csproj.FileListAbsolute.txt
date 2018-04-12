@@ -1,4 +1,0 @@
-F:\WSH.Project\WSH\WSH.Services\WSH.CodeBuilder.Services.Host\bin\WSH.CodeBuilder.Services.Host.dll
-F:\WSH.Project\WSH\WSH.Services\WSH.CodeBuilder.Services.Host\bin\WSH.CodeBuilder.Services.Host.pdb
-F:\WSH.Project\WSH\WSH.Services\WSH.CodeBuilder.Services.Host\obj\Debug\WSH.CodeBuilder.Services.Host.dll
-F:\WSH.Project\WSH\WSH.Services\WSH.CodeBuilder.Services.Host\obj\Debug\WSH.CodeBuilder.Services.Host.pdb
