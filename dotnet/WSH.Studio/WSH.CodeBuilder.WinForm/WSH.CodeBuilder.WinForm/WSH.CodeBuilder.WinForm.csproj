@@ -441,10 +441,6 @@
       <Project>{C36F97B2-C81C-4513-AA9D-A4027F32792A}</Project>
       <Name>WSH.TransferData.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\WSH.Tools\WSH.Tools.Widgets\WSH.Tools.Widgets.csproj">
-      <Project>{17747AC9-B98D-4CEC-96E5-E1EA895FB9C4}</Project>
-      <Name>WSH.Tools.Widgets</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WSH.CodeBuilder.Common\WSH.CodeBuilder.Common.csproj">
       <Project>{EC093D9A-121F-4E44-A796-0A2667503B4F}</Project>
       <Name>WSH.CodeBuilder.Common</Name>
