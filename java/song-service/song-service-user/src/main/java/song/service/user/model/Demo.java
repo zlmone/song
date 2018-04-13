@@ -1,0 +1,1 @@
+package song.service.user.model;import song.service.user.base.BaseModel;/** * description: * author:          song * createDate:      2018/1/8 */public class Demo extends BaseModel {    private String name;    public String getName() {        return name;    }    public void setName(String name) {        this.name = name;    }}

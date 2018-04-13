@@ -23,7 +23,7 @@ public class UserController extends BaseController {
     public User getlist(){
         User user=new User();
         user.setId(UUID.randomUUID().toString());
-        user.setUserId("userid");
+        user.setUserId("userid1");
         user.setUserName("username");
         user.setRealName("realname");
         user.setBirthday(new Date());
