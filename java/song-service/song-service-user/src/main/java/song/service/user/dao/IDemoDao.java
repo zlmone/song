@@ -1,1 +1,0 @@
-package song.service.user.dao;import song.service.user.model.Demo;import java.util.List;/** * description: * author:          song * createDate:      2017/12/28 */public interface IDemoDao  {    List<Demo> getByName(String name);}
