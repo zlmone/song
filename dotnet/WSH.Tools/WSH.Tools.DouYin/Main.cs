@@ -27,6 +27,7 @@ namespace WSH.Tools.DouYin
 
         public Main()
         {
+            //测试id：45112660
             InitializeComponent();
             this.selectDialog1.Text = "D:\\";
             client = getConnection();
