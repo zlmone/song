@@ -31,7 +31,7 @@ namespace WSH.CodeBuilder.Common
             {
                 TableInfo table = new TableInfo();
                 table.TableName = pdmTable.Code;
-                table.Attr = StringHelper.DeleteEnd(pdmTable.Name, "表");
+                table.Attr = pdmTable.Name.TrimEnd('表');
                 table.Remark = pdmTable.Comment;
                 if (pdmTable.Columns != null)
                 {

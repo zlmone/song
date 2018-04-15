@@ -1,4 +1,4 @@
-package song.api.user.base;
+package song.api.common.base;
 
 public interface IBaseService {
 }

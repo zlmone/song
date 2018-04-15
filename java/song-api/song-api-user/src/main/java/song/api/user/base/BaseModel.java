@@ -1,1 +1,0 @@
-package song.api.user.base;/** * description: * author:          song * createDate:      2018/4/13 */public class BaseModel {    private String id;    public String getId() {        return id;    }    public void setId(String id) {        this.id = id;    }}

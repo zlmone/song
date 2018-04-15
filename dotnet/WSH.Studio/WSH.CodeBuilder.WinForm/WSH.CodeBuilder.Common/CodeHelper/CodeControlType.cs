@@ -4,6 +4,7 @@ using System.Text;
 using WSH.Common.Helper;
 using WSH.CodeBuilder.DispatchServers;
 using WSH.Common;
+using WSH.Common.Extend;
 
 namespace WSH.CodeBuilder.Common
 {
@@ -68,7 +69,7 @@ namespace WSH.CodeBuilder.Common
         #region 获取song服务器控件标记
         public static string GetSongControl(ColumnEntity col)
         {
-            string field = StringHelper.Capitalize(col.Field);
+            string field =  col.Field.capitalize();
             TagBuilder tag = new TagBuilder();
             TagReanderMode mode = TagReanderMode.SelfClosing;
             tag.AddAttribute("runat", "server");
@@ -156,7 +157,7 @@ namespace WSH.CodeBuilder.Common
         #region 获取EasyUI服务器控件标记
         public static string GetEasyUIControl(ColumnEntity col, bool isQuery)
         {
-            string field = StringHelper.Capitalize(col.Field);
+            string field = col.Field.capitalize();
             string queryField =(isQuery ? "query-" : "") + field;
             TagBuilder tag = new TagBuilder();
             tag.TagName = "input";
@@ -264,7 +265,7 @@ namespace WSH.CodeBuilder.Common
         #region 获取Asp.Net服务器控件标记
         public static string GetAspNetControl(ColumnEntity col)
         {
-            string field = StringHelper.Capitalize(col.Field);
+            string field = col.Field.capitalize();
             TagBuilder tag = new TagBuilder();
             TagReanderMode mode = TagReanderMode.SelfClosing;
             tag.AddAttribute("runat", "server");
@@ -344,7 +345,7 @@ namespace WSH.CodeBuilder.Common
 
         #region 获取MVC控件
         public static string GetMvcControl(ColumnEntity col) {
-            col.Field = StringHelper.Capitalize(col.Field);
+            col.Field = col.Field.capitalize();
             StringBuilder sb = new StringBuilder();
             switch (col.EditorType)
             {

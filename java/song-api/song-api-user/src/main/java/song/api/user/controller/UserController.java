@@ -3,11 +3,10 @@ package song.api.user.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import song.api.user.base.BaseController;
 import song.api.user.config.ApplicationConfig;
 import song.api.user.model.User;
+import song.api.common.base.BaseController;
 
 import java.util.Date;
 import java.util.UUID;
