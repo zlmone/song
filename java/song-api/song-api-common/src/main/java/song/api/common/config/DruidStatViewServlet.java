@@ -1,4 +1,4 @@
-package song.api.user.config;
+package song.api.common.config;
 
 import com.alibaba.druid.support.http.StatViewServlet;
 

@@ -1,4 +1,4 @@
-package song.api.user.config;
+package song.api.common.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.slf4j.Logger;
@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import java.sql.SQLException;
 import javax.sql.DataSource;
+import java.sql.SQLException;
 
 @Configuration
 public class DruidDBConfig {
