@@ -1,0 +1,1 @@
+package song.api.user.common;import org.springframework.web.bind.annotation.ControllerAdvice;import song.api.common.exception.GlobalExceptionHandler;/** * description: * author:          song * createDate:      2018/4/17 */@ControllerAdvicepublic class ExceptionHandler extends GlobalExceptionHandler {}

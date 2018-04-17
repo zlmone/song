@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface IDemoService extends IBaseService<Demo> {
     PagedData<Demo> getByName(String name);
+
+    void save();
 }

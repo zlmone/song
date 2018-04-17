@@ -2,8 +2,10 @@ package song.api.user.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import song.api.common.base.BaseService;
 import song.api.common.data.PagedData;
+import song.api.common.result.ActionResult;
 import song.api.user.dao.IDemoDao;
 import song.api.user.model.Demo;
 import song.api.user.service.IDemoService;
@@ -15,5 +17,17 @@ public class DemoService extends BaseService<Demo> implements IDemoService {
 
     public PagedData<Demo> getByName(String name) {
         return this.findAllPaging(1, 2);
+    }
+
+    @Transactional
+    public void save() {
+        Demo demo=new Demo();
+        demo.setName("name999");
+
+        this.insert(demo);
+        String id=demo.getId();
+
+        this.deleteById("1");
+
     }
 }
