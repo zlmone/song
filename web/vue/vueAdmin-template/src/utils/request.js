@@ -1,13 +1,19 @@
 import axios from 'axios'
-import { Message, MessageBox } from 'element-ui'
+import {
+  Message,
+  MessageBox
+} from 'element-ui'
 import store from '../store'
-import { getToken } from '@/utils/auth'
+import {
+  getToken
+} from '@/utils/auth'
 
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
   timeout: 15000 // 请求超时时间
 })
+const errorText = "操作失败，请联系管理员或者稍后重试";
 
 // request拦截器
 service.interceptors.request.use(config => {
@@ -24,13 +30,13 @@ service.interceptors.request.use(config => {
 // respone拦截器
 service.interceptors.response.use(
   response => {
-  /**
-  * code为非20000是抛错 可结合自己业务进行修改
-  */
+    /**
+     * code为非20000是抛错 可结合自己业务进行修改
+     */
     const res = response.data
     if (res.code !== 20000) {
       Message({
-        message: res.message,
+        message: (res.message || errorText),
         type: 'error',
         duration: 5 * 1000
       })
@@ -43,7 +49,7 @@ service.interceptors.response.use(
           type: 'warning'
         }).then(() => {
           store.dispatch('FedLogOut').then(() => {
-            location.reload()// 为了重新实例化vue-router对象 避免bug
+            location.reload() // 为了重新实例化vue-router对象 避免bug
           })
         })
       }
@@ -53,9 +59,9 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error)// for debug
+    console.log('err' + error) // for debug
     Message({
-      message: error.message,
+      message: (error.message || errorText),
       type: 'error',
       duration: 5 * 1000
     })
