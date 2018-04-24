@@ -11,6 +11,10 @@ import {
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
+  withCredentials: true, //跨域
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
   timeout: 15000 // 请求超时时间
 })
 const errorText = "操作失败，请联系管理员或者稍后重试";
@@ -34,7 +38,7 @@ service.interceptors.response.use(
      * code为非20000是抛错 可结合自己业务进行修改
      */
     const res = response.data
-    if (res.code !== 20000) {
+    if (res.code !== "200") {
       Message({
         message: (res.message || errorText),
         type: 'error',

@@ -1,35 +1,12 @@
 <template>
   <div class="app-container">
-    <el-table :data="list" v-loading.body="listLoading" element-loading-text="Loading" border fit highlight-current-row>
-      <el-table-column align="center" label='ID' width="95">
+    <pager @pageChange="loadData" :total="total" ></pager>
+    <el-table :data="rows" v-loading.body="listLoading" element-loading-text="正在努力加载数据..." border fit highlight-current-row>
+      <el-table-column prop="id" label="ID" width="50"></el-table-column>
+      <el-table-column prop="name" label="姓名" width="100"></el-table-column>
+      <el-table-column align="center" label="合并显示">
         <template slot-scope="scope">
-          {{scope.$index}}
-        </template>
-      </el-table-column>
-      <el-table-column label="Title">
-        <template slot-scope="scope">
-          {{scope.row.title}}
-        </template>
-      </el-table-column>
-      <el-table-column label="Author" width="110" align="center">
-        <template slot-scope="scope">
-          <span>{{scope.row.author}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Pageviews" width="110" align="center">
-        <template slot-scope="scope">
-          {{scope.row.pageviews}}
-        </template>
-      </el-table-column>
-      <el-table-column class-name="status-col" label="Status" width="110" align="center">
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{scope.row.status}}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Display_time" width="200">
-        <template slot-scope="scope">
-          <i class="el-icon-time"></i>
-          <span>{{scope.row.display_time}}</span>
+          <span>{{scope.row.id}}{{scope.row.name}}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -37,34 +14,30 @@
 </template>
 
 <script>
+import  Pager  from '@/components/Pager'
 import { getList } from '@/api/table'
-
+ 
 export default {
+  components:{
+    Pager
+  },
   data() {
     return {
-      list: null,
+      rows: null,
+      total:0,
       listLoading: true
     }
   },
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'gray',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   created() {
-    this.fetchData()
+    this.loadData()
   },
   methods: {
-    fetchData() {
+    loadData(pageNum,pageSize) {
       this.listLoading = true
       getList(this.listQuery).then(response => {
-        this.list = response.data.items
-        this.listLoading = false
+        this.rows = response.data.rows;
+        this.total=this.data.total;
+        this.listLoading = false;
       })
     }
   }
