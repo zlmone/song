@@ -21,7 +21,7 @@ public class UserController extends BaseController {
     private ApplicationConfig config;
 
     @GetMapping(value = "/info")
-    public User getInfo() {
+    public ActionResult getInfo() {
         User user = new User();
         user.setId(UUID.randomUUID().toString());
         user.setUserId("userid1");
@@ -29,7 +29,7 @@ public class UserController extends BaseController {
         user.setRealName("realname");
         user.setBirthday(new Date());
         user.addRole("admin");
-        return user;
+        return new ActionResult(user);
     }
 
     @PostMapping(value = "/login")
