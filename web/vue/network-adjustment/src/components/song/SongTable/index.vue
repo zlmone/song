@@ -47,37 +47,38 @@ export default {
       return []
     }},
     url:{type:String},
-    method:{type:String,default:"GET"},
-    params:{type:Object,default:function(){
-      return {}
-    }}
+    method:{type:String,default:"GET"}
   },
   data() {
     return {
+      queryParams:{},
       rows: null,
       total:0,
       loading: true
     }
   },
   created() {
-    this.load()
+    this.load({id:"12"})
   },
   methods: {
-    load:function(){
-        this.loadPage()
+    load:function(loadParams){
+        this.loadPage(loadParams)
     },
-    reload:function(){
-
+    reload:function(loadParams){
+        this.queryParams["pageNum"]=1;
+        this.loadPage(loadParams)
     },
     loadPage(pageParams) {
       this.loading = true
       if(pageParams){
-          Vue.util.extend(this.params,pageParams)
+        for (var key in pageParams) {
+          this.queryParams[key] = pageParams[key];
+        }
       }
       request({
         url: this.url,
-        method: this.method,
-        params:this.params
+        method:"get",
+        params:this.queryParams
       }).then(response => {
         this.rows = response.data.rows
         this.total=response.data.total

@@ -16,7 +16,8 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 Vue.use(ElementUI, {
-	locale
+	locale,
+	size: "mini"
 })
 
 Vue.config.productionTip = false
