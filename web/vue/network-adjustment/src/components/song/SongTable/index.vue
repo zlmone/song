@@ -44,7 +44,7 @@ export default {
   methods: {
     load:function(loadParams){
         this.loadPage(loadParams)
-    },
+    }, 
     reload:function(loadParams){
         this.params["pageNum"]=1;
         this.loadPage(loadParams)

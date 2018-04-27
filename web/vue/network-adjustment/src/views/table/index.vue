@@ -12,6 +12,7 @@
       </el-form-item>
     </el-form>
     <song-table ref="table" :url="url" :columns="columns" ></song-table>
+ 
   </div>
 </template>
 
