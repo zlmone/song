@@ -1,1 +1,0 @@
-package song.api.common.exception;/** * description: * author:          song * createDate:      2018/4/17 */public class BusinessException extends RuntimeException {    public BusinessException(String message) {        super(message);    }}

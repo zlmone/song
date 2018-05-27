@@ -1,6 +1,6 @@
 package song.api.dict.service;
 
-import song.api.common.base.IBaseService;
+import song.common.toolkit.base.IBaseService;
 
 public interface IDemoService extends IBaseService {
 

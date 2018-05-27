@@ -1,1 +1,0 @@
-package com.song.common;/** * description: * author:          song * createDate:      2017/10/19 */public class SystemHelper {    public static final String LINESEPARATOR = System.getProperty("line.separator");}

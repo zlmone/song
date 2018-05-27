@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import song.api.common.result.ActionResult;
 import song.api.user.config.ApplicationConfig;
 import song.api.user.model.LoginInfo;
 import song.api.user.model.User;
-import song.api.common.base.BaseController;
+import song.common.result.ActionResult;
+import song.common.toolkit.base.BaseController;
 
 import java.util.Date;
 import java.util.UUID;

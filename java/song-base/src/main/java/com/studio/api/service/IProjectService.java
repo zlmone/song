@@ -1,1 +1,0 @@
-package com.studio.api.service;import com.studio.api.base.IBaseService;import com.studio.model.Project;import java.util.List;/** * description: * author:          song * createDate:      2018/1/3 */public interface IProjectService extends IBaseService<Project> {    List<Project> getList();}

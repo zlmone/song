@@ -1,1 +1,0 @@
-package com.studio.api.base;import com.studio.model.Project;import tk.mybatis.mapper.common.BaseMapper;import tk.mybatis.mapper.common.Mapper;/** * description: * author:          song * createDate:      2017/12/28 */public interface IBaseDao<T> extends IDao<T>, Mapper<T> {}

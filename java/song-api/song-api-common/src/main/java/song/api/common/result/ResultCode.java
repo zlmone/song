@@ -1,1 +1,0 @@
-package song.api.common.result;/** * description: * author:          song * createDate:      2018/4/24 */public class ResultCode {    public static final String OK="200";    public static final String ERROR = "500";}

@@ -1,27 +1,1 @@
-package song.api.user.config;
-
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-@ConfigurationProperties(prefix = "sys")
-public class ApplicationConfig {
-    private String id;
-    private String name;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-}
+package song.api.user.config;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.context.annotation.Configuration;import org.springframework.web.method.support.HandlerMethodArgumentResolver;import org.springframework.web.servlet.config.annotation.CorsRegistry;import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;import song.api.user.common.CurrentUserIdMethodArgumentResolver;import song.common.toolkit.http.CorsHelper;import java.util.List;/** * description: * author:          song * createDate:      2018/5/24 */@Configurationpublic class ApplicationConfig extends WebMvcConfigurationSupport {    @Autowired    private CurrentUserIdMethodArgumentResolver currentUserIdMethodArgumentResolver;    @Override    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {        super.addArgumentResolvers(argumentResolvers);        argumentResolvers.add(currentUserIdMethodArgumentResolver);    }    @Override    public void addCorsMappings(CorsRegistry registry) {        CorsHelper.addAllow(registry);    }}

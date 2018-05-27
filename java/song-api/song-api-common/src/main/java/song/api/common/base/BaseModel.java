@@ -1,1 +1,0 @@
-package song.api.common.base;/** * description: * author:          song * createDate:      2018/4/17 */public class BaseModel {}

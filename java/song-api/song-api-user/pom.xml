@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>song.api</groupId>
-	<artifactId>song-api-user</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
-	<name>song-api-user</name>
-	<description>song-api-user service for Spring Boot</description>
-
 	<parent>
 		<groupId>song.api</groupId>
 		<artifactId>song-api</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
+
+	<name>song-api-user</name>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>song.api</groupId>
+	<artifactId>song-api-user</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,11 +24,20 @@
 	<dependencies>
 		<!-- 项目模块依赖 -->
 		<dependency>
+			<groupId>song</groupId>
+			<artifactId>song-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>song</groupId>
+			<artifactId>song-common-toolkit</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
 			<groupId>song.api</groupId>
 			<artifactId>song-api-common</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>
