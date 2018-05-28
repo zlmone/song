@@ -1,0 +1,1 @@
+package song.api.attachment.model;import song.common.toolkit.base.BaseModel;import javax.persistence.Table;/** * description: * author:          song * createDate:      2018/1/8 */@Table(name = "sys_attachment")public class Attachment extends BaseModel {}

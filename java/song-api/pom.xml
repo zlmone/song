@@ -21,6 +21,7 @@
         <module>song-common-toolkit</module>
         <module>song-api-spider</module>
         <module>song-api-studio</module>
+        <module>song-api-attachment</module>
     </modules>
     <packaging>pom</packaging>
 
