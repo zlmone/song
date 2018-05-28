@@ -1,0 +1,1 @@
+package song.common.ui;/** * description: * author:          song * createDate:      2017/10/25 */public enum EditorType {    textbox, textboxLine, textArea, richTextbox,    numberbox, intbox,    datebox,    combobox, comboTree, comboGrid, comboTreeTrid,    checkbox, radioButton,    selectbox, tagbox,    fileUpload,    label,    template}

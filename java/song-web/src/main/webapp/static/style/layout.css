@@ -1,0 +1,43 @@
+html,body{ height:100%; overflow: hidden; padding:0px; margin:0px;}
+.fit{width:100%;height:100%;}
+
+.form-panel{margin:12px;}
+.query-panel{margin:1px;}
+.query-btn-panel{ width:150px; text-align: center; }
+.query-btn-panel a{ margin-right: 10px;}
+
+.form-table,.query-table{ margin:0px;width:100%;  border-collapse: collapse; table-layout:fixed; border-spacing: 0px;}
+.form-table th,.form-table td{ border:1px solid #99BBE8;}
+.form-table th{vertical-align:top; padding-top:8px; padding-bottom: 8px; text-align:right;
+    font-weight:normal; background:#DFE8F6; font-size:12px;}
+.form-table td{padding:5px 5px;  vertical-align: middle ; text-align:left; }
+
+.query-table{}
+.query-table th{ vertical-align:center; font-weight: normal; font-size:12px; text-align: right;}
+.query-table td{padding:3px;}
+
+.required{color:Red; margin-right:3px; vertical-align:middle;}
+.btn-panel{ text-align:right; margin-top:10px;  border0:0px solid #B6BEC5; }
+.btn-panel a{ margin-left:5px;}
+.btn-split{font-size:0px;overflow:hidden;height:5px;}
+
+.cmp-dialog{ display:none;}
+
+/*项目通用样式*/
+.back-color{background-color:#DFE8F6;}
+.clear{ clear:both;}
+.clear-hide{ clear:both; overflow:hidden;font-size:0px; height:0px;}
+.fix{*zoom:1;}
+.fix:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+.line{ font-size:0px; overflow:hidden; height:1px; line-height:1px;}
+.show{ display:block;} .hide{ display:none;}
+.vhide{ visibility:hidden;} .vshow{ visibility:visible;}
+.inline{ _display:inline;}
+.inline-block{display:inline-block;*zoom:1;*display:inline;}
+.abs{ position:absolute;} .rel{ position:relative;}
+.left{ float:left;_display:inline;}
+.right{ float:right;_display:inline;}
+.center{ margin-left:auto; margin-right:auto;}
+
+.enabled{color:#666;cursor:default;opacity:0.6; filter:Alpha(opacity=60)}
+.enabled input,.enabled span{ cursor:default;}

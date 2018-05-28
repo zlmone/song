@@ -1,0 +1,1 @@
+package song.common.result;/** * description: * author:          song * createDate:      2018/4/24 */public class ResultCode {    public static final String ok="200";    public static final String error = "500";    public static final String unauthorized = "401";}

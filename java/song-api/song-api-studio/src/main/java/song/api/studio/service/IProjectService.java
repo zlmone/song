@@ -1,0 +1,1 @@
+package song.api.studio.service;import song.api.studio.model.Project;import song.common.toolkit.base.IBaseService;import java.util.List;/** * description: * author:          song * createDate:      2018/1/3 */public interface IProjectService extends IBaseService<Project> {    List<Project> getList();}

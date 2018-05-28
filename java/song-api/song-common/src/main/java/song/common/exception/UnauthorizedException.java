@@ -1,0 +1,1 @@
+package song.common.exception;/** * description: * author:          song * createDate:      2018/5/17 */public class UnauthorizedException extends RuntimeException {    public UnauthorizedException(String message) {        super(message);    }}

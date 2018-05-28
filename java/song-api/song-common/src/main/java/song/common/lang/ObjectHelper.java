@@ -1,0 +1,1 @@
+package song.common.lang;/** * description: * author:          song * createDate:      2017/10/19 */public class ObjectHelper {    public static String asEmpty(Object object) {        return object == null ? StringHelper.getEmpty() : object.toString();    }}

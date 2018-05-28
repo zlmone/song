@@ -1,0 +1,1 @@
+package song.common.ui.excel;/** * description: * author:          song * createDate:      2018/5/8 */public class Excel {    private ExcelType type = ExcelType.xlsx;    public ExcelType getType() {        return type;    }    public void setType(ExcelType type) {        this.type = type;    }}

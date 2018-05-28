@@ -1,0 +1,1 @@
+package song.common.toolkit.base;/** * description: * author:          song * createDate:      2018/4/17 */public class BaseModel {}

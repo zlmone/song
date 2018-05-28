@@ -1,0 +1,1 @@
+package song.common.toolkit.db.orm.provider;import song.common.lang.StringHelper;/** * description: * author:          song * createDate:      2017/11/1 */public class OracleProvider extends DBProvider {    public String wrap(String name) {        return StringHelper.wrap(name, "\"", "\"");    }    public String getIdEntity() {        return null;    }}

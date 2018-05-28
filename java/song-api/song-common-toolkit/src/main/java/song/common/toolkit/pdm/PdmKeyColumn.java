@@ -1,0 +1,1 @@
+package song.common.toolkit.pdm;/** * description: * author:          song * createDate:      2017/10/25 */public class PdmKeyColumn {    private String ref;    public String getRef() {        return ref;    }    public void setRef(String ref) {        this.ref = ref;    }}

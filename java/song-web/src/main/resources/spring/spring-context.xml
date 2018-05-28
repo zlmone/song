@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!-- 开启自动扫包 -->
+    <!-- 自动扫描dao和service包(自动注入) -->
+    <context:component-scan base-package="com.studio.dao.*"/>
+    <context:component-scan base-package="com.studio.service.*"/>
+
+    <!-- 启动AOP支持 -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- 引入外部数据源配置信息 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <value>classpath:config/db.properties</value>
+        </property>
+    </bean>
+
+    <!-- 配置数据源
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    -->
+
+    <!-- c3p0 connection pool configuration -->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        &lt;!&ndash; 数据库驱动 &ndash;&gt;
+        <property name="driverClass" value="${jdbc.mysql.driver}"/>
+        &lt;!&ndash; 连接URL串 &ndash;&gt;
+        <property name="jdbcUrl" value="${jdbc.mysql.url}"/>
+        &lt;!&ndash; 连接用户名 &ndash;&gt;
+        <property name="user" value="${jdbc.mysql.username}"/>
+        &lt;!&ndash; 连接密码 &ndash;&gt;
+        <property name="password" value="${jdbc.mysql.password}"/>
+        &lt;!&ndash; 初始化连接池时连接数量为5个 &ndash;&gt;
+        <property name="initialPoolSize" value="5"/>
+        &lt;!&ndash; 允许最小连接数量为5个 &ndash;&gt;
+        <property name="minPoolSize" value="5"/>
+        &lt;!&ndash; 允许最大连接数量为20个 &ndash;&gt;
+        <property name="maxPoolSize" value="20"/>
+        &lt;!&ndash; 允许连接池最大生成100个PreparedStatement对象 &ndash;&gt;
+        <property name="maxStatements" value="100"/>
+        &lt;!&ndash; 连接有效时间，连接超过3600秒未使用，则该连接丢弃 &ndash;&gt;
+        <property name="maxIdleTime" value="3600"/>
+        &lt;!&ndash; 连接用完时，一次产生的新连接步进值为2 &ndash;&gt;
+        <property name="acquireIncrement" value="2"/>
+        &lt;!&ndash; 获取连接失败后再尝试10次，再失败则返回DAOException异常 &ndash;&gt;
+        <property name="acquireRetryAttempts" value="10"/>
+        &lt;!&ndash; 获取下一次连接时最短间隔600毫秒，有助于提高性能 &ndash;&gt;
+        <property name="acquireRetryDelay" value="600"/>
+        &lt;!&ndash; 检查连接的有效性 &ndash;&gt;
+        <property name="testConnectionOnCheckin" value="true"/>
+        &lt;!&ndash; 每个1200秒检查连接对象状态 &ndash;&gt;
+        <property name="idleConnectionTestPeriod" value="1200"/>
+        &lt;!&ndash; 获取新连接的超时时间为10000毫秒 &ndash;&gt;
+        <property name="checkoutTimeout" value="10000"/>
+    </bean>-->
+
+
+    <!-- 阿里 druid 数据库连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close" >
+        <!-- 数据库基本信息配置 -->
+        <property name="url" value="${jdbc.mysql.url}" />
+        <property name="username" value="${jdbc.mysql.username}" />
+        <property name="password" value="${jdbc.mysql.password}" />
+        <property name="driverClassName" value="${jdbc.mysql.driver}" />
+        <property name="filters" value="${filters}" />
+        <!-- 最大并发连接数 -->
+        <property name="maxActive" value="${maxActive}" />
+        <!-- 初始化连接数量 -->
+        <property name="initialSize" value="${initialSize}" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${maxWait}" />
+        <!-- 最小空闲连接数 -->
+        <property name="minIdle" value="${minIdle}" />
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value ="${timeBetweenEvictionRunsMillis}" />
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value ="${minEvictableIdleTimeMillis}" />
+        <property name="validationQuery" value="${validationQuery}" />
+        <property name="testWhileIdle" value="${testWhileIdle}" />
+        <property name="testOnBorrow" value="${testOnBorrow}" />
+        <property name="testOnReturn" value="${testOnReturn}" />
+        <property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}" />
+        <!-- 打开 removeAbandoned 功能 -->
+        <property name="removeAbandoned" value="${removeAbandoned}" />
+        <!-- 1800 秒，也就是 30 分钟 -->
+        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
+        <!-- 关闭 abanded 连接时输出错误日志 -->
+        <property name="logAbandoned" value="${logAbandoned}" />
+    </bean>
+
+    <!-- 配置Mybatis Session工厂 -->
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean"> <!-- org.mybatis.spring.SqlSessionFactoryBean / com.bingo.common.PackagesSqlSessionFactoryBean-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 加载mybatis.cfg.xml文件 -->
+        <!--<property name="configLocation" value="classpath:spring-config/mybatis.cfg.xml"></property>-->
+
+        <!-- 自动扫描所有的Mapper xml文件 -->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:mybatis/*.xml</value>
+            </list>
+        </property>
+
+        <!-- 自动扫描需要定义类别名的包，将包内的JAVA类的类名作为类别名 -->
+        <property name="typeAliasesPackage" value="com.studio.model"></property>
+
+        <!-- 分页配置 -->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <!--
+                        helperDialect 指定分页插件使用哪种方言，不配置则自动选择
+                        reasonable 分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页。默认false 时，直接根据参数进行查询
+                        supportMethodsArguments 支持通过 Mapper 接口参数来传递分页参数，默认值false
+                        params
+                        autoRuntimeDialect 默认值为 false。设置为 true 时，允许在运行时根据多数据源自动识别对应方言的分页
+                    -->
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                            reasonable=true
+                            supportMethodsArguments=true
+                            params=count=countSql
+                            autoRuntimeDialect=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.studio.api"/>
+        <property name="markerInterface" value="com.studio.api.base.IBaseDao"/>
+        <!-- tk.mybatis.mapper.common.Mapper -->
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 定义个通知，指定事务管理器 -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="delete*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="load*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="search*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <!-- 配置一个切入点 -->
+        <aop:pointcut id="serviceMethods" expression="execution(* com.studio.service.impl.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+    </aop:config>
+</beans>

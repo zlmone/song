@@ -1,0 +1,115 @@
+.webuploader-container {
+    position: relative;
+}
+
+.webuploader-element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.webuploader-pick {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: #48C182;
+    padding: 6px 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.webuploader-pick-hover {
+    background: #1DAAFC;
+}
+
+.webuploader-pick-disable {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.uploader {
+}
+
+.uploader-btns {
+}
+
+.uploader-select {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 12px 0 0;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.uploader-btn {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #34CD7D;
+    border-radius: 4px;
+    color: #34CD7D;
+    background-color: #edf9f3 ;
+}
+
+.uploader-list {
+    margin-top: 2px;
+}
+
+.uploader-item,.uploader-file {
+    display: block;
+    padding-left: 10px;
+    height: 28px;
+    font-size: 12px;
+    position: relative;
+    background-color: #f9f9f9;
+    margin-top: 2px;
+}
+.uploader-file{
+    background-color: #c7ecd9;
+}
+
+.uploader-item:hover {
+    font-weight: bold;
+    background-color: #e9f9f9;
+}
+
+.uploader-progress, .uploader-filename, .uploader-state, .uploader-removefile{
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    line-height: 28px;
+}
+
+.uploader-progress {
+    left: 0px;
+    width: 0%;
+    background-color: #61ca93;
+}
+
+.uploader-filename {
+    left: 10px;
+}
+
+.uploader-state {
+    right: 20px;
+}
+.uploader-error{
+    background-color:#e9757a;
+    color: #8c171b;
+}
+.uploader-removefile{
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0px 2px;
+    font-weight: bold;
+    right:5px;
+    font-family: Tahoma;
+}

@@ -1,0 +1,1 @@
+package song.common.util;import java.util.List;/** * description: * author:          song * createDate:      2017/10/11 */public class ListHelper {    public static boolean isEmpty(List list) {        if (list == null || list.size() <= 0) {            return true;        }        return false;    }}

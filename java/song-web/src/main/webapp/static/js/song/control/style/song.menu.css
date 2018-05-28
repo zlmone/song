@@ -1,0 +1,62 @@
+﻿.song-menu-panel {
+    background: #F0F0F0 url(../Images/menu/menu.gif) left repeat-y;
+    display: none;
+    border: 1px solid #718BB7;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 2px
+}
+
+.song-menu-panel ul {
+    zoom: 1;
+}
+
+.song-menu-item {
+    padding: 1px;
+}
+
+.song-menu-link {
+    display: block;
+}
+
+.song-menu-icontext {
+    display: block;
+    height: 23px;
+    line-height: 23px;
+    padding-left: 27px;
+    background-position: 2px center;
+    background-repeat: no-repeat;
+    zoom: 1;
+}
+
+.song-menu-arrow {
+    background: url(../Images/menu/menu-parent.gif) no-repeat right center;
+}
+
+.song-menu-hover {
+    background: #EBF3FD url(../Images/menu/item-over.gif) repeat-x left bottom;
+    border: 1px solid #AACCF6;
+    padding: 0px;
+}
+
+.song-menu-separator {
+    font-size: 0px;
+    overflow: hidden;
+    height: 1px;
+    line-height: 1px;
+    margin: 2px;
+    background: #E2E3E3;
+    border-top: 1px solid #fff;
+}
+
+.song-menu-enabled {
+    cursor: default;
+}
+
+.song-menu-enabled .song-menu-icontext {
+    color: #666;
+    cursor: default;
+    opacity: 0.5;
+    filter: Alpha(opacity=50)
+}
