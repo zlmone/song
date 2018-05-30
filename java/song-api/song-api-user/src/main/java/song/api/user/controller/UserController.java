@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import song.api.user.config.ApplicationConfig;
+import song.api.user.config.ApplicationConfiguration;
 import song.api.user.model.LoginInfo;
 import song.api.user.model.User;
 import song.common.result.ActionResult;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @RequestMapping("/user")
 public class UserController extends BaseController {
     @Autowired
-    private ApplicationConfig config;
+    private ApplicationConfiguration config;
 
     @GetMapping(value = "/info")
     public ActionResult getInfo() {

@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/attachment")
 public class AttachmentController {
-    @DeleteMapping(value = "delete")
+    @DeleteMapping(value = "/delete")
     public ActionResult delete(String id) {
         ActionResult result = new ActionResult();
 
@@ -20,7 +20,7 @@ public class AttachmentController {
         return result;
     }
 
-    @DeleteMapping(value = "save")
+    @DeleteMapping(value = "/save")
     public ActionResult save(@RequestBody List<Attachment> attachments) {
         ActionResult result = new ActionResult();
 
