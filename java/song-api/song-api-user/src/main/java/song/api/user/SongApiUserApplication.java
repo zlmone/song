@@ -10,4 +10,5 @@ public class SongApiUserApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SongApiUserApplication.class, args);
 	}
+
 }

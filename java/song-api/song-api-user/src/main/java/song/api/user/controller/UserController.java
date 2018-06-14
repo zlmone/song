@@ -5,37 +5,56 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import song.api.user.config.ApplicationConfiguration;
-import song.api.user.model.LoginInfo;
+import song.api.common.config.JWTConfig;
 import song.api.user.model.User;
+import song.api.user.service.IUserService;
+import song.common.lang.StringHelper;
 import song.common.result.ActionResult;
+import song.common.result.ResultCode;
+import song.common.security.CryptionHelper;
+import song.common.security.SimpleUser;
 import song.common.toolkit.base.BaseController;
-
-import java.util.Date;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
 public class UserController extends BaseController {
     @Autowired
-    private ApplicationConfiguration config;
+    private IUserService userService;
 
     @GetMapping(value = "/info")
-    public ActionResult getInfo() {
-        User user = new User();
-        user.setId(UUID.randomUUID().toString());
-        user.setUserId("userid1");
-        user.setUserName("username");
-        user.setRealName("realname");
-        user.setBirthday(new Date());
-        user.addRole("admin");
+    public ActionResult getInfo(String userId) {
+        User user = userService.getUserInfo(userId);
         return new ActionResult(user);
     }
 
     @PostMapping(value = "/login")
-    public ActionResult login(String username,String password){
-        LoginInfo loginInfo = new LoginInfo(UUID.randomUUID().toString());
-        return new ActionResult(true, "登录成功", loginInfo);
+    public ActionResult login(String userName, String password) throws Exception {
+        String aesPassword = CryptionHelper.aesEncrypt(CryptionHelper.md5(password), CryptionHelper.secretkey);
+        ActionResult result = new ActionResult(false, "登陆失败", ResultCode.unauthorized);
+        SimpleUser user = null;
+        try {
+            user = userService.getSimpleUser(userName, aesPassword);
+        } catch (Exception ex) {
+            result.setMsg("获取用户信息失败");
+        }
+        if (user != null) {
+            try {
+                String token = JWTConfig.getJWT().create(user);
+                if (!StringHelper.isEmpty(token)) {
+                    result.setSuccess(true);
+                    result.setCode(ResultCode.ok);
+                    result.setMsg("登陆成功");
+                    result.setData(token);
+                } else {
+                    result.setMsg("创建token失败");
+                }
+            } catch (Exception ex) {
+                result.setMsg("创建token失败");
+            }
+        } else {
+            result.setMsg("用户名或密码错误");
+        }
+        return result;
     }
 
     @PostMapping(value = "/logout")
