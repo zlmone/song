@@ -15,7 +15,7 @@ public class JWTConfig {
     public static JWTAudience getAudience() throws IOException {
         if(audience==null)
         {
-            Configuration config = new Configuration("jwt.properties");
+            Configuration config = new Configuration(JWTConfig.class.getClassLoader(), "jwt.properties");
             audience = new JWTAudience();
             audience.setAudience(config.getProperty("jwt.audience"));
             audience.setSecret(config.getProperty("jwt.secret"));
