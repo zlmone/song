@@ -56,7 +56,7 @@ public class UserController extends BaseController {
                 result.setCode(ResultCode.ok);
                 result.setMsg("登陆成功");
                 result.setData(token);
-
+                //保存登录日志
                 this.saveLoginLog(user, request);
 
             } else {

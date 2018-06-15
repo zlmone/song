@@ -25,7 +25,7 @@ public class SimpleUserMethodArgumentResolver implements HandlerMethodArgumentRe
     public Object resolveArgument(MethodParameter methodParameter, @Nullable ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, @Nullable WebDataBinderFactory webDataBinderFactory) throws Exception {
         try {
             String token = nativeWebRequest.getHeader(JWT.tokenHeader);
-            SimpleUser user = new JWT(JWTConfig.getAudience()).getSimpleUser(token);
+            SimpleUser user =JWTConfig.getJWT().getSimpleUser(token);
             if (user==null) {
                 throw new UnauthorizedException("UnauthorizedException");
             }
