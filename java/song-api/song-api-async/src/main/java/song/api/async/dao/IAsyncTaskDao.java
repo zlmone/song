@@ -1,0 +1,1 @@
+package song.api.async.dao;import org.apache.ibatis.annotations.Mapper;import song.common.toolkit.task.async.AsyncTask;import java.util.List;/** * description: * author:          song * createDate:      2017/12/28 */@Mapperpublic interface IAsyncTaskDao {    List<AsyncTask> getPendings();}

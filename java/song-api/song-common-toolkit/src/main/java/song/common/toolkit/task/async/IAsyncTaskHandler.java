@@ -1,0 +1,1 @@
+package song.common.toolkit.task.async;import song.common.result.BaseResult;import java.io.IOException;/** * description: * author:          song * createDate:      2018/6/27 */public interface IAsyncTaskHandler {    BaseResult handle(AsyncTask taskInfo) throws Exception;}

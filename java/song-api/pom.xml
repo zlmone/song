@@ -22,6 +22,7 @@
         <module>song-api-spider</module>
         <module>song-api-studio</module>
         <module>song-api-attachment</module>
+        <module>song-api-async</module>
     </modules>
     <packaging>pom</packaging>
 

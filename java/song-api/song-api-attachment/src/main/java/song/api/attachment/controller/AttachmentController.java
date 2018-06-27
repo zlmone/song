@@ -1,17 +1,15 @@
 package song.api.attachment.controller;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import song.api.attachment.model.Attachment;
 import song.common.result.ActionResult;
+import song.common.toolkit.base.BaseController;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/attachment")
-public class AttachmentController {
+public class AttachmentController extends BaseController {
     @DeleteMapping(value = "/delete")
     public ActionResult delete(String id) {
         ActionResult result = new ActionResult();
@@ -20,7 +18,7 @@ public class AttachmentController {
         return result;
     }
 
-    @DeleteMapping(value = "/save")
+    @PostMapping(value = "/save")
     public ActionResult save(@RequestBody List<Attachment> attachments) {
         ActionResult result = new ActionResult();
 
