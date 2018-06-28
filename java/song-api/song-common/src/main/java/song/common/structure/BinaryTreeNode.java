@@ -1,9 +1,9 @@
 package song.common.structure;
 
-public class ExpressionNode {
+public class BinaryTreeNode {
     private String data;
-    private ExpressionNode leftChild;
-    private ExpressionNode rightChild;
+    private BinaryTreeNode leftChild;
+    private BinaryTreeNode rightChild;
 
     public String getData() {
         return data;
@@ -13,30 +13,30 @@ public class ExpressionNode {
         this.data = data;
     }
 
-    public ExpressionNode getLeftChild() {
+    public BinaryTreeNode getLeftChild() {
         return leftChild;
     }
 
-    public void setLeftChild(ExpressionNode leftChild) {
+    public void setLeftChild(BinaryTreeNode leftChild) {
         this.leftChild = leftChild;
     }
 
-    public ExpressionNode getRightChild() {
+    public BinaryTreeNode getRightChild() {
         return rightChild;
     }
 
-    public void setRightChild(ExpressionNode rightChild) {
+    public void setRightChild(BinaryTreeNode rightChild) {
         this.rightChild = rightChild;
     }
 
-    public ExpressionNode() {
+    public BinaryTreeNode() {
     }
 
-    public ExpressionNode(String data) {
+    public BinaryTreeNode(String data) {
         this.data = data;
     }
 
-    public ExpressionNode(String data, ExpressionNode leftChild, ExpressionNode rightChild) {
+    public BinaryTreeNode(String data, BinaryTreeNode leftChild, BinaryTreeNode rightChild) {
         this.data = data;
         this.leftChild = leftChild;
         this.rightChild = rightChild;
