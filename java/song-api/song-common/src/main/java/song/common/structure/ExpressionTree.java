@@ -36,9 +36,15 @@ public class ExpressionTree extends BinaryTree {
 
 
     public static void main(String[] args) {
-        ExpressionTree tree = new ExpressionTree();
+      /*  ExpressionTree tree = new ExpressionTree();
         tree.postBuild("1+34*45/6+7");
         String s = tree.inOrder();
-        System.out.println(s);
+        System.out.println(s);*/
+
+        Integer a = 1127;
+        Integer b=127;
+        int c  = 1127;
+        Integer d = new Integer(1127);
+        System.out.print(a.intValue() ==d.intValue() );
     }
 }
