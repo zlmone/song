@@ -221,26 +221,26 @@ export default [
         component: () => import('@/view/tools-methods/tools-methods.vue')
       }
     ]
-  },
-  {
-    path: '/i18n',
+},
+{
+  path: '/i18n',
     name: 'i18n',
-    meta: {
-      hide: true
-    },
-    component: Main,
+  meta: {
+  hide: true
+},
+  component: Main,
     children: [
-      {
-        path: 'i18n_page',
-        name: 'i18n_page',
-        meta: {
-          icon: 'md-planet',
-          title: '国际化'
-        },
-        component: () => import('@/view/i18n/i18n-page.vue')
-      }
-    ]
-  },
+  {
+    path: 'i18n_page',
+    name: 'i18n_page',
+    meta: {
+      icon: 'md-planet',
+      title: '国际化'
+    },
+    component: () => import('@/view/i18n/i18n-page.vue')
+}
+]
+},
   {
     path: '/directive',
     name: 'directive',
