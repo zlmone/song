@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface ITableService extends IBaseService<Table> {
     List<Table> getList(String projectId);
+
+    void FillTables(String projectId);
+
+    void FillTable(String projectId,String tableId);
 }
