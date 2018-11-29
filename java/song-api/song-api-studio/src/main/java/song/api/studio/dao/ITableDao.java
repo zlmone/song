@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface ITableDao extends IBaseDao<Table> {
     List<Table> getByProjectId(@Param("projectId") String projectId);
+
+
 }
