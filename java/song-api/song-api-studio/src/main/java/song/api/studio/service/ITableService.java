@@ -12,4 +12,5 @@ public interface ITableService extends IBaseService<Table> {
     void fillTables(String projectId,List<Table> tables);
 
     void fillColumns(String projectId,String tableId, List<Column> columns);
+
 }

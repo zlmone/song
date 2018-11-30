@@ -3,6 +3,7 @@ package song.api.studio.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import song.api.studio.dao.IColumnDao;
 import song.api.studio.dao.IConnectionDao;
 import song.api.studio.dao.IProjectDao;
@@ -31,7 +32,7 @@ public class TableService extends BaseService<Table> implements ITableService {
         return tableDao.getByProjectId(projectId);
     }
 
-    @Override
+    @Transactional
     public void fillTables(String projectId,List<Table> tables) {
         //先查询所有存在的表
         List<Table> existTables = tableDao.getByProjectId(projectId);
@@ -46,25 +47,20 @@ public class TableService extends BaseService<Table> implements ITableService {
         }
     }
 
-    @Override
     public void fillColumns(String projectId, String tableId, List<Column> columns) {
         if (!StringHelper.isEmpty(tableId)) {
             List<Column> existColumns = columnDao.getByTableId(tableId);
             for (Column column : columns) {
                 Column oldColumn = existsColumn(existColumns, column);
-                if (oldColumn!=null) {
-                    //如果存在列，则更新
-                    oldColumn.setDataType(column.getDataType());
-
-
-
-                }else{
+                if (oldColumn==null) {
                     //不存在则新增列
                     columnDao.insert(column);
                 }
             }
         }
     }
+
+
 
     private String existsTable(List<Table> tables,Table table){
         for (Table tab : tables) {
