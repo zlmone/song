@@ -6,8 +6,10 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import song.api.common.resolver.SimpleUserMethodArgumentResolver;
+import song.api.common.filter.XssFilter;
 import song.common.toolkit.net.http.CorsHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WebApplicationConfig implements WebMvcConfigurer {
@@ -24,5 +26,17 @@ public class WebApplicationConfig implements WebMvcConfigurer {
     @Bean
     public FilterRegistrationBean jwtFilterRegistrationBean() {
         return JWTConfig.getJWTFilterBean();
+    }
+
+    @Bean
+    public static  FilterRegistrationBean getJWTFilterBean(){
+        //拦截器
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        //自定义拦截类
+        registrationBean.setFilter(new XssFilter());
+        List<String> urlPatterns = new ArrayList<String>();
+        urlPatterns.add("/*");
+        registrationBean.setUrlPatterns(urlPatterns);
+        return registrationBean;
     }
 }
