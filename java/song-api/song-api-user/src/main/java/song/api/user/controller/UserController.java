@@ -83,6 +83,7 @@ public class UserController extends BaseController {
             loginLog.setClientIp(httpRequest.getIp());
             loginLog.setBrowser(userAgent.getBrowser().getName());
             loginLog.setOs(userAgent.getOperatingSystem().getName());
+
             DeviceType deviceType = userAgent.getOperatingSystem().getDeviceType();
             switch (deviceType) {
                 case COMPUTER:
