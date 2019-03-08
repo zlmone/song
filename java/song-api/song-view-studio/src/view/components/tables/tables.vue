@@ -18,9 +18,9 @@ export default {
   data () {
     return {
       columns: [
-        { title: 'Name', key: 'name', sortable: true },
+        { title: 'Name', key: 'name', sortable: true,editable:true},
         { title: 'Email', key: 'email', editable: true },
-        { title: 'Create-Time', key: 'createTime' },
+        { title: 'Create-Time', key: 'createTime' ,editable:true},
         {
           title: 'Handle',
           key: 'handle',

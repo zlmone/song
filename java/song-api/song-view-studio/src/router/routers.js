@@ -180,6 +180,15 @@ export default [
         component: () => import('@/view/components/tables/tables.vue')
       },
       {
+        path: 'columnsList_page',
+        name: 'columnsList_page',
+        meta: {
+          icon: 'md-grid',
+          title: '自定义表格'
+        },
+        component: () => import('@/view/components/tables/columnList.vue')
+      },
+      {
         path: 'split_pane_page',
         name: 'split_pane_page',
         meta: {
