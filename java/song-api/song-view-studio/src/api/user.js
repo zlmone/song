@@ -60,7 +60,7 @@ export const hasRead = msg_id => {
     data: {
       msg_id
     }
-  })
+  }) 
 }
 
 export const removeReaded = msg_id => {

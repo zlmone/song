@@ -1,0 +1,21 @@
+export default{
+    dataTypes:[
+        {value:"String",label:"String"},
+        {value:"Object",label:"Object"},
+        {value:"Binary",label:"Binary"},
+        {value:"Boolean",label:"Boolean"},
+        {value:"DateTime",label:"DateTime"},
+        {value:"Currency",label:"Currency"},
+        {value:"Xml",label:"Xml"},
+        {value:"Float",label:"Float"},
+        {value:"Double",label:"Double"},
+        {value:"Decimal",label:"Decimal"},
+        {value:"Guid",label:"Guid"},
+        {value:"Byte",label:"Byte"},
+        {value:"SmallInt",label:"SmallInt"},
+        {value:"Int",label:"Int"},
+        {value:"BigInt",label:"BigInt"},
+        {value:"Template",label:"Template"}
+    ],
+    editorTypes:[]
+}

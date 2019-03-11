@@ -180,11 +180,11 @@ export default [
         component: () => import('@/view/components/tables/tables.vue')
       },
       {
-        path: 'columnsList_page',
-        name: 'columnsList_page',
+        path: 'columnsList',
+        name: '编辑列信息',
         meta: {
           icon: 'md-grid',
-          title: '自定义表格'
+          title: '编辑列信息'
         },
         component: () => import('@/view/components/tables/columnList.vue')
       },
