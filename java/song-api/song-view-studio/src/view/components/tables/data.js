@@ -14,8 +14,35 @@ export default{
         {value:"Byte",label:"Byte"},
         {value:"SmallInt",label:"SmallInt"},
         {value:"Int",label:"Int"},
-        {value:"BigInt",label:"BigInt"},
-        {value:"Template",label:"Template"}
+        {value:"BigInt",label:"BigInt"}
     ],
-    editorTypes:[]
+    editorTypes:[
+        {value:"textbox",label:"textbox"},
+        {value:"textboxline",label:"textboxline"},
+        {value:"textarea",label:"textarea"},
+        {value:"texteditor",label:"texteditor"},
+        {value:"autocomplete",label:"autocomplete"},
+        {value:"numberbox",label:"numberbox"},
+        {value:"intbox",label:"intbox"},
+        {value:"datepicker",label:"datepicker"},
+        {value:"select",label:"select"},
+        {value:"selecttree",label:"selecttree"},
+        {value:"selectgrid",label:"selectgrid"},
+        {value:"cascader",label:"cascader"},
+        {value:"checkbox",label:"checkbox"},
+        {value:"switchbutton",label:"switchbutton"},
+        {value:"radio",label:"radio"},
+        {value:"selectbox",label:"selectbox"},
+        {value:"tagbox",label:"tagbox"},
+        {value:"upload",label:"upload"},
+        {value:"label",label:"label"},
+        {value:"slider",label:"slider"},
+        {value:"template",label:"template"}
+    ],
+    aligns:[
+        {value:"left",label:"left"},
+        {value:"center",label:"center"},
+        {value:"right",label:"right"}
+    ],
+    formatStrings:["yyyy-MM-hh HH:mm:ss","yyyy-MM-hh","yyyy-MM","yyyy","0.00"]
 }
