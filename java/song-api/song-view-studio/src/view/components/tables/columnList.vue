@@ -1,6 +1,12 @@
 <template>
   <div>
-      <Table ref="tables" :data="tableData" :columns="columns">
+      <div style="text-align:right;margin-bottom:10px;">
+        <ButtonGroup>
+          <Button type="error" @click="removeRows()">删除</Button>
+          <Button type="success" @click="addRow()">新增</Button>
+        </ButtonGroup>
+      </div>
+      <Table ref="table" :data="tableData" :columns="columns" border>
 
         <template slot-scope="{ row, index }" slot="field">
           <Input type="text" v-model="editRowData.field"  v-if="editIndex === index" />
@@ -113,7 +119,10 @@
             <Button @click="editIndex = -1" type="error"  size="small">取消</Button>
           </div>
           <div v-else>
-            <Button @click="rowBeginEdit(row, index)" type="primary">编辑</Button>
+            <Button @click="rowBeginEdit(row, index)" type="primary" size="small">编辑</Button>
+            <Poptip confirm title="确定删除吗？" @on-ok="removeRow(row, index)" transfer>
+              <Button type="warning" size="small">删除</Button>
+            </Poptip>
           </div>
         </template>
       </Table>
@@ -138,6 +147,7 @@ export default {
     let fire=95;
     let name=120;
     var columns=[
+        {type:"selection",width:two,align:"center",fixed:"left"},
         { title: '可用', key: 'enabled',slot:'enabled',fixed:'left',width:two},
         { title: '排序号', key: 'orderId',slot:'orderId',fixed:'left',width:twoOrder,sortable: true },
         { title: '字段', key: 'field',slot:'field',fixed:'left',width:name },
@@ -172,22 +182,52 @@ export default {
       editRowData:tableHelper.getEditColumns(columns),
       columns: columns,
       tableData: [
-        {enabled:true,orderId:100,field:"name",display:"名称",isPrimaryKey:true,dataType:"String",editorType:"textbox"},
-        {enabled:true,orderId:100,field:"name",display:"名称",isPrimaryKey:true,dataType:"String",editorType:"textbox"},
-        {enabled:true,orderId:100,field:"name",display:"名称",isPrimaryKey:true,dataType:"String",editorType:"textbox"}
+        {id:1,enabled:true,orderId:100,field:"name",display:"名称",isPrimaryKey:true,dataType:"String",editorType:"textbox"},
+        {id:2,enabled:true,orderId:100,field:"name",display:"名称",isPrimaryKey:true,dataType:"String",editorType:"textbox"},
+        {id:3,enabled:true,orderId:100,field:"name",display:"名称",isPrimaryKey:true,dataType:"String",editorType:"textbox"}
       ]
     }
   },
   methods: {
     rowEditSave (index) {
-      tableHelper.updateRowData(this.tableData[index],this.editRowData);
+      let editRow=this.tableData[index];
+      tableHelper.updateRowData(editRow,this.editRowData);
       tableHelper.clearRowData(this.editRowData);
+      editRow["_newrow"]=false;
       this.editIndex=-1;
     },
     rowBeginEdit:function(row,index){
       tableHelper.updateRowData(this.editRowData,row);
       this.editIndex=index;
-    } 
+    },
+    removeRow:function(row,index){
+      this.tableData.splice(index,1);
+    },
+    removeRows:function(){
+        let selections=this.$refs.table.getSelection();
+        if(selections && selections.length>0){
+          let ids=tableHelper.getRemoveIds(selections);
+          if(ids && ids.length>0){
+            this.$Modal.confirm({
+                title: '温馨提示',
+                content: '确定要删除选中的记录吗？',
+                loading: true,
+                onOk: () => {
+                  tableHelper.removeRowsData(this.tableData,ids);
+                  this.$Modal.remove();
+                }
+            });
+          }
+        }else{
+          this.$Message.warning('请至少选择一条记录');
+        }
+    },
+    addRow:function(){
+      let newRow=tableHelper.getEditColumns(this.columns);
+      newRow["_newrow"]=true;
+      this.tableData.push(newRow);
+      this.editIndex=this.tableData.length-1;
+    }
   },
   mounted () {
     

@@ -1,23 +1,42 @@
 export default {
   getEditColumns: function (columns) {
-    let newItem={};
+    let newItem = {};
     columns.forEach(item => {
-        let isEditor=item.slot;
-        if(isEditor){
-          newItem[item.key]="";
-        }
+      let isEditor = item.slot;
+      if (isEditor) {
+        newItem[item.key] = "";
+      }
     });
     return newItem;
   },
-  updateRowData:function(target,source){
+  updateRowData: function (target, source) {
     for (const key in source) {
-      target[key]=source[key];
+      target[key] = source[key];
     }
     //console.log(target);
   },
-  clearRowData:function(rowData){
+  clearRowData: function (rowData) {
     for (const key in rowData) {
-      rowData[key]="";
+      rowData[key] = "";
     }
+  },
+  getRemoveIds: function (rows, key="id") {
+    var ids = [];
+    rows.forEach(sel => {
+      if(sel[key]){
+        ids.push(sel[key]);
+      }
+    });
+    return ids;
+  },
+  removeRowsData: function (tableData, ids, key="id") {
+      ids.forEach(id => {
+        for (let i = 0; i < tableData.length; i++) {
+          if (tableData[i][key] == id) {
+            tableData.splice(i, 1);
+            break;
+          }
+        }
+      });
   }
 }
