@@ -36,6 +36,7 @@ public class UserController extends BaseController {
 
     @GetMapping(value = "/login")
     public ActionResult login(HttpServletRequest request, String userName, String password) throws Exception {
+        SimpleUser user1 = userService.getSimpleUser("aaa","bb");
         String aesPassword = CryptionHelper.aesEncrypt(password,CryptionHelper.secretkey);
         ActionResult result = new ActionResult(false, "登陆失败", ResultCode.unauthorized);
         SimpleUser user = null;

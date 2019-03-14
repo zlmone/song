@@ -19,4 +19,9 @@ public class ColumnController extends BaseController {
     public List<Column> getList(String tableId) {
         return columnService.getList(tableId);
     }
+
+    @GetMapping(value = "test")
+    public String test(){
+        return "test";
+    }
 }
