@@ -4,152 +4,154 @@
 /*==============================================================*/
 
 
-drop table if exists studio_Column;
+drop table if exists studio_column;
 
-drop table if exists studio_Connection;
+drop table if exists studio_connection;
 
-drop table if exists studio_Project;
+drop table if exists studio_project;
 
-drop table if exists studio_Table;
+drop table if exists studio_table;
 
-drop table if exists studio_Template;
+drop table if exists studio_template;
 
-drop table if exists studio_UserInfo;
+drop table if exists studio_userInfo;
 
 /*==============================================================*/
 /* Table: studio_Column                                         */
 /*==============================================================*/
-create table studio_Column
+create table studio_column
 (
-   ID                   varchar(40) not null,
+   Id                   varchar(36) not null,
    TableID              varchar(40) not null,
-   `Field`                national varchar(50) not null,
-   Display              national varchar(30) not null,
+   `Field`              varchar(50) not null,
+   Display               varchar(30) not null,
    DBDataType           varchar(30),
-   `DataType`             national varchar(30) not null,
+   `DataType`              varchar(30) not null,
    IsPrimaryKey         bool,
    Length               int,
    `Precision`            int,
+   Editable				bool,
    EditorType           varchar(30),
    Sortable             bool,
    Queryable            bool,
-   Export               bool,
-   Import               bool,
-   Frozen               bool,
-   Hidden               bool,
+   IsExport               bool,
+   IsImport               bool,
+   IsFrozen               bool,
+   IsHidden               bool,
    Required             bool,
    Width                int,
-   FormatString         national varchar(50),
-   DefaultValue         national varchar(200),
-   Align                national varchar(10),
+   FormatString          varchar(50),
+   DefaultValue          varchar(200),
+   Align                 varchar(10),
    Rowspan              tinyint,
    Colspan              tinyint,
    OrderID              int,
    Enabled              bool,
+   `Comment`				varchar(500),
    CreateUser           varchar(40),
    CreateTime           datetime not null,
    LastUpdateUser       varchar(40),
    LastUpdateTime       datetime,
-   primary key (ID)
+   primary key (Id)
 );
 
 /*==============================================================*/
 /* Table: studio_Connection                                     */
 /*==============================================================*/
-create table studio_Connection
+create table studio_connection
 (
-   ID                   varchar(40) not null,
-   ConnectionName       national varchar(20) not null,
-   DBType               national varchar(10) not null,
-   Url                  national varchar(300) not null,
-   UserName             national varchar(50),
-   Password             national varchar(100),
+   Id                   varchar(40) not null,
+   ConnectionName        varchar(20) not null,
+   DBType                varchar(10) not null,
+   Url                   varchar(300) not null,
+   UserName              varchar(50),
+   Password              varchar(100),
    CreateUser           varchar(40),
    CreateTime           datetime not null,
    LastUpdateUser       varchar(40),
    LastUpdateTime       datetime,
-   primary key (ID)
+   primary key (Id)
 );
 
 /*==============================================================*/
 /* Table: studio_Project                                        */
 /*==============================================================*/
-create table studio_Project
+create table studio_project
 (
-   ID                   varchar(40) not null,
-   ProjectCode          national varchar(100),
-   ProjectName          national varchar(50) not null,
-   NameSpace            national varchar(100) not null,
+   Id                   varchar(40) not null,
+   ProjectCode           varchar(100),
+   ProjectName           varchar(50) not null,
+   NameSpace             varchar(100) not null,
    TemplateID           varchar(40),
    ConnectionID         varchar(40),
-   `Comment`              national varchar(200),
+   `Comment`               varchar(200),
    CreateUser           varchar(40),
    CreateTime           datetime not null,
    LastUpdateUser       varchar(40),
    LastUpdateTime       datetime,
-   primary key (ID)
+   primary key (Id)
 );
 
 /*==============================================================*/
 /* Table: studio_Table                                          */
 /*==============================================================*/
-create table studio_Table
+create table studio_table
 (
-   ID                   varchar(40) not null,
+   Id                   varchar(40) not null,
    ProjectID            varchar(40) not null,
-   TableCode            national varchar(100),
-   TableName            national varchar(50) not null,
-   PrimaryKey           national varchar(30) not null,
-   PrimaryKeyType          national varchar(10),
-   DefaultSortName      national varchar(30),
-   DefaultSortType      national varchar(5),
-   `Comment`              national varchar(200),
+   TableCode             varchar(100),
+   TableName             varchar(50) not null,
+   PrimaryKey            varchar(30) not null,
+   PrimaryKeyType           varchar(10),
+   DefaultSortName       varchar(30),
+   DefaultSortType       varchar(5),
+   `Comment`               varchar(200),
    Enabled              bool,
    CreateUser           varchar(40),
    CreateTime           datetime not null,
    LastUpdateUser       varchar(40),
    LastUpdateTime       datetime,
-   primary key (ID)
+   primary key (Id)
 );
 
 /*==============================================================*/
 /* Table: studio_Template                                       */
 /*==============================================================*/
-create table studio_Template
+create table studio_template
 (
-   ID                   varchar(40) not null,
+   Id                   varchar(40) not null,
    ParentID             varchar(40) not null,
-   TemplateName         national varchar(30) not null,
-   FilePrefix           national varchar(10),
-   FileExtensions       national varchar(20),
-   FileName             national varchar(30),
+   TemplateName          varchar(30) not null,
+   FilePrefix            varchar(10),
+   FileExtensions        varchar(20),
+   FileName              varchar(30),
    Content              longtext,
-   `Comment`              national varchar(100),
+   `Comment`               varchar(100),
    CreateUser           varchar(40),
    CreateTime           datetime not null,
    LastUpdateUser       varchar(40),
    LastUpdateTime       datetime,
-   primary key (ID)
+   primary key (Id)
 );
 
 /*==============================================================*/
 /* Table: studio_UserInfo                                       */
 /*==============================================================*/
-create table studio_UserInfo
+create table studio_user
 (
-   ID                   varchar(40) not null,
-   UserName             national varchar(30) not null,
-   RealName             national varchar(10) not null,
-   Password             national varchar(50) not null,
+   Id                   varchar(40) not null,
+   UserName              varchar(30) not null,
+   RealName              varchar(10) not null,
+   Password              varchar(50) not null,
    IsAdmin              bool not null,
-   IPAddress            national varchar(20) not null,
-   MacAddress           national varchar(30) not null,
+   IPAddress             varchar(20) not null,
+   MacAddress            varchar(30) not null,
    Enabled              bool,
-   Email                national varchar(50),
+   Email                 varchar(50),
    CreateUser           varchar(40),
    CreateTime           datetime not null,
    LastUpdateUser       varchar(40),
    LastUpdateTime       datetime,
-   primary key (ID)
+   primary key (Id)
 );
 
