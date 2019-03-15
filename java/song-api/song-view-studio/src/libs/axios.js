@@ -70,5 +70,28 @@ class HttpRequest {
     this.interceptors(instance, options.url)
     return instance(options)
   }
+  post(options){
+    options.method="POST";
+    return this.request(options);
+  }
+  delete(options){
+    options.method="DELETE";
+    return this.request(options);
+  }
+  put(options){
+    options.method="PUT";
+    return this.request(options);
+  }
+  get(options){
+    options.method="GET";
+    return this.request(options);
+  }
+  postJSON(options){
+    if(!options.headers){
+      options.headers={};
+    }
+    options.headers["Content-Type"]="application/json";
+    return this.post(options);
+  }
 }
 export default HttpRequest

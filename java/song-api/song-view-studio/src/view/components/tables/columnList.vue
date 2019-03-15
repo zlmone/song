@@ -6,128 +6,8 @@
           <Button type="success" @click="addRow()">新增</Button>
         </ButtonGroup>
       </div>
-      <tables v-model="tableData" :columns="columns">
-        <template slot="body">
-           <template slot-scope="{ row, index }" slot="field">
-          <Input type="text" v-model="editRowData.field"  v-if="editIndex === index" />
-          <span v-else>{{ row.field }}</span> 
-        </template>
-        <template slot-scope="{ row, index }" slot="display">
-          <Input type="text" v-model="editRowData.display"  v-if="editIndex === index" />
-          <span v-else>{{row.display }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="defaultValue">
-          <Input type="text" v-model="editRowData.defaultValue"  v-if="editIndex === index" />
-          <span v-else>{{row.defaultValue }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="formatString">
-          <AutoComplete  v-model="editRowData.formatString" :data="options.formatStrings"  v-if="editIndex === index">
-          </AutoComplete>
-          <span v-else>{{row.formatString }}</span>
-        </template>
-       
-
-        <template slot-scope="{ row, index }" slot="dataType">
-          <Select  v-model="editRowData.dataType"  v-if="editIndex === index">
-            <Option v-for="item in options.dataTypes" :value="item.value" :key="item.value">{{item.label}}</Option>
-          </Select>
-          <span v-else>{{row.dataType }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="editorType">
-          <Select  v-model="editRowData.editorType"  v-if="editIndex === index">
-            <Option v-for="item in options.editorTypes" :value="item.value" :key="item.value">{{item.label}}</Option>
-          </Select>
-          <span v-else>{{row.editorType }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="align">
-          <Select  v-model="editRowData.align"  v-if="editIndex === index">
-            <Option v-for="item in options.aligns" :value="item.value" :key="item.value">{{item.label}}</Option>
-          </Select>
-          <span v-else>{{row.align }}</span>
-        </template>
-
-
-        <template slot-scope="{ row, index }" slot="isPrimaryKey">
-          <i-switch size="small" type="text" v-model="editRowData.isPrimaryKey"  v-if="editIndex === index" />
-          <span v-else>{{row.isPrimaryKey }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="enabled">
-          <i-switch size="small" v-model="editRowData.enabled"  v-if="editIndex === index" />
-          <span v-else>{{ row.enabled }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="editable">
-          <i-switch size="small" v-model="editRowData.editable"  v-if="editIndex === index"/>
-          <span v-else>{{ row.editable }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="sortable">
-          <i-switch size="small" v-model="editRowData.sortable"  v-if="editIndex === index"/>
-          <span v-else>{{ row.sortable }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="queryable">
-          <i-switch size="small" v-model="editRowData.queryable"  v-if="editIndex === index"/>
-          <span v-else>{{ row.queryable }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="isExport">
-          <i-switch size="small" v-model="editRowData.isExport"  v-if="editIndex === index"/>
-          <span v-else>{{ row.isExport }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="isImport">
-          <i-switch size="small" v-model="editRowData.isImport"  v-if="editIndex === index"/>
-          <span v-else>{{ row.isImport }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="isFrozen">
-          <i-switch size="small" v-model="editRowData.isFrozen"  v-if="editIndex === index"/>
-          <span v-else>{{ row.isFrozen }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="isHidden">
-          <i-switch size="small" v-model="editRowData.isHidden"  v-if="editIndex === index"/>
-          <span v-else>{{ row.isHidden }}</span>
-        </template>
-        <template slot-scope="{ row, index }" slot="required">
-          <i-switch size="small" v-model="editRowData.required"  v-if="editIndex === index"/>
-          <span v-else>{{ row.required }}</span>
-        </template>
-
-        <template slot-scope="{ row, index }" slot="orderId">
-          <Input type="text" v-model="editRowData.orderId"  v-if="editIndex === index" />
-          <span v-else>{{ row.orderId }}</span> 
-        </template>
-        <template slot-scope="{ row, index }" slot="width">
-          <Input v-model="editRowData.width"  v-if="editIndex === index" />
-          <span v-else>{{ row.width }}</span> 
-        </template>
-        <template slot-scope="{ row, index }" slot="length">
-          <Input v-model="editRowData.length"  v-if="editIndex === index" />
-          <span v-else>{{ row.length }}</span> 
-        </template>
-        <template slot-scope="{ row, index }" slot="precision">
-          <Input v-model="editRowData.precision"  v-if="editIndex === index" />
-          <span v-else>{{ row.precision }}</span> 
-        </template>
-        <template slot-scope="{ row, index }" slot="colspan">
-          <Input v-model="editRowData.colspan"  v-if="editIndex === index" />
-          <span v-else>{{ row.colspan }}</span> 
-        </template>
-        <template slot-scope="{ row, index }" slot="rowspan">
-          <Input v-model="editRowData.rowspan"  v-if="editIndex === index" />
-          <span v-else>{{ row.rowspan }}</span> 
-        </template>
-
-        <template slot-scope="{ row, index }" slot="handle">
-          <div v-if="editIndex === index">
-            <Button @click="rowEditSave(index)" type="success" size="small">保存</Button>
-            <Button @click="editIndex = -1" type="error"  size="small">取消</Button>
-          </div>
-          <div v-else>
-            <Button @click="rowBeginEdit(row, index)" type="primary" size="small">编辑</Button>
-            <Poptip confirm title="确定删除吗？" @on-ok="removeRow(row, index)" transfer>
-              <Button type="warning" size="small">删除</Button>
-            </Poptip>
-          </div>
-        </template>
-        </template>
-      </tables>
-      <Table ref="table" :columns="columns" border>
+      
+      <Table ref="table" :columns="columns" :data="tableData" border >
 
         <template slot-scope="{ row, index }" slot="field">
           <Input type="text" v-model="editRowData.field"  v-if="editIndex === index" />
@@ -255,6 +135,7 @@
 import Tables from '_c/tables'
 import dataOptions from './data.js'
 import tableHelper from './table-helper.js'
+import api from '@/libs/api.request'
 export default {
   name: 'columnList',
   components: {
@@ -311,11 +192,18 @@ export default {
   },
   methods: {
     rowEditSave (index) {
-      let editRow=this.tableData[index];
-      tableHelper.updateRowData(editRow,this.editRowData);
-      tableHelper.clearRowData(this.editRowData);
-      editRow["_newrow"]=false;
-      this.editIndex=-1;
+      api.post({
+        url:"column/save",
+        data:this.editRowData
+      }).then(rsp=>{
+        if(rsp && rsp.success){
+          let editRow=this.tableData[index];
+          tableHelper.updateRowData(editRow,this.editRowData);
+          tableHelper.clearRowData(this.editRowData);
+          editRow["_newrow"]=false;
+          this.editIndex=-1;
+        }
+      });
     },
     rowBeginEdit:function(row,index){
       tableHelper.updateRowData(this.editRowData,row);

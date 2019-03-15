@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import song.api.studio.model.Column;
 import song.api.studio.service.IColumnService;
+import song.common.lang.StringHelper;
+import song.common.result.ActionResult;
+import song.common.result.GridResult;
 import song.common.toolkit.base.BaseController;
 
 import java.util.List;
@@ -16,12 +19,18 @@ public class ColumnController extends BaseController {
     private IColumnService columnService;
 
     @GetMapping(value = "/list")
-    public List<Column> getList(String tableId) {
-        return columnService.getList(tableId);
+    public ActionResult getList(String tableId) {
+        return new ActionResult(columnService.getList(tableId));
     }
 
-    @GetMapping(value = "test")
-    public String test(){
-        return "test";
+    @PostMapping(value = "/save")
+    public ActionResult saveColumn(Column column) {
+        boolean result;
+        if (StringHelper.isBlank(column.getId())) {
+            result = columnService.insert(column);
+        }else{
+            result = columnService.update(column);
+        }
+        return getSaveResult(result);
     }
 }
