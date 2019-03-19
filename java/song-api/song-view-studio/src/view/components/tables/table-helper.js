@@ -38,5 +38,19 @@ export default {
           }
         }
       });
+  },
+  removeProp:function(obj,...props){
+      for (const prop of props) {
+        if(obj.hasOwnProperty(prop)){
+          delete obj[prop];
+        }
+      }
+  },
+  setDefaultProp:function(obj,defs){
+    for (const prop of defs) {
+      if(!obj[prop]){
+         obj[prop]=defs[prop];
+      }
+    }
   }
 }

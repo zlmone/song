@@ -192,10 +192,14 @@ export default {
   },
   methods: {
     rowEditSave (index) {
-      api.post({
+      tableHelper.setDefaultProp(this.editRowData,{
+        dataType:"String",
+        editorType:"textbox",
+        align:"center"
+      });
+      api.postJSON({
         url:"/column/save",
-       // data:JSON.stringify(this.editRowData)
-       params:this.editRowData
+        data:JSON.stringify(this.editRowData)
       }).then(rsp=>{
         if(rsp && rsp.success){
           let editRow=this.tableData[index];
