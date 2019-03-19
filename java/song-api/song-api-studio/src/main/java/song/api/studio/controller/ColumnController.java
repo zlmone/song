@@ -24,7 +24,8 @@ public class ColumnController extends BaseController {
     }
 
     @PostMapping(value = "/save")
-    public ActionResult saveColumn(Column column) {
+    public ActionResult saveColumn( Column column) {
+
         boolean result;
         if (StringHelper.isBlank(column.getId())) {
             result = columnService.insert(column);

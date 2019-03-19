@@ -125,7 +125,7 @@
               <Button type="warning" size="small">删除</Button>
             </Poptip>
           </div>
-        </template>
+        </template>   
       </Table>
     
   </div>
@@ -193,8 +193,9 @@ export default {
   methods: {
     rowEditSave (index) {
       api.post({
-        url:"column/save",
-        data:this.editRowData
+        url:"/column/save",
+       // data:JSON.stringify(this.editRowData)
+       params:this.editRowData
       }).then(rsp=>{
         if(rsp && rsp.success){
           let editRow=this.tableData[index];
@@ -202,7 +203,11 @@ export default {
           tableHelper.clearRowData(this.editRowData);
           editRow["_newrow"]=false;
           this.editIndex=-1;
+        }else{
+          this.$Message.error("保存失败");
         }
+      }).catch(err=>{
+        this.$Message.error("网络繁忙，请联系管理员或稍后重试");
       });
     },
     rowBeginEdit:function(row,index){

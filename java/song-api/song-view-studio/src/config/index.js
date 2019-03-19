@@ -18,8 +18,8 @@ export default {
    * @description api请求基础路径
    */
   baseUrl: {
-    dev: 'https://localhost:8080',
-    pro: 'https://produce.com'
+    dev: 'http://localhost:8888',
+    pro: 'http://localhost:8888'
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '@/store'
-// import { Spin } from 'iview'
+import { Spin } from 'iview'
 const addErrorLog = errorInfo => {
   const { statusText, status, request: { responseURL } } = errorInfo
   let info = {
@@ -20,8 +20,9 @@ class HttpRequest {
   getInsideConfig () {
     const config = {
       baseURL: this.baseUrl,
+      withCredentials: true,
       headers: {
-        //
+        "Content-Type": "application/x-www-form-urlencoded"
       }
     }
     return config
@@ -29,7 +30,7 @@ class HttpRequest {
   destroy (url) {
     delete this.queue[url]
     if (!Object.keys(this.queue).length) {
-      // Spin.hide()
+       Spin.hide()
     }
   }
   interceptors (instance, url) {
@@ -37,7 +38,7 @@ class HttpRequest {
     instance.interceptors.request.use(config => {
       // 添加全局的loading...
       if (!Object.keys(this.queue).length) {
-        // Spin.show() // 不建议开启，因为界面不友好
+         Spin.show() // 不建议开启，因为界面不友好
       }
       this.queue[url] = true
       return config
@@ -65,7 +66,7 @@ class HttpRequest {
     })
   }
   request (options) {
-    const instance = axios.create()
+    const instance = axios.create({withCredentials:true})
     options = Object.assign(this.getInsideConfig(), options)
     this.interceptors(instance, options.url)
     return instance(options)
