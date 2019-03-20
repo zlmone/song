@@ -182,7 +182,7 @@ export default {
       options:dataOptions,
       editIndex:-1,
       editRowData:tableHelper.getEditColumns(columns),
-      columns: columns,
+      columns: columns, 
       tableData: [
         {id:1,enabled:true,orderId:100,field:"name",display:"名称",isPrimaryKey:true,dataType:"String",editorType:"textbox"},
         {id:2,enabled:true,orderId:100,field:"name",display:"名称",isPrimaryKey:true,dataType:"String",editorType:"textbox"},
@@ -192,14 +192,9 @@ export default {
   },
   methods: {
     rowEditSave (index) {
-      tableHelper.setDefaultProp(this.editRowData,{
-        dataType:"String",
-        editorType:"textbox",
-        align:"center"
-      });
       api.postJSON({
         url:"/column/save",
-        data:JSON.stringify(this.editRowData)
+       data:JSON.stringify(this.editRowData)
       }).then(rsp=>{
         if(rsp && rsp.success){
           let editRow=this.tableData[index];
@@ -233,7 +228,7 @@ export default {
                 onOk: () => {
                   tableHelper.removeRowsData(this.tableData,ids);
                   this.$Modal.remove();
-                }
+                } 
             });
           }
         }else{

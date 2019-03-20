@@ -65,29 +65,41 @@ class HttpRequest {
       return Promise.reject(error)
     })
   }
-  request (options) {
+  request (options={}) {
     const instance = axios.create({withCredentials:true})
     options = Object.assign(this.getInsideConfig(), options)
     this.interceptors(instance, options.url)
     return instance(options)
   }
-  post(options){
+  post(url,data,options={}){
     options.method="POST";
+    options.url=url;
+    options.data=data;
     return this.request(options);
   }
-  delete(options){
+  delete(url,params,options={}){
     options.method="DELETE";
+    options.url=url;
+    options.params=data;
     return this.request(options);
   }
-  put(options){
+  put(url,data,options={}){
     options.method="PUT";
+    options.url=url;
+    options.data=data;
     return this.request(options);
   }
-  get(options){
+  get(url,params,options={}){
     options.method="GET";
+    options.url=url;
+    options.params=data;
     return this.request(options);
   }
-  postJSON(options){
+  postJSON(url,data,options={}){
+    options.url=url;
+    if(data){
+      options.data=JSON.stringify(data);
+    }
     if(!options.headers){
       options.headers={};
     }
