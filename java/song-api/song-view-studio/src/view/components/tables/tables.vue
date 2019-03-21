@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script>
+<script> 
 import Tables from "_c/tables";
 import { getTableData } from "@/api/data";
 export default {

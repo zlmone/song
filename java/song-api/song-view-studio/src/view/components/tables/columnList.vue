@@ -176,7 +176,7 @@ export default {
         { title: '数据类型', key: 'dbDataType',width:85},
         {  
           title: '操作',key: 'handle',slot:"handle",align:"center",width:three,fixed:'right'
-        }
+        } 
       ];
     return { 
       options:dataOptions,
@@ -192,16 +192,13 @@ export default {
   },
   methods: {
     rowEditSave (index) {
-      api.postJSON({
-        url:"/column/save",
-       data:JSON.stringify(this.editRowData)
-      }).then(rsp=>{
+      api.postJSON("/column/save",this.editRowData).then(rsp=>{
         if(rsp && rsp.success){
           let editRow=this.tableData[index];
           tableHelper.updateRowData(editRow,this.editRowData);
           tableHelper.clearRowData(this.editRowData);
           editRow["_newrow"]=false;
-          this.editIndex=-1;
+          this.editIndex=-1; 
         }else{
           this.$Message.error("保存失败");
         }
