@@ -38,7 +38,7 @@
       <slot name="footer" slot="footer"></slot>
       <slot name="loading" slot="loading"></slot>
 
-      <slot name="body"></slot>
+      <slot name="body"></slot>...0
 
     </Table>
   </div>
