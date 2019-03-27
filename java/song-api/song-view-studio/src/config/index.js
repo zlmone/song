@@ -13,13 +13,12 @@ export default {
    *              用来在菜单中显示文字
    */
   useI18n: true,
-  useEslint: false,
   /**
    * @description api请求基础路径
    */
   baseUrl: {
-    dev: 'http://localhost:8888',
-    pro: 'http://localhost:8888'
+    dev: 'https://www.easy-mock.com/mock/5add9213ce4d0e69998a6f51/iview-admin/',
+    pro: 'https://produce.com'
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home

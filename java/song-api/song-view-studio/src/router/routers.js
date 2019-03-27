@@ -50,34 +50,7 @@ export default [
       }
     ]
   },
-  {
-    path: '',
-    name: 'doc',
-    meta: {
-      title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
-    path: '/join',
-    name: 'join',
-    component: Main,
-    meta: {
-      hideInBread: true
-    },
-    children: [
-      {
-        path: 'join_page',
-        name: 'join_page',
-        meta: {
-          icon: '_qq',
-          title: 'QQ群'
-        },
-        component: () => import('@/view/join-page.vue')
-      }
-    ]
-  },
+  
   {
     path: '/message',
     name: 'message',
@@ -117,33 +90,6 @@ export default [
         component: () => import('@/view/components/tree-select/index.vue')
       },
       {
-        path: 'count_to_page',
-        name: 'count_to_page',
-        meta: {
-          icon: 'md-trending-up',
-          title: '数字渐变'
-        },
-        component: () => import('@/view/components/count-to/count-to.vue')
-      },
-      {
-        path: 'drag_list_page',
-        name: 'drag_list_page',
-        meta: {
-          icon: 'ios-infinite',
-          title: '拖拽列表'
-        },
-        component: () => import('@/view/components/drag-list/drag-list.vue')
-      },
-      {
-        path: 'drag_drawer_page',
-        name: 'drag_drawer_page',
-        meta: {
-          icon: 'md-list',
-          title: '可拖拽抽屉'
-        },
-        component: () => import('@/view/components/drag-drawer')
-      },
-      {
         path: 'org_tree_page',
         name: 'org_tree_page',
         meta: {
@@ -161,15 +107,7 @@ export default [
         },
         component: () => import('@/view/components/tree-table/index.vue')
       },
-      {
-        path: 'cropper_page',
-        name: 'cropper_page',
-        meta: {
-          icon: 'md-crop',
-          title: '图片裁剪'
-        },
-        component: () => import('@/view/components/cropper/cropper.vue')
-      },
+       
       {
         path: 'tables_page',
         name: 'tables_page',
@@ -180,15 +118,6 @@ export default [
         component: () => import('@/view/components/tables/tables.vue')
       },
       {
-        path: 'columnsList',
-        name: '编辑列信息',
-        meta: {
-          icon: 'md-grid',
-          title: '编辑列信息'
-        },
-        component: () => import('@/view/components/tables/columnList.vue')
-      },
-      {
         path: 'split_pane_page',
         name: 'split_pane_page',
         meta: {
@@ -197,15 +126,7 @@ export default [
         },
         component: () => import('@/view/components/split-pane/split-pane.vue')
       },
-      {
-        path: 'markdown_page',
-        name: 'markdown_page',
-        meta: {
-          icon: 'logo-markdown',
-          title: 'Markdown编辑器'
-        },
-        component: () => import('@/view/components/markdown/markdown.vue')
-      },
+   
       {
         path: 'editor_page',
         name: 'editor_page',
@@ -214,16 +135,7 @@ export default [
           title: '富文本编辑器'
         },
         component: () => import('@/view/components/editor/editor.vue')
-      },
-      {
-        path: 'icons_page',
-        name: 'icons_page',
-        meta: {
-          icon: '_bear',
-          title: '自定义图标'
-        },
-        component: () => import('@/view/components/icons/icons.vue')
-      }
+      } 
     ]
   },
   {
@@ -304,25 +216,7 @@ export default [
       }
     ]
   },
-  {
-    path: '/i18n',
-    name: 'i18n',
-    meta: {
-      hideInBread: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'i18n_page',
-        name: 'i18n_page',
-        meta: {
-          icon: 'md-planet',
-          title: 'i18n - {{ i18n_page }}'
-        },
-        component: () => import('@/view/i18n/i18n-page.vue')
-      }
-    ]
-  },
+   
   {
     path: '/error_store',
     name: 'error_store',

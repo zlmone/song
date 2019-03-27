@@ -35,3 +35,4 @@ public class ColumnController extends BaseController {
         return getSaveResult(result);
     }
 }
+
