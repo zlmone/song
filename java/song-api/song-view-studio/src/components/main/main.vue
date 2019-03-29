@@ -8,7 +8,24 @@
           <language v-if="$config.useI18n" @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>
           <fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>
 
-          
+          <Menu mode="horizontal" :theme="theme1" active-name="1">
+            <MenuItem name="1">
+                <Icon type="ios-apps" />
+                数据模型
+            </MenuItem>
+            <MenuItem name="2">
+                <Icon type="ios-wifi" />
+                连接
+            </MenuItem>
+            <MenuItem name="3">
+                <Icon type="ios-paper" />
+                模板
+            </MenuItem>
+            <MenuItem name="4">
+                <Icon type="ios-people" />
+                用户
+            </MenuItem>
+          </Menu>  
         </header-bar>
       </Header>
       <Content class="main-content-con">
