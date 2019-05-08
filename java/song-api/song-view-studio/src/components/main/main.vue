@@ -8,7 +8,7 @@
           <language v-if="$config.useI18n" @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>
           <fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>
 
-          <Menu mode="horizontal" :theme="theme1" active-name="1">
+          <Menu mode="horizontal"  active-name="1">
             <MenuItem name="1">
                 <Icon type="ios-apps" />
                 数据模型

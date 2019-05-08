@@ -86,6 +86,15 @@ export default [
           title: '代码生成'
         },
         component: () => import('@/view/studio/codebuilder.vue')
+      },
+      {
+        path: 'connection',
+        name: 'connection',
+        meta: {
+          icon: 'ios-navigate',
+          title: '连接管理'
+        },
+        component: () => import('@/view/studio/connection.vue')
       }
     ]
   },

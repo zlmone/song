@@ -80,8 +80,8 @@ export default {
         login({
           userName,
           password
-        }).then(res => {
-          const data = res.data
+        }).then(data => {
+          
           commit('setToken', data.token)
           resolve()
         }).catch(err => {
@@ -109,11 +109,11 @@ export default {
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         try {
-          getUserInfo(state.token).then(res => {
-            const data = res.data
+          getUserInfo(state.token).then(data => {
+            
             commit('setAvatar', data.avatar)
-            commit('setUserName', data.name)
-            commit('setUserId', data.user_id)
+            commit('setUserName', data.userName)
+            commit('setUserId', data.userId)
             commit('setAccess', data.access)
             commit('setHasGetInfo', true)
             resolve(data)
@@ -127,16 +127,16 @@ export default {
     },
     // 此方法用来获取未读消息条数，接口只返回数值，不返回消息列表
     getUnreadMessageCount ({ state, commit }) {
-      getUnreadCount().then(res => {
-        const { data } = res
+      getUnreadCount().then(data => {
+      
         commit('setMessageCount', data)
       })
     },
     // 获取消息列表，其中包含未读、已读、回收站三个列表
     getMessageList ({ state, commit }) {
       return new Promise((resolve, reject) => {
-        getMessage().then(res => {
-          const { unread, readed, trash } = res.data
+        getMessage().then(data => {
+          const { unread, readed, trash } =  data
           commit('setMessageUnreadList', unread.sort((a, b) => new Date(b.create_time) - new Date(a.create_time)))
           commit('setMessageReadedList', readed.map(_ => {
             _.loading = false
@@ -159,9 +159,9 @@ export default {
         if (contentItem) {
           resolve(contentItem)
         } else {
-          getContentByMsgId(msg_id).then(res => {
-            const content = res.data
-            commit('updateMessageContentStore', { msg_id, content })
+          getContentByMsgId(msg_id).then(data => {
+            
+            commit('updateMessageContentStore', { msg_id, data })
             resolve(content)
           })
         }

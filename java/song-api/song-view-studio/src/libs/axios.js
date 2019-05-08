@@ -49,7 +49,12 @@ class HttpRequest {
     instance.interceptors.response.use(res => {
       this.destroy(url)
       const { data, status } = res
-      return { data, status }
+      let success=false;
+      if(data.data && data.data.success){
+        success=true;
+      }
+      let successData=data.data==null ? null : data.data;
+      return successData;
     }, error => {
       this.destroy(url)
       let errorInfo = error.response
@@ -80,7 +85,7 @@ class HttpRequest {
   delete(url,params,options={}){
     options.method="DELETE";
     options.url=url;
-    options.params=data;
+    options.params=params;
     return this.request(options);
   }
   put(url,data,options={}){
@@ -92,7 +97,7 @@ class HttpRequest {
   get(url,params,options={}){
     options.method="GET";
     options.url=url;
-    options.params=data;
+    options.params=params;
     return this.request(options);
   }
   postJSON(url,data,options={}){

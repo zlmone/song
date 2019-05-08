@@ -1,12 +1,8 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2017/12/8 16:18:38                           */
-/*==============================================================*/
-
-
 drop table if exists studio_column;
 
 drop table if exists studio_connection;
+
+drop table if exists studio_param;
 
 drop table if exists studio_project;
 
@@ -14,144 +10,161 @@ drop table if exists studio_table;
 
 drop table if exists studio_template;
 
-drop table if exists studio_userInfo;
+drop table if exists studio_user;
 
 /*==============================================================*/
-/* Table: studio_Column                                         */
+/* Table: studio_column                                         */
 /*==============================================================*/
 create table studio_column
 (
-   Id                   varchar(36) not null,
-   TableID              varchar(40) not null,
-   `Field`              varchar(50) not null,
-   Display               varchar(30) not null,
-   DBDataType           varchar(30),
-   `DataType`              varchar(30) not null,
-   IsPrimaryKey         bool,
-   Length               int,
-   `Precision`            int,
-   Editable				bool,
-   EditorType           varchar(30),
-   Sortable             bool,
-   Queryable            bool,
-   IsExport               bool,
-   IsImport               bool,
-   IsFrozen               bool,
-   IsHidden               bool,
-   Required             bool,
-   Width                int,
-   FormatString          varchar(50),
-   DefaultValue          varchar(200),
-   Align                 varchar(10),
-   Rowspan              tinyint,
-   Colspan              tinyint,
-   OrderID              int,
-   Enabled              bool,
-   `Comment`				varchar(500),
-   CreateUser           varchar(40),
-   CreateTime           datetime not null,
-   LastUpdateUser       varchar(40),
-   LastUpdateTime       datetime,
-   primary key (Id)
+   id                   char(36) not null,
+   table_id             char(36) not null,
+   dield                varchar(50) not null,
+   display              varchar(30) not null,
+   db_data_type         varchar(30),
+   data_type            varchar(30) not null,
+   is_primary_key       bool,
+   length               int,
+   `precision`            int,
+   editable             bool,
+   editor_type          varchar(30),
+   sortable             bool,
+   queryable            bool,
+   is_export            bool,
+   is_import            bool,
+   is_frozen            bool,
+   is_hidden            bool,
+   required             bool,
+   width                int,
+   format_string        varchar(50),
+   default_value        varchar(200),
+   align                varchar(10),
+   rowspan              tinyint,
+   colspan              tinyint,
+   order_id             int,
+   enable               bool,
+   comment              varchar(500),
+   create_user          varchar(40),
+   create_time          timestamp not null,
+   last_update_user     varchar(40),
+   last_update_time     timestamp,
+   primary key (id)
 );
 
 /*==============================================================*/
-/* Table: studio_Connection                                     */
+/* Table: studio_connection                                     */
 /*==============================================================*/
 create table studio_connection
 (
-   Id                   varchar(40) not null,
-   ConnectionName        varchar(20) not null,
-   DBType                varchar(10) not null,
-   Url                   varchar(300) not null,
-   UserName              varchar(50),
-   Password              varchar(100),
-   CreateUser           varchar(40),
-   CreateTime           datetime not null,
-   LastUpdateUser       varchar(40),
-   LastUpdateTime       datetime,
-   primary key (Id)
+   id                   char(36) not null,
+   connection_name      varchar(20) not null,
+   db_type              varchar(10) not null,
+   url                  varchar(300) not null,
+   user_name            varchar(50),
+   password             varchar(100),
+   create_user          varchar(40),
+   create_time          timestamp not null,
+   last_update_user     varchar(40),
+   last_update_time     timestamp,
+   primary key (id)
 );
 
 /*==============================================================*/
-/* Table: studio_Project                                        */
+/* Table: studio_param                                          */
+/*==============================================================*/
+create table studio_param
+(
+   id                   char(36) not null,
+   template_id          char(36),
+   param_name           varchar(50) not null,
+   param_code           varchar(20),
+   param_value          varchar(200),
+   comment              varchar(200),
+   create_user          varchar(40),
+   create_time          timestamp not null,
+   last_update_user     varchar(40),
+   last_update_time     timestamp,
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: studio_project                                        */
 /*==============================================================*/
 create table studio_project
 (
-   Id                   varchar(40) not null,
-   ProjectCode           varchar(100),
-   ProjectName           varchar(50) not null,
-   NameSpace             varchar(100) not null,
-   TemplateID           varchar(40),
-   ConnectionID         varchar(40),
-   `Comment`               varchar(200),
-   CreateUser           varchar(40),
-   CreateTime           datetime not null,
-   LastUpdateUser       varchar(40),
-   LastUpdateTime       datetime,
-   primary key (Id)
+   id                   char(36) not null,
+   project_code         varchar(100),
+   project_name         varchar(50) not null,
+   name_space           varchar(100) not null,
+   template_id          char(36),
+   connection_id        char(36),
+   comment              varchar(200),
+   create_user          varchar(40),
+   create_time          timestamp not null,
+   last_update_user     varchar(40),
+   last_update_time     timestamp,
+   primary key (id)
 );
 
 /*==============================================================*/
-/* Table: studio_Table                                          */
+/* Table: studio_table                                          */
 /*==============================================================*/
 create table studio_table
 (
-   Id                   varchar(40) not null,
-   ProjectID            varchar(40) not null,
-   TableCode             varchar(100),
-   TableName             varchar(50) not null,
-   PrimaryKey            varchar(30) not null,
-   PrimaryKeyType           varchar(10),
-   DefaultSortName       varchar(30),
-   DefaultSortType       varchar(5),
-   `Comment`               varchar(200),
-   Enabled              bool,
-   CreateUser           varchar(40),
-   CreateTime           datetime not null,
-   LastUpdateUser       varchar(40),
-   LastUpdateTime       datetime,
-   primary key (Id)
+   id                   char(36) not null,
+   project_id           char(36) not null,
+   table_code           varchar(100),
+   table_name           varchar(50) not null,
+   primary_key          varchar(30) not null,
+   primary_key_type     varchar(10),
+   default_sort_name    varchar(30),
+   default_sort_type    varchar(5),
+   comment              varchar(200),
+   enable               bool,
+   create_user          varchar(40),
+   create_time          timestamp not null,
+   last_update_user     varchar(40),
+   last_update_time     timestamp,
+   primary key (id)
 );
 
 /*==============================================================*/
-/* Table: studio_Template                                       */
+/* Table: studio_template                                       */
 /*==============================================================*/
 create table studio_template
 (
-   Id                   varchar(40) not null,
-   ParentID             varchar(40) not null,
-   TemplateName          varchar(30) not null,
-   FilePrefix            varchar(10),
-   FileExtensions        varchar(20),
-   FileName              varchar(30),
-   Content              longtext,
-   `Comment`               varchar(100),
-   CreateUser           varchar(40),
-   CreateTime           datetime not null,
-   LastUpdateUser       varchar(40),
-   LastUpdateTime       datetime,
-   primary key (Id)
+   id                   char(36) not null,
+   parent_id            char(36) not null,
+   template_name        varchar(30) not null,
+   file_prefix          varchar(10),
+   file_extensions      varchar(20),
+   file_name            varchar(30),
+   content              longtext,
+   comment              varchar(100),
+   create_user          varchar(40),
+   create_time          timestamp not null,
+   last_update_user     varchar(40),
+   last_update_time     timestamp,
+   primary key (id)
 );
 
 /*==============================================================*/
-/* Table: studio_UserInfo                                       */
+/* Table: studio_user                                           */
 /*==============================================================*/
 create table studio_user
 (
-   Id                   varchar(40) not null,
-   UserName              varchar(30) not null,
-   RealName              varchar(10) not null,
-   Password              varchar(50) not null,
-   IsAdmin              bool not null,
-   IPAddress             varchar(20) not null,
-   MacAddress            varchar(30) not null,
-   Enabled              bool,
-   Email                 varchar(50),
-   CreateUser           varchar(40),
-   CreateTime           datetime not null,
-   LastUpdateUser       varchar(40),
-   LastUpdateTime       datetime,
-   primary key (Id)
+   id                   char(36) not null,
+   user_name            varchar(30) not null,
+   real_name            varchar(10) not null,
+   password             varchar(50) not null,
+   is_admin             bool not null,
+   ip_address           varchar(20) not null,
+   mac_address          varchar(30) not null,
+   enable               bool,
+   email                varchar(50),
+   create_user          varchar(40),
+   create_time          timestamp not null,
+   last_update_user     varchar(40),
+   last_update_time     timestamp,
+   primary key (id)
 );
-
