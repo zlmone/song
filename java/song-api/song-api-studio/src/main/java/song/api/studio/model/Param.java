@@ -1,19 +1,23 @@
 package song.api.studio.model;
 
-import javax.persistence.Table;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * description:
  * author:          song
  * createDate:      2019/5/8
  */
-@Table(name = "studio_param")
+@TableName(value = "studio_param")
 public class Param {
+
     private String templateId;
     private String paramName;
     private String paramCode;
     private String paramValue;
     private String comment;
+
+
 
     public String getTemplateId() {
         return templateId;

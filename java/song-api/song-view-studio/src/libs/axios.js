@@ -48,11 +48,14 @@ class HttpRequest {
     // 响应拦截
     instance.interceptors.response.use(res => {
       this.destroy(url)
+ 
       const { data, status } = res
       let success=false;
       if(data.data && data.data.success){
         success=true;
+        
       }
+      console.log(data);
       let successData=data.data==null ? null : data.data;
       return successData;
     }, error => {

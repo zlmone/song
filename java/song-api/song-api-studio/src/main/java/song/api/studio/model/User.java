@@ -1,17 +1,22 @@
 package song.api.studio.model;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import song.common.toolkit.base.IdModel;
+
 /**
  * description:
  * author:          song
  * createDate:      2019/5/8
  */
-
-public class User {
+@TableName(value = "studio_user")
+public class User extends IdModel<String> {
     private String userName;
-    private String loginId;
-    private String userId;
-    private  String avatar;
-    private String access;
+    private String realName;
+    private String password;
+    private  boolean isAdmin;
+    private String ipAddress;
+    private String macAddress;
+    private boolean enable;
 
     public String getUserName() {
         return userName;
@@ -21,35 +26,51 @@ public class User {
         this.userName = userName;
     }
 
-    public String getLoginId() {
-        return loginId;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setLoginId(String loginId) {
-        this.loginId = loginId;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
-    public String getAccess() {
-        return access;
+    public String getIpAddress() {
+        return ipAddress;
     }
 
-    public void setAccess(String access) {
-        this.access = access;
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
+    public String getMacAddress() {
+        return macAddress;
+    }
+
+    public void setMacAddress(String macAddress) {
+        this.macAddress = macAddress;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

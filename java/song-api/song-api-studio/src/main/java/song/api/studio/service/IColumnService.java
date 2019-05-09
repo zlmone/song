@@ -8,4 +8,8 @@ import java.util.List;
 
 public interface IColumnService extends IBaseService<Column> {
     List<Column> getList(String tableId);
+
+    boolean insert(Column t);
+
+    boolean update(Column t);
 }

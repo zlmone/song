@@ -1,1 +1,1 @@
-package song.common.toolkit.base;import tk.mybatis.mapper.common.Mapper;/** * description: * author:          song * createDate:      2017/12/28 */public interface IBaseDao<T> extends IDao<T>, Mapper<T> {}
+package song.common.toolkit.base;import com.baomidou.mybatisplus.core.mapper.BaseMapper;/** * description: * author:          song * createDate:      2017/12/28 */public interface IBaseDao<T> extends IDao<T>, BaseMapper<T> {}

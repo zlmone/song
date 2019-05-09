@@ -95,6 +95,24 @@ export default [
           title: '连接管理'
         },
         component: () => import('@/view/studio/connection.vue')
+      },
+      {
+        path: 'columns',
+        name: 'columns',
+        meta: {
+          icon: 'ios-navigate',
+          title: '列配置管理'
+        },
+        component: () => import('@/view/studio/columns.vue')
+      },
+      {
+        path: 'users',
+        name: 'users',
+        meta: {
+          icon: 'ios-navigate',
+          title: '用户管理'
+        },
+        component: () => import('@/view/studio/users.vue')
       }
     ]
   },

@@ -9,14 +9,18 @@ import song.common.result.ActionResult;
 import song.common.toolkit.base.BaseController;
 
 @RestController
-@RequestMapping("/connection")
+@RequestMapping("/conn")
 public class ConnectionController extends BaseController {
     @Autowired
     private IConnectionService connectionService;
 
     @GetMapping(value = "/list")
     public ActionResult getList() {
-        return getActionResult(connectionService.findAll());
+        return getActionResult(connectionService.list());
     }
 
+    @GetMapping(value = "/info")
+    public ActionResult getInfo(String id) {
+        return getActionResult(connectionService.getById(id));
+    }
 }

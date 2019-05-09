@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class TableService extends BaseService<Table> implements ITableService {
+public class TableService extends BaseService<ITableDao, Table> implements ITableService {
     @Autowired
     private ITableDao tableDao;
     @Autowired
