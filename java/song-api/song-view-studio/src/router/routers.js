@@ -113,6 +113,24 @@ export default [
           title: '用户管理'
         },
         component: () => import('@/view/studio/users.vue')
+      },
+      {
+        path: 'models',
+        name: 'models',
+        meta: {
+          icon: 'ios-navigate',
+          title: '模型管理'
+        },
+        component: () => import('@/view/studio/models.vue')
+      },
+      {
+        path: 'tpls',
+        name: 'tpls',
+        meta: {
+          icon: 'ios-navigate',
+          title: '模板管理'
+        },
+        component: () => import('@/view/studio/tpls.vue')
       }
     ]
   },

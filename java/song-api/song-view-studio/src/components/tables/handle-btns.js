@@ -15,6 +15,7 @@ const btns = {
       h('Button', {
         props: {
           type: 'text',
+          size:"small",
           ghost: true
         }
       }, [
@@ -26,6 +27,28 @@ const btns = {
           }
         })
       ])
+    ])
+  },
+  edit: (h, params, vm) => {
+    return h('Button', {
+      props: {
+        type: 'text',
+        size:"small",
+        ghost: true
+      },
+      on:{
+        click:()=>{
+          vm.$emit('on-edit', params)
+        }
+      }
+    }, [
+      h('Icon', {
+        props: {
+          type: 'ios-create',
+          size: 18,
+          color: '#000000'
+        }
+      })
     ])
   }
 }

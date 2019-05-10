@@ -39,7 +39,6 @@ export default {
     },
     getTableData () {
       api.get("user/list").then(data=>{
-           console.log(data);
         if(data){
             this.tableData=data;
         } 

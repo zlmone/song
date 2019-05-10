@@ -1,1 +1,0 @@
-package song.common.ui.iview;import song.common.ui.table.TableColumn;/** * description: * author:          song * createDate:      2018/5/23 */public class ITableColumn extends TableColumn {}

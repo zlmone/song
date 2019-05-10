@@ -2,9 +2,8 @@ package song.api.studio.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import song.api.studio.model.Connection;
 import song.api.studio.service.IUserService;
 import song.api.studio.vm.LoginInfo;
 import song.api.studio.model.User;
@@ -56,4 +55,13 @@ public class UserController extends BaseController {
         return getActionResult(userService.list());
     }
 
+    @PostMapping(value = "/save")
+    public ActionResult save(@RequestBody User entity) {
+        return getSaveResult(userService.saveOrUpdate(entity));
+    }
+
+    @DeleteMapping(value = "/remove")
+    public ActionResult remove(String id) {
+        return getActionResult(userService.removeById(id));
+    }
 }

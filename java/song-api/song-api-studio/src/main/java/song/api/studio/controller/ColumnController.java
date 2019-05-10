@@ -20,19 +20,17 @@ public class ColumnController extends BaseController {
 
     @GetMapping(value = "/list")
     public ActionResult getList(String tableId) {
-        return new ActionResult(columnService.getList(tableId));
+        return getActionResult(columnService.getList(tableId));
     }
 
     @PostMapping(value = "/save")
-    public ActionResult saveColumn(@RequestBody Column column) {
+    public ActionResult save(@RequestBody Column column) {
+        return getSaveResult(columnService.saveOrUpdate(column));
+    }
 
-        boolean result;
-        if (StringHelper.isBlank(column.getId())) {
-            result = columnService.insert(column);
-        }else{
-            result = columnService.update(column);
-        }
-        return getSaveResult(result);
+    @DeleteMapping(value = "/remove")
+    public ActionResult remove(String id) {
+        return getActionResult(columnService.removeById(id));
     }
 }
 
