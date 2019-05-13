@@ -1,14 +1,13 @@
 package song.api.studio.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import song.api.common.config.JWTConfig;
+import song.api.studio.model.User;
 import song.api.studio.service.IUserService;
 import song.api.studio.viewmodel.LoginInfo;
-import song.api.studio.model.User;
 import song.common.lang.StringHelper;
 import song.common.result.ActionResult;
 import song.common.security.SimpleUser;
@@ -17,7 +16,6 @@ import song.common.util.UUIDHelper;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -29,10 +27,7 @@ public class UserController extends BaseController {
     public ActionResult login(String userName,String password) {
         User user = userService.getOne(Wrappers.<User>lambdaQuery().eq(User::getUserName,userName).eq(User::getPassword, password));
         if (user != null && !StringHelper.isEmpty(user.getUserName())) {
-            SimpleUser simpleUser = new SimpleUser();
-            simpleUser.setUserId(user.getId());
-            simpleUser.setAccount(user.getUserName());
-            simpleUser.setUserName(user.getRealName());
+            SimpleUser simpleUser = new SimpleUser(user.getId(),user.getUserName(),user.getRealName());
             try {
                 String token = JWTConfig.getJWT().create(simpleUser);
                 LoginInfo loginInfo = new LoginInfo();
