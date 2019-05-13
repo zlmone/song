@@ -1,13 +1,17 @@
 package song.api.studio.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import song.api.studio.model.Connection;
+import song.api.common.config.JWTConfig;
 import song.api.studio.service.IUserService;
-import song.api.studio.vm.LoginInfo;
+import song.api.studio.viewmodel.LoginInfo;
 import song.api.studio.model.User;
+import song.common.lang.StringHelper;
 import song.common.result.ActionResult;
+import song.common.security.SimpleUser;
 import song.common.toolkit.base.BaseController;
 import song.common.util.UUIDHelper;
 
@@ -22,16 +26,29 @@ public class UserController extends BaseController {
     private IUserService userService;
 
     @GetMapping(value = "/login")
-    public ActionResult login() {
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setToken(UUIDHelper.next());
-        return getActionResult(loginInfo);
+    public ActionResult login(String userName,String password) {
+        User user = userService.getOne(Wrappers.<User>lambdaQuery().eq(User::getUserName,userName).eq(User::getPassword, password));
+        if (user != null && !StringHelper.isEmpty(user.getUserName())) {
+            SimpleUser simpleUser = new SimpleUser();
+            simpleUser.setUserId(user.getId());
+            simpleUser.setAccount(user.getUserName());
+            simpleUser.setUserName(user.getRealName());
+            try {
+                String token = JWTConfig.getJWT().create(simpleUser);
+                LoginInfo loginInfo = new LoginInfo();
+                loginInfo.setToken(token);
+                return success(loginInfo);
+            } catch (Exception ex) {
+                return fail("登录成功，创建token失败");
+            }
+        }
+        return unauthorized("账号或者密码不正确");
     }
 
     @GetMapping(value = "/logout")
     public ActionResult logout(String token) {
 
-        return getActionResult();
+        return success();
     }
 
 
@@ -44,24 +61,24 @@ public class UserController extends BaseController {
             map.put("userName", "admin");
             map.put("userId", UUIDHelper.next());
             map.put("access", "test");
-            return getActionResult(map);
+            return success(map);
         }
 
-        return getActionResult(user);
+        return success(user);
     }
 
     @GetMapping(value = "/list")
     public ActionResult getList() {
-        return getActionResult(userService.list());
+        return success(userService.list());
     }
 
     @PostMapping(value = "/save")
     public ActionResult save(@RequestBody User entity) {
-        return getSaveResult(userService.saveOrUpdate(entity));
+        return saveSuccess(userService.saveOrUpdate(entity));
     }
 
     @DeleteMapping(value = "/remove")
     public ActionResult remove(String id) {
-        return getActionResult(userService.removeById(id));
+        return success(userService.removeById(id));
     }
 }

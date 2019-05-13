@@ -11,9 +11,11 @@ import song.api.studio.service.ITemplateService;
 import song.common.result.ActionResult;
 import song.common.toolkit.base.BaseController;
 import song.common.ui.iview.IVTreeNode;
+import song.common.util.ListHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tpl")
@@ -23,7 +25,7 @@ public class TemplateController extends BaseController {
 
     @GetMapping(value = "/list")
     public ActionResult getList() {
-        return getActionResult(templateService.list());
+        return success(templateService.list());
     }
 
     @GetMapping(value = "/read")
@@ -40,30 +42,33 @@ public class TemplateController extends BaseController {
             }
         });
         tree.add(root);
-        return getActionResult(tree);
+        return success(tree);
     }
 
     private void readChildren(IVTreeNode node, List<Template> tpls) {
-        tpls.forEach(item->{
-            if (item.getParentId().equals(node.getId())) {
-                IVTreeNode subNode = new IVTreeNode(item.getId(), item.getTemplateName(),item.getParentId(), true);
+        //递归查找子模块
+        List<Template> subTpls=tpls.stream().filter(x-> x.getParentId().equals(node.getId())).collect(Collectors.toList());
+        if(!ListHelper.isEmpty(subTpls)) {
+            subTpls.forEach(item -> {
+                IVTreeNode subNode = new IVTreeNode(item.getId(), item.getTemplateName(), item.getParentId(), true);
+                readChildren(subNode,tpls);
                 node.addChildren(subNode);
-            }
-        });
+            });
+        }
     }
 
     @GetMapping(value = "/info")
     public ActionResult getInfo(String id) {
-        return getActionResult(templateService.getById(id));
+        return success(templateService.getById(id));
     }
 
     @PostMapping(value = "/save")
     public ActionResult save(@RequestBody Template entity) {
-        return getSaveResult(templateService.saveOrUpdate(entity));
+        return saveSuccess(templateService.saveOrUpdate(entity));
     }
 
     @DeleteMapping(value = "/remove")
     public ActionResult remove(String id) {
-        return getActionResult(templateService.removeById(id));
+        return success(templateService.removeById(id));
     }
 }

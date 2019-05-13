@@ -15,20 +15,20 @@ public class MessageController extends BaseController {
     @GetMapping(value = "/count")
     public ActionResult login() {
 
-        return getActionResult(10);
+        return success(10);
     }
 
     @GetMapping(value = "/init")
     public ActionResult logout() {
 
-        return getActionResult();
+        return success();
     }
 
 
     @GetMapping(value = "/content")
     public ActionResult getList() {
 
-        return getActionResult();
+        return success();
     }
 
 }

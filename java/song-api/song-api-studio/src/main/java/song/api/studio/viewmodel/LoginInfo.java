@@ -1,4 +1,4 @@
-package song.api.studio.vm;
+package song.api.studio.viewmodel;
 
 /**
  * description:
