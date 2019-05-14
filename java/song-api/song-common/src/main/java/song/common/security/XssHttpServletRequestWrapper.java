@@ -1,1 +1,147 @@
-package song.common.security;import song.common.lang.StringHelper;import javax.servlet.http.HttpServletRequest;import javax.servlet.http.HttpServletRequestWrapper;/** * description: * author:          song * createDate:      2019/1/7 */public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {    private HttpServletRequest request;    public XssHttpServletRequestWrapper(HttpServletRequest request) {        super(request);        this.request = request;    }    @Override    public String getParameter(String name) {        String value = request.getParameter(name);        if (!StringHelper.isEmpty(value)) {            value = encodeBody(value);        }        return value;    }    private String encodeBody(String body) {        return escapeScript(xssEncode(body, 1));    }    public String escapeScript(String value) {        value = value.replace("script", "").replace("/script", "").replace("alert", "");        return value;    }    private static String xssEncode(String s, int type) {        if (s == null || s.isEmpty()) {            return s;        }        StringBuilder sb = new StringBuilder(s.length() + 16);        for (int i = 0; i < s.length(); i++) {            char c = s.charAt(i);            if (type == 0) {                switch (c) {                    case '\'':                        // 全角单引号                        sb.append('‘');                        break;                    case '\"':                        // 全角双引号                        sb.append('“');                        break;                    case '>':                        // 全角大于号                        sb.append('＞');                        break;                    case '<':                        // 全角小于号                        sb.append('＜');                        break;                    case '&':                        // 全角&符号                        sb.append('＆');                        break;                    case '\\':                        // 全角斜线                        sb.append('＼');                        break;                    case '#':                        // 全角井号                        sb.append('＃');                        break;                    // < 字符的 URL 编码形式表示的 ASCII 字符（十六进制格式） 是: %3c                    case '%':                        processUrlEncoder(sb, s, i);                        break;                    default:                        sb.append(c);                        break;                }            } else {                switch (c) {                    case '>':                        // 全角大于号                        sb.append('＞');                        break;                    case '<':                        // 全角小于号                        sb.append('＜');                        break;                    case '&':                        // 全角&符号                        sb.append('＆');                        break;                    case '\\':                        // 全角斜线                        sb.append('＼');                        break;                    case '#':                        // 全角井号                        sb.append('＃');                        break;                    // < 字符的 URL 编码形式表示的 ASCII 字符（十六进制格式） 是: %3c                    case '%':                        processUrlEncoder(sb, s, i);                        break;                    default:                        sb.append(c);                        break;                }            }        }        return sb.toString();    }    public static void processUrlEncoder(StringBuilder sb, String s, int index) {        if (s.length() >= index + 2) {            // %3c, %3C            if (s.charAt(index + 1) == '3' && (s.charAt(index + 2) == 'c' || s.charAt(index + 2) == 'C')) {                sb.append('＜');                return;            }            // %3c (0x3c=60)            if (s.charAt(index + 1) == '6' && s.charAt(index + 2) == '0') {                sb.append('＜');                return;            }            // %3e, %3E            if (s.charAt(index + 1) == '3' && (s.charAt(index + 2) == 'e' || s.charAt(index + 2) == 'E')) {                sb.append('＞');                return;            }            // %3e (0x3e=62)            if (s.charAt(index + 1) == '6' && s.charAt(index + 2) == '2') {                sb.append('＞');                return;            }        }        sb.append(s.charAt(index));    }    @Override    public String[] getParameterValues(String name) {        String[] parameterValues = super.getParameterValues(name);        if (parameterValues == null) {            return null;        }        for (int i = 0; i < parameterValues.length; i++) {            String value = parameterValues[i];            parameterValues[i] = encodeBody(value);        }        return parameterValues;    }}
+/**
+ * Copyright (c) 2016-2019 人人开源 All rights reserved.
+ * <p>
+ * https://www.renren.io
+ * <p>
+ * 版权所有，侵权必究！
+ */
+
+package song.common.security;
+
+import org.apache.commons.io.IOUtils;
+ 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import song.common.lang.StringHelper;
+
+import javax.servlet.ReadListener;
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+
+public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
+    /**
+     * 没被包装过的HttpServletRequest（特殊场景，需要自己过滤）
+     */
+    HttpServletRequest orgRequest;
+    /**
+     * html过滤
+     */
+    private final static HTMLFilter htmlFilter = new HTMLFilter();
+
+    public XssHttpServletRequestWrapper(HttpServletRequest request) {
+        super(request);
+        orgRequest = request;
+    }
+
+    @Override
+    public ServletInputStream getInputStream() throws IOException {
+        //非json类型，直接返回
+        if (!MediaType.APPLICATION_JSON_VALUE.equalsIgnoreCase(super.getHeader(HttpHeaders.CONTENT_TYPE))) {
+            return super.getInputStream();
+        }
+
+        //为空，直接返回
+        String json = IOUtils.toString(super.getInputStream(), "utf-8");
+        if (StringHelper.isBlank(json)) {
+            return super.getInputStream();
+        }
+
+        //xss过滤
+        json = xssEncode(json);
+        final ByteArrayInputStream bis = new ByteArrayInputStream(json.getBytes("utf-8"));
+        return new ServletInputStream() {
+            @Override
+            public boolean isFinished() {
+                return true;
+            }
+
+            @Override
+            public boolean isReady() {
+                return true;
+            }
+
+            @Override
+            public void setReadListener(ReadListener readListener) {
+            }
+
+            @Override
+            public int read() throws IOException {
+                return bis.read();
+            }
+        };
+    }
+
+    @Override
+    public String getParameter(String name) {
+        String value = super.getParameter(xssEncode(name));
+        if (StringHelper.isNotBlank(value)) {
+            value = xssEncode(value);
+        }
+        return value;
+    }
+
+    @Override
+    public String[] getParameterValues(String name) {
+        String[] parameters = super.getParameterValues(name);
+        if (parameters == null || parameters.length == 0) {
+            return null;
+        }
+
+        for (int i = 0; i < parameters.length; i++) {
+            parameters[i] = xssEncode(parameters[i]);
+        }
+        return parameters;
+    }
+
+    @Override
+    public Map<String, String[]> getParameterMap() {
+        Map<String, String[]> map = new LinkedHashMap<>();
+        Map<String, String[]> parameters = super.getParameterMap();
+        for (String key : parameters.keySet()) {
+            String[] values = parameters.get(key);
+            for (int i = 0; i < values.length; i++) {
+                values[i] = xssEncode(values[i]);
+            }
+            map.put(key, values);
+        }
+        return map;
+    }
+
+    @Override
+    public String getHeader(String name) {
+        String value = super.getHeader(xssEncode(name));
+        if (StringHelper.isNotBlank(value)) {
+            value = xssEncode(value);
+        }
+        return value;
+    }
+
+    private String xssEncode(String input) {
+        return htmlFilter.filter(input);
+    }
+
+    /**
+     * 获取最原始的request
+     */
+    public HttpServletRequest getOrgRequest() {
+        return orgRequest;
+    }
+
+    /**
+     * 获取最原始的request
+     */
+    public static HttpServletRequest getOrgRequest(HttpServletRequest request) {
+        if (request instanceof XssHttpServletRequestWrapper) {
+            return ((XssHttpServletRequestWrapper) request).getOrgRequest();
+        }
+
+        return request;
+    }
+
+}

@@ -1,4 +1,4 @@
-package song.api.studio.controller;
+package song.api.user.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,9 +8,9 @@ import song.common.result.ActionResult;
 import song.common.toolkit.base.BaseController;
 
 @RestController
-@RequestMapping("/message")
+@RequestMapping("/msg")
 public class MessageController extends BaseController {
-    
+
 
     @GetMapping(value = "/count")
     public ActionResult count() {
