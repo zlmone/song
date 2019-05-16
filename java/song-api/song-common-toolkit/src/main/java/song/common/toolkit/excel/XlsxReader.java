@@ -84,7 +84,7 @@ public class XlsxReader extends ExcelReader {
             //数据开始的行数等于，开始行数+列头行数
             int firstDataRowIndex = excelSheet.getStartRowIndex() + headRowNumber;
             int lastRowIndex = sheet.getLastRowNum();
-            for (int i = firstDataRowIndex; i < lastRowIndex; i++) {
+            for (int i = firstDataRowIndex; i <= lastRowIndex; i++) {
                 XSSFRow row = sheet.getRow(i);
                 if (row != null) {
                     excelSheet.addRow(readRow(row, dataColumns, excelSheet.getStartColumnIndex()));
