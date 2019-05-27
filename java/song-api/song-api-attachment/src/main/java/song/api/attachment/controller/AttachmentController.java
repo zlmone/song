@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/attachment")
 public class AttachmentController extends BaseController {
-    @DeleteMapping(value = "/delete")
+    @PostMapping(value = "/delete")
     public ActionResult delete(String id) {
         ActionResult result = new ActionResult();
 
