@@ -1,0 +1,1 @@
+package song.api.system.dao;import org.apache.ibatis.annotations.Mapper;import song.api.system.model.Attachment;import song.common.toolkit.base.IBaseDao;/** * description: * author:          song * createDate:      2017/12/28 */@Mapperpublic interface IAttachmentDao extends IBaseDao<Attachment> {}

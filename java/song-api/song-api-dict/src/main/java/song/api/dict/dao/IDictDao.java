@@ -1,1 +1,0 @@
-package song.api.dict.dao;import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.Param;import song.api.dict.model.Dict;import java.util.List;/** * description: * author:          song * createDate:      2017/12/28 */@Mapperpublic interface IDictDao {    List<Dict> getDictList(@Param("dictType") String dictType);}

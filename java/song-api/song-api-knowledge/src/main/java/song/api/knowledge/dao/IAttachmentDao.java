@@ -1,1 +1,0 @@
-package song.api.knowledge.dao;import org.apache.ibatis.annotations.Mapper;/** * description: * author:          song * createDate:      2017/12/28 */@Mapperpublic interface IAttachmentDao {}

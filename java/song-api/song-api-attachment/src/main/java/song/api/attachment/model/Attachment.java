@@ -1,1 +1,0 @@
-package song.api.attachment.model;import com.baomidou.mybatisplus.annotation.TableName;import song.common.toolkit.base.BaseModel;/** * description: * author:          song * createDate:      2018/1/8 */@TableName(value = "sys_attachment")public class Attachment extends BaseModel {}

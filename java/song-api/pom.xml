@@ -15,13 +15,12 @@
     <version>1.0.0</version>
     <modules>
         <module>song-api-common</module>
-        <module>song-api-dict</module>
+        <module>song-api-system</module>
         <module>song-api-user</module>
         <module>song-common</module>
         <module>song-common-toolkit</module>
         <module>song-api-spider</module>
         <module>song-api-studio</module>
-        <module>song-api-attachment</module>
         <module>song-api-async</module>
         <module>song-api-knowledge</module>
     </modules>

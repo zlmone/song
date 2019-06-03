@@ -1,0 +1,1 @@
+package song.api.knowledge.model;import song.common.toolkit.base.BaseModel;/** * description: * author:          song * createDate:      2018/1/8 */public class Author extends BaseModel {}
