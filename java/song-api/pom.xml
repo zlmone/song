@@ -23,6 +23,7 @@
         <module>song-api-studio</module>
         <module>song-api-attachment</module>
         <module>song-api-async</module>
+        <module>song-api-knowledge</module>
     </modules>
     <packaging>pom</packaging>
 
